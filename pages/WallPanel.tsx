@@ -11,6 +11,7 @@ export const WallPanel: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
     // Combine images with mock categories for demonstration
+    const prices = [3200, 2800, 3500, 2900];
     const wallPanelItems = PAGE_IMAGES.wallPanel.collection.map((url, index) => {
         // Assign categories based on index for demo purposes
         let categories: FilterType[] = ['All'];
@@ -20,7 +21,8 @@ export const WallPanel: React.FC = () => {
         return {
             id: `WP0${index + 1}`,
             url,
-            categories
+            categories,
+            price: prices[index]
         };
     });
 
@@ -83,7 +85,7 @@ export const WallPanel: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 mb-32 min-h-[500px]">
                     {filteredItems.map((item, i) => (
                         <div key={item.id} className="group cursor-pointer animate-fade-in">
-                            <div className="aspect-[4/3] bg-stone-200 dark:bg-stone-900 overflow-hidden mb-4 relative">
+                            <div className="aspect-[4/3] bg-stone-200 dark:bg-stone-900 overflow-hidden mb-4 relative rounded-2xl">
                                 <img
                                     src={item.url}
                                     alt={`Wall Panel ${item.id}`}
@@ -92,7 +94,10 @@ export const WallPanel: React.FC = () => {
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500"></div>
                             </div>
                             <div className="flex justify-between items-center border-b border-stone-300 dark:border-stone-800 pb-3">
-                                <span className="font-medium text-sm tracking-wide uppercase">#{item.id}</span>
+                                <div className="flex flex-col">
+                                    <span className="font-medium text-sm tracking-wide uppercase">#{item.id}</span>
+                                    <span className="text-sm font-serif text-stone-600 dark:text-stone-400 mt-1">฿{item.price.toLocaleString()}</span>
+                                </div>
                                 <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-black dark:text-stone-500 dark:group-hover:text-white transition-colors" />
                             </div>
                         </div>

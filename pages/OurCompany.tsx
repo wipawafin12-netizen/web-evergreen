@@ -21,37 +21,43 @@ export const OurCompany: React.FC = () => {
   ];
 
   const collection = [
-    { title: "Modern Panel", subtitle: "Oak tone", img: "/image1 (2).png" },
-    { title: "Minimal Flat", subtitle: "Warm sand", img: "/image2.png" },
-    { title: "Classic Line", subtitle: "Soft white", img: "/door-02.png" },
-    { title: "Studio Edition", subtitle: "Natural wood", img: "/w3.png" },
+    { title: "Modern Panel", subtitle: "Oak tone", img: "/public/mo panel.png", price: "2,490", path: "/door" },
+    { title: "Minimal Flat", subtitle: "Warm sand", img: "public/mini flat.png", price: "3,590", path: "/door" },
+
+    { title: "Studio Edition", subtitle: "Natural wood", img: "public/stu edition.png", price: "3,190", path: "/door" },
+    { title: "Urban Loft", subtitle: "Grey matte", img: "public/Door M4.png", price: "3,890", path: "/door" },
+    { title: "Heritage Wood", subtitle: "Deep Walnut", img: "public/Door Hick.png", price: "4,590", path: "/door" },
   ];
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
+      {/* ... (sections before Essentials) ... */}
+
+      {/* Note: I'm skipping the middle sections to target the specific Essentials section at the end */}
+
+      {/* ... (skipping Content Sections and Reviews) ... */}
 
       <section className="px-6 md:px-12 pt-32 pb-20">
         <div className="container mx-auto max-w-5xl text-center">
           <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 opacity-80">
             {t("Est. 1974", "ก่อตั้ง 1974")}
           </p>
-          <h1 className="mt-8 font-serif text-3xl md:text-5xl lg:text-[56px] leading-[1.1] text-stone-900 dark:text-stone-100">
-            {t("Inspire", "สร้างแรงบันดาลใจ")} <span className="italic text-stone-500">{t("everyday living.", "การใช้ชีวิตทุกวัน")}</span>
+          <h1 className="mt-8 font-serif text-1xl md:text-3xl lg:text-4xl leading-[1.1] text-[#E64A19]">
+            {t("Inspire", "สร้างแรงบันดาลใจ")} {t("everyday living.", "การใช้ชีวิตทุกวัน")}
           </h1>
         </div>
-      </section>
+      </section >
 
 
       <section className="px-6 md:px-12 pb-32">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 items-start">
-
-
+            {/* ... Content Grid ... */}
             <div className="md:col-span-6 lg:col-span-6 flex flex-col gap-4">
-              <div className="relative overflow-hidden group">
+              <div className="relative overflow-hidden group rounded-3xl">
                 <div className="aspect-[3/4] overflow-hidden bg-stone-100 dark:bg-stone-900">
                   <img
-                    src="/image1 (2).png"
+                    src="public/Ins1.png"
                     alt="Craftsmanship"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 animate-image-reveal"
                     loading="lazy"
@@ -65,8 +71,7 @@ export const OurCompany: React.FC = () => {
             </div>
 
             <div className="md:col-span-6 lg:col-span-6 flex flex-col justify-between h-full pt-12 md:pt-24 gap-20">
-
-
+              {/* ... Right Column Content ... */}
               <div className="max-w-md">
                 <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-6">
                   {t("Our Story", "เรื่องราวของเรา")}
@@ -84,11 +89,10 @@ export const OurCompany: React.FC = () => {
                 </div>
               </div>
 
-
               <div className="relative pl-0 md:pl-12">
-                <div className="aspect-video overflow-hidden bg-stone-100 dark:bg-stone-900 group">
+                <div className="aspect-video overflow-hidden bg-stone-100 dark:bg-stone-900 group rounded-3xl">
                   <img
-                    src="/image2.png"
+                    src="public/df2.png"
                     alt="Sustainability"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 animate-image-reveal"
                     loading="lazy"
@@ -105,6 +109,7 @@ export const OurCompany: React.FC = () => {
 
       <section className="px-6 md:px-12 pb-32">
         <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-20">
+          {/* ... Reviews ... */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-32">
 
             <div>
@@ -115,7 +120,7 @@ export const OurCompany: React.FC = () => {
               <div className="space-y-10">
                 {reviews.map((r, idx) => (
                   <div key={idx} className="group">
-                    <p className="text-lg font-serif italic text-stone-700 dark:text-stone-300 leading-relaxed">
+                    <p className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed">
                       "{r.text}"
                     </p>
                     <div className="mt-4 flex items-center justify-between">
@@ -154,7 +159,6 @@ export const OurCompany: React.FC = () => {
                 </div>
               </form>
             </div>
-
           </div>
         </div>
       </section>
@@ -164,13 +168,12 @@ export const OurCompany: React.FC = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center justify-between mb-12">
             <h4 className="font-serif text-xl text-stone-900 dark:text-stone-100">{t("Essentials", "สินค้าแนะนำ")}</h4>
-            <Link to="/products" className="text-[10px] uppercase tracking-[0.25em] text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-200">{t("View All", "ดูทั้งหมด")}</Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="flex overflow-x-auto gap-4 md:gap-8 pb-4 scrollbar-hide snap-x w-screen ml-[calc(50%-50vw)] px-6 md:px-12">
             {collection.map((item, idx) => (
-              <div key={idx} className="group cursor-pointer">
-                <div className="aspect-square overflow-hidden bg-stone-100 dark:bg-stone-900 mb-4">
+              <Link key={idx} to={item.path} className="group cursor-pointer block min-w-[200px] md:min-w-[250px] snap-start">
+                <div className="aspect-square overflow-hidden bg-stone-100 dark:bg-stone-900 mb-4 rounded-2xl relative">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -178,12 +181,16 @@ export const OurCompany: React.FC = () => {
                     loading="lazy"
                     decoding="async"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                 </div>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 group-hover:text-brand-500 transition-colors">
                   {item.title}
                 </p>
-                <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-1">{item.subtitle}</p>
-              </div>
+                <div className="flex justify-between items-center mt-1">
+                  <p className="text-[11px] text-stone-500 dark:text-stone-400">{item.subtitle}</p>
+                  <p className="text-[11px] font-serif text-stone-900 dark:text-stone-200">฿{item.price}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

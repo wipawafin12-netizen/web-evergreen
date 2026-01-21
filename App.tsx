@@ -11,6 +11,8 @@ import { ServiceShaft } from './pages/ServiceShaft';
 import { Flooring } from './pages/Flooring';
 import { Staircase } from './pages/Staircase';
 import { WallPanel } from './pages/WallPanel';
+import { Quote } from './pages/Quote';
+import { B2B } from './pages/B2B';
 import { Login } from './pages/Login';
 import { LanguageProvider } from './contexts/LanguageContext';
 
@@ -41,6 +43,10 @@ function App() {
 
               {/* Services */}
               <Route path="/services" element={<ServicesPage />} />
+
+              {/* Quote */}
+              <Route path="/quote" element={<Quote />} />
+              <Route path="/b2b" element={<B2B />} />
 
               {/* Account */}
               <Route path="/login" element={<Login />} />

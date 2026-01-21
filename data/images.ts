@@ -11,29 +11,29 @@ export const PAGE_IMAGES = {
         feature: "https://images.unsplash.com/photo-1506093481292-637951d953d6?q=80&w=800&auto=format&fit=crop"
     },
     doorframe: {
-        hero: "public/DF3.png",
+        hero: "public/d1.png",
         collection: [
-            "public/DF2.png",
-            "dist/image1 (2).png",
-            "public/door-02.png"
+            "public/pp1.png",
+            "public/df2.png",
+            "public/pp3.png"
         ],
         feature: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
     },
     flooring: {
-        hero: "public/image1 (2).png",
+        hero: "public/fr.png",
         collection: [
             "dist/DOOR.png",
             "dist/door-02.png",
             "dist/image2.png"
         ],
-        feature: "public/Df6.png"
+        feature: "public/cs1.png"
     },
     serviceShaft: {
-        hero: "public/DF3.png",
+        hero: "public/door02.png",
         collection: [
             "public/DF2.png",
-            "public/Df8.png",
-            ""
+            "public/Sus1.png",
+            
         ]
     },
     staircase: {
@@ -45,12 +45,12 @@ export const PAGE_IMAGES = {
         ]
     },
     wallPanel: {
-        hero: "public/w1.jpg",
+        hero: "public/fr.png",
         collection: [
-            "public/door-02.png",
-            "public/DOOR.png",
+            "public/door-01.png",
             "public/Df4.jpg",
-            "public/DF2.png"
+            "public/door02.png",
+            "public/pp1.png"
         ],
         feature: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?q=80&w=800&auto=format&fit=crop"
     }

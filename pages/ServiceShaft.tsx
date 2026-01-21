@@ -8,43 +8,47 @@ export const ServiceShaft: React.FC = () => {
     return (
         <div className="min-h-screen bg-[#FDFBF9] dark:bg-stone-950 text-stone-800 dark:text-stone-100 transition-colors duration-300">
             {/* Hero Section - Split Layout */}
-            <section className="min-h-screen grid grid-cols-1 md:grid-cols-2">
-                {/* Left Image */}
-                <div className="relative h-full min-h-[50vh] md:min-h-screen bg-stone-200 dark:bg-stone-800 order-2 md:order-1">
-                    <img
-                        src={PAGE_IMAGES.serviceShaft.hero}
-                        alt="Service Shaft Hero"
-                        className="absolute inset-0 w-full h-full object-cover animate-image-reveal"
-                    />
-                </div>
+            {/* Hero Section - Redesigned */}
+            <section className="min-h-screen px-4 py-4 md:p-6 flex items-center">
+                <div className="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
+                    {/* Left Image - Framed & Floating */}
+                    <div className="relative h-[60vh] lg:h-[88vh] bg-stone-200 dark:bg-stone-800 rounded-[2.5rem] overflow-hidden order-1 shadow-sm">
+                        <img
+                            src={PAGE_IMAGES.serviceShaft.hero}
+                            alt="Service Shaft Hero"
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/10"></div>
+                    </div>
 
+                    {/* Right Text - Left Aligned & Airy */}
+                    <div className="flex flex-col justify-center order-2 lg:px-12 xl:px-20">
+                        <div className="max-w-2xl">
+                            <div className="flex items-center gap-4 mb-8">
+                                <span className="h-px w-12 bg-stone-300 dark:bg-stone-700"></span>
+                                <span className="text-[11px] uppercase tracking-[0.3em] text-stone-500 dark:text-stone-400 font-medium">
+                                    {t("Concealed Functionality", "ฟังก์ชันที่ซ่อนอยู่")}
+                                </span>
+                            </div>
 
-                <div className="flex flex-col justify-center px-8 md:px-20 py-20 order-1 md:order-2 bg-[#FDFBF9] dark:bg-stone-950">
-                    <div className="max-w-md mx-auto md:mx-0 text-center md:text-left">
-                        <div className="flex justify-center md:justify-center mb-6">
-                            <span className="text-xl text-stone-300"></span>
-                        </div>
+                            <h1 className="font-serif text-2xl md:text-4xl text-stone-900 dark:text-stone-50 leading-[1.1] mb-8">
+                                {t("The invisible", "ความงาม")} <br />
+                                <span className="block mt-2">{t("precision", "ที่ซ่อนเร้น")}</span>
+                            </h1>
 
-                        <p className="text-[10px] uppercase tracking-[0.3em] text-stone-400 dark:text-stone-500 mb-6 text-center">
-                            {t("Concealed Functionality", "ฟังก์ชันที่ซ่อนอยู่")}
-                        </p>
+                            <p className="text-stone-600 dark:text-stone-300 text-base md:text-lg leading-relaxed mb-12 max-w-lg">
+                                {t("We believe that utility should not compromise aesthetics. Our service shaft solutions are engineered to disappear, providing necessary access while maintaining the integrity of your interior design.", "เราเชื่อว่าประโยชน์ใช้สอยไม่ควรลดทอนความสวยงาม โซลูชันช่องชาร์ปของเราได้รับการออกแบบให้กลมกลืน ให้การเข้าถึงที่จำเป็นในขณะที่ยังรักษาความสมบูรณ์ของการออกแบบภายในของคุณ")}
+                            </p>
 
-                        <h1 className="font-serif text-4xl md:text-6xl text-stone-900 dark:text-stone-100 leading-[1.15] mb-8 text-center">
-                            {t("The seamless", "ความไร้ร้อยต่อ")} <br />
-                            <span className="italic">{t("service shaft", "ช่องชาร์ป")}</span>
-                        </h1>
-
-                        <p className="text-stone-500 dark:text-stone-400 text-sm leading-7 mb-10 text-center">
-                            {t("We believe that utility should not compromise aesthetics. Our service shaft solutions are engineered to disappear, providing necessary access while maintaining the integrity of your interior design.", "เราเชื่อว่าประโยชน์ใช้สอยไม่ควรลดทอนความสวยงาม โซลูชันช่องชาร์ปของเราได้รับการออกแบบให้กลมกลืน ให้การเข้าถึงที่จำเป็นในขณะที่ยังรักษาความสมบูรณ์ของการออกแบบภายในของคุณ")}
-                        </p>
-
-                        <div className="text-center">
-                            <Link
-                                to="/contact"
-                                className="inline-block text-[10px] uppercase tracking-[0.25em] border border-stone-300 dark:border-stone-700 px-8 py-4 hover:border-stone-800 dark:hover:border-stone-200 hover:text-stone-900 dark:hover:text-stone-200 text-stone-500 dark:text-stone-400 transition-all duration-300"
-                            >
-                                {t("Request Catalog", "ขอแคตตาล็อก")}
-                            </Link>
+                            <div className="flex flex-wrap gap-6">
+                                <Link
+                                    to="/contact"
+                                    className="group inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full hover:bg-stone-700 dark:hover:bg-stone-200 transition-all duration-300"
+                                >
+                                    {t("Request Catalog", "ขอแคตตาล็อก")}
+                                    <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,21 +88,19 @@ export const ServiceShaft: React.FC = () => {
 
 
                         <div className="md:col-span-8 grid grid-cols-2 gap-4 md:gap-8">
-                            <div className="aspect-[3/4] bg-stone-100 dark:bg-stone-800 overflow-hidden">
+                            <div className="aspect-[3/4] bg-stone-100 dark:bg-stone-800 overflow-hidden rounded-2xl">
                                 <img
                                     src={PAGE_IMAGES.serviceShaft.collection[0]}
                                     alt="Detail 1"
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 animate-image-reveal"
                                 />
                             </div>
-                            <div className="pt-12 md:pt-24">
-                                <div className="aspect-[3/4] bg-stone-100 dark:bg-stone-800 overflow-hidden">
-                                    <img
-                                        src={PAGE_IMAGES.serviceShaft.collection[1]}
-                                        alt="Detail 2"
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 animate-image-reveal"
-                                    />
-                                </div>
+                            <div className="aspect-[3/4] bg-stone-100 dark:bg-stone-800 overflow-hidden rounded-2xl">
+                                <img
+                                    src={PAGE_IMAGES.serviceShaft.collection[1]}
+                                    alt="Detail 2"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 animate-image-reveal"
+                                />
                             </div>
                         </div>
 

@@ -46,7 +46,7 @@ export const Staircase: React.FC = () => {
                                 <img
                                     src={wood.img}
                                     alt={wood.name}
-                                    className="w-full h-full object-cover rounded-sm shadow-md transition-transform duration-500 hover:scale-105 animate-image-reveal"
+                                    className="w-full h-full object-cover rounded-sm shadow-md transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl hover:rotate-1 animate-image-reveal"
                                     loading="lazy"
                                     decoding="async"
                                 />
@@ -57,6 +57,86 @@ export const Staircase: React.FC = () => {
                             </p>
                         </div>
                     ))}
+                </div>
+
+                {/* Wood Color Shades Palette - Ultra Minimal */}
+                <div className="mt-24 mb-32 border-t border-stone-200 dark:border-stone-800 pt-24">
+                    <div className="text-center mb-16">
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-stone-400 dark:text-stone-500 mb-2 block">
+                            {t("Finishes", "เฉดสี")}
+                        </span>
+                        <h3 className="text-3xl font-serif text-brand-900 dark:text-stone-100">
+                            {t("Available Tones", "โทนสีที่มีให้บริการ")}
+                        </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16 max-w-4xl mx-auto px-6">
+                        {[
+                            {
+                                category: "Golden Tones",
+                                colors: [
+                                    { code: "#D9C6A7", label: "#D9C6A7" },
+                                    { code: "#C8AD7F", label: "#C8AD7F" },
+                                    { code: "#B5905E", label: "#B5905E" },
+                                    { code: "#967249", label: "#967249" }
+                                ]
+                            },
+                            {
+                                category: "Reddish Tones",
+                                colors: [
+                                    { code: "#D49E80", label: "#D49E80" },
+                                    { code: "#BF7A56", label: "#BF7A56" },
+                                    { code: "#A05536", label: "#A05536" },
+                                    { code: "#78361C", label: "#78361C" }
+                                ]
+                            },
+                            {
+                                category: "Light & Minimal",
+                                colors: [
+                                    { code: "#F2EBE0", label: "#F2EBE0" },
+                                    { code: "#E6DCCA", label: "#E6DCCA" },
+                                    { code: "#D8CABD", label: "#D8CABD" },
+                                    { code: "#C4B6A6", label: "#C4B6A6" }
+                                ]
+                            },
+                            {
+                                category: "Deep & Dark",
+                                colors: [
+                                    { code: "#6B5B4E", label: "#6B5B4E" },
+                                    { code: "#54433A", label: "#54433A" },
+                                    { code: "#3E3029", label: "#3E3029" },
+                                    { code: "#2A211D", label: "#2A211D" }
+                                ]
+                            }
+                        ].map((group, idx) => (
+                            <div key={idx} className="group-category">
+                                <h4 className="font-serif text-lg text-brand-900 dark:text-stone-100 mb-6 border-b border-stone-200 dark:border-stone-800 pb-2">
+                                    {group.category}
+                                </h4>
+                                <div className="grid grid-cols-4 gap-4">
+                                    {group.colors.map((color, cIdx) => (
+                                        <div key={cIdx} className="flex flex-col group cursor-pointer">
+                                            <div
+                                                className="w-full h-8 rounded-[2px] mb-3 transition-transform duration-300 origin-left group-hover:scale-x-110 relative overflow-hidden"
+                                                style={{
+                                                    backgroundColor: color.code,
+                                                    backgroundImage: `
+                                                        repeating-linear-gradient(90deg, rgba(50, 30, 10, 0.06) 0px, rgba(50, 30, 10, 0.06) 1px, transparent 1px, transparent 4px), 
+                                                        repeating-linear-gradient(2deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 12px),
+                                                        radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 80%)
+                                                    `,
+                                                    backgroundBlendMode: 'multiply'
+                                                }}
+                                            ></div>
+                                            <span className="text-[9px] uppercase tracking-widest text-stone-500 dark:text-stone-400 font-mono opacity-70 group-hover:opacity-100 transition-opacity">
+                                                {color.label}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Specifications Section */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PAGE_IMAGES } from '../data/images';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 export const Flooring: React.FC = () => {
     const { t } = useLanguage();
@@ -35,7 +36,7 @@ export const Flooring: React.FC = () => {
                         <img
                             src={PAGE_IMAGES.flooring.hero}
                             alt="Flooring Hero"
-                            className="absolute inset-0 w-full h-full object-cover rounded-sm"
+                            className="absolute inset-0 w-full h-full object-cover rounded-3xl"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
@@ -46,22 +47,28 @@ export const Flooring: React.FC = () => {
             <div id="collection" className="bg-white dark:bg-stone-950 py-32 px-6">
                 <div className="container mx-auto">
                     <h3 className="text-brand-900 dark:text-stone-100 font-serif text-3xl mb-16">{t("Signature Selection.", "คัดสรรพิเศษ")}</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {PAGE_IMAGES.flooring.collection.map((imgUrl, i) => (
-                            <div key={i} className="bg-stone-50 dark:bg-stone-800 p-12 group hover:shadow-lg transition-all duration-500 relative overflow-hidden text-center">
-                                <div className="aspect-[3/4] bg-white dark:bg-stone-700 mb-8 flex items-center justify-center relative z-10 shadow-sm group-hover:-translate-y-2 transition-transform duration-500 overflow-hidden">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            ...PAGE_IMAGES.flooring.collection,
+                            "public/fr.png"
+                        ].map((imgUrl, i) => (
+                            <Link key={i} to="/door" className="block bg-stone-50 dark:bg-stone-800 p-12 group hover:shadow-lg transition-all duration-500 relative overflow-hidden text-center cursor-pointer">
+                                <div className="aspect-[3/4] bg-white dark:bg-stone-700 mb-8 flex items-center justify-center relative z-10 shadow-sm group-hover:-translate-y-2 transition-transform duration-500 overflow-hidden rounded-3xl">
                                     <img src={imgUrl} alt={`Flooring ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                                 </div>
                                 <div className="relative z-10">
                                     <h4 className="text-brand-900 dark:text-stone-100 font-mono text-lg mb-2">{t("The Flooring", "พื้นไม้รุ่น")} {i + 1}</h4>
                                     <p className="text-stone-500 dark:text-stone-400 text-xs tracking-widest uppercase">{t("Select Edition", "รุ่นคัดพิเศษ")}</p>
+                                    <p className="text-sm font-serif text-brand-900 dark:text-stone-200 mt-2">
+                                        ฿{[1890, 2200, 1950, 2400][i]?.toLocaleString() || "1,890"}
+                                    </p>
                                     <div className="mt-4 flex justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <div className="w-1 h-1 bg-stone-800 rounded-full"></div>
                                         <div className="w-1 h-1 bg-stone-300 rounded-full"></div>
                                         <div className="w-1 h-1 bg-stone-300 rounded-full"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -78,7 +85,7 @@ export const Flooring: React.FC = () => {
                         <a href="#" className="text-xs uppercase underline dark:text-stone-100">{t("Read More", "อ่านเพิ่มเติม")}</a>
                     </div>
                     <div className="">
-                        <div className="aspect-square bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden">
+                        <div className="aspect-square bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden rounded-3xl">
                             <img src={PAGE_IMAGES.flooring.feature} alt="Flooring Feature" className="w-full h-full object-cover" />
                         </div>
                     </div>
