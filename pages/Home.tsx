@@ -4,26 +4,26 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 const quickCards = [
   {
-    title: "Door",
-    img: "public/dd.png",
+    title: { en: "Door", th: "ประตู" },
+    img: "public/Home Collections/01.png",
     path: "/door",
     description: {
-      en: "Discover our wide range of premium doors, designed for elegance and durability. Available in various styles and finishes to suit your home.",
-      th: "ค้นพบประตูพรีเมียมหลากหลายรูปแบบ ออกแบบมาเพื่อความสวยงามและความทนทาน มีให้เลือกหลายสไตล์"
+      en: "Where Wood Styles Define Your Journey,Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs.",
+      th: "สไตล์ไม้ที่บ่งบอกถึงการเดินทางของคุณเปลี่ยนโฉมภายในบ้านของคุณด้วยประตูที่ไม่เพียงแต่ทนทาน แต่ยังมีสไตล์ให้เลือกมากมาย ตั้งแต่ลายไม้ ผ้า ไปจนถึงดีไซน์ที่ได้แรงบันดาลใจจากหนัง"
     }
   },
   {
-    title: "Flooring",
-    img: "public/d1.png",
+    title: { en: "Flooring", th: "พื้นไม้" },
+    img: "public/Home Collections/fr01.jpg",
     path: "/flooring",
     description: {
-      en: "High-quality flooring solutions that bring warmth and character to every room.",
-      th: "พื้นไม้คุณภาพสูงที่มอบความอบอุ่นและเอกลักษณ์ให้กับทุกห้อง"
+      en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
+      th: "พื้น SPC มีความทนทาน หรูหรา และได้รับการออกแบบอย่างประณีต ช่วยเปลี่ยนโฉมพื้นที่ของคุณด้วยความงามที่ยั่งยืน ขอแนะนำพื้น SPC นวัตกรรมสมัยใหม่ที่ผสานความทนทาน ความหรูหรา และการออกแบบเหนือกาลเวลา"
     }
   },
   {
-    title: "Wall Panel",
-    img: "public/door02.png",
+    title: { en: "Wall Panel", th: "ผนังตกแต่ง" },
+    img: "public/Home Collections/03.jpg",
     path: "/wall-panel",
     description: {
       en: "Transform your walls with our decorative panels, adding texture and depth to your interior.",
@@ -31,12 +31,12 @@ const quickCards = [
     }
   },
   {
-    title: "Service Shaft",
-    img: "public/cs1.png",
+    title: { en: "Service Shaft", th: "ช่องชาร์ป" },
+    img: "public/Home Collections/04.png",
     path: "/service-shaft",
     description: {
-      en: "Functional and discreet service shafts designed for modern building requirements.",
-      th: "ช่องชาร์ปที่ใช้งานได้จริงและกลมกลืน ออกแบบมาเพื่อความต้องการของอาคารสมัยใหม่"
+      en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
+      th: "สัมผัสโลกแห่งฟังก์ชันการใช้งานที่เหนือระดับด้วยแผงปิดช่องเข้าถึงผนังช่องลิฟต์ของเรา ซึ่งได้รับการออกแบบมาเพื่อมอบการเข้าถึงช่องเก็บของที่จำเป็นได้อย่างง่ายดาย"
     }
   },
 ];
@@ -44,21 +44,21 @@ const quickCards = [
 
 const heroSlides = [
   {
-    img: "public/dd.png",
+    img: "public/Home Collections/back.png",
     pretitle: { en: "Evergreen / Door Products", th: "เอเวอร์กรีน / ผลิตภัณฑ์ประตู" },
     title1: { en: "50 Years of", th: "50 ปีแห่ง" },
     title2: { en: "Architectural Products", th: "ผลิตภัณฑ์สถาปัตยกรรม" },
     desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "วิศวกรรมที่เงียบสงบ ดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและพื้นผิวที่สร้างสรรค์สำหรับพื้นที่สมัยใหม่" }
   },
   {
-    img: "public/d1.png",
+    img: "public/Home Collections/01.png",
     pretitle: { en: "Evergreen / Flooring", th: "เอเวอร์กรีน / พื้นไม้" },
     title1: { en: "Timeless", th: "อมตะ" },
     title2: { en: "Wood Flooring", th: "พื้นไม้ธรรมชาติ" },
     desc: { en: "Bring warmth and character to every room with our premium selection of engineered wood flooring.", th: "นำความอบอุ่นและเอกลักษณ์สู่ทุกห้องด้วยพื้นไม้เอ็นจิเนียร์คัดพิเศษของเรา" }
   },
   {
-    img: "public/stu edition.png",
+    img: "public/Home Collections/back.png",
     pretitle: { en: "Evergreen / Innovation", th: "เอเวอร์กรีน / นวัตกรรม" },
     title1: { en: "Modern", th: "ทันสมัย" },
     title2: { en: "Door Solutions", th: "โซลูชันประตู" },
@@ -86,7 +86,7 @@ export const Home: React.FC = () => {
 
 
         <div className="relative min-h-[600px] flex items-center justify-center pt-20">
-          {/* Background Slideshow Layer */}
+        
           <div className="absolute inset-0 z-0 overflow-hidden">
 
             <div className="relative w-full h-full">
@@ -101,17 +101,17 @@ export const Home: React.FC = () => {
                     alt="Brand Showcase"
                     className="w-full h-full object-cover"
                   />
-                  {/* Dark overlay for text readability */}
+            
                   <div className="absolute inset-0 bg-black/40" />
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Floating Content Layer */}
+      
           <div className="relative z-10 container mx-auto px-6 md:px-12 py-20 text-center">
             <div className="max-w-5xl mx-auto animate-fade-in-up">
-              {/* Dynamic Text Content */}
+         
               <div key={currentHeroSlide} className="animate-fade-in-up">
                 <p className="text-[10px] uppercase tracking-[0.45em] text-white/90 mb-6 font-bold drop-shadow-md">
                   {language === 'EN' ? heroSlides[currentHeroSlide].pretitle.en : heroSlides[currentHeroSlide].pretitle.th}
@@ -143,11 +143,28 @@ export const Home: React.FC = () => {
         <div className="h-px bg-stone-200/70 dark:bg-stone-800/70" />
       </section>
 
+
+      <section className="py-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl mb-6 text-stone-900 dark:text-stone-100 font-light">
+              {t("Where Craftsmanship Meets Better Quality of Life", "งานฝีมือผสานกับคุณภาพชีวิตที่ดีกว่า")}
+            </h2>
+            <div className="w-20 h-1 bg-brand-500 mx-auto mb-8"></div>
+            <p className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed">
+              {t("With a legacy spanning over 50 years in manufacturing excellence, images, we proudly trace  our origins from a humble sawmill to  a preeminent producer of construction materials.", "ด้วยมรดกอันยาวนานกว่า 50 ปีในด้านความเป็นเลิศทางการผลิต เราภาคภูมิใจที่ได้สืบย้อนต้นกำเนิดจากโรงเลื่อยไม้เล็กๆ สู่ผู้ผลิตวัสดุก่อสร้างชั้นนำ")}
+            </p>
+          </div>
+        </div>
+
+
+
+      </section>
       <section className="py-16 px-6 md:px-12">
         <div className="container mx-auto">
           <div className="flex items-end justify-between mb-10">
 
-            <h2 className="font-serif text-xl md:text-2xl">
+            <h2 className="text-xl md:text-2xl">
               {t("Collections", "คอลเลกชัน")}
             </h2>
             <p className="hidden md:block text-[10px] uppercase tracking-[0.35em] text-stone-400 dark:text-stone-500">
@@ -166,7 +183,7 @@ export const Home: React.FC = () => {
                   <div className="aspect-[3/5]">
                     <img
                       src={item.img}
-                      alt={item.title}
+                      alt={language === 'EN' ? item.title.en : item.title.th}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 animate-image-reveal"
                       loading="lazy"
                       decoding="async"
@@ -176,7 +193,7 @@ export const Home: React.FC = () => {
 
                 <div className="mt-4 flex items-center justify-center text-center">
                   <p className={`text-sm transition-colors ${selectedCardIndex === i ? 'text-brand-500 font-bold' : ''}`}>
-                    {t(item.title, item.title === "Door" ? "ประตู" : item.title === "Flooring" ? "พื้นไม้" : item.title === "Wall Panel" ? "ผนังตกแต่ง" : "ช่องชาร์ป")}
+                    {language === 'EN' ? item.title.en : item.title.th}
                   </p>
                 </div>
               </div>
@@ -189,8 +206,8 @@ export const Home: React.FC = () => {
               <div className="bg-white dark:bg-stone-900 rounded-2xl p-8 md:p-12 border border-stone-100 dark:border-stone-800 shadow-sm animate-fade-in-up">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
                   <div className="flex-1">
-                    <h3 className="font-serif text-2xl md:text-3xl text-brand-900 dark:text-stone-100 mb-4">
-                      {t(quickCards[selectedCardIndex].title, quickCards[selectedCardIndex].title === "Door" ? "ประตู" : quickCards[selectedCardIndex].title === "Flooring" ? "พื้นไม้" : quickCards[selectedCardIndex].title === "Wall Panel" ? "ผนังตกแต่ง" : "ช่องชาร์ป")}
+                    <h3 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 mb-4">
+                      {language === 'EN' ? quickCards[selectedCardIndex].title.en : quickCards[selectedCardIndex].title.th}
                     </h3>
                     <p className="text-stone-600 dark:text-stone-400 leading-relaxed mb-8">
                       {language === 'EN' ? quickCards[selectedCardIndex].description.en : quickCards[selectedCardIndex].description.th}

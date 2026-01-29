@@ -19,7 +19,7 @@ export const Login: React.FC = () => {
     return (
         <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col justify-center items-center px-6 transition-colors duration-300">
             <div className="w-full max-w-md bg-white p-12 shadow-sm rounded-sm border border-stone-100 dark:bg-stone-900 dark:border-stone-800 transition-colors">
-                <h1 className="text-3xl font-serif text-brand-900 dark:text-stone-100 mb-2 text-center">{t("Welcome Back", "ยินดีต้อนรับกลับ")}</h1>
+                <h1 className="text-3xl text-brand-900 dark:text-stone-100 mb-2 text-center">{t("Welcome Back", "ยินดีต้อนรับกลับ")}</h1>
                 <p className="text-stone-500 dark:text-stone-400 text-sm text-center mb-10">{t("Sign in to your account", "ลงชื่อเข้าใช้บัญชีของคุณ")}</p>
 
                 <form onSubmit={handleLogin} className="space-y-6">
@@ -44,7 +44,7 @@ export const Login: React.FC = () => {
                         />
                     </div>
 
-                    
+
                 </form>
 
                 <div className="mt-8 text-center">

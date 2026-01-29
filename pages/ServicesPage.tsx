@@ -30,7 +30,7 @@ export const ServicesPage: React.FC = () => {
         <div className="min-h-screen bg-stone-50 dark:bg-stone-900 py-24 px-6 md:px-12 transition-colors duration-300">
             <div className="container mx-auto max-w-5xl">
                 <div className="text-center mb-20">
-                    <h1 className="text-2xl md:text-4xl font-serif text-brand-900 dark:text-stone-100 mb-6">{t("Our Services", "บริการของเรา")}</h1>
+                    <h1 className="text-2xl md:text-4xl text-brand-900 dark:text-stone-100 mb-6">{t("Our Services", "บริการของเรา")}</h1>
                     <p className="text-stone-500 dark:text-stone-400 max-w-xl mx-auto">
                         {t("Beyond manufacturing, we offer a full suite of services to ensure your project succeeds from concept to installation.", "นอกเหนือจากการผลิต เราขอนำเสนอบริการครบวงจรเพื่อให้แน่ใจว่าโครงการของคุณประสบความสำเร็จตั้งแต่แนวคิดจนถึงการติดตั้ง")}
                     </p>
@@ -46,7 +46,7 @@ export const ServicesPage: React.FC = () => {
                                     className="w-full h-full object-contain"
                                 />
                             </div>
-                            <h3 className="text-2xl font-serif text-brand-900 dark:text-stone-100 mb-4">{service.title}</h3>
+                            <h3 className="text-2xl text-brand-900 dark:text-stone-100 mb-4">{service.title}</h3>
                             <p className="text-stone-500 dark:text-stone-400 leading-relaxed text-sm">{service.desc}</p>
                             <div className="mt-8">
                                 <button className="text-xs uppercase tracking-widest text-brand-900 dark:text-stone-100 border-b border-brand-200 dark:border-stone-600 pb-1 group-hover:border-brand-500 transition-colors">

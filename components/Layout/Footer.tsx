@@ -58,23 +58,43 @@ export const Footer: React.FC = () => {
 
             <div className="flex items-center gap-3">
               {/* Facebook */}
-              <a href="#" className="w-8 h-8 hover:scale-110 transition-transform">
-                <img src="public/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
+              <a
+                href="https://www.facebook.com/Evergreenchh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 hover:scale-110 transition-transform"
+              >
+                <img src="public/Social-contact/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
               </a>
 
               {/* Instagram */}
-              <a href="#" className="w-8 h-8 hover:scale-110 transition-transform">
-                <img src="public/instagram.webp" alt="Instagram" className="w-full h-full object-contain" />
+              <a
+                href="https://www.instagram.com/evergreenchh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 hover:scale-110 transition-transform"
+              >
+                <img src="public/Social-contact/instagram.webp" alt="Instagram" className="w-full h-full object-contain" />
               </a>
 
               {/* LINE */}
-              <a href="#" className="w-8 h-8 hover:scale-110 transition-transform">
-                <img src="public/line.png" alt="LINE" className="w-full h-full object-contain" />
+              <a
+                href="https://bit.ly/evergreenchh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 hover:scale-110 transition-transform"
+              >
+                <img src="public/Social-contact/line.png" alt="LINE" className="w-full h-full object-contain" />
               </a>
 
               {/* TikTok */}
-              <a href="#" className="w-8 h-8 hover:scale-110 transition-transform">
-                <img src="public/tiktok.png" alt="TikTok" className="w-full h-full object-contain" />
+              <a
+                href="https://www.tiktok.com/@evergreen_chh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 hover:scale-110 transition-transform"
+              >
+                <img src="public/Social-contact/tiktok.png" alt="TikTok" className="w-full h-full object-contain" />
               </a>
             </div>
           </div>

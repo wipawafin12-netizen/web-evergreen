@@ -13,10 +13,12 @@ const productItems = [
   { label: "FLOORING", labelTH: "พื้นไม้", path: "/flooring" },
   { label: "STAIRCASE", labelTH: "บันได", path: "/staircase" },
   { label: "WALL PANEL", labelTH: "ผนังตกแต่ง", path: "/wall-panel" },
+  { label: "SERVICE SHAFT", labelTH: "ช่องชาร์ป", path: "/service-shaft" },
 ];
 
 const serviceItems = [
-  { label: "SERVICE SHAFT", labelTH: "ช่องชาร์ป", path: "/service-shaft" },
+  { label: "OEM", labelTH: "OEM", path: "/service-shaft" },
+  { label: "ODM", labelTH: "ODM", path: "/service-shaft" },
 ];
 
 export const Navbar: React.FC = () => {
@@ -47,7 +49,7 @@ export const Navbar: React.FC = () => {
           <img
             src="public/logo/logo-03.png"
             alt="Evergreen Logo"
-            className="w-32 h-16 md:w-52 md:h-20 object-contain transition-all duration-300 -mt-1 md:-mt-2 -ml-3 md:-ml-6"
+            className="w-32 h-16 md:w-52 md:h-20 object-contain transition-all duration-300 -mt-1 md:-mt-2 ml-4 md:ml-8"
           />
 
 
@@ -55,8 +57,8 @@ export const Navbar: React.FC = () => {
 
 
 
-        <div className="hidden md:flex items-center justify-center flex-1 min-w-0 px-6">
-          <div className="flex items-center gap-8">
+        <div className="hidden xl:flex items-center justify-center flex-1 min-w-0">
+          <div className="flex items-center gap-5">
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -112,7 +114,13 @@ export const Navbar: React.FC = () => {
         </div>
 
 
-        <div className="ml-auto flex items-center gap-2 md:gap-4 flex-shrink-0">
+        <div className="ml-auto flex items-center gap-2 md:gap-4 flex-shrink-0 mr-2 lg:mr-6">
+          <Link
+            to="/affiliate"
+            className="flex items-center gap-2 bg-[#FFAB40] text-white px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#FF9100] transition-all shadow-md hover:shadow-lg"
+          >
+            <span>AFFILIATE</span>
+          </Link>
           <Link
             to="/quote"
             className="flex items-center gap-2 bg-[#f37021] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
@@ -144,7 +152,7 @@ export const Navbar: React.FC = () => {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 hover:text-brand-500 text-stone-600 dark:text-stone-300 transition-colors relative z-50 md:hidden"
+              className="p-2 hover:text-brand-500 text-stone-600 dark:text-stone-300 transition-colors relative z-50 xl:hidden"
               aria-label="Menu"
             >
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -156,7 +164,7 @@ export const Navbar: React.FC = () => {
 
 
       <div
-        className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100 pb-8' : 'max-h-0 opacity-0'
+        className={`xl:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100 pb-8' : 'max-h-0 opacity-0'
           }`}
       >
         <div className="flex flex-col items-center gap-4 pt-4 border-t border-stone-100 dark:border-stone-800">

@@ -3,13 +3,28 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Send, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Quote: React.FC = () => {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        const values = {
+            fullName: formData.get('fullName') as string,
+            phoneNumber: formData.get('phoneNumber') as string,
+            emailAddress: formData.get('emailAddress') as string,
+            product: formData.get('product') as string,
+            message: formData.get('message') as string,
+        };
+
+        // Database logic removed
+        console.log("Quote Request submitted (Mock):", values);
+
         setSubmitted(true);
-        // Here you would typically send the data to a backend
+        form.reset();
         setTimeout(() => setSubmitted(false), 5000);
     };
 
@@ -20,7 +35,7 @@ export const Quote: React.FC = () => {
         phone: language === 'EN' ? "Phone Number" : "เบอร์โทรศัพท์",
         email: language === 'EN' ? "Email Address" : "อีเมล",
         product: language === 'EN' ? "Interested Product" : "สินค้าที่สนใจ",
-        message: language === 'EN' ? "Additional Details / Measurements" : "รายละเอียดเพิ่มเติม / ขนาดพื้นที่",
+        message: language === 'EN' ? "Additional Details" : "รายละเอียดเพิ่มเติม",
         send: language === 'EN' ? "Send Request" : "ส่งคำขอใบเสนอราคา",
         success: language === 'EN' ? "Thank you! We have received your request." : "ขอบคุณครับ เราได้รับข้อมูลของท่านแล้ว",
         products: [
@@ -58,8 +73,8 @@ export const Quote: React.FC = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Phone</h3>
-                                <p className="text-stone-600 dark:text-stone-400">+66 2 123 4567</p>
-                                <p className="text-stone-500 text-sm">Mon-Fri 9am-6pm</p>
+                                <p className="text-stone-600 dark:text-stone-400">02 921 9979</p>
+                                <p className="text-stone-500 text-sm">Mon-Fri 8:30am-16:30pm</p>
                             </div>
                         </div>
 
@@ -73,18 +88,23 @@ export const Quote: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-start gap-4">
+                        <a
+                            href="https://share.google/TcBJWGfU9wbJZYkHW"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-start gap-4 hover:opacity-80 transition-opacity"
+                        >
                             <div className="p-3 bg-white dark:bg-stone-800 rounded-full shadow-sm text-brand-500">
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Office</h3>
                                 <p className="text-stone-600 dark:text-stone-400 max-w-xs">
-                                    123 Woodwork Street, Bangna,<br />
-                                    Bangkok 10260, Thailand
+                                    Bang Len-Lad Lum Kaeo Road,
+                                    Khun Sri, Sai Noi District, Nonthaburi 11150
                                 </p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -116,7 +136,8 @@ export const Quote: React.FC = () => {
                                     type="text"
                                     required
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
-                                    placeholder={language === 'EN' ? "John Doe" : "ชื่อผู้ติดต่อ"}
+                                    name="fullName"
+                                    placeholder={language === 'EN' ? "MILKY POP" : "ชื่อผู้ติดต่อ"}
                                 />
                             </div>
 
@@ -128,6 +149,7 @@ export const Quote: React.FC = () => {
                                     <input
                                         type="tel"
                                         required
+                                        name="phoneNumber"
                                         className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                         placeholder="08X-XXX-XXXX"
                                     />
@@ -139,6 +161,7 @@ export const Quote: React.FC = () => {
                                     <input
                                         type="email"
                                         required
+                                        name="emailAddress"
                                         className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                         placeholder="name@company.com"
                                     />
@@ -150,6 +173,7 @@ export const Quote: React.FC = () => {
                                     {labels.product}
                                 </label>
                                 <select
+                                    name="product"
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white appearance-none"
                                     required
                                 >
@@ -161,6 +185,32 @@ export const Quote: React.FC = () => {
                                     ))}
                                     <option value="Other">{language === 'EN' ? "Other / Multiple" : "อื่นๆ / หลายรายการ"}</option>
                                 </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                    {language === 'EN' ? "Required Documents" : "เอกสารที่ต้องการ"}
+                                </label>
+                                <div className="flex flex-wrap gap-6 pt-1">
+                                    {[
+                                        { en: "Catalog", th: "แคตตาล็อก" },
+                                        { en: "Quotation", th: "ใบเสนอราคา" },
+                                        { en: "Spec Sheet", th: "สเปคสินค้า" }
+                                    ].map((item) => (
+                                        <label key={item.en} className="flex items-center gap-2.5 cursor-pointer group select-none">
+                                            <div className="relative flex items-center">
+                                                <input
+                                                    type="checkbox"
+                                                    className="peer w-5 h-5 appearance-none border-2 border-stone-300 dark:border-stone-600 rounded checked:bg-brand-500 checked:border-brand-500 transition-all cursor-pointer"
+                                                />
+                                                <CheckCircle2 className="w-3.5 h-3.5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
+                                            </div>
+                                            <span className="text-stone-600 dark:text-stone-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                                                {language === 'EN' ? item.en : item.th}
+                                            </span>
+                                        </label>
+                                    ))}
+                                </div>
                             </div>
 
                             <div className="space-y-2">
@@ -180,6 +230,7 @@ export const Quote: React.FC = () => {
                                 <textarea
                                     rows={4}
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
+                                    name="message"
                                     placeholder={language === 'EN' ? "Please describe your requirements..." : "ระบุรายละเอียด ขนาด หรือจำนวนที่ต้องการ..."}
                                 ></textarea>
                             </div>

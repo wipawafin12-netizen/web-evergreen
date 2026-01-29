@@ -1,351 +1,479 @@
-import React, { useState } from 'react';
-import { PAGE_IMAGES } from '../data/images';
-import { useLanguage } from '../contexts/LanguageContext';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState } from "react";
+import { PAGE_IMAGES } from "../data/images";
+import { useLanguage } from "../contexts/LanguageContext";
 
-type ImageMode = 'DATA' | 'PUBLIC';
+type ImageMode = "DATA" | "PUBLIC";
+const IMAGES_SOURCE: ImageMode = "PUBLIC";
 
+type Lang = "th" | "en";
+type CollectionType = "WPC" | "uPVC" | "Melamine";
 
-const IMAGES_SOURCE: ImageMode = 'PUBLIC';
+type IconKey =
+  | "ECO_FRIENDLY"
+  | "WATER_PROOF"
+  | "FLAME_RETARDANT"
+  | "CHAMFER"
+  | "STAINING"
+  | "INDOOR_USE"
+  | "INSECT_REPELLENT";
 
-const DOOR_DETAILS = [
+type IconItem = {
+  key?: IconKey;
+  img?: string;
+  label: { th: string; en: string };
+};
+
+type Section =
+  | {
+    kind: "subsections";
+    title: { th: string; en: string };
+    subsections: Array<{
+      title: { th: string; en: string };
+      items: { th: string[]; en: string[] };
+    }>;
+  }
+  | {
+    kind: "list";
+    title: { th: string; en: string };
+    items: { th: string[]; en: string[] };
+  }
+  | {
+    kind: "iconGrid";
+    title: { th: string; en: string };
+    icons: IconItem[];
+  };
+
+type DoorDetail = {
+  modalTitle: { th: string; en: string };
+  description: { th: string; en: string };
+  sections: Section[];
+};
+
+interface Swatch {
+  code: string;
+  name: string;
+  img: string;
+  doorImg: string;
+}
+
+const swatches: Swatch[] = [
+  { code: "LQ6268", name: "Hickory", img: "public/door/ddd1.png", doorImg: "public/door/ddd4.png" },
+  { code: "LQ7124", name: "Oak", img: "public/door/ddd2.png", doorImg: "public/door/ddd2.png" },
+  { code: "LQ8116", name: "Marble", img: "public/door/ddd3.png", doorImg: "public/door/ddd3.png" },
+  { code: "LQ8128", name: "Marble", img: "public/door/ddd4.png", doorImg: "public/door/ddd1.png" },
+  { code: "LQ8136", name: "Marble", img: "public/door/ddd5.png", doorImg: "public/door/ddd5.png" },
+  { code: "LQ8145", name: "Cement", img: "public/door/ddd6.png", doorImg: "public/door/ddd6.png" },
+];
+
+const melamineSwatches: Swatch[] = [
+  { code: "MLD102", name: "", img: "public/door/m1.png", doorImg: "public/door/m1.png" },
+  { code: "MLD202", name: "", img: "public/door/m2.png", doorImg: "public/door/m2.png" },
+  { code: "MLD302", name: "", img: "public/door/m3.png", doorImg: "public/door/m3.png" },
+  { code: "MLD402", name: "", img: "public/door/m4.png", doorImg: "public/door/m4.png" },
+  { code: "MLD502", name: "", img: "public/door/m5.png", doorImg: "public/door/m5.png" },
+  { code: "MLD602", name: "", img: "public/door/m6.png", doorImg: "public/door/m6.png" },
+  { code: "MLD702", name: "", img: "public/door/m7.png", doorImg: "public/door/m7.png" },
+  { code: "MLD802", name: "", img: "public/door/m8.png", doorImg: "public/door/m8.png" },
+  { code: "MLD902", name: "", img: "public/door/m9.png", doorImg: "public/door/m9.png" },
+  { code: "MLD1011", name: "", img: "public/door/m10.png", doorImg: "public/door/m10.png" },
+];
+
+const WPC_DETAILS: DoorDetail[] = [
   {
+    modalTitle: { th: "WPC", en: "WPC" },
     description: {
-      th: "ประตูดีไซน์ Minimal Modern โทนไม้ธรรมชาติ ให้ความรู้สึกอบอุ่น เรียบ คลีน เหมาะกับบ้านสไตล์ Modern / Japandi / Minimal Luxury เส้นสายเรียบ ไม่มีลวดลายรบกวนสายตา มือจับทรงยาวแนวตั้ง ช่วยเสริมภาพลักษณ์พรีเมียมและทันสมัย",
-      en: "Minimal Modern design door in natural wood tones, offering a warm, simple, and clean feel. Perfect for Modern / Japandi / Minimal Luxury homes. Clean lines with no distracting patterns. Vertical long handle enhances the premium and modern look."
+      th: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.\nFrom customizable sizes and surface finishes to limitless groove line designs; these doors embody the essence of modern living.",
+      en: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.\nFrom customizable sizes and surface finishes to limitless groove line designs; these doors embody the essence of modern living.",
     },
     sections: [
       {
+        kind: "subsections",
         title: { th: "วัสดุ (Material)", en: "Material" },
         subsections: [
           {
+            title: { th: "ขนาดมาตรฐาน (Standard Size)", en: "Standard Size" },
+            items: {
+              th: ["3.5 x 70 x 200 ซม.", "3.5 x 80 x 200 ซม.", "3.5 x 90 x 200 ซม."],
+              en: ["3.5 x 70 x 200 cm", "3.5 x 80 x 200 cm", "3.5 x 90 x 200 cm"],
+            },
+          },
+          {
+            title: { th: "สเปก (Specification)", en: "Specification" },
+            items: {
+              th: [
+                "ปรับขนาดได้ (Customizable Dimensions)",
+                "ออปชัน: เกล็ดระบายอากาศ / กระจก (Optional: Louvers / Glass)",
+                "ดีไซน์ร่องเส้นได้ไม่จำกัด (Unlimited Designs with Groove Lines)",
+                "ผิวสำเร็จ: ทาสี, PVC DecorFilm (Surface Finishes: Paint, PVC DecorFilm)",
+                "แนะนำสำหรับงานภายใน (Recommended for Indoor Use)",
+                "ไสขอบได้สูงสุดข้างละ 5 มม. (Max 5 mm. Trimmable Each Side)",
+              ],
+              en: [
+                "Customizable Dimensions",
+                "Optional: Louvers / Glass",
+                "Unlimited Designs with Groove Lines",
+                "Surface Finishes: Paint, PVC DecorFilm",
+                "Recommended for Indoor Use",
+                "Max 5 mm. Trimmable Each Side",
+              ],
+            },
+          },
+        ],
+      },
+      {
+        kind: "iconGrid",
+        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
+        icons: [
+          { img: "public/door/Eco Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "Eco Friendly" } },
+          { img: "public/door/Water Proof.jpg", label: { th: "กันน้ำ", en: "Water Proof" } },
+          { img: "public/door/Flame Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "Flame Retardant" } },
+          { img: "public/door/Chamfer.jpg", label: { th: "ลบมุม", en: "Chamfer" } },
+          { img: "public/door/Staining.jpg", label: { th: "รองรับการทำสี", en: "Staining" } },
+          { img: "public/door/Indoor Use.png", label: { th: "ใช้งานภายใน", en: "Indoor Use" } },
+          { img: "public/door/Insect Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "Insect Repellent" } },
+        ],
+      },
+    ],
+  },
+];
+
+const upvcSwatches: Swatch[] = [
+  { code: "SMOOTH", name: "Smooth", img: "public/door/dd5.png", doorImg: "public/door/dd5.png" },
+  { code: "MODERN", name: "Modern", img: "public/door/dd2.png", doorImg: "public/door/dd2.png" },
+  { code: "NATURAL", name: "Natural", img: "public/door/dd3.png", doorImg: "public/door/dd3.png" },
+  { code: "CLASSIC", name: "Classic", img: "public/door/dd4.png", doorImg: "public/door/dd4.png" },
+  { code: "ELEGANT", name: "Elegant", img: "public/door/dd1.png", doorImg: "public/door/dd1.png" },
+  { code: "PREMIUM", name: "Premium", img: "public/door/dd6.png", doorImg: "public/door/dd6.png" },
+];
+
+const UPVC_DETAILS: DoorDetail[] = [
+  {
+    modalTitle: { th: "uPVC", en: "uPVC" },
+    description: {
+      th: "ประตู uPVC Zen Series โทนขาวสะอาดตา ให้ความรู้สึกโปร่ง สบาย เหมาะกับบ้านสไตล์โมเดิร์นและมินิมอล ไม่จำเป็นต้องทาสีเพิ่ม ดูแลรักษาง่าย",
+      en: "uPVC Zen Series in clean white tone. Bright, calm, and minimal look. No extra paint needed and easy to maintain.",
+    },
+    sections: [
+      {
+        kind: "subsections",
+        title: { th: "วัสดุ (Material)", en: "Material" },
+        subsections: [
+          {
+            title: { th: "ขนาดมาตรฐาน (Standard Size)", en: "Standard Size" },
+            items: {
+              th: ["3.5 x 70 x 200 ซม.", "3.5 x 80 x 200 ซม.", "3.5 x 90 x 200 ซม."],
+              en: ["3.5 x 70 x 200 cm", "3.5 x 80 x 200 cm", "3.5 x 90 x 200 cm"],
+            },
+          },
+          {
             title: { th: "ผิวบาน (Surface Finish)", en: "Surface Finish" },
             items: {
-              th: ["ผิวลายไม้สีอ่อน โทน Natural Wood", "ผิวเรียบ ดูเป็นธรรมชาติ ให้สัมผัสอบอุ่น", "ทำความสะอาดง่าย ไม่อมฝุ่น"],
-              en: ["Light wood grain surface, Natural Wood tone", "Smooth natural look, warm touch", "Easy to clean, dust-resistant"]
-            }
+              th: ["Smooth (ผิวเรียบ)", "Modern (สไตล์ทันสมัย)", "Natural (ลายไม้ธรรมชาติ)"],
+              en: ["Smooth", "Modern", "Natural"],
+            },
           },
           {
             title: { th: "โครงสร้างบาน (Door Core)", en: "Door Core" },
             items: {
-              th: ["โครงสร้างแข็งแรง ให้บานประตูคงรูป ไม่บิดงอ", "รองรับการใช้งานภายในอาคารได้ดี"],
-              en: ["Strong structure, maintains shape, no warping", "Suitable for indoor use"]
-            }
+              th: ["โครงสร้างแน่น แ็ข็งแรง", "ช่วยให้บานคงรูปได้ดี"],
+              en: ["Dense structure, durable", "Helps maintain shape well"],
+            },
           },
-          {
-            title: { th: "ขอบบาน (Edge Finish)", en: "Edge Finish" },
-            items: {
-              th: ["เก็บขอบเรียบเนียน สีสม่ำเสมอ", "เพิ่มความทนทาน ลดการกระแทกบริเวณขอบ"],
-              en: ["Smooth edge finish, consistent color", "Increases durability, reduces impact damage"]
-            }
-          }
-        ]
+        ],
       },
       {
-        title: { th: "มือจับ (Handle)", en: "Handle" },
-        items: {
-          th: ["มือจับทรงยาวแนวตั้ง สีเทา/สแตนเลสด้าน", "ดีไซน์โมเดิร์น จับถนัดมือ เสริมลุคมินิมอล"],
-          en: ["Vertical long handle, Grey/Matte Stainless", "Modern design, ergonomic grip, enhances minimal look"]
-        }
-      },
-      {
+        kind: "iconGrid",
         title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
-        items: {
-          th: ["ดีไซน์ Minimal เรียบหรู เข้าได้กับหลายสไตล์บ้าน", "โทนสีไม้ธรรมชาติ ช่วยให้พื้นที่ดูอบอุ่น โปร่ง สบายตา", "ดูแลรักษาง่าย เหมาะกับการใช้งานในชีวิตประจำวัน", "ภาพรวมให้ความรู้สึก Modern Luxury แบบไม่หวือหวา"],
-          en: ["Minimal elegant design, fits various styles", "Natural wood tone creates warm, airy atmosphere", "Easy maintenance, suitable for daily use", "Overall Modern Luxury feel without being flashy"]
-        }
+        icons: [
+          { img: "public/door/Chamfer.jpg", label: { th: "ลบมุม", en: "CHAMFER" } },
+          { img: "public/door/Indoor Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
+          { img: "public/door/Outdoor Use.jpg", label: { th: "ใช้งานภายนอก", en: "OUTDOOR USE" } },
+          { img: "public/door/Insect Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "INSECT REPELLENT" } },
+          { img: "public/door/Eco Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "ECO FRIENDLY" } },
+          { img: "public/door/Water Proof.jpg", label: { th: "กันน้ำ", en: "WATER PROOF" } },
+          { img: "public/door/Flame Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "FLAME RETARDANT" } },
+        ],
       },
-
-
-    ]
+    ],
   },
-  {
-    description: {
-      th: "ประตูสไตล์ Scandinavian Loft โดดเด่นด้วยโทนสีขาวนวลตา ผสานความเท่ของมือจับสีดำด้าน หน้าบานเซาะร่องเส้นนอน ให้ความรู้สึกโปร่งโล่ง สบายตา แต่แฝงความทันสมัย",
-      en: "Scandinavian Loft style door featuring creamy white tones combined with cool matte black handles. Horizontal grooved panel creates an airy, comfortable feel with modern hidden details."
-    },
-    sections: [
-      {
-        title: { th: "วัสดุ (Material)", en: "Material" },
-        subsections: [
-          {
-            title: { th: "ผิวบาน (Surface Finish)", en: "Surface Finish" },
-            items: {
-              th: ["ผิวพ่นสีอุตสาหกรรม เกรดพรีเมียม", "สีขาวด้าน (Matte White)", "เช็ดทำความสะอาดง่าย"],
-              en: ["Premium industrial spray finish", "Matte White", "Easy to wipe clean"]
-            }
-          }
-        ]
-      },
-      {
-        title: { th: "มือจับ (Handle)", en: "Handle" },
-        items: {
-          th: ["มือจับก้านโยกสีดำด้าน", "รูปทรงเหลี่ยม กระชับมือ"],
-          en: ["Matte black lever handle", "Square shape, firm grip"]
-        }
-      },
-      {
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
-        items: {
-          th: ["สีขาวช่วยให้ห้องดูกว้างขึ้น", "ลายเซาะร่องเพิ่มมิติให้บานประตู", "เหมาะกับห้องขนาดเล็กถึงกลาง"],
-          en: ["White color expands visual space", "Grooved pattern adds dimension", "Ideal for small to medium rooms"]
-        }
-      },
-      {
-        title: { th: "เหมาะสำหรับ (Suitable For)", en: "Suitable For" },
-        items: {
-          th: ["คอนโดมิเนียม", "ห้องนอนเล็ก", "สตูดิโอ"],
-          en: ["Condominiums", "Small Bedroom", "Studio"]
-        }
-      }
-    ]
-  },
-  {
-    description: {
-      th: "ประตูไม้โอ๊คสีเข้ม ดีไซน์ Timeless Classic มอบความหรูหรา โอ่อ่า ให้กับพื้นที่ ลวดลายไม้ชัดเจน สัมผัสถึงธรรมชาติอย่างแท้จริง เหมาะกับบ้านสไตล์ Luxury หรือ Classic Contemporary",
-      en: "Dark Oak door in Timeless Classic design, offering luxury and grandeur. Distinct wood grain provides a genuine natural touch. Perfect for Luxury or Classic Contemporary homes."
-    },
-    sections: [
-      {
-        title: { th: "วัสดุ (Material)", en: "Material" },
-        subsections: [
-          {
-            title: { th: "ผิวบาน (Surface Finish)", en: "Surface Finish" },
-            items: {
-              th: ["วีเนียร์ไม้โอ๊คแท้ (Real Oak Veneer)", "ย้อมสี Dark Walnut", "เคลือบแลคเกอร์ด้านโชว์เสี้ยนไม้"],
-              en: ["Real Oak Veneer", "Dark Walnut stain", "Matte lacquer open-pore finish"]
-            }
-          }
-        ]
-      },
-      {
-        title: { th: "มือจับ (Handle)", en: "Handle" },
-        items: {
-          th: ["มือจับก้านโยกสีทองเหลืองรมดำ", "ดีไซน์วินเทจ ร่วมสมัย"],
-          en: ["Antique Brass lever handle", "Vintage contemporary design"]
-        }
-      },
-      {
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
-        items: {
-          th: ["เพิ่มความภูมิฐานให้ตัวบ้าน", "ลายไม้เป็นเอกลักษณ์เฉพาะบาน", "เก็บเสียงรบกวนได้ดี"],
-          en: ["Adds dignity to the home", "Unique wood grain per door", "Good sound insulation"]
-        }
-      },
-      {
-        title: { th: "เหมาะสำหรับ (Suitable For)", en: "Suitable For" },
-        items: {
-          th: ["ห้องนอน Master", "ห้องรับแขก", "ห้องประชุมผู้บริหาร"],
-          en: ["Master Bedroom", "Living Room", "Executive Meeting Room"]
-        }
-      }
-    ]
-  },
-  {
-    description: {
-      th: "ประตูบานทึบเรียบหรูโทนสีเทาอ่อน (Light Grey) สไตล์ Modern Corporate ให้ความรู้สึกสุขุม น่าเชื่อถือ เหมาะสำหรับอาคารสำนักงาน หรือบ้านที่ต้องการความเรียบง่ายแต่เป็นทางการ",
-      en: "Solid sleek Light Grey door in Modern Corporate style. Conveying calm and reliability. Ideal for office buildings or homes seeking formal simplicity."
-    },
-    sections: [
-      {
-        title: { th: "วัสดุ (Material)", en: "Material" },
-        subsections: [
-          {
-            title: { th: "ผิวบาน (Surface Finish)", en: "Surface Finish" },
-            items: {
-              th: ["ลามิเนตแรงดันสูง (HPL)", "ทนต่อรอยขีดข่วน", "สีเทาด้านสม่ำเสมอทั่วบาน"],
-              en: ["High Pressure Laminate (HPL)", "Scratch resistant", "Consistent matte grey color"]
-            }
-          }
-        ]
-      },
-      {
-        title: { th: "มือจับ (Handle)", en: "Handle" },
-        items: {
-          th: ["มือจับก้านโยกสแตนเลส (Hairline Stainless)", "ทนทาน ไม่เป็นสนิม"],
-          en: ["Hairline Stainless lever handle", "Durable, rust-free"]
-        }
-      },
-      {
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
-        items: {
-          th: ["แข็งแรง ทนทานต่อการใช้งานหนัก", "ดูแลรักษาง่ายมาก", "เข้าได้กับเฟอร์นิเจอร์สำนักงานส่วนใหญ่"],
-          en: ["Strong, distinct durability", "Very easy maintenance", "Matches most office furniture"]
-        }
-      },
-      {
-        title: { th: "เหมาะสำหรับ (Suitable For)", en: "Suitable For" },
-        items: {
-          th: ["สำนักงาน", "ประตูทางเข้าห้อง", "พื้นที่ส่วนกลาง"],
-          en: ["Office", "Room Entrance", "Common Areas"]
-        }
-      }
-    ]
-  },
-  {
-    description: {
-      th: "ประตูบานกระจกเฟรมไม้ สไตล์ Japandi ผสมผสานความอบอุ่นของไม้กับความโปร่งใสของกระจก ช่วยดึงแสงธรรมชาติเข้าสู่ตัวบ้าน ทำให้พื้นที่ดูลื่นไหลและเชื่อมต่อกัน",
-      en: "Wood framed glass door in Japandi style, blending wood warmth with glass transparency. Draws natural light into the home, creating fluid and connected spaces."
-    },
-    sections: [
-      {
-        title: { th: "วัสดุ (Material)", en: "Material" },
-        subsections: [
-          {
-            title: { th: "ผิวบาน (Surface Finish)", en: "Surface Finish" },
-            items: {
-              th: ["กรอบบานไม้จริง (Solid Wood Frame)", "กระจกนิรภัยเทมเปอร์ใสหรือขุ่น", "ทำสีธรรมชาติ"],
-              en: ["Solid Wood Frame", "Tempered Clear/Frosted Glass", "Natural Finish"]
-            }
-          }
-        ]
-      },
-      {
-        title: { th: "มือจับ (Handle)", en: "Handle" },
-        items: {
-          th: ["มือจับแบบดึง (Pull Handle) ไม้เข้าชุด", "ติดตั้งระบบ Soft Close"],
-          en: ["Matching Wood Pull Handle", "Soft Close system installed"]
-        }
-      },
-      {
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
-        items: {
-          th: ["ช่วยประหยัดพลังงานแสงสว่าง", "สร้างความรู้สึกเชื่อมต่อระหว่างห้อง", "ดีไซน์โดดเด่นเป็น Centerpiece"],
-          en: ["Saves lighting energy", "Creates connection between rooms", "Standout Centerpiece design"]
-        }
-      },
-      {
-        title: { th: "เหมาะสำหรับ (Suitable For)", en: "Suitable For" },
-        items: {
-          th: ["ห้องครัว", "ห้องนั่งเล่น", "กั้นโซน Walk-in Closet"],
-          en: ["Kitchen", "Living Room", "Walk-in Closet Partition"]
-        }
-      }
-    ]
-  }
 ];
 
-const DoorCard = ({ imgUrl, index, t, onClick }: { imgUrl: string, index: number, t: any, onClick: () => void }) => {
+const MELAMINE_DETAILS: DoorDetail[] = [
+  {
+    modalTitle: { th: "Melamine", en: "Melamine" },
+    description: {
+      th: "Unlocking Imagination: The Hester Series Melamine Doors\nWhere Creativity Meets the Heart of Your Home\n\nCrafting emotions and defining spaces; our Hester Series Melamine Doors resonate with a touch of artistic elegance that goes beyond the ordinary. Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs. Customize sizes, groove lines, and bring your imagination to life.",
+      en: "Unlocking Imagination: The Hester Series Melamine Doors\nWhere Creativity Meets the Heart of Your Home\n\nCrafting emotions and defining spaces; our Hester Series Melamine Doors resonate with a touch of artistic elegance that goes beyond the ordinary. Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs. Customize sizes, groove lines, and bring your imagination to life.",
+    },
+    sections: [
+      {
+        kind: "subsections",
+        title: { th: "วัสดุ (Material)", en: "Material" },
+        subsections: [
+          {
+            title: { th: "ขนาดมาตรฐาน (Standard Size)", en: "Standard Size" },
+            items: {
+              th: ["3.5 x 80 x 200 ซม.", "3.5 x 90 x 200 ซม."],
+              en: ["3.5 x 80 x 200 cm", "3.5 x 90 x 200 cm"],
+            },
+          },
+          {
+            title: { th: "สเปก (Specification)", en: "Specification" },
+            items: {
+              th: [
+                "ปรับขนาดได้ (Customizable Dimensions)",
+                "ออปชัน: เกล็ดระบายอากาศ / กระจก (Optional: Louvers / Glass)",
+                "ดีไซน์ร่องเส้นได้ไม่จำกัด (Unlimited Designs with Groove Lines)",
+                "ไสขอบได้สูงสุดข้างละ 5 มม. (Max 5 mm. Trimmable Each Side)",
+                "แนะนำสำหรับงานภายใน (Recommended for Indoor Use)",
+              ],
+              en: [
+                "Customizable Dimensions",
+                "Optional: Louvers / Glass",
+                "Unlimited Designs with Groove Lines",
+                "Max 5 mm. Trimmable Each Side",
+                "Recommended for Indoor Use",
+              ],
+            },
+          },
+        ],
+      },
+      {
+        kind: "iconGrid",
+        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
+        icons: [
+          { img: "public/door/Chamfer.jpg", label: { th: "ลบมุม", en: "CHAMFER" } },
+          { img: "public/door/Indoor Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
+          { img: "public/door/Water Proof.jpg", label: { th: "ทำความสะอาดง่าย", en: "EASY CLEANING" } },
+          { img: "public/door/Eco Friendly.jpg", label: { th: "ประหยัด", en: "ECONOMICAL" } },
+          { img: "public/door/Flame Retardant.jpg", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
+        ],
+      },
+    ],
+  },
+];
+
+const ProductCollectionSection: React.FC<{
+  collection: CollectionType;
+  images: any;
+  t: (en: string, th: string) => string;
+  imagePosition?: "left" | "right";
+}> = ({ collection, images, t, imagePosition = "left" }) => {
+  const [selectedDoorIndex, setSelectedDoorIndex] = useState<number>(0);
+  const [selectedColor, setSelectedColor] = useState<Swatch | null>(null);
+
+  const currentNames =
+    collection === "WPC" ? images.wpcNames :
+      collection === "uPVC" ? images.upvcNames :
+        images.melamineNames;
+
+  const langKey: Lang = t("EN", "TH") === "EN" ? "en" : "th";
+
+  const currentDoorName =
+    (langKey === "en"
+      ? currentNames[selectedDoorIndex]?.en
+      : currentNames[selectedDoorIndex]?.th) || t("The Door", "ประตูรุ่น") + " " + (selectedDoorIndex + 1);
+
+  const selectedDoorImg =
+    collection === "WPC"
+      ? images.wpcCollection[selectedDoorIndex] :
+      collection === "uPVC"
+        ? images.upvcCollection[selectedDoorIndex]
+        : images.melamineCollection[selectedDoorIndex];
+
+  const DETAILS =
+    collection === "WPC" ? WPC_DETAILS :
+      collection === "uPVC" ? UPVC_DETAILS :
+        MELAMINE_DETAILS;
+
+  const data = DETAILS[selectedDoorIndex] || DETAILS[0];
+
+  const isImageRight = imagePosition === "right";
+
+  // Dynamic Theme Colors
+  const isMelamine = collection === "Melamine";
+  const accentBg = "bg-orange-500";
+  const accentText = "text-orange-500";
+  const accentBorder = "hover:border-orange-200/40";
+  const accentRing = "ring-orange-500/10";
+  const accentFocusBorder = "border-orange-500";
+  const bulletBorder = "group-hover:border-orange-400";
+
+  const collectionSwatches = isMelamine ? melamineSwatches : (collection === "uPVC" ? upvcSwatches : swatches);
+
   return (
-    <div
-      onClick={onClick}
-      className="bg-transparent group hover:shadow-lg transition-all duration-500 relative overflow-hidden text-center flex flex-col cursor-pointer"
-    >
-      <div className="aspect-[3/4] mb-8 flex items-center justify-center relative z-10 group-hover:-translate-y-2 transition-transform duration-500 overflow-hidden rounded-3xl">
-        <img
-          src={imgUrl}
-          alt={`Door ${index + 1}`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 animate-image-reveal"
-          loading="lazy"
-        />
-      </div>
-
-      <div className="relative z-10 flex-1 flex flex-col">
-        <h4 className="text-brand-900 dark:text-stone-100 font-mono text-lg mb-2">{t("The Door", "ประตูรุ่น")} {index + 1}</h4>
-        <p className="text-stone-500 dark:text-stone-400 text-xs tracking-widest uppercase">{t("Select Edition", "รุ่นคัดพิเศษ")}</p>
-        <p className="text-sm font-serif text-brand-900 dark:text-stone-200 mt-2 mb-4">
-          ฿{[2900, 1500, 1200, 1900, 2500][index]?.toLocaleString() || "12,900"}
-        </p>
-
-        <div className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="text-xs uppercase tracking-wider text-stone-400 border-b border-stone-400 pb-0.5">{t("View Details", "ดูรายละเอียด")}</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const DoorModal = ({ isOpen, onClose, imgUrl, index, t, language }: { isOpen: boolean, onClose: () => void, imgUrl: string, index: number, t: any, language: string }) => {
-  
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-  const data = DOOR_DETAILS[index] || DOOR_DETAILS[0]; 
-
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
-
-      <div className="bg-white dark:bg-stone-900 w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl relative z-10 flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-300">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 bg-white/80 dark:bg-black/50 rounded-full hover:bg-white dark:hover:bg-black transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-stone-900 dark:text-white"><path d="M18 6 6 18" /><path d="m6 6 18 18" /></svg>
-        </button>
-
-       
-        <div className="w-full md:w-5/12 h-64 md:h-auto bg-stone-100 dark:bg-stone-800 relative">
-          <img
-            src={imgUrl}
-            alt={`Door ${index + 1}`}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        
-        <div className="w-full md:w-7/12 p-6 md:p-10 overflow-y-auto">
-          <div className="mb-6">
-            <h3 className="font-serif text-3xl md:text-4xl text-brand-900 dark:text-stone-100 mb-2">{t("The Door", "ประตูรุ่น")} {index + 1}</h3>
-            <p className="text-sm font-medium text-stone-500 dark:text-stone-400 mb-4">{t("Select Edition", "รุ่นคัดพิเศษ")} — ฿{[2900, 1500, 1200, 1900, 2500][index]?.toLocaleString() || "12,900"}</p>
-            <p className="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
-              {language === 'EN' ? data.description.en : data.description.th}
-            </p>
+    <div className="flex flex-col lg:flex-row gap-8 items-start">
+      {/* Product Info */}
+      <div className={`w-full lg:w-7/12 flex flex-col gap-6 ${isImageRight ? "order-2 lg:order-1" : "order-2"}`}>
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3 mb-2">
+              <div className={`h-0.5 w-8 ${accentBg}`} />
+              <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${accentText}`}>{collection} SERIES</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-900 dark:text-stone-100 mb-3 tracking-tight leading-tight">
+              {currentDoorName}
+            </h1>
           </div>
+          <p className="text-stone-500 dark:text-stone-400 leading-relaxed text-sm max-w-xl whitespace-pre-line">
+            {langKey === "en" ? data.description.en : data.description.th}
+          </p>
+        </div>
 
-          <div className="space-y-6">
-            {data.sections.map((section, idx) => (
-              <div key={idx} className="border-t border-stone-100 dark:border-stone-800 pt-4">
-                <h5 className="font-bold text-brand-900 dark:text-stone-100 mb-3 uppercase tracking-wide text-xs">
-                  {language === 'EN' ? section.title.en : section.title.th}
-                </h5>
-
-                {section.subsections ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {section.subsections.map((sub, sIdx) => (
-                      <div key={sIdx} className="bg-stone-50 dark:bg-stone-800/50 p-4 rounded-xl">
-                        <p className="font-bold text-xs mb-2 text-stone-700 dark:text-stone-300">{language === 'EN' ? sub.title.en : sub.title.th}</p>
-                        <ul className="space-y-1.5">
-                          {language === 'EN' ? sub.items.en?.map((item, ii) => (
-                            <li key={ii} className="text-xs text-stone-500 dark:text-stone-400 flex items-start gap-2">
-                              <span className="block w-1 h-1 bg-stone-400 rounded-full mt-1.5 flex-shrink-0" />
-                              {item}
-                            </li>
-                          )) : sub.items.th?.map((item, ii) => (
-                            <li key={ii} className="text-xs text-stone-500 dark:text-stone-400 flex items-start gap-2">
-                              <span className="block w-1 h-1 bg-stone-400 rounded-full mt-1.5 flex-shrink-0" />
-                              {item}
+        <div className="flex flex-col gap-6">
+          {/* Main Specifications Box: Combines Subsections and Lists */}
+          <div className="flex flex-col gap-6">
+            <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
+              {t("Technical Specifications", "ข้อมูลทางเทคนิค")}
+            </h5>
+            <div className="bg-stone-100/40 dark:bg-stone-900/20 rounded-[2.5rem] p-8 md:p-10 border border-stone-100 dark:border-stone-800/40 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+              {data.sections.map((section, idx) => {
+                if (section.kind === "subsections") {
+                  return section.subsections.map((sub, sIdx) => (
+                    <div key={`${idx}-${sIdx}`} className="flex flex-col gap-6">
+                      <h6 className="font-bold text-stone-800 dark:text-stone-200 text-sm">
+                        {langKey === "en" ? sub.title.en : sub.title.th}
+                      </h6>
+                      {/* Every section now gets an even more subtle minimal frame */}
+                      <div className={`bg-white/30 dark:bg-stone-900/20 p-7 rounded-[2rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
+                        {(idx === 0 && sIdx === 0) ? (
+                          /* Standard Size: Bold List Style */
+                          <ul className="flex flex-col gap-5">
+                            {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
+                              <li key={ii} className="flex items-center gap-3.5 group">
+                                <div className={`w-1.5 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 group-hover:${accentBg} transition-all duration-300`} />
+                                <span className="text-sm font-bold text-stone-600 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-white transition-colors cursor-default">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          /* All other subsections: Minimalist Style inside Frame */
+                          <ul className="flex flex-col gap-4">
+                            {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
+                              <li key={ii} className="flex items-start gap-3 group">
+                                <div className={`mt-1.5 flex-shrink-0 w-2 h-2 rounded-full border-2 border-stone-200 dark:border-stone-700 ${bulletBorder} transition-colors`} />
+                                <span className="text-[13px] font-medium text-stone-500 dark:text-stone-400 leading-tight group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  ));
+                }
+                if (section.kind === "list") {
+                  /* List (e.g. Key Features): Also wrapped in an even more subtle minimal frame */
+                  return (
+                    <div key={idx} className="flex flex-col gap-6">
+                      <h6 className="font-bold text-stone-800 dark:text-stone-200 text-sm">
+                        {langKey === "en" ? section.title.en : section.title.th}
+                      </h6>
+                      <div className={`bg-white/30 dark:bg-stone-900/20 p-7 rounded-[2rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
+                        <ul className="flex flex-col gap-4">
+                          {(langKey === "en" ? section.items.en : section.items.th).map((item, ii) => (
+                            <li key={ii} className="flex items-start gap-3 group">
+                              <div className={`mt-1.5 flex-shrink-0 w-2 h-2 rounded-full border-2 border-stone-200 dark:border-stone-700 ${bulletBorder} transition-colors`} />
+                              <span className="text-[13px] font-medium text-stone-500 dark:text-stone-400 leading-tight group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">{item}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </div>
+          </div>
+
+          {/* Surface Texture & Color selection (WPC / Melamine / uPVC) */}
+          {(collection === "WPC" || collection === "Melamine" || collection === "uPVC") && (
+            <div className="flex flex-col gap-5 pt-2">
+              <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
+                {t("Surface Texture & Color", "เลือกดูสีและลายไม้")}
+              </h5>
+              <div className="grid grid-cols-5 md:grid-cols-6 xl:grid-cols-8 gap-4">
+                {collectionSwatches.map((swatch, sIdx) => (
+                  <button
+                    key={sIdx}
+                    onClick={() => setSelectedColor(swatch)}
+                    className="group flex flex-col items-center gap-3 transition-transform hover:-translate-y-1"
+                  >
+                    <div className={`relative w-12 h-12 rounded-full p-1 border-2 transition-all duration-500 ${selectedColor?.code === swatch.code
+                      ? `${accentFocusBorder} scale-110 shadow-lg ring-4 ${accentRing}`
+                      : "border-transparent bg-white dark:bg-stone-800 hover:border-orange-200"
+                      }`}>
+                      <img src={swatch.img} alt={swatch.name} className="w-full h-full object-cover rounded-full shadow-inner" />
+                      {selectedColor?.code === swatch.code && (
+                        <div className={`absolute -top-1 -right-1 ${accentBg} text-white w-6 h-6 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in`}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className={`text-[10px] font-black tracking-tight transition-colors ${selectedColor?.code === swatch.code ? accentText : "text-stone-500"
+                        }`}>
+                        {swatch.code}
+                      </span>
+                      {swatch.name && <span className="text-[8px] uppercase font-bold text-stone-400 group-hover:text-stone-500 transition-colors line-clamp-1">{swatch.name}</span>}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Icon Grids (Features) */}
+          {data.sections.map((section, idx) => {
+            if (section.kind === "iconGrid") {
+              return (
+                <div key={idx} className="flex flex-col gap-5 pt-2">
+                  <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
+                    {langKey === "en" ? section.title.en : section.title.th}
+                  </h5>
+                  <div className="grid grid-cols-4 md:grid-cols-5 gap-4">
+                    {section.icons.map((it, iIdx) => (
+                      <div key={iIdx} className="bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-100 dark:border-stone-800 flex flex-col items-center text-center group hover:border-orange-100 dark:hover:border-orange-900 transition-all duration-500 shadow-sm">
+                        <div className="w-10 h-10 mb-3 grayscale group-hover:grayscale-0 transition-all duration-700">
+                          <img src={it.img} alt={it.label.en} className="w-full h-full object-contain" />
+                        </div>
+                        <p className="text-[8px] font-black text-stone-600 dark:text-stone-400 tracking-widest uppercase leading-tight">
+                          {langKey === "en" ? it.label.en : it.label.th}
+                        </p>
+                      </div>
                     ))}
                   </div>
-                ) : (
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
-                    {language === 'EN' ? section.items?.en?.map((item, ii) => (
-                      <li key={ii} className="text-xs text-stone-500 dark:text-stone-400 flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 border border-stone-300 rounded-full mt-1 flex-shrink-0" />
-                        {item}
-                      </li>
-                    )) : section.items?.th?.map((item, ii) => (
-                      <li key={ii} className="text-xs text-stone-500 dark:text-stone-400 flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 border border-stone-300 rounded-full mt-1 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
+                </div>
+              );
+            }
+            return null;
+          })}
+
+
+        </div>
+      </div>
+
+      {/* Big Image Panel */}
+      <div className={`w-full lg:w-5/12 flex flex-col gap-8 ${isImageRight ? "order-1 lg:order-2" : "order-1"}`}>
+        <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800">
+          <img
+            src={selectedColor?.doorImg || selectedDoorImg}
+            alt={currentDoorName}
+            className="w-full h-full object-cover transition-all duration-700"
+          />
+        </div>
+
+        {/* Order Button - Full Width Style */}
+        <div className="-mt-4">
+          <a
+            href={`https://evergreen-online.vercel.app/configure/door/customize?material=${collection.toLowerCase()}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-orange-600 hover:bg-orange-700 shadow-orange-500/30 text-white w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-2xl hover:shadow-orange-500/40 active:scale-[0.98] flex items-center justify-center gap-3 group/btn"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-0.5 transition-transform"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
+            {t("Order Now", "สั่งซื้อสินค้า")}
+          </a>
         </div>
       </div>
     </div>
@@ -354,196 +482,108 @@ const DoorModal = ({ isOpen, onClose, imgUrl, index, t, language }: { isOpen: bo
 
 export const Door: React.FC = () => {
   const { t } = useLanguage();
-  const [selectedDoorIndex, setSelectedDoorIndex] = useState<number | null>(null);
-
-  interface Swatch {
-    code: string;
-    name: string;
-    img: string;
-    doorImg: string;
-  }
-
-  const swatches: Swatch[] = [
-    { code: "LQ6268", name: "Hickory", img: "public/c1.png", doorImg: "public/Door Hick.png" },
-    { code: "LQ7124", name: "Oak", img: "public/c2.png", doorImg: "public/Door Oak.png" },
-    { code: "LQ8116", name: "Marble", img: "public/c3.png", doorImg: "public/Door Marble.png" },
-    { code: "LQ8128", name: "Marble", img: "public/c4.png", doorImg: "public/Door M2.png" },
-    { code: "LQ8136", name: "Marble", img: "public/c5.png", doorImg: "public/Door M3.png" },
-    { code: "LQ8145", name: "Cement", img: "public/c6.png", doorImg: "public/Door M4.png" },
-  ];
-
-  const [hoveredSwatch, setHoveredSwatch] = useState<Swatch | null>(null);
-  const [selectedSwatch, setSelectedSwatch] = useState<Swatch | null>(null);
-
-  const activeSwatch = hoveredSwatch || selectedSwatch;
-
 
   const PUBLIC_IMAGES = {
-    hero: 'public/door1.png',
-    feature: 'public/Df4.jpg',
-    collection: [
-      'public/df2.png',
-      'public/Ins1.png',
-      'public/stu edition.png',
-      'public/pp1.png',
-      'public/Door Hick.png',
-      
+    hero: "public/door/Df4.jpg",
+    feature: "public/door/door1.png",
+    wpcCollection: [
+      "public/door/บานเรียบ.png",
+      "public/door/บานเรียบ.png",
+      "public/door/บานเรียบ.png",
+      "public/door/บานเรียบ.png",
+      "public/door/บานเรียบ.png",
+      "public/door/บานเรียบ.png",
     ],
+    wpcNames: [
+      { th: "ลาเต้เบจ", en: "WPC-Latte Beige" },
+      { th: "มอคค่ามิสต์", en: "WPC-Mocha Mist" },
+      { th: "น้ำตาลมอคค่า", en: "WPC-Mocha Brown" },
+      { th: "คาราเมลแซนด์", en: "WPC-Caramel Sand" },
+      { th: "นมกาแฟ", en: "WPC-Milk Coffee" },
+      { th: "น้ำตาลดำ", en: "WPC-Dark Mocha" },
+    ],
+    upvcCollection: [
+      "public/door/dd1.png",
+      "public/door/dd2.png",
+      "public/door/dd3.png",
+      "public/door/dd4.png",
+      "public/door/dd5.png",
+      "public/door/dd6.png",
+    ],
+    upvcNames: [
+      { th: "uPVC", en: "uPVC" },
+      { th: "uPVC", en: "uPVC" },
+      { th: "uPVC", en: "uPVC" },
+      { th: "uPVC", en: "uPVC" },
+      { th: "uPVC", en: "uPVC" },
+      { th: "uPVC", en: "uPVC" },
+    ],
+    melamineCollection: [
+      "public/door/dd1.png",
+      "public/door/dd2.png",
+      "public/door/dd3.png",
+      "public/door/dd4.png",
+      "public/door/dd5.png",
+      "public/door/dd6.png",
+    ],
+    melamineNames: Array(6).fill({ th: "Melamine", en: "Melamine" }),
   };
 
-
   const IMAGES =
-    IMAGES_SOURCE === 'PUBLIC'
+    IMAGES_SOURCE === "PUBLIC"
       ? PUBLIC_IMAGES
       : {
         hero: PAGE_IMAGES.door.hero,
         feature: PAGE_IMAGES.door.feature,
-        collection: PAGE_IMAGES.door.collection,
+        wpcCollection: PAGE_IMAGES.door.collection,
+        wpcNames: Array(6).fill({ th: "The Door", en: "The Door" }),
+        upvcCollection: PAGE_IMAGES.door.collection,
+        upvcNames: Array(6).fill({ th: "The Door", en: "The Door" }),
+        melamineCollection: PAGE_IMAGES.door.collection,
+        melamineNames: Array(6).fill({ th: "The Door", en: "The Door" }),
       };
 
-  const selectedDoorImg = selectedDoorIndex !== null ? (IMAGES_SOURCE === 'PUBLIC' ? PUBLIC_IMAGES.collection[selectedDoorIndex] : PAGE_IMAGES.door.collection[selectedDoorIndex]) : '';
-
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-900 transition-colors duration-300">
-
-      {/* Modal */}
-      <DoorModal
-        isOpen={selectedDoorIndex !== null}
-        onClose={() => setSelectedDoorIndex(null)}
-        imgUrl={selectedDoorImg}
-        index={selectedDoorIndex || 0}
-        t={t}
-        language={t("EN", "TH") === "EN" ? "EN" : "TH"}
-      />
-
-      <div className="flex flex-col md:flex-row h-screen max-h-[900px]">
-
-        <div className="w-full md:w-1/2 flex items-center justify-center p-12 md:p-24 bg-white dark:bg-stone-800 z-10">
-          <div>
-            <h1 className="text-2xl md:text-2xl lg:text-2xl text-brand-900 dark:text-stone-100 mb-8 leading-[0.9]">
-              {t("Talking about", "พูดคุยเรื่อง")} <br /> {t("door.", "ประตู")}
-            </h1>
-            <p className="text-stone-500 dark:text-stone-400 max-w-sm mb-12 text-sm leading-relaxed">
-              {t("It is a social lubricant or a dangerous stimulant? explore our collection of premium doors designed for modern living.", "มันคือตัวเชื่อมความสัมพันธ์หรือสิ่งกระตุ้นที่อันตราย? สำรวจคอลเลกชันประตูพรีเมียมของเราที่ออกแบบมาเพื่อการอยู่อาศัยที่ทันสมัย")}
-            </p>
-            <a
-              href="#collection"
-              className="text-xs uppercase tracking-widest border-b border-black dark:border-white pb-1 hover:text-brand-500 hover:border-brand-500 transition-colors dark:text-stone-100"
-            >
-              {t("Show Collection", "ดูคอลเลกชัน")}
-            </a>
-
-            <div className="flex gap-8 mt-24 text-[10px] uppercase tracking-wider text-stone-400 dark:text-stone-500">
-              <span>{t("Modern", "ทันสมัย")}</span>
-              <span>{t("Classic", "คลาสสิก")}</span>
-              <span>{t("Minimal", "มินิมอล")}</span>
-            </div>
-          </div>
-        </div>
-
-
-        <div className="w-full md:w-1/2 bg-white dark:bg-stone-800 relative p-4 md:p-12 flex items-center justify-center">
-          <div className="relative w-full h-full overflow-hidden shadow-sm">
-            <img
-              src={IMAGES.hero}
-              alt="Door Hero"
-              className="absolute inset-0 w-full h-full object-cover rounded-3xl animate-image-reveal"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <div className="absolute bottom-8 left-8 z-10 text-white text-left opacity-90">
-              <p className="font-serif italic text-lg tracking-wide"></p>
-            </div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-300">
+      <div className="container mx-auto px-6 md:px-8 py-20 max-w-7xl flex flex-col gap-16">
+        <ProductCollectionSection collection="WPC" images={IMAGES} t={t} imagePosition="left" />
+        <ProductCollectionSection collection="uPVC" images={IMAGES} t={t} imagePosition="right" />
+        <ProductCollectionSection collection="Melamine" images={IMAGES} t={t} imagePosition="left" />
       </div>
 
-
-      <div id="collection" className="bg-white dark:bg-stone-950 py-32 px-6">
-        <div className="container mx-auto">
-          <h3 className="text-brand-900 dark:text-stone-100 font-serif text-3xl mb-16">{t("Signature Selection.", "คัดสรรพิเศษ")}</h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-32 items-start">
-            {IMAGES.collection.map((imgUrl, i) => (
-              <DoorCard
-               
-                imgUrl={imgUrl}
-                index={i}
-                t={t}
-                onClick={() => setSelectedDoorIndex(i)}
-              />
-            ))}
-          </div>
-
-
-          <div className="mb-12 relative z-20">
-            <h3 className="text-brand-900 dark:text-stone-100 font-bold text-2xl mb-12">{t("Color", "สี")}</h3>
-
-            {/* Interactive Swatches Grid */}
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-8 max-w-5xl mx-auto relative z-10">
-              {swatches.map((swatch, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col items-center group cursor-pointer relative"
-                  onMouseEnter={() => setHoveredSwatch(swatch)}
-                  onMouseLeave={() => setHoveredSwatch(null)}
-                  onClick={() => setSelectedSwatch(swatch)}
-                >
-                  {/* Floating Door Preview relative to this item */}
-                  {activeSwatch?.code === swatch.code && (
-                    <div className="absolute bottom-full mb-4 z-50 pointer-events-none animate-in fade-in zoom-in slide-in-from-bottom-2 duration-200">
-                      <div className="relative w-40 h-[18rem] rounded-2xl">
-                        <img
-                          src={swatch.doorImg}
-                          alt={swatch.name}
-                          className="w-full h-full object-cover rounded-xl shadow-sm bg-transparent"
-                        />
-                      </div>
-                    </div>
+      {/* Decorative Brand Section */}
+      <div className="container mx-auto pb-32 pt-20 px-12 border-t border-stone-100 dark:border-stone-900">
+        <div className="flex flex-col lg:flex-row items-start gap-24">
+          <div className="w-full lg:w-1/2">
+            <div className="max-w-xl">
+              <span className="text-orange-500 font-black tracking-[0.5em] uppercase text-xs mb-6 block">Legacy / Quality</span>
+              <h3 className="text-4xl md:text-5xl mb-8 text-stone-900 dark:text-stone-100 font-bold tracking-tighter leading-[0.95]">
+                {t("Defying Limits: The Hybrid Era", "ทลายทุกขีดจำกัด: WPC Hybrid Series")}
+              </h3>
+              <div className="space-y-6 text-stone-500 dark:text-stone-400 leading-relaxed text-base">
+                <p>
+                  {t(
+                    "The WPC Elegance Series doors empower you with modern aesthetics and emotional security.",
+                    "ประตู WPC Elegance Series มอบความสวยงามทันสมัยและความมั่นใจในความปลอดภัยให้กับคุณ"
                   )}
-
-                  <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden mb-6 border-2 p-1 transition-all duration-300 ${activeSwatch?.code === swatch.code ? 'border-stone-800 dark:border-stone-100 scale-110' : 'border-transparent group-hover:border-stone-300 dark:group-hover:border-stone-600'}`}>
-                    <div className="w-full h-full rounded-full bg-stone-200 dark:bg-stone-700 overflow-hidden relative">
-                      <img src={swatch.img} alt={swatch.name} className="w-full h-full object-cover" />
-                    </div>
-                  </div>
-                  <p className={`text-sm transition-colors duration-300 ${activeSwatch?.code === swatch.code ? 'text-stone-900 dark:text-stone-100 font-bold' : 'text-stone-500 dark:text-stone-400'}`}>{swatch.code}</p>
-                  <p className="text-stone-400 text-xs hidden md:block">{swatch.name}</p>
-                </div>
-              ))}
+                </p>
+                <p className="border-l-4 border-orange-500 pl-8 font-medium italic text-stone-600 dark:text-stone-300">
+                  {t(
+                    "Introducing a harmonious blend of Wood Plastic Composite innovation and premium PVC resin. Durability transcends traditional barriers.",
+                    "การผสมผสานจุดเด่นของไม้และพลาสติก เพื่อความทนทานที่ก้าวข้ามทุกความคาดหมาย"
+                  )}
+                </p>
+              </div>
             </div>
-            <p className="text-center mt-12 text-stone-400 text-xs">{t("Click to select", "คลิกเพื่อเลือก")}</p>
           </div>
-
-        </div>
-      </div>
-
-
-      <div className="container mx-auto py-32 px-6">
-        <div className="flex flex-col md:flex-row items-center gap-16">
-          <div className="w-full md:w-1/2">
-            <h3 className="text-4xl mb-6 text-stone-900 dark:text-stone-100">{t("The House Blend.", "เดอะ เฮาส์ เบลนด์")}</h3>
-            <p className="text-stone-500 dark:text-stone-400 mb-8 leading-relaxed text-sm">
-              {t("Quisque suscipit ipsum est, eu venenatis leo ornare eget. Ut porta facilisis elementum. Specialized door construction ensures longevity and style.", "เราใส่ใจในทุกรายละเอียด การก่อสร้างประตูแบบพิเศษช่วยให้มั่นใจได้ถึงอายุการใช้งานที่ยาวนานและสไตล์ที่โดดเด่น")}
-            </p>
-            <a href="#" className="text-xs uppercase underline dark:text-stone-100">
-              {t("Read More", "อ่านเพิ่มเติม")}
-            </a>
-          </div>
-
-          <div className="">
-            <div className="aspect-square bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden rounded-3xl">
-              <img
-                src={IMAGES.feature}
-                alt="Door Feature"
-                className="w-full h-full object-cover animate-image-reveal"
-                loading="lazy"
-              />
+          <div className="w-full lg:w-1/2">
+            <div className="relative rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] group">
+              <img src={IMAGES.feature} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Feature" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };

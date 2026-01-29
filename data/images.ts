@@ -29,11 +29,11 @@ export const PAGE_IMAGES = {
         feature: "public/cs1.png"
     },
     serviceShaft: {
-        hero: "public/door02.png",
+        hero: "/service-shaft/mini%20flat.png",
         collection: [
-            "public/DF2.png",
-            "public/Sus1.png",
-            
+            "/service-shaft/Ins1.png",
+            "/service-shaft/mo%20panel.png",
+            "/service-shaft/mini%20flat.png"
         ]
     },
     staircase: {
