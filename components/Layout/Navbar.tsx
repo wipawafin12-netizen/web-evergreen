@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
           onClick={() => navigate('/')}
         >
           <img
-            src="public/logo/logo-03.png"
+            src="/logo/logo-03.png"
             alt="Evergreen Logo"
             className="w-32 h-16 md:w-52 md:h-20 object-contain transition-all duration-300 -mt-1 md:-mt-2 ml-4 md:ml-8"
           />

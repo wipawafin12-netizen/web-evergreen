@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-0.5">
 
             <img
-              src="public/logo/logo-03.png"
+              src="/logo/logo-03.png"
               alt="Evergreen Logo"
               className="w-52 h-32 object-contain block dark:hidden"
             />
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-8 h-8 hover:scale-110 transition-transform"
               >
-                <img src="public/Social-contact/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
+                <img src="/Social-contact/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
               </a>
 
               {/* Instagram */}
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-8 h-8 hover:scale-110 transition-transform"
               >
-                <img src="public/Social-contact/instagram.webp" alt="Instagram" className="w-full h-full object-contain" />
+                <img src="/Social-contact/instagram.webp" alt="Instagram" className="w-full h-full object-contain" />
               </a>
 
               {/* LINE */}
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-8 h-8 hover:scale-110 transition-transform"
               >
-                <img src="public/Social-contact/line.png" alt="LINE" className="w-full h-full object-contain" />
+                <img src="/Social-contact/line.png" alt="LINE" className="w-full h-full object-contain" />
               </a>
 
               {/* TikTok */}
@@ -94,7 +94,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-8 h-8 hover:scale-110 transition-transform"
               >
-                <img src="public/Social-contact/tiktok.png" alt="TikTok" className="w-full h-full object-contain" />
+                <img src="/Social-contact/tiktok.png" alt="TikTok" className="w-full h-full object-contain" />
               </a>
             </div>
           </div>

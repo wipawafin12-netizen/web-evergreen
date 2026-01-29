@@ -49,7 +49,7 @@ export const Staircase: React.FC = () => {
                         {/* Section 1 Image */}
                         <div className="w-full md:w-1/2 flex items-start justify-center pt-12 md:pt-20">
                             <div className="relative w-full max-w-[450px] max-h-[600px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="public/staircase/w1.jpg" alt="Solid Staircase" className="w-full h-full object-cover" />
+                                <img src="/staircase/w1.jpg" alt="Solid Staircase" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ export const Staircase: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-32">
                         <div className="order-2 lg:order-1 flex items-start justify-center">
                             <div className="relative w-full max-w-[450px] max-h-[600px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="public/staircase/w3.jpg" alt="Engineered Staircase" className="w-full h-full object-cover" />
+                                <img src="/staircase/w3.jpg" alt="Engineered Staircase" className="w-full h-full object-cover" />
                             </div>
                         </div>
                         <div className="order-1 lg:order-2 space-y-8">
@@ -115,7 +115,7 @@ export const Staircase: React.FC = () => {
                         </div>
                         <div className="flex items-start justify-center">
                             <div className="relative w-full max-w-[450px] max-h-[600px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="public/staircase/w2.jpg" alt="WPC Staircase" className="w-full h-full object-cover" />
+                                <img src="/staircase/w2.jpg" alt="WPC Staircase" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>

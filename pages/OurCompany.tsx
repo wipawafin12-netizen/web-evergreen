@@ -13,7 +13,7 @@ export const OurCompany: React.FC = () => {
       titleTH: "เวสวินด์",
       description: "One-Stop-Service Solution under Westwind Services Co., Ltd.",
       descriptionTH: "ขยายขอบเขตการให้บริการเป็น One-Stop-Service Solution ให้กับลูกค้า ภายใต้ บจก. เวสวินด์ เซอร์วิสเซส",
-      logo: "public/logo/westwind-logo.png"
+      logo: "/logo/westwind-logo.png"
     },
     {
       year: "2563",
@@ -21,7 +21,7 @@ export const OurCompany: React.FC = () => {
       titleTH: "เอเวอร์กรีน",
       description: "Expanded product line to wood substitute under Evergreen brand.",
       descriptionTH: "ขยายไลน์สินค้า ผลิตภัณฑ์ในกลุ่มทดแทนไม้ และไม้สังเคราะห์ ภายใต้แบรนด์ Evergreen",
-      logo: "public/logo/evergreen-logo.png"
+      logo: "/logo/evergreen-logo.png"
     },
     {
       year: "2560",
@@ -29,7 +29,7 @@ export const OurCompany: React.FC = () => {
       titleTH: "การรับรอง",
       description: "ISO 9001:2015 Quality Management System Certification.",
       descriptionTH: "ผ่านการรับรอง ระบบคุณภาพ ISO 9001:2015",
-      logo: "public/logo/bsi-logo.png"
+      logo: "/logo/bsi-logo.png"
     },
     {
       year: "2540",
@@ -45,7 +45,7 @@ export const OurCompany: React.FC = () => {
       titleTH: "เริ่มกิจการ",
       description: "Established Sue Hah Huat Industry Co., Ltd. for wood products.",
       descriptionTH: "เริ่มกิจการ บริษัท ซื้อฮะฮวด อุตสาหกรรม จำกัด ประกอบกิจการผลิตไม้แปรรูป อาทิ วงกบ ประตู หน้าต่าง พื้น บันได",
-      logo: "public/logo/chh-logo.png"
+      logo: "/logo/chh-logo.png"
     },
     {
       year: "2511",
@@ -118,93 +118,93 @@ export const OurCompany: React.FC = () => {
   ];
 
   const collection = [
-    { title: "Modern Panel", subtitle: "Oak tone", img: "public/our-company/11.png", price: "2,490", path: "/door" },
-    { title: "Minimal Flat", subtitle: "Warm sand", img: "public/our-company/33.png", price: "3,590", path: "/door" },
+    { title: "Modern Panel", subtitle: "Oak tone", img: "/our-company/11.png", price: "2,490", path: "/door" },
+    { title: "Minimal Flat", subtitle: "Warm sand", img: "/our-company/33.png", price: "3,590", path: "/door" },
 
-    { title: "Studio Edition", subtitle: "Natural wood", img: "public/our-company/22.png", price: "3,190", path: "/door" },
-    { title: "Urban Loft", subtitle: "Grey matte", img: "public/our-company/44.png", price: "3,890", path: "/door" },
+    { title: "Studio Edition", subtitle: "Natural wood", img: "/our-company/22.png", price: "3,190", path: "/door" },
+    { title: "Urban Loft", subtitle: "Grey matte", img: "/our-company/44.png", price: "3,890", path: "/door" },
   ];
 
   const row1Brands = [
-    { id: 1, name: "Client 1", src: "public/Brand Customer/b1.png" },
-    { id: 2, name: "Client 2", src: "public/Brand Customer/b2.png" },
-    { id: 3, name: "Client 3", src: "public/Brand Customer/b3.png" },
-    { id: 4, name: "Client 4", src: "public/Brand Customer/b4.png" },
-    { id: 5, name: "Client 5", src: "public/Brand Customer/b5.png" },
-    { id: 6, name: "Client 6", src: "public/Brand Customer/b6.png" },
-    { id: 7, name: "Client 7", src: "public/Brand Customer/b7.png" },
-    { id: 8, name: "Client 8", src: "public/Brand Customer/b8.png" },
-    { id: 9, name: "Client 9", src: "public/Brand Customer/b9.png" },
-    { id: 10, name: "Client 10", src: "public/Brand Customer/b10.png" },
-    { id: 11, name: "Client 11", src: "public/Brand Customer/b11.png" },
-    { id: 12, name: "Client 12", src: "public/Brand Customer/b12.png" },
-    { id: 13, name: "Client 13", src: "public/Brand Customer/b13.png" },
-    { id: 14, name: "Client 14", src: "public/Brand Customer/b14.png" },
-    { id: 15, name: "Client 15", src: "public/Brand Customer/b15.png" },
-    { id: 16, name: "Client 16", src: "public/Brand Customer/b16.png" },
-    { id: 17, name: "Client 17", src: "public/Brand Customer/b17.png" },
-    { id: 18, name: "Client 18", src: "public/Brand Customer/b18.png" },
-    { id: 19, name: "Client 19", src: "public/Brand Customer/b19.png" },
-    { id: 20, name: "Client 20", src: "public/Brand Customer/b20.png" },
-    { id: 21, name: "Client 21", src: "public/Brand Customer/b21.png" },
-    { id: 22, name: "Client 22", src: "public/Brand Customer/b22.png" },
-    { id: 23, name: "Client 23", src: "public/Brand Customer/b23.png" },
-    { id: 24, name: "Client 24", src: "public/Brand Customer/b24.png" },
-    { id: 25, name: "Client 25", src: "public/Brand Customer/b25.png" },
-    { id: 26, name: "Client 26", src: "public/Brand Customer/b26.png" },
-    { id: 27, name: "Client 27", src: "public/Brand Customer/b27.png" },
+    { id: 1, name: "Client 1", src: "/Brand Customer/b1.png" },
+    { id: 2, name: "Client 2", src: "/Brand Customer/b2.png" },
+    { id: 3, name: "Client 3", src: "/Brand Customer/b3.png" },
+    { id: 4, name: "Client 4", src: "/Brand Customer/b4.png" },
+    { id: 5, name: "Client 5", src: "/Brand Customer/b5.png" },
+    { id: 6, name: "Client 6", src: "/Brand Customer/b6.png" },
+    { id: 7, name: "Client 7", src: "/Brand Customer/b7.png" },
+    { id: 8, name: "Client 8", src: "/Brand Customer/b8.png" },
+    { id: 9, name: "Client 9", src: "/Brand Customer/b9.png" },
+    { id: 10, name: "Client 10", src: "/Brand Customer/b10.png" },
+    { id: 11, name: "Client 11", src: "/Brand Customer/b11.png" },
+    { id: 12, name: "Client 12", src: "/Brand Customer/b12.png" },
+    { id: 13, name: "Client 13", src: "/Brand Customer/b13.png" },
+    { id: 14, name: "Client 14", src: "/Brand Customer/b14.png" },
+    { id: 15, name: "Client 15", src: "/Brand Customer/b15.png" },
+    { id: 16, name: "Client 16", src: "/Brand Customer/b16.png" },
+    { id: 17, name: "Client 17", src: "/Brand Customer/b17.png" },
+    { id: 18, name: "Client 18", src: "/Brand Customer/b18.png" },
+    { id: 19, name: "Client 19", src: "/Brand Customer/b19.png" },
+    { id: 20, name: "Client 20", src: "/Brand Customer/b20.png" },
+    { id: 21, name: "Client 21", src: "/Brand Customer/b21.png" },
+    { id: 22, name: "Client 22", src: "/Brand Customer/b22.png" },
+    { id: 23, name: "Client 23", src: "/Brand Customer/b23.png" },
+    { id: 24, name: "Client 24", src: "/Brand Customer/b24.png" },
+    { id: 25, name: "Client 25", src: "/Brand Customer/b25.png" },
+    { id: 26, name: "Client 26", src: "/Brand Customer/b26.png" },
+    { id: 27, name: "Client 27", src: "/Brand Customer/b27.png" },
   ];
 
   const row2Brands = [
-    { id: 1, name: "Client 1", src: "public/Brand Customer2/b1.png" },
-    { id: 2, name: "Client 2", src: "public/Brand Customer2/b2.png" },
-    { id: 3, name: "Client 3", src: "public/Brand Customer2/b3.png" },
-    { id: 4, name: "Client 4", src: "public/Brand Customer2/b4.png" },
-    { id: 5, name: "Client 5", src: "public/Brand Customer2/b5.png" },
-    { id: 6, name: "Client 6", src: "public/Brand Customer2/b6.png" },
-    { id: 7, name: "Client 7", src: "public/Brand Customer2/b7.png" },
-    { id: 8, name: "Client 8", src: "public/Brand Customer2/b8.png" },
-    { id: 9, name: "Client 9", src: "public/Brand Customer2/b9.png" },
-    { id: 10, name: "Client 10", src: "public/Brand Customer2/b10.png" },
-    { id: 11, name: "Client 11", src: "public/Brand Customer2/b11.png" },
-    { id: 12, name: "Client 12", src: "public/Brand Customer2/b12.png" },
-    { id: 13, name: "Client 13", src: "public/Brand Customer2/b13.png" },
-    { id: 14, name: "Client 14", src: "public/Brand Customer2/b14.png" },
-    { id: 15, name: "Client 15", src: "public/Brand Customer2/b15.png" },
-    { id: 16, name: "Client 16", src: "public/Brand Customer2/b16.png" },
-    { id: 17, name: "Client 17", src: "public/Brand Customer2/b17.png" },
-    { id: 18, name: "Client 18", src: "public/Brand Customer2/b18.png" },
-    { id: 19, name: "Client 19", src: "public/Brand Customer2/b19.png" },
-    { id: 20, name: "Client 20", src: "public/Brand Customer2/b20.png" },
-    { id: 21, name: "Client 21", src: "public/Brand Customer2/b21.png" },
-    { id: 22, name: "Client 22", src: "public/Brand Customer2/b22.png" },
-    { id: 23, name: "Client 23", src: "public/Brand Customer2/b23.png" },
-    { id: 24, name: "Client 24", src: "public/Brand Customer2/b24.png" },
-    { id: 25, name: "Client 25", src: "public/Brand Customer2/b25.png" },
-    { id: 26, name: "Client 26", src: "public/Brand Customer2/b26.png" },
-    { id: 27, name: "Client 27", src: "public/Brand Customer2/b27.png" },
-    { id: 28, name: "Client 28", src: "public/Brand Customer2/b28.png" },
-    { id: 29, name: "Client 29", src: "public/Brand Customer2/b29.png" },
+    { id: 1, name: "Client 1", src: "/Brand Customer2/b1.png" },
+    { id: 2, name: "Client 2", src: "/Brand Customer2/b2.png" },
+    { id: 3, name: "Client 3", src: "/Brand Customer2/b3.png" },
+    { id: 4, name: "Client 4", src: "/Brand Customer2/b4.png" },
+    { id: 5, name: "Client 5", src: "/Brand Customer2/b5.png" },
+    { id: 6, name: "Client 6", src: "/Brand Customer2/b6.png" },
+    { id: 7, name: "Client 7", src: "/Brand Customer2/b7.png" },
+    { id: 8, name: "Client 8", src: "/Brand Customer2/b8.png" },
+    { id: 9, name: "Client 9", src: "/Brand Customer2/b9.png" },
+    { id: 10, name: "Client 10", src: "/Brand Customer2/b10.png" },
+    { id: 11, name: "Client 11", src: "/Brand Customer2/b11.png" },
+    { id: 12, name: "Client 12", src: "/Brand Customer2/b12.png" },
+    { id: 13, name: "Client 13", src: "/Brand Customer2/b13.png" },
+    { id: 14, name: "Client 14", src: "/Brand Customer2/b14.png" },
+    { id: 15, name: "Client 15", src: "/Brand Customer2/b15.png" },
+    { id: 16, name: "Client 16", src: "/Brand Customer2/b16.png" },
+    { id: 17, name: "Client 17", src: "/Brand Customer2/b17.png" },
+    { id: 18, name: "Client 18", src: "/Brand Customer2/b18.png" },
+    { id: 19, name: "Client 19", src: "/Brand Customer2/b19.png" },
+    { id: 20, name: "Client 20", src: "/Brand Customer2/b20.png" },
+    { id: 21, name: "Client 21", src: "/Brand Customer2/b21.png" },
+    { id: 22, name: "Client 22", src: "/Brand Customer2/b22.png" },
+    { id: 23, name: "Client 23", src: "/Brand Customer2/b23.png" },
+    { id: 24, name: "Client 24", src: "/Brand Customer2/b24.png" },
+    { id: 25, name: "Client 25", src: "/Brand Customer2/b25.png" },
+    { id: 26, name: "Client 26", src: "/Brand Customer2/b26.png" },
+    { id: 27, name: "Client 27", src: "/Brand Customer2/b27.png" },
+    { id: 28, name: "Client 28", src: "/Brand Customer2/b28.png" },
+    { id: 29, name: "Client 29", src: "/Brand Customer2/b29.png" },
   ];
 
   const row3Brands = [
-    { id: 1, name: "Client 1", src: "public/Brand Costomer3/b1.png" },
-    { id: 2, name: "Client 2", src: "public/Brand Costomer3/b2.png" },
-    { id: 3, name: "Client 3", src: "public/Brand Costomer3/b3.png" },
-    { id: 4, name: "Client 4", src: "public/Brand Costomer3/b4.png" },
-    { id: 5, name: "Client 5", src: "public/Brand Costomer3/b5.png" },
-    { id: 6, name: "Client 6", src: "public/Brand Costomer3/b6.png" },
-    { id: 7, name: "Client 7", src: "public/Brand Costomer3/b7.png" },
-    { id: 8, name: "Client 8", src: "public/Brand Costomer3/b8.png" },
-    { id: 9, name: "Client 9", src: "public/Brand Costomer3/b9.png" },
-    { id: 10, name: "Client 10", src: "public/Brand Costomer3/b10.png" },
-    { id: 11, name: "Client 11", src: "public/Brand Costomer3/b11.png" },
-    { id: 12, name: "Client 12", src: "public/Brand Costomer3/b12.png" },
-    { id: 13, name: "Client 13", src: "public/Brand Costomer3/b13.png" },
-    { id: 14, name: "Client 14", src: "public/Brand Costomer3/b14.png" },
-    { id: 15, name: "Client 15", src: "public/Brand Costomer3/b15.png" },
-    { id: 16, name: "Client 16", src: "public/Brand Costomer3/b16.png" },
-    { id: 17, name: "Client 17", src: "public/Brand Costomer3/b17.png" },
+    { id: 1, name: "Client 1", src: "/Brand Costomer3/b1.png" },
+    { id: 2, name: "Client 2", src: "/Brand Costomer3/b2.png" },
+    { id: 3, name: "Client 3", src: "/Brand Costomer3/b3.png" },
+    { id: 4, name: "Client 4", src: "/Brand Costomer3/b4.png" },
+    { id: 5, name: "Client 5", src: "/Brand Costomer3/b5.png" },
+    { id: 6, name: "Client 6", src: "/Brand Costomer3/b6.png" },
+    { id: 7, name: "Client 7", src: "/Brand Costomer3/b7.png" },
+    { id: 8, name: "Client 8", src: "/Brand Costomer3/b8.png" },
+    { id: 9, name: "Client 9", src: "/Brand Costomer3/b9.png" },
+    { id: 10, name: "Client 10", src: "/Brand Costomer3/b10.png" },
+    { id: 11, name: "Client 11", src: "/Brand Costomer3/b11.png" },
+    { id: 12, name: "Client 12", src: "/Brand Costomer3/b12.png" },
+    { id: 13, name: "Client 13", src: "/Brand Costomer3/b13.png" },
+    { id: 14, name: "Client 14", src: "/Brand Costomer3/b14.png" },
+    { id: 15, name: "Client 15", src: "/Brand Costomer3/b15.png" },
+    { id: 16, name: "Client 16", src: "/Brand Costomer3/b16.png" },
+    { id: 17, name: "Client 17", src: "/Brand Costomer3/b17.png" },
   ];
 
 
@@ -232,7 +232,7 @@ export const OurCompany: React.FC = () => {
               <div className="relative overflow-hidden group rounded-3xl">
                 <div className="aspect-[3/4] overflow-hidden bg-stone-100 dark:bg-stone-900">
                   <img
-                    src="public/our-company/01.png"
+                    src="/our-company/01.png"
                     alt="Craftsmanship"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 animate-image-reveal"
                     loading="lazy"
@@ -267,7 +267,7 @@ export const OurCompany: React.FC = () => {
               <div className="relative pl-0 md:pl-12">
                 <div className="aspect-video overflow-hidden bg-stone-100 dark:bg-stone-900 group rounded-3xl">
                   <img
-                    src="public/our-company/02.png"
+                    src="/our-company/02.png"
                     alt="Sustainability"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 animate-image-reveal"
                     loading="lazy"

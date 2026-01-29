@@ -5,22 +5,22 @@ export const ServicesPage: React.FC = () => {
     const { t } = useLanguage();
     const services = [
         {
-            img: "public/DF2.png",
+            img: "/DF2.png",
             title: t("Custom Design", "การออกแบบตามสั่ง"),
             desc: t("Work with our designers to create a door that is uniquely yours.", "ร่วมงานกับดีไซเนอร์ของเราเพื่อสร้างประตูที่เป็นเอกลักษณ์ของคุณ")
         },
         {
-            img: "public/Df4.jpg",
+            img: "/Df4.jpg",
             title: t("Delivery & Logistics", "การจัดส่งและโลจิสติกส์"),
             desc: t("Safe and timely delivery to your construction site or home.", "จัดส่งที่ปลอดภัยและตรงเวลาถึงไซต์ก่อสร้างหรือบ้านของคุณ")
         },
         {
-            img: "public/door-01.png",
+            img: "/door-01.png",
             title: t("Professional Installation", "การติดตั้งแบบมืออาชีพ"),
             desc: t("Our expert team ensures your door is installed perfectly for longevity.", "ทีมงานผู้เชี่ยวชาญของเราตรวจสอบให้แน่ใจว่าประตูของคุณได้รับการติดตั้งอย่างสมบูรณ์แบบเพื่ออายุการใช้งานที่ยาวนาน")
         },
         {
-            img: "public/DF3.png",
+            img: "/DF3.png",
             title: t("Warranty & Support", "การรับประกันและสนับสนุน"),
             desc: t("Comprehensive warranty coverage and after-sales support.", "ความคุ้มครองการรับประกันที่ครอบคลุมและการสนับสนุนหลังการขาย")
         }

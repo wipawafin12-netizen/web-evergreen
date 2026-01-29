@@ -11,22 +11,22 @@ export const PAGE_IMAGES = {
         feature: "https://images.unsplash.com/photo-1506093481292-637951d953d6?q=80&w=800&auto=format&fit=crop"
     },
     doorframe: {
-        hero: "public/d1.png",
+        hero: "/d1.png",
         collection: [
-            "public/pp1.png",
-            "public/df2.png",
-            "public/pp3.png"
+            "/pp1.png",
+            "/df2.png",
+            "/pp3.png"
         ],
         feature: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
     },
     flooring: {
-        hero: "public/fr.png",
+        hero: "/fr.png",
         collection: [
             "dist/DOOR.png",
             "dist/door-02.png",
             "dist/image2.png"
         ],
-        feature: "public/cs1.png"
+        feature: "/cs1.png"
     },
     serviceShaft: {
         hero: "/service-shaft/mini%20flat.png",
@@ -45,12 +45,12 @@ export const PAGE_IMAGES = {
         ]
     },
     wallPanel: {
-        hero: "public/fr.png",
+        hero: "/fr.png",
         collection: [
-            "public/door-01.png",
-            "public/Df4.jpg",
-            "public/door02.png",
-            "public/pp1.png"
+            "/door-01.png",
+            "/Df4.jpg",
+            "/door02.png",
+            "/pp1.png"
         ],
         feature: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?q=80&w=800&auto=format&fit=crop"
     }

@@ -54,7 +54,7 @@ export const Doorframe: React.FC = () => {
                                 </div>
                             </div>
                             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="public/doorframe/01.png" alt="Wooden Doorframe" className="w-full h-full object-cover" />
+                                <img src="/doorframe/01.png" alt="Wooden Doorframe" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>
@@ -75,25 +75,25 @@ export const Doorframe: React.FC = () => {
                                     name: t("Makha", "ไม้มะค่า"),
                                     en: "It has a beautiful, distinct wood grain with a light orange color. It can be used both indoors and outdoors, making it ideal for natural wood grain finishes.",
                                     th: "มีลายไม้ที่สวยงามและชัดเจน พร้อมสีส้มอ่อน สามารถใช้ได้ทั้งภายในและภายนอก เหมาะอย่างยิ่งสำหรับการทำสีโชว์ลายไม้ธรรมชาติ",
-                                    img: "public/doorframe/Makha.png"
+                                    img: "/doorframe/Makha.png"
                                 },
                                 {
                                     name: t("Red", "ไม้แดง"),
                                     en: "It is strong with a reddish wood tone and a distinct wood grain. It can be used both indoors and outdoors, making it suitable for natural wood grain finishes.",
                                     th: "มีความแข็งแรงทนทาน พร้อมโทนสีไม้แดงและลายไม้ที่ชัดเจน สามารถใช้ได้ทั้งภายในและภายนอก เหมาะสำหรับการทำสีโชว์ลายไม้ธรรมชาติ",
-                                    img: "public/doorframe/RED.png"
+                                    img: "/doorframe/RED.png"
                                 },
                                 {
                                     name: t("Oak", "ไม้โอ๊ค"),
                                     en: "It is strong, with a green-yellow wood tone that turns brown when exposed to sunlight. It can be used both indoors and outdoors, making it suitable for oil-based finishes.",
                                     th: "มีความแข็งแรง พร้อมโทนสีไม้เหลืองอมเขียวซึ่งจะเปลี่ยนเป็นสีน้ำตาลเมื่อโดนแสงแดด สามารถใช้ได้ทั้งภายในและภายนอก เหมาะสำหรับการทำสีประเภทน้ำมัน",
-                                    img: "public/doorframe/Whiteoak.png"
+                                    img: "/doorframe/Whiteoak.png"
                                 },
                                 {
                                     name: t("Takian", "ไม้ตะเคียน"),
                                     en: "It is strong, with a distinct wood grain and a light tone. It is suitable for indoor use and ideal for finishes that showcase the wood grain.",
                                     th: "มีความแข็งแรง พร้อมลายไม้ที่ชัดเจนและโทนสีอ่อน เหมาะสำหรับการใช้งานภายในและเหมาะอย่างยิ่งสำหรับการทำสีที่ต้องการโชว์ลายไม้",
-                                    img: "public/doorframe/Takien.png"
+                                    img: "/doorframe/Takien.png"
                                 }
                             ].map((species, i) => (
                                 <div key={i} className="flex flex-col items-center text-center">
@@ -169,7 +169,7 @@ export const Doorframe: React.FC = () => {
                     <div className="pb-20">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                             <div className="order-2 lg:order-1 aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="public/doorframe/02.png" alt="WPC Doorframe" className="w-full h-full object-cover" />
+                                <img src="/doorframe/02.png" alt="WPC Doorframe" className="w-full h-full object-cover" />
                             </div>
                             <div className="order-1 lg:order-2">
                                 <div className="w-16 h-1 bg-orange-500 mb-8 rounded-full" />

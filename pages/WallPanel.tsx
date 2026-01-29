@@ -11,7 +11,7 @@ export const WallPanel: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
     const detailImages = [
-        "public/wall-panel/w02.png",
+        "/wall-panel/w02.png",
         "/Home%20Collections/01.png",
         "/our-company/01.png"
     ];
