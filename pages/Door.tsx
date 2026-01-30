@@ -52,31 +52,31 @@ type DoorDetail = {
 
 interface Swatch {
   code: string;
+  
   name: string;
   img: string;
   doorImg: string;
 }
 
 const swatches: Swatch[] = [
-  { code: "Caramel Sand", name: "", img: "/door/Caramel Sand.png", doorImg: "/door/Caramel Sand.png" },
-  { code: "Dark Mocha", name: "", img: "/door/Dark Mocha.png", doorImg: "/door/Dark Mocha.png" },
-  { code: "Latte Beige", name: "", img: "/door/Latte Beige.png", doorImg: "/door/Latte Beige.png" },
-  { code: "Milk Coffee", name: "", img: "/door/Milk Coffee.png", doorImg: "/door/Milk Coffee.png" },
-  { code: "Mocha Brown", name: "", img: "/door/Mocha Brown.png", doorImg: "/door/Mocha Brown.png" },
-  { code: "Mocha Mist", name: "", img: "/door/Mocha Mist.png", doorImg: "/door/Mocha Mist.png" },
+  { code: "Caramel Sand", name: "", img: "/door/Caramel-Sand.png", doorImg: "/door/Caramel-Sand.png" },
+  { code: "Dark Mocha", name: "", img: "/door/Dark-Mocha.png", doorImg: "/door/Dark-Mocha.png" },
+  { code: "Latte Beige", name: "", img: "/door/Latte-Beige.png", doorImg: "/door/Latte-Beige.png" },
+  { code: "Milk Coffee", name: "", img: "/door/Milk-Coffee.png", doorImg: "/door/Milk-Coffee.png" },
+  { code: "Mocha Brown", name: "", img: "/door/Mocha-Brown.png", doorImg: "/door/Mocha-Brown.png" },
+  { code: "Mocha Mist", name: "", img: "/door/Mocha-Mist.png", doorImg: "/door/Mocha-Mist.png" },
 ];
 
 const melamineSwatches: Swatch[] = [
-  { code: "Earl Grey", name: "", img: "/door/Melamine/Earl Grey.png", doorImg: "/door/Melamine/Earl Grey.png" },
+  { code: "Earl Grey", name: "", img: "/door/Melamine/Earl-Grey.png", doorImg: "/door/Melamine/Earl-Grey.png" },
   { code: "Sand", name: "", img: "/door/Melamine/Sand.png", doorImg: "/door/Melamine/Sand.png" },
-  { code: "Smoke Grey", name: "", img: "/door/Melamine/Smoke Grey.png", doorImg: "/door/Melamine/Smoke Grey.png" },
-  { code: "Tobac Brown", name: "", img: "/door/Melamine/Tobac Brown.png", doorImg: "/door/Melamine/Tobac Brown.png" },
-  { code: "Alpine White", name: "", img: "/door/Melamine/Alpine White.png", doorImg: "/door/Melamine/Alpine White.png" },
-  { code: "Bronze Brown", name: "", img: "/door/Melamine/Bronze Brown.png", doorImg: "/door/Melamine/Bronze Brown.png" },
-  { code: "Ivory Brown", name: "", img: "/door/Melamine/Ivory Brown.png", doorImg: "/door/Melamine/Ivory Brown.png" },
-  { code: "Platinum Grey", name: "", img: "/door/Melamine/Platinum Grey.png", doorImg: "/door/Melamine/Platinum Grey.png" },
-  { code: "Cocoa Oak", name: "", img: "/door/Melamine/Cocoa Oak.png", doorImg: "/door/Melamine/Cocoa Oak.png" },
-
+  { code: "Smoke Grey", name: "", img: "/door/Melamine/Smoke-Grey.png", doorImg: "/door/Melamine/Smoke-Grey.png" },
+  { code: "Tobac Brown", name: "", img: "/door/Melamine/Tobac-Brown.png", doorImg: "/door/Melamine/Tobac-Brown.png" },
+  { code: "Alpine White", name: "", img: "/door/Melamine/Alpine-White.png", doorImg: "/door/Melamine/Alpine-White.png" },
+  { code: "Bronze Brown", name: "", img: "/door/Melamine/Bronze-Brown.png", doorImg: "/door/Melamine/Bronze-Brown.png" },
+  { code: "Ivory Brown", name: "", img: "/door/Melamine/Ivory-Brown.png", doorImg: "/door/Melamine/Ivory-Brown.png" },
+  { code: "Platinum Grey", name: "", img: "/door/Melamine/Platinum-Grey.png", doorImg: "/door/Melamine/Platinum-Grey.png" },
+  { code: "Cocoa Oak", name: "", img: "/door/Melamine/Cocoa-Oak.png", doorImg: "/door/Melamine/Cocoa-Oak.png" },
 ];
 
 const WPC_DETAILS: DoorDetail[] = [
@@ -119,13 +119,13 @@ const WPC_DETAILS: DoorDetail[] = [
         kind: "iconGrid",
         title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
         icons: [
-          { img: "/door/Eco Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "Eco Friendly" } },
-          { img: "/door/Water Proof.jpg", label: { th: "กันน้ำ", en: "Water Proof" } },
-          { img: "/door/Flame Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "Flame Retardant" } },
+          { img: "/door/Eco-Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "Eco Friendly" } },
+          { img: "/door/Water-Proof.jpg", label: { th: "กันน้ำ", en: "Water Proof" } },
+          { img: "/door/Flame-Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "Flame Retardant" } },
           { img: "/door/Chamfer.jpg", label: { th: "ลบมุม", en: "Chamfer" } },
           { img: "/door/Staining.jpg", label: { th: "รองรับการทำสี", en: "Staining" } },
-          { img: "/door/Indoor Use.png", label: { th: "ใช้งานภายใน", en: "Indoor Use" } },
-          { img: "/door/Insect Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "Insect Repellent" } },
+          { img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "Indoor Use" } },
+          { img: "/door/Insect-Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "Insect Repellent" } },
         ],
       },
     ],
@@ -181,12 +181,12 @@ const UPVC_DETAILS: DoorDetail[] = [
         title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
         icons: [
           { img: "/door/Chamfer.jpg", label: { th: "ลบมุม", en: "CHAMFER" } },
-          { img: "/door/Indoor Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
-          { img: "/door/Outdoor Use.jpg", label: { th: "ใช้งานภายนอก", en: "OUTDOOR USE" } },
-          { img: "/door/Insect Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "INSECT REPELLENT" } },
-          { img: "/door/Eco Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "ECO FRIENDLY" } },
-          { img: "/door/Water Proof.jpg", label: { th: "กันน้ำ", en: "WATER PROOF" } },
-          { img: "/door/Flame Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "FLAME RETARDANT" } },
+          { img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
+          { img: "/door/Outdoor-Use.jpg", label: { th: "ใช้งานภายนอก", en: "OUTDOOR USE" } },
+          { img: "/door/Insect-Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "INSECT REPELLENT" } },
+          { img: "/door/Eco-Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "ECO FRIENDLY" } },
+          { img: "/door/Water-Proof.jpg", label: { th: "กันน้ำ", en: "WATER PROOF" } },
+          { img: "/door/Flame-Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "FLAME RETARDANT" } },
         ],
       },
     ],
@@ -234,10 +234,10 @@ const MELAMINE_DETAILS: DoorDetail[] = [
         title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
         icons: [
           { img: "/door/Chamfer.jpg", label: { th: "ลบมุม", en: "CHAMFER" } },
-          { img: "/door/Indoor Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
-          { img: "/door/Water Proof.jpg", label: { th: "ทำความสะอาดง่าย", en: "EASY CLEANING" } },
-          { img: "/door/Eco Friendly.jpg", label: { th: "ประหยัด", en: "ECONOMICAL" } },
-          { img: "/door/Flame Retardant.jpg", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
+          { img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
+          { img: "/door/Water-Proof.jpg", label: { th: "ทำความสะอาดง่าย", en: "EASY CLEANING" } },
+          { img: "/door/Eco-Friendly.jpg", label: { th: "ประหยัด", en: "ECONOMICAL" } },
+          { img: "/door/Flame-Retardant.jpg", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
         ],
       },
     ],
