@@ -303,7 +303,7 @@ const ProductCollectionSection: React.FC<{
             href={`https://evergreen-online.vercel.app/configure/door/customize?material=${collection.toLowerCase()}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 w-full inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300"
+            className="mt-2 w-full inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 rounded-full"
           >
             {t("Order Now", "สั่งซื้อ")}
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
