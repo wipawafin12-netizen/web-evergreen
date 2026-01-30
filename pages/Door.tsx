@@ -58,24 +58,24 @@ interface Swatch {
 }
 
 const swatches: Swatch[] = [
-  { code: "LQ6268", name: "Hickory", img: "", doorImg: "" },
-  { code: "LQ7124", name: "Oak", img: "", doorImg: "" },
-  { code: "LQ8116", name: "Marble", img: "", doorImg: "" },
-  { code: "LQ8128", name: "Marble", img: "", doorImg: "" },
-  { code: "LQ8136", name: "Marble", img: "", doorImg: "" },
-  { code: "LQ8145", name: "Cement", img: "", doorImg: "" },
+  { code: "Caramel Sand", name: "", img: "public/door/Caramel Sand.png", doorImg: "public/door/Caramel Sand.png" },
+  { code: "Dark Mocha", name: "", img: "public/door/Dark Mocha.png", doorImg: "public/door/Dark Mocha.png" },
+  { code: "Latte Beige", name: "", img: "public/door/Latte Beige.png", doorImg: "public/door/Latte Beige.png" },
+  { code: "Milk Coffee", name: "", img: "public/door/Milk Coffee.png", doorImg: "public/door/Milk Coffee.png" },
+  { code: "Mocha Brown", name: "", img: "public/door/Mocha Brown.png", doorImg: "public/door/Mocha Brown.png" },
+  { code: "Mocha Mist", name: "", img: "public/door/Mocha Mist.png", doorImg: "public/door/Mocha Mist.png" },
 ];
 
 const melamineSwatches: Swatch[] = [
-  { code: "MLD102", name: "", img: "public/door/WPC1.png", doorImg: "public/door/WPC1.png" },
-  { code: "MLD202", name: "", img: "public/door/WPC2.jpg", doorImg: "public/door/WPC2.jpg" },
-  { code: "MLD302", name: "", img: "public/door/WPC3.jpg", doorImg: "public/door/WPC3.jpg" },
-  { code: "MLD402", name: "", img: "public/door/WPC4.jpg", doorImg: "public/door/WPC4.jpg" },
-  { code: "MLD502", name: "", img: "public/door/WPC5.jpg", doorImg: "public/door/WPC5.jpg" },
-  { code: "MLD602", name: "", img: "public/door/WPC6.jpg", doorImg: "public/door/WPC6.jpg" },
-  { code: "MLD702", name: "", img: "public/door/WPC7.jpg", doorImg: "public/door/WPC7.jpg" },
-  { code: "MLD802", name: "", img: "public/door/WPC8.jpg", doorImg: "public/door/WPC8.jpg" },
-  { code: "MLD902", name: "", img: "public/door/WPC9.jpg", doorImg: "public/door/WPC9.jpg" },
+  { code: "Earl Grey", name: "", img: "public/door/Melamine/Earl Grey.png", doorImg: "public/door/Melamine/Earl Grey.png" },
+  { code: "Sand", name: "", img: "public/door/Melamine/Sand.png", doorImg: "public/door/Melamine/Sand.png" },
+  { code: "Smoke Grey", name: "", img: "public/door/Melamine/Smoke Grey.png", doorImg: "public/door/Melamine/Smoke Grey.png" },
+  { code: "Tobac Brown", name: "", img: "public/door/Melamine/Tobac Brown.png", doorImg: "public/door/Melamine/Tobac Brown.png" },
+  { code: "Alpine White", name: "", img: "public/door/Melamine/Alpine White.png", doorImg: "public/door/Melamine/Alpine White.png" },
+  { code: "Bronze Brown", name: "", img: "public/door/Melamine/Bronze Brown.png", doorImg: "public/door/Melamine/Bronze Brown.png" },
+  { code: "Ivory Brown", name: "", img: "public/door/Melamine/Ivory Brown.png", doorImg: "public/door/Melamine/Ivory Brown.png" },
+  { code: "Platinum Grey", name: "", img: "public/door/Melamine/Platinum Grey.png", doorImg: "public/door/Melamine/Platinum Grey.png" },
+  { code: "Cocoa Oak", name: "", img: "public/door/Melamine/Cocoa Oak.png", doorImg: "public/door/Melamine/Cocoa Oak.png" },
   
 ];
 
@@ -133,12 +133,12 @@ const WPC_DETAILS: DoorDetail[] = [
 ];
 
 const upvcSwatches: Swatch[] = [
-  { code: "1-Line Groove", name: "Smooth", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
-  { code: "2-Line Groove", name: "Modern", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
-  { code: "3-Line Groove", name: "Natural", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
-  { code: "4-Line Groove", name: "Classic", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
-  { code: "5-Line Groove", name: "Elegant", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
-  { code: "6-Line Groove", name: "Premium", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
+  { code: "no groove", name: "", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
+  { code: "1-Line Groove", name: "", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
+  { code: "2-Line Groove", name: "", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
+  { code: "3-Line Groove", name: "", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
+  { code: "4-Line Groove", name: "", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
+  { code: "5-Line Groove", name: "", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
 ];
 
 const UPVC_DETAILS: DoorDetail[] = [
@@ -251,7 +251,11 @@ const ProductCollectionSection: React.FC<{
   imagePosition?: "left" | "right";
 }> = ({ collection, images, t, imagePosition = "left" }) => {
   const [selectedDoorIndex, setSelectedDoorIndex] = useState<number>(0);
-  const [selectedColor, setSelectedColor] = useState<Swatch | null>(null);
+
+  const isMelamine = collection === "Melamine";
+  const collectionSwatches = isMelamine ? melamineSwatches : (collection === "uPVC" ? upvcSwatches : swatches);
+
+  const [selectedColor, setSelectedColor] = useState<Swatch | null>(collectionSwatches[0] || null);
 
   const currentNames =
     collection === "WPC" ? images.wpcNames :
@@ -280,8 +284,6 @@ const ProductCollectionSection: React.FC<{
   const data = DETAILS[selectedDoorIndex] || DETAILS[0];
 
   const isImageRight = imagePosition === "right";
-  const isMelamine = collection === "Melamine";
-  const collectionSwatches = isMelamine ? melamineSwatches : (collection === "uPVC" ? upvcSwatches : swatches);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -361,7 +363,7 @@ const ProductCollectionSection: React.FC<{
               {langKey === "en" ? "Surface Texture & Color" : "พื้นผิวและสี"}
             </h3>
             <div className="flex flex-wrap gap-3">
-              {collectionSwatches.slice(0, 6).map((swatch, sIdx) => (
+              {collectionSwatches.map((swatch, sIdx) => (
                 <button
                   key={sIdx}
                   onClick={() => setSelectedColor(swatch)}
