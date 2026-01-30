@@ -103,19 +103,13 @@ const WPC_DETAILS: DoorDetail[] = [
             items: {
               th: [
                 "ปรับขนาดได้ (Customizable Dimensions)",
-                "ออปชัน: เกล็ดระบายอากาศ / กระจก (Optional: Louvers / Glass)",
-                "ดีไซน์ร่องเส้นได้ไม่จำกัด (Unlimited Designs with Groove Lines)",
                 "ผิวสำเร็จ: ทาสี, PVC DecorFilm (Surface Finishes: Paint, PVC DecorFilm)",
                 "แนะนำสำหรับงานภายใน (Recommended for Indoor Use)",
-                "ไสขอบได้สูงสุดข้างละ 5 มม. (Max 5 mm. Trimmable Each Side)",
               ],
               en: [
                 "Customizable Dimensions",
-                "Optional: Louvers / Glass",
-                "Unlimited Designs with Groove Lines",
                 "Surface Finishes: Paint, PVC DecorFilm",
                 "Recommended for Indoor Use",
-                "Max 5 mm. Trimmable Each Side",
               ],
             },
           },
@@ -223,15 +217,11 @@ const MELAMINE_DETAILS: DoorDetail[] = [
             items: {
               th: [
                 "ปรับขนาดได้ (Customizable Dimensions)",
-                "ออปชัน: เกล็ดระบายอากาศ / กระจก (Optional: Louvers / Glass)",
-                "ดีไซน์ร่องเส้นได้ไม่จำกัด (Unlimited Designs with Groove Lines)",
                 "ไสขอบได้สูงสุดข้างละ 5 มม. (Max 5 mm. Trimmable Each Side)",
                 "แนะนำสำหรับงานภายใน (Recommended for Indoor Use)",
               ],
               en: [
                 "Customizable Dimensions",
-                "Optional: Louvers / Glass",
-                "Unlimited Designs with Groove Lines",
                 "Max 5 mm. Trimmable Each Side",
                 "Recommended for Indoor Use",
               ],
@@ -290,191 +280,140 @@ const ProductCollectionSection: React.FC<{
   const data = DETAILS[selectedDoorIndex] || DETAILS[0];
 
   const isImageRight = imagePosition === "right";
-
-  // Dynamic Theme Colors
   const isMelamine = collection === "Melamine";
-  const accentBg = "bg-orange-500";
-  const accentText = "text-orange-500";
-  const accentBorder = "hover:border-orange-200/40";
-  const accentRing = "ring-orange-500/10";
-  const accentFocusBorder = "border-orange-500";
-  const bulletBorder = "group-hover:border-orange-400";
-
   const collectionSwatches = isMelamine ? melamineSwatches : (collection === "uPVC" ? upvcSwatches : swatches);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 items-start">
-      {/* Product Info */}
-      <div className={`w-full lg:w-7/12 flex flex-col gap-4 ${isImageRight ? "order-2 lg:order-1" : "order-2"}`}>
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-2">
-              <div className={`h-0.5 w-8 ${accentBg}`} />
-              <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${accentText}`}>{collection} SERIES</span>
-            </div>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-900 dark:text-stone-100 mb-3 tracking-tight leading-tight">
-              {currentDoorName}
-            </h1>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      {/* Image */}
+      <div className={`${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
+        <div className="sticky top-24">
+          <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-b from-stone-100 to-stone-50 dark:from-stone-900 dark:to-stone-950">
+            <img
+              src={selectedColor?.doorImg || selectedDoorImg}
+              alt={currentDoorName}
+              className="w-full h-full object-contain transition-all duration-700"
+            />
           </div>
-          <p className="text-stone-500 dark:text-stone-400 leading-relaxed text-sm max-w-xl whitespace-pre-line">
-            {langKey === "en" ? data.description.en : data.description.th}
+
+          {/* CTA Button - Under Image */}
+          <a
+            href={`https://evergreen-online.vercel.app/configure/door/customize?material=${collection.toLowerCase()}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 w-full inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300"
+          >
+            {t("Order Now", "สั่งซื้อ")}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className={`flex flex-col ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
+        {/* Header */}
+        <div className="mb-4">
+          <p className="text-[11px] font-medium tracking-[0.3em] text-orange-500 uppercase mb-2">
+            {collection}
           </p>
+          <h1 className="text-3xl md:text-4xl font-light text-stone-900 dark:text-stone-100 tracking-tight">
+            {currentDoorName}
+          </h1>
         </div>
 
-        <div className="flex flex-col gap-4">
-          {/* Main Specifications Box: Combines Subsections and Lists */}
-          <div className="flex flex-col gap-4">
-            <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
-              {t("Technical Specifications", "ข้อมูลทางเทคนิค")}
-            </h5>
-            <div className="bg-stone-100/40 dark:bg-stone-900/20 rounded-[2rem] p-6 md:p-8 border border-stone-100 dark:border-stone-800/40 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
-              {data.sections.map((section, idx) => {
-                if (section.kind === "subsections") {
-                  return section.subsections.map((sub, sIdx) => (
-                    <div key={`${idx}-${sIdx}`} className="flex flex-col gap-4">
-                      <h6 className="font-bold text-stone-800 dark:text-stone-200 text-sm">
-                        {langKey === "en" ? sub.title.en : sub.title.th}
-                      </h6>
-                      {/* Every section now gets an even more subtle minimal frame */}
-                      <div className={`bg-white/30 dark:bg-stone-900/20 p-5 rounded-[1.5rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
-                        {(idx === 0 && sIdx === 0) ? (
-                          /* Standard Size: Bold List Style */
-                          <ul className="flex flex-col gap-5">
-                            {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
-                              <li key={ii} className="flex items-center gap-3.5 group">
-                                <div className={`w-1.5 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 group-hover:${accentBg} transition-all duration-300`} />
-                                <span className="text-sm font-bold text-stone-600 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-white transition-colors cursor-default">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          /* All other subsections: Minimalist Style inside Frame */
-                          <ul className="flex flex-col gap-4">
-                            {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
-                              <li key={ii} className="flex items-start gap-3 group">
-                                <div className={`mt-1.5 flex-shrink-0 w-2 h-2 rounded-full border-2 border-stone-200 dark:border-stone-700 ${bulletBorder} transition-colors`} />
-                                <span className="text-[13px] font-medium text-stone-500 dark:text-stone-400 leading-tight group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    </div>
-                  ));
-                }
-                if (section.kind === "list") {
-                  /* List (e.g. Key Features): Also wrapped in an even more subtle minimal frame */
-                  return (
-                    <div key={idx} className="flex flex-col gap-6">
-                      <h6 className="font-bold text-stone-800 dark:text-stone-200 text-sm">
-                        {langKey === "en" ? section.title.en : section.title.th}
-                      </h6>
-                      <div className={`bg-white/30 dark:bg-stone-900/20 p-5 rounded-[1.5rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
-                        <ul className="flex flex-col gap-4">
-                          {(langKey === "en" ? section.items.en : section.items.th).map((item, ii) => (
-                            <li key={ii} className="flex items-start gap-3 group">
-                              <div className={`mt-1.5 flex-shrink-0 w-2 h-2 rounded-full border-2 border-stone-200 dark:border-stone-700 ${bulletBorder} transition-colors`} />
-                              <span className="text-[13px] font-medium text-stone-500 dark:text-stone-400 leading-tight group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  );
-                }
-                return null;
-              })}
-            </div>
-          </div>
+        {/* Description */}
+        <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-6 max-w-md">
+          {langKey === "en" ? data.description.en : data.description.th}
+        </p>
 
-          {/* Surface Texture & Color selection (WPC / Melamine / uPVC) */}
-          {(collection === "WPC" || collection === "Melamine" || collection === "uPVC") && (
-            <div className="flex flex-col gap-3 pt-1">
-              <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
-                {t("Surface Texture & Color", "เลือกดูสีและลายไม้")}
-              </h5>
-              <div className="grid grid-cols-5 md:grid-cols-6 xl:grid-cols-8 gap-4">
-                {collectionSwatches.map((swatch, sIdx) => (
-                  <button
-                    key={sIdx}
-                    onClick={() => setSelectedColor(swatch)}
-                    className="group flex flex-col items-center gap-3 transition-transform hover:-translate-y-1"
-                  >
-                    <div className={`relative w-12 h-12 rounded-full p-1 border-2 transition-all duration-500 ${selectedColor?.code === swatch.code
-                      ? `${accentFocusBorder} scale-110 shadow-lg ring-4 ${accentRing}`
-                      : "border-transparent bg-white dark:bg-stone-800 hover:border-orange-200"
-                      }`}>
-                      <img src={swatch.img} alt={swatch.name} className="w-full h-full object-cover rounded-full shadow-inner" />
-                      {selectedColor?.code === swatch.code && (
-                        <div className={`absolute -top-1 -right-1 ${accentBg} text-white w-6 h-6 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span className={`text-[10px] font-black tracking-tight transition-colors ${selectedColor?.code === swatch.code ? accentText : "text-stone-500"
-                        }`}>
-                        {swatch.code}
-                      </span>
-                      {swatch.name && <span className="text-[8px] uppercase font-bold text-stone-400 group-hover:text-stone-500 transition-colors line-clamp-1">{swatch.name}</span>}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Icon Grids (Features) */}
+        {/* Specs - 2 Column Layout */}
+        <div className="mb-6">
           {data.sections.map((section, idx) => {
-            if (section.kind === "iconGrid") {
+            if (section.kind === "subsections") {
               return (
-                <div key={idx} className="flex flex-col gap-3 pt-1">
-                  <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
-                    {langKey === "en" ? section.title.en : section.title.th}
-                  </h5>
-                  <div className="grid grid-cols-4 md:grid-cols-5 gap-3">
-                    {section.icons.map((it, iIdx) => (
-                      <div key={iIdx} className="bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-100 dark:border-stone-800 flex flex-col items-center text-center group hover:border-orange-100 dark:hover:border-orange-900 transition-all duration-500 shadow-sm">
-                        <div className="w-10 h-10 mb-3 grayscale group-hover:grayscale-0 transition-all duration-700">
-                          <img src={it.img} alt={it.label.en} className="w-full h-full object-contain" />
-                        </div>
-                        <p className="text-[8px] font-black text-stone-600 dark:text-stone-400 tracking-widest uppercase leading-tight">
-                          {langKey === "en" ? it.label.en : it.label.th}
-                        </p>
+                <div key={idx} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {section.subsections.slice(0, 2).map((sub, sIdx) => (
+                    <div key={sIdx} className="p-5 border border-stone-200 dark:border-stone-700 rounded-xl bg-white/50 dark:bg-stone-800/20">
+                      <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-3">
+                        {langKey === "en" ? sub.title.en : sub.title.th}
+                      </h3>
+                      <div className="space-y-2">
+                        {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
+                          <div key={ii} className="flex items-start gap-2">
+                            <span className="w-2 h-2 rounded-full bg-orange-500 mt-1.5 flex-shrink-0"></span>
+                            <p className="text-sm text-stone-600 dark:text-stone-300">
+                              {item}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               );
             }
             return null;
           })}
 
-
+          {/* Surface Texture & Color - inside specs */}
+          <div className="mt-4">
+            <h3 className="text-xs font-bold tracking-[0.15em] text-stone-800 dark:text-stone-200 uppercase mb-3">
+              {langKey === "en" ? "Surface Texture & Color" : "พื้นผิวและสี"}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {collectionSwatches.slice(0, 6).map((swatch, sIdx) => (
+                <button
+                  key={sIdx}
+                  onClick={() => setSelectedColor(swatch)}
+                  className={`flex flex-col items-center gap-1 transition-all duration-300 ${
+                    selectedColor?.code === swatch.code ? "opacity-100" : "opacity-80 hover:opacity-100"
+                  }`}
+                >
+                  <div className={`w-10 h-14 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden ${
+                    selectedColor?.code === swatch.code ? "ring-2 ring-orange-500 ring-offset-1" : ""
+                  }`}>
+                    <img src={swatch.img} alt={swatch.name} className="w-8 h-12 object-cover rounded" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[9px] font-bold text-stone-700 dark:text-stone-300">{swatch.code}</p>
+                    <p className="text-[8px] text-stone-400 uppercase tracking-wide">{swatch.name}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Big Image Panel */}
-      <div className={`w-full lg:w-5/12 flex flex-col gap-4 ${isImageRight ? "order-1 lg:order-2" : "order-1"}`}>
-        <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800">
-          <img
-            src={selectedColor?.doorImg || selectedDoorImg}
-            alt={currentDoorName}
-            className="w-full h-full object-cover transition-all duration-700"
-          />
-        </div>
-
-        {/* Order Button - Full Width Style */}
-        <div className="-mt-4">
-          <a
-            href={`https://evergreen-online.vercel.app/configure/door/customize?material=${collection.toLowerCase()}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-orange-600 hover:bg-orange-700 shadow-orange-500/30 text-white w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-2xl hover:shadow-orange-500/40 active:scale-[0.98] flex items-center justify-center gap-3 group/btn"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-0.5 transition-transform"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
-            {t("Order Now", "สั่งซื้อสินค้า")}
-          </a>
+        {/* Key Features */}
+        <div className="mb-6">
+          <div className="mb-4">
+            <h3 className="text-xs font-bold tracking-[0.15em] text-stone-800 dark:text-stone-200 uppercase mb-2">
+              {langKey === "en" ? "Key Features" : "คุณสมบัติเด่น"}
+            </h3>
+            <div className="w-12 h-0.5 bg-orange-500"></div>
+          </div>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
+            {data.sections.map((section) => {
+              if (section.kind === "iconGrid") {
+                return section.icons.map((it, iIdx) => (
+                  <div
+                    key={iIdx}
+                    className="flex flex-col items-center gap-1"
+                  >
+                    {it.img && (
+                      <div className="w-12 h-12 rounded-full bg-white dark:bg-stone-800/50 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center overflow-hidden">
+                        <img src={it.img} alt={langKey === "en" ? it.label.en : it.label.th} className="w-8 h-8 object-contain" />
+                      </div>
+                    )}
+                    <p className="text-[8px] font-bold text-stone-500 dark:text-stone-400 uppercase text-center tracking-wide leading-tight">
+                      {langKey === "en" ? it.label.en : it.label.th}
+                    </p>
+                  </div>
+                ));
+              }
+              return null;
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -557,19 +496,27 @@ export const Door: React.FC = () => {
       };
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-300">
-      <div className="container mx-auto px-6 md:px-8 py-12 max-w-7xl flex flex-col gap-10">
-        <div id="wpc">
+    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950">
+      {/* WPC Section */}
+      <section id="wpc" className="border-b border-stone-200 dark:border-stone-800">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
           <ProductCollectionSection collection="WPC" images={IMAGES} t={t} imagePosition="left" />
         </div>
-        <div id="upvc">
+      </section>
+
+      {/* uPVC Section */}
+      <section id="upvc" className="border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/30">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
           <ProductCollectionSection collection="uPVC" images={IMAGES} t={t} imagePosition="right" />
         </div>
-        <div id="melamine">
+      </section>
+
+      {/* Melamine Section */}
+      <section id="melamine">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
           <ProductCollectionSection collection="Melamine" images={IMAGES} t={t} imagePosition="left" />
         </div>
-      </div>
-
-          </div>
+      </section>
+    </div>
   );
 };
