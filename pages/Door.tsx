@@ -58,25 +58,25 @@ interface Swatch {
 }
 
 const swatches: Swatch[] = [
-  { code: "Caramel Sand", name: "", img: "public/door/Caramel Sand.png", doorImg: "public/door/Caramel Sand.png" },
-  { code: "Dark Mocha", name: "", img: "public/door/Dark Mocha.png", doorImg: "public/door/Dark Mocha.png" },
-  { code: "Latte Beige", name: "", img: "public/door/Latte Beige.png", doorImg: "public/door/Latte Beige.png" },
-  { code: "Milk Coffee", name: "", img: "public/door/Milk Coffee.png", doorImg: "public/door/Milk Coffee.png" },
-  { code: "Mocha Brown", name: "", img: "public/door/Mocha Brown.png", doorImg: "public/door/Mocha Brown.png" },
-  { code: "Mocha Mist", name: "", img: "public/door/Mocha Mist.png", doorImg: "public/door/Mocha Mist.png" },
+  { code: "Caramel Sand", name: "", img: "/door/Caramel Sand.png", doorImg: "/door/Caramel Sand.png" },
+  { code: "Dark Mocha", name: "", img: "/door/Dark Mocha.png", doorImg: "/door/Dark Mocha.png" },
+  { code: "Latte Beige", name: "", img: "/door/Latte Beige.png", doorImg: "/door/Latte Beige.png" },
+  { code: "Milk Coffee", name: "", img: "/door/Milk Coffee.png", doorImg: "/door/Milk Coffee.png" },
+  { code: "Mocha Brown", name: "", img: "/door/Mocha Brown.png", doorImg: "/door/Mocha Brown.png" },
+  { code: "Mocha Mist", name: "", img: "/door/Mocha Mist.png", doorImg: "/door/Mocha Mist.png" },
 ];
 
 const melamineSwatches: Swatch[] = [
-  { code: "Earl Grey", name: "", img: "public/door/Melamine/Earl Grey.png", doorImg: "public/door/Melamine/Earl Grey.png" },
-  { code: "Sand", name: "", img: "public/door/Melamine/Sand.png", doorImg: "public/door/Melamine/Sand.png" },
-  { code: "Smoke Grey", name: "", img: "public/door/Melamine/Smoke Grey.png", doorImg: "public/door/Melamine/Smoke Grey.png" },
-  { code: "Tobac Brown", name: "", img: "public/door/Melamine/Tobac Brown.png", doorImg: "public/door/Melamine/Tobac Brown.png" },
-  { code: "Alpine White", name: "", img: "public/door/Melamine/Alpine White.png", doorImg: "public/door/Melamine/Alpine White.png" },
-  { code: "Bronze Brown", name: "", img: "public/door/Melamine/Bronze Brown.png", doorImg: "public/door/Melamine/Bronze Brown.png" },
-  { code: "Ivory Brown", name: "", img: "public/door/Melamine/Ivory Brown.png", doorImg: "public/door/Melamine/Ivory Brown.png" },
-  { code: "Platinum Grey", name: "", img: "public/door/Melamine/Platinum Grey.png", doorImg: "public/door/Melamine/Platinum Grey.png" },
-  { code: "Cocoa Oak", name: "", img: "public/door/Melamine/Cocoa Oak.png", doorImg: "public/door/Melamine/Cocoa Oak.png" },
-  
+  { code: "Earl Grey", name: "", img: "/door/Melamine/Earl Grey.png", doorImg: "/door/Melamine/Earl Grey.png" },
+  { code: "Sand", name: "", img: "/door/Melamine/Sand.png", doorImg: "/door/Melamine/Sand.png" },
+  { code: "Smoke Grey", name: "", img: "/door/Melamine/Smoke Grey.png", doorImg: "/door/Melamine/Smoke Grey.png" },
+  { code: "Tobac Brown", name: "", img: "/door/Melamine/Tobac Brown.png", doorImg: "/door/Melamine/Tobac Brown.png" },
+  { code: "Alpine White", name: "", img: "/door/Melamine/Alpine White.png", doorImg: "/door/Melamine/Alpine White.png" },
+  { code: "Bronze Brown", name: "", img: "/door/Melamine/Bronze Brown.png", doorImg: "/door/Melamine/Bronze Brown.png" },
+  { code: "Ivory Brown", name: "", img: "/door/Melamine/Ivory Brown.png", doorImg: "/door/Melamine/Ivory Brown.png" },
+  { code: "Platinum Grey", name: "", img: "/door/Melamine/Platinum Grey.png", doorImg: "/door/Melamine/Platinum Grey.png" },
+  { code: "Cocoa Oak", name: "", img: "/door/Melamine/Cocoa Oak.png", doorImg: "/door/Melamine/Cocoa Oak.png" },
+
 ];
 
 const WPC_DETAILS: DoorDetail[] = [
