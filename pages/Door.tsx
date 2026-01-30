@@ -58,25 +58,25 @@ interface Swatch {
 }
 
 const swatches: Swatch[] = [
-  { code: "LQ6268", name: "Hickory", img: "/door/ddd1.png", doorImg: "/door/ddd4.png" },
-  { code: "LQ7124", name: "Oak", img: "/door/ddd2.png", doorImg: "/door/ddd2.png" },
-  { code: "LQ8116", name: "Marble", img: "/door/ddd3.png", doorImg: "/door/ddd3.png" },
-  { code: "LQ8128", name: "Marble", img: "/door/ddd4.png", doorImg: "/door/ddd1.png" },
-  { code: "LQ8136", name: "Marble", img: "/door/ddd5.png", doorImg: "/door/ddd5.png" },
-  { code: "LQ8145", name: "Cement", img: "/door/ddd6.png", doorImg: "/door/ddd6.png" },
+  { code: "LQ6268", name: "Hickory", img: "", doorImg: "" },
+  { code: "LQ7124", name: "Oak", img: "", doorImg: "" },
+  { code: "LQ8116", name: "Marble", img: "", doorImg: "" },
+  { code: "LQ8128", name: "Marble", img: "", doorImg: "" },
+  { code: "LQ8136", name: "Marble", img: "", doorImg: "" },
+  { code: "LQ8145", name: "Cement", img: "", doorImg: "" },
 ];
 
 const melamineSwatches: Swatch[] = [
-  { code: "MLD102", name: "", img: "/door/m1.png", doorImg: "/door/m1.png" },
-  { code: "MLD202", name: "", img: "/door/m2.png", doorImg: "/door/m2.png" },
-  { code: "MLD302", name: "", img: "/door/m3.png", doorImg: "/door/m3.png" },
-  { code: "MLD402", name: "", img: "/door/m4.png", doorImg: "/door/m4.png" },
-  { code: "MLD502", name: "", img: "/door/m5.png", doorImg: "/door/m5.png" },
-  { code: "MLD602", name: "", img: "/door/m6.png", doorImg: "/door/m6.png" },
-  { code: "MLD702", name: "", img: "/door/m7.png", doorImg: "/door/m7.png" },
-  { code: "MLD802", name: "", img: "/door/m8.png", doorImg: "/door/m8.png" },
-  { code: "MLD902", name: "", img: "/door/m9.png", doorImg: "/door/m9.png" },
-  { code: "MLD1011", name: "", img: "/door/m10.png", doorImg: "/door/m10.png" },
+  { code: "MLD102", name: "", img: "public/door/WPC1.png", doorImg: "public/door/WPC1.png" },
+  { code: "MLD202", name: "", img: "public/door/WPC2.jpg", doorImg: "public/door/WPC2.jpg" },
+  { code: "MLD302", name: "", img: "public/door/WPC3.jpg", doorImg: "public/door/WPC3.jpg" },
+  { code: "MLD402", name: "", img: "public/door/WPC4.jpg", doorImg: "public/door/WPC4.jpg" },
+  { code: "MLD502", name: "", img: "public/door/WPC5.jpg", doorImg: "public/door/WPC5.jpg" },
+  { code: "MLD602", name: "", img: "public/door/WPC6.jpg", doorImg: "public/door/WPC6.jpg" },
+  { code: "MLD702", name: "", img: "public/door/WPC7.jpg", doorImg: "public/door/WPC7.jpg" },
+  { code: "MLD802", name: "", img: "public/door/WPC8.jpg", doorImg: "public/door/WPC8.jpg" },
+  { code: "MLD902", name: "", img: "public/door/WPC9.jpg", doorImg: "public/door/WPC9.jpg" },
+  
 ];
 
 const WPC_DETAILS: DoorDetail[] = [
@@ -133,12 +133,12 @@ const WPC_DETAILS: DoorDetail[] = [
 ];
 
 const upvcSwatches: Swatch[] = [
-  { code: "SMOOTH", name: "Smooth", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
-  { code: "MODERN", name: "Modern", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
-  { code: "NATURAL", name: "Natural", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
-  { code: "CLASSIC", name: "Classic", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
-  { code: "ELEGANT", name: "Elegant", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
-  { code: "PREMIUM", name: "Premium", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
+  { code: "1-Line Groove", name: "Smooth", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
+  { code: "2-Line Groove", name: "Modern", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
+  { code: "3-Line Groove", name: "Natural", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
+  { code: "4-Line Groove", name: "Classic", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
+  { code: "5-Line Groove", name: "Elegant", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
+  { code: "6-Line Groove", name: "Premium", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
 ];
 
 const UPVC_DETAILS: DoorDetail[] = [
@@ -369,10 +369,10 @@ const ProductCollectionSection: React.FC<{
                     selectedColor?.code === swatch.code ? "opacity-100" : "opacity-80 hover:opacity-100"
                   }`}
                 >
-                  <div className={`w-10 h-14 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden ${
-                    selectedColor?.code === swatch.code ? "ring-2 ring-orange-500 ring-offset-1" : ""
+                  <div className={`w-12 h-12 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden ${
+                    selectedColor?.code === swatch.code ? "ring-2 ring-orange-500 ring-offset-2" : ""
                   }`}>
-                    <img src={swatch.img} alt={swatch.name} className="w-8 h-12 object-cover rounded" />
+                    <img src={swatch.img} alt={swatch.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="text-center">
                     <p className="text-[9px] font-bold text-stone-700 dark:text-stone-300">{swatch.code}</p>
