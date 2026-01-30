@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { PAGE_IMAGES } from "../data/images";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -82,8 +83,8 @@ const WPC_DETAILS: DoorDetail[] = [
   {
     modalTitle: { th: "WPC", en: "WPC" },
     description: {
-      th: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.\nFrom customizable sizes and surface finishes to limitless groove line designs; these doors embody the essence of modern living.",
-      en: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.\nFrom customizable sizes and surface finishes to limitless groove line designs; these doors embody the essence of modern living.",
+      th: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.",
+      en: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.",
     },
     sections: [
       {
@@ -302,10 +303,10 @@ const ProductCollectionSection: React.FC<{
   const collectionSwatches = isMelamine ? melamineSwatches : (collection === "uPVC" ? upvcSwatches : swatches);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 items-start">
+    <div className="flex flex-col lg:flex-row gap-6 items-start">
       {/* Product Info */}
-      <div className={`w-full lg:w-7/12 flex flex-col gap-6 ${isImageRight ? "order-2 lg:order-1" : "order-2"}`}>
-        <div className="flex flex-col gap-5">
+      <div className={`w-full lg:w-7/12 flex flex-col gap-4 ${isImageRight ? "order-2 lg:order-1" : "order-2"}`}>
+        <div className="flex flex-col gap-3">
           <div className="flex flex-col">
             <div className="flex items-center gap-3 mb-2">
               <div className={`h-0.5 w-8 ${accentBg}`} />
@@ -320,22 +321,22 @@ const ProductCollectionSection: React.FC<{
           </p>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           {/* Main Specifications Box: Combines Subsections and Lists */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
               {t("Technical Specifications", "ข้อมูลทางเทคนิค")}
             </h5>
-            <div className="bg-stone-100/40 dark:bg-stone-900/20 rounded-[2.5rem] p-8 md:p-10 border border-stone-100 dark:border-stone-800/40 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+            <div className="bg-stone-100/40 dark:bg-stone-900/20 rounded-[2rem] p-6 md:p-8 border border-stone-100 dark:border-stone-800/40 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
               {data.sections.map((section, idx) => {
                 if (section.kind === "subsections") {
                   return section.subsections.map((sub, sIdx) => (
-                    <div key={`${idx}-${sIdx}`} className="flex flex-col gap-6">
+                    <div key={`${idx}-${sIdx}`} className="flex flex-col gap-4">
                       <h6 className="font-bold text-stone-800 dark:text-stone-200 text-sm">
                         {langKey === "en" ? sub.title.en : sub.title.th}
                       </h6>
                       {/* Every section now gets an even more subtle minimal frame */}
-                      <div className={`bg-white/30 dark:bg-stone-900/20 p-7 rounded-[2rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
+                      <div className={`bg-white/30 dark:bg-stone-900/20 p-5 rounded-[1.5rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
                         {(idx === 0 && sIdx === 0) ? (
                           /* Standard Size: Bold List Style */
                           <ul className="flex flex-col gap-5">
@@ -368,7 +369,7 @@ const ProductCollectionSection: React.FC<{
                       <h6 className="font-bold text-stone-800 dark:text-stone-200 text-sm">
                         {langKey === "en" ? section.title.en : section.title.th}
                       </h6>
-                      <div className={`bg-white/30 dark:bg-stone-900/20 p-7 rounded-[2rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
+                      <div className={`bg-white/30 dark:bg-stone-900/20 p-5 rounded-[1.5rem] border border-stone-200/30 dark:border-stone-800/30 shadow-sm transition-all duration-300 hover:shadow-md ${accentBorder}`}>
                         <ul className="flex flex-col gap-4">
                           {(langKey === "en" ? section.items.en : section.items.th).map((item, ii) => (
                             <li key={ii} className="flex items-start gap-3 group">
@@ -388,7 +389,7 @@ const ProductCollectionSection: React.FC<{
 
           {/* Surface Texture & Color selection (WPC / Melamine / uPVC) */}
           {(collection === "WPC" || collection === "Melamine" || collection === "uPVC") && (
-            <div className="flex flex-col gap-5 pt-2">
+            <div className="flex flex-col gap-3 pt-1">
               <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
                 {t("Surface Texture & Color", "เลือกดูสีและลายไม้")}
               </h5>
@@ -427,11 +428,11 @@ const ProductCollectionSection: React.FC<{
           {data.sections.map((section, idx) => {
             if (section.kind === "iconGrid") {
               return (
-                <div key={idx} className="flex flex-col gap-5 pt-2">
+                <div key={idx} className="flex flex-col gap-3 pt-1">
                   <h5 className="font-bold text-brand-900 dark:text-stone-100 uppercase tracking-widest text-[10px]">
                     {langKey === "en" ? section.title.en : section.title.th}
                   </h5>
-                  <div className="grid grid-cols-4 md:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-4 md:grid-cols-5 gap-3">
                     {section.icons.map((it, iIdx) => (
                       <div key={iIdx} className="bg-white dark:bg-stone-900 p-4 rounded-2xl border border-stone-100 dark:border-stone-800 flex flex-col items-center text-center group hover:border-orange-100 dark:hover:border-orange-900 transition-all duration-500 shadow-sm">
                         <div className="w-10 h-10 mb-3 grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -454,7 +455,7 @@ const ProductCollectionSection: React.FC<{
       </div>
 
       {/* Big Image Panel */}
-      <div className={`w-full lg:w-5/12 flex flex-col gap-8 ${isImageRight ? "order-1 lg:order-2" : "order-1"}`}>
+      <div className={`w-full lg:w-5/12 flex flex-col gap-4 ${isImageRight ? "order-1 lg:order-2" : "order-1"}`}>
         <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-xl bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800">
           <img
             src={selectedColor?.doorImg || selectedDoorImg}
@@ -482,6 +483,18 @@ const ProductCollectionSection: React.FC<{
 
 export const Door: React.FC = () => {
   const { t } = useLanguage();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.slice(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
 
   const PUBLIC_IMAGES = {
     hero: "/door/Df4.jpg",
@@ -495,7 +508,7 @@ export const Door: React.FC = () => {
       "/door/บานเรียบ.png",
     ],
     wpcNames: [
-      { th: "ลาเต้เบจ", en: "WPC-Latte Beige" },
+      { th: "WPC-Door", en: "WPC-Door" },
       { th: "มอคค่ามิสต์", en: "WPC-Mocha Mist" },
       { th: "น้ำตาลมอคค่า", en: "WPC-Mocha Brown" },
       { th: "คาราเมลแซนด์", en: "WPC-Caramel Sand" },
@@ -511,12 +524,12 @@ export const Door: React.FC = () => {
       "/door/dd6.png",
     ],
     upvcNames: [
-      { th: "uPVC", en: "uPVC" },
-      { th: "uPVC", en: "uPVC" },
-      { th: "uPVC", en: "uPVC" },
-      { th: "uPVC", en: "uPVC" },
-      { th: "uPVC", en: "uPVC" },
-      { th: "uPVC", en: "uPVC" },
+      { th: "uPVC-Door", en: "uPVC-Door" },
+      { th: "uPVC-Door", en: "uPVC-Door" },
+      { th: "uPVC-Door", en: "uPVC-Door" },
+      { th: "uPVC-Door", en: "uPVC-Door" },
+      { th: "uPVC-Door", en: "uPVC-Door" },
+      { th: "uPVC-Door", en: "uPVC-Door" },
     ],
     melamineCollection: [
       "/door/dd1.png",
@@ -526,7 +539,7 @@ export const Door: React.FC = () => {
       "/door/dd5.png",
       "/door/dd6.png",
     ],
-    melamineNames: Array(6).fill({ th: "Melamine", en: "Melamine" }),
+    melamineNames: Array(6).fill({ th: "Melamine-Door", en: "Melamine-Door" }),
   };
 
   const IMAGES =
@@ -545,45 +558,18 @@ export const Door: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-300">
-      <div className="container mx-auto px-6 md:px-8 py-20 max-w-7xl flex flex-col gap-16">
-        <ProductCollectionSection collection="WPC" images={IMAGES} t={t} imagePosition="left" />
-        <ProductCollectionSection collection="uPVC" images={IMAGES} t={t} imagePosition="right" />
-        <ProductCollectionSection collection="Melamine" images={IMAGES} t={t} imagePosition="left" />
-      </div>
-
-      {/* Decorative Brand Section */}
-      <div className="container mx-auto pb-32 pt-20 px-12 border-t border-stone-100 dark:border-stone-900">
-        <div className="flex flex-col lg:flex-row items-start gap-24">
-          <div className="w-full lg:w-1/2">
-            <div className="max-w-xl">
-              <span className="text-orange-500 font-black tracking-[0.5em] uppercase text-xs mb-6 block">Legacy / Quality</span>
-              <h3 className="text-4xl md:text-5xl mb-8 text-stone-900 dark:text-stone-100 font-bold tracking-tighter leading-[0.95]">
-                {t("Defying Limits: The Hybrid Era", "ทลายทุกขีดจำกัด: WPC Hybrid Series")}
-              </h3>
-              <div className="space-y-6 text-stone-500 dark:text-stone-400 leading-relaxed text-base">
-                <p>
-                  {t(
-                    "The WPC Elegance Series doors empower you with modern aesthetics and emotional security.",
-                    "ประตู WPC Elegance Series มอบความสวยงามทันสมัยและความมั่นใจในความปลอดภัยให้กับคุณ"
-                  )}
-                </p>
-                <p className="border-l-4 border-orange-500 pl-8 font-medium italic text-stone-600 dark:text-stone-300">
-                  {t(
-                    "Introducing a harmonious blend of Wood Plastic Composite innovation and premium PVC resin. Durability transcends traditional barriers.",
-                    "การผสมผสานจุดเด่นของไม้และพลาสติก เพื่อความทนทานที่ก้าวข้ามทุกความคาดหมาย"
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full lg:w-1/2">
-            <div className="relative rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] group">
-              <img src={IMAGES.feature} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Feature" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
+      <div className="container mx-auto px-6 md:px-8 py-12 max-w-7xl flex flex-col gap-10">
+        <div id="wpc">
+          <ProductCollectionSection collection="WPC" images={IMAGES} t={t} imagePosition="left" />
+        </div>
+        <div id="upvc">
+          <ProductCollectionSection collection="uPVC" images={IMAGES} t={t} imagePosition="right" />
+        </div>
+        <div id="melamine">
+          <ProductCollectionSection collection="Melamine" images={IMAGES} t={t} imagePosition="left" />
         </div>
       </div>
-    </div>
+
+          </div>
   );
 };

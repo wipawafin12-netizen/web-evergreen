@@ -7,8 +7,14 @@ const navItems = [
   { label: "OUR COMPANY", labelTH: "เกี่ยวกับเรา", path: "/our-company" },
 ];
 
+const doorSubItems = [
+  { label: "WPC-Door", labelTH: "WPC-Door", path: "/door", hash: "#wpc" },
+  { label: "uPVC-Door", labelTH: "uPVC-Door", path: "/door", hash: "#upvc" },
+  { label: "Melamine-Door", labelTH: "Melamine-Door", path: "/door", hash: "#melamine" },
+];
+
 const productItems = [
-  { label: "DOOR", labelTH: "ประตู", path: "/door" },
+  { label: "DOOR", labelTH: "ประตู", path: "/door", hasSubmenu: true },
   { label: "DOORFRAME", labelTH: "วงกบ", path: "/doorframe" },
   { label: "FLOORING", labelTH: "พื้นไม้", path: "/flooring" },
   { label: "STAIRCASE", labelTH: "บันได", path: "/staircase" },
@@ -78,13 +84,38 @@ export const Navbar: React.FC = () => {
               <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                 <div className="bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-100 dark:border-stone-800 p-2 min-w-[160px] flex flex-col gap-1">
                   {productItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.path}
-                      className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left"
-                    >
-                      {language === 'EN' ? item.label : item.labelTH}
-                    </Link>
+                    item.hasSubmenu ? (
+                      <div key={item.label} className="relative group/door">
+                        <Link
+                          to={item.path}
+                          className="flex items-center justify-between text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left"
+                        >
+                          {language === 'EN' ? item.label : item.labelTH}
+                          <ChevronDown className="w-3 h-3 -rotate-90" />
+                        </Link>
+                        <div className="absolute left-full top-0 ml-1 opacity-0 invisible group-hover/door:opacity-100 group-hover/door:visible transition-all duration-200 z-50">
+                          <div className="bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-100 dark:border-stone-800 p-2 min-w-[140px] flex flex-col gap-1">
+                            {doorSubItems.map((subItem) => (
+                              <Link
+                                key={subItem.label}
+                                to={`${subItem.path}${subItem.hash}`}
+                                className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left whitespace-nowrap"
+                              >
+                                {language === 'EN' ? subItem.label : subItem.labelTH}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        key={item.label}
+                        to={item.path}
+                        className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left"
+                      >
+                        {language === 'EN' ? item.label : item.labelTH}
+                      </Link>
+                    )
                   ))}
                 </div>
               </div>
@@ -193,14 +224,38 @@ export const Navbar: React.FC = () => {
           <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-2">{language === 'EN' ? "Products" : "สินค้า"}</p>
 
           {productItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {language === 'EN' ? item.label : item.labelTH}
-            </Link>
+            item.hasSubmenu ? (
+              <div key={item.label} className="flex flex-col items-center">
+                <Link
+                  to={item.path}
+                  className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {language === 'EN' ? item.label : item.labelTH}
+                </Link>
+                <div className="flex flex-col items-center gap-1 pl-4 border-l-2 border-brand-500/30 ml-2">
+                  {doorSubItems.map((subItem) => (
+                    <Link
+                      key={subItem.label}
+                      to={`${subItem.path}${subItem.hash}`}
+                      className="text-xs uppercase tracking-widest hover:text-brand-500 text-stone-500 dark:text-stone-500 dark:hover:text-brand-500 transition-colors py-1"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {language === 'EN' ? subItem.label : subItem.labelTH}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.label}
+                to={item.path}
+                className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {language === 'EN' ? item.label : item.labelTH}
+              </Link>
+            )
           ))}
           <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
           <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-2">{language === 'EN' ? "Services" : "บริการ"}</p>

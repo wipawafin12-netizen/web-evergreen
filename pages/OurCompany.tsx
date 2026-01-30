@@ -212,21 +212,21 @@ export const OurCompany: React.FC = () => {
     <div className="min-h-screen bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
 
 
-      <section className="px-6 md:px-12 pt-32 pb-20">
+      <section className="px-6 md:px-12 pt-24 pb-10">
         <div className="container mx-auto max-w-5xl text-center">
           <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 opacity-80">
             {t("Est. 1968", "ก่อตั้ง 1968")}
           </p>
-          <h1 className="mt-8 text-1xl md:text-3xl lg:text-4xl leading-[1.1] text-[#E64A19]">
+          <h1 className="mt-4 text-1xl md:text-3xl lg:text-4xl leading-[1.1] text-[#E64A19]">
             {t("50 Years of Architectural Products", "50 ปีแห่งผลิตภัณฑ์ทางสถาปัตยกรรม")}
           </h1>
         </div>
       </section >
 
 
-      <section className="px-6 md:px-12 pb-32">
+      <section className="px-6 md:px-12 pb-16">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16 items-start">
 
             <div className="md:col-span-6 lg:col-span-6 flex flex-col gap-4">
               <div className="relative overflow-hidden group rounded-3xl">
@@ -245,7 +245,7 @@ export const OurCompany: React.FC = () => {
               </p>
             </div>
 
-            <div className="md:col-span-6 lg:col-span-6 flex flex-col justify-between h-full pt-12 md:pt-24 gap-20">
+            <div className="md:col-span-6 lg:col-span-6 flex flex-col justify-between h-full pt-8 md:pt-12 gap-12">
               {/* ... Right Column Content ... */}
               <div className="max-w-md">
                 <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-6">
@@ -283,10 +283,10 @@ export const OurCompany: React.FC = () => {
       </section>
 
 
-      <section className="px-6 md:px-12 pb-32">
+      <section className="px-6 md:px-12 pb-16">
         <div className="container mx-auto max-w-7xl">
-          <div className="mb-16 md:mb-24 text-center">
-            <h2 className="text-3xl md:text-4xl text-stone-900 dark:text-stone-100 mb-6">
+          <div className="mb-10 md:mb-14 text-center">
+            <h2 className="text-3xl md:text-4xl text-stone-900 dark:text-stone-100 mb-4">
               {t("Our Journey", "เส้นทางของเรา")}
             </h2>
             <div className="w-16 h-[1px] bg-stone-300 dark:bg-stone-700 mx-auto" />
@@ -330,13 +330,13 @@ export const OurCompany: React.FC = () => {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-32">
+      <section className="px-6 md:px-12 pb-16">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center justify-between mb-8">
             <h4 className="text-xl text-stone-900 dark:text-stone-100">{t("Essentials", "สินค้าแนะนำ")}</h4>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {collection.map((item, idx) => (
               <Link key={idx} to={item.path} className="group cursor-pointer block">
                 <div className="aspect-[4/3] overflow-hidden bg-stone-100 dark:bg-stone-900 mb-4 rounded-2xl relative">
@@ -362,9 +362,9 @@ export const OurCompany: React.FC = () => {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-32">
-        <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-20">
-          <h2 className="text-3xl md:text-5xl text-stone-900 dark:text-stone-100 mb-12 text-left">
+      <section className="px-6 md:px-12 pb-16">
+        <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-12">
+          <h2 className="text-3xl md:text-5xl text-stone-900 dark:text-stone-100 mb-8 text-left">
             {t("B2B Services", "บริการ B2B")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -390,9 +390,9 @@ export const OurCompany: React.FC = () => {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-32">
-        <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-20">
-          <h2 className="text-3xl md:text-5xl text-stone-900 dark:text-stone-100 mb-16 text-center">
+      <section className="px-6 md:px-12 pb-16">
+        <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-12">
+          <h2 className="text-3xl md:text-5xl text-stone-900 dark:text-stone-100 mb-10 text-center">
             {t("Facility", "โรงงานของเรา")}
           </h2>
 
@@ -414,10 +414,10 @@ export const OurCompany: React.FC = () => {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-32">
-        <div className="container mx-auto max-w-7xl border-t border-stone-200 dark:border-stone-800 pt-20">
-          <div className="text-center mb-16">
-            <span className="text-sm font-medium text-stone-400 uppercase tracking-widest block mb-4">{t("trusted by", "ได้รับความไว้วางใจจาก")}</span>
+      <section className="px-6 md:px-12 pb-16">
+        <div className="container mx-auto max-w-7xl border-t border-stone-200 dark:border-stone-800 pt-12">
+          <div className="text-center mb-10">
+            <span className="text-sm font-medium text-stone-400 uppercase tracking-widest block mb-3">{t("trusted by", "ได้รับความไว้วางใจจาก")}</span>
             <h2 className="text-2xl md:text-4xl font-medium tracking-widest text-stone-900 dark:text-stone-50">{t("Leading Companies", "บริษัทชั้นนำ")}</h2>
           </div>
 
@@ -438,10 +438,10 @@ export const OurCompany: React.FC = () => {
             }
           `}</style>
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-8">
             {/* Row 1 - Our Clients Developer */}
             <div>
-              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-6">{t("Our Clients Developer", "ลูกค้ากลุ่มผู้พัฒนาโครงการ")}</h3>
+              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Our Clients Developer", "ลูกค้ากลุ่มผู้พัฒนาโครงการ")}</h3>
               <div className="relative overflow-hidden w-full">
                 <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
@@ -457,7 +457,7 @@ export const OurCompany: React.FC = () => {
 
             {/* Row 2 - Main Contractor */}
             <div>
-              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-6">{t("Main Contractor", "ผู้รับเหมาหลัก")}</h3>
+              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Main Contractor", "ผู้รับเหมาหลัก")}</h3>
               <div className="relative overflow-hidden w-full">
                 <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
@@ -473,7 +473,7 @@ export const OurCompany: React.FC = () => {
 
             {/* Row 3 - Hotel & Service Apartment */}
             <div>
-              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-6">{t("Hotel & Service Apartment", "โรงแรมและเซอร์วิสอพาร์ตเมนต์")}</h3>
+              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Hotel & Service Apartment", "โรงแรมและเซอร์วิสอพาร์ตเมนต์")}</h3>
               <div className="relative overflow-hidden w-full">
                 <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
