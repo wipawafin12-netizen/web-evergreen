@@ -54,7 +54,7 @@ export const Doorframe: React.FC = () => {
                                 </div>
                             </div>
                             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="public/doorframe/doorframe1.png" alt="Wooden Doorframe" className="w-full h-full object-cover" />
+                                <img src="/doorframe/doorframe1.png" alt="Wooden Doorframe" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ export const Doorframe: React.FC = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
                             {/* Left: Image */}
                             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="public/doorframe/doorframe2.png" alt="WPC Doorframe" className="w-full h-full object-cover" />
+                                <img src="/doorframe/doorframe2.png" alt="WPC Doorframe" className="w-full h-full object-cover" />
                             </div>
 
                             {/* Right: Content */}

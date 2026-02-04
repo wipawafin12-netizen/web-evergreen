@@ -66,14 +66,14 @@ export const Flooring: React.FC = () => {
     ];
 
     const colorOptions = [
-        { code: "SPC011", img: "public/Flooring/SPC011.png" },
-        { code: "SPC014", img: "public/Flooring/SPC014.jpg" },
-        { code: "SPC012", img: "public/Flooring/SPC012.jpg" },
-        { code: "SPC013", img: "public/Flooring/SPC013.jpg" },
-        { code: "SPC015", img: "public/Flooring/SPC015.png" },
-        { code: "SPC016", img: "public/Flooring/SPC016.png" },
-        { code: "SPC017", img: "public/Flooring/SPC018.png" },
-        { code: "SPC018", img: "public/Flooring/SPC019.png" },
+        { code: "SPC011", img: "/Flooring/SPC011.png" },
+        { code: "SPC012", img: "/Flooring/SPC012.jpg" },
+        { code: "SPC013", img: "/Flooring/SPC013.jpg" },
+        { code: "SPC014", img: "/Flooring/SPC014.jpg" },
+        { code: "SPC015", img: "/Flooring/SPC015.png" },
+        { code: "SPC016", img: "/Flooring/SPC016.png" },
+        { code: "SPC018", img: "/Flooring/SPC018.png" },
+        { code: "SPC019", img: "/Flooring/SPC019.png" },
     ];
 
     const flooringPatterns = [
