@@ -16,7 +16,7 @@ type IconKey =
   | "CHAMFER"
   | "STAINING"
   | "INDOOR_USE"
-  | "INSECT_REPELLENT";
+  | "INSECT_REPELLENT"; 
 
 type IconItem = {
   key?: IconKey;
