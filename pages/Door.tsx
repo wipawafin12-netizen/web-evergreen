@@ -50,9 +50,15 @@ type DoorDetail = {
   sections: Section[];
 };
 
+interface DoorPattern {
+  name: { th: string; en: string };
+  img: string;
+  doorImg: string;
+}
+
 interface Swatch {
   code: string;
-  
+
   name: string;
   img: string;
   doorImg: string;
@@ -65,6 +71,24 @@ const swatches: Swatch[] = [
   { code: "Milk Coffee", name: "", img: "/door/Milk-Coffee.png", doorImg: "/door/Milk-Coffee.png" },
   { code: "Mocha Brown", name: "", img: "/door/Mocha-Brown.png", doorImg: "/door/Mocha-Brown.png" },
   { code: "Mocha Mist", name: "", img: "/door/Mocha-Mist.png", doorImg: "/door/Mocha-Mist.png" },
+];
+
+const wpcPatterns: DoorPattern[] = [
+  { name: { th: "Caramel Sand", en: "Caramel Sand" }, img: "/door/WPC1.png", doorImg: "/door/WPC1.png" },
+  { name: { th: "Latte Beige", en: "Latte Beige" }, img: "/door/WPC2.jpg", doorImg: "/door/WPC2.jpg" },
+  { name: { th: "Mocha Mist", en: "Mocha Mist" }, img: "/door/WPC3.jpg", doorImg: "/door/WPC3.jpg" },
+  { name: { th: "Dark Mocha", en: "Dark Mocha" }, img: "/door/WPC4.jpg", doorImg: "/door/WPC4.jpg" },
+  { name: { th: "Milk Coffee", en: "Milk Coffee" }, img: "/door/WPC5.jpg", doorImg: "/door/WPC5.jpg" },
+  { name: { th: "Mocha Brown", en: "Mocha Brown" }, img: "/door/WPC6.jpg", doorImg: "/door/WPC6.jpg" },
+];
+
+const melaminePatterns: DoorPattern[] = [
+  { name: { th: "ลายไม้ Hickory", en: "Hickory Wood" }, img: "/door/Door-Hick.png", doorImg: "/door/Door-Hick.png" },
+  { name: { th: "ลายไม้ Oak", en: "Oak Wood" }, img: "/door/Door-Oak.png", doorImg: "/door/Door-Oak.png" },
+  { name: { th: "ลายหินอ่อน", en: "Marble" }, img: "/door/Door-Marble.png", doorImg: "/door/Door-Marble.png" },
+  { name: { th: "ลายหินอ่อนเทา", en: "Grey Marble" }, img: "/door/Door-M2.png", doorImg: "/door/Door-M2.png" },
+  { name: { th: "ลายหินเทาอ่อน", en: "Light Stone" }, img: "/door/Door-M3.png", doorImg: "/door/Door-M3.png" },
+  { name: { th: "ลายหินเทาเข้ม", en: "Dark Stone" }, img: "/door/Door-M4.png", doorImg: "/door/Door-M4.png" },
 ];
 
 const melamineSwatches: Swatch[] = [
@@ -83,28 +107,28 @@ const WPC_DETAILS: DoorDetail[] = [
   {
     modalTitle: { th: "WPC", en: "WPC" },
     description: {
-      th: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.",
+      th: "ขอแนะนำซีรีส์ WPC Elegance การผสมผสานอย่างลงตัวระหว่างนวัตกรรม Wood Plastic Composite และเรซิน PVC คุณภาพสูง",
       en: "Introducing the WPC Elegance Series, a harmonious blend of Wood Plastic Composite innovation and premium PVC resin.",
     },
     sections: [
       {
         kind: "subsections",
-        title: { th: "วัสดุ (Material)", en: "Material" },
+        title: { th: "วัสดุ", en: "Material" },
         subsections: [
           {
-            title: { th: "ขนาดมาตรฐาน (Standard Size)", en: "Standard Size" },
+            title: { th: "ขนาดมาตรฐาน", en: "Standard Size" },
             items: {
               th: ["3.5 x 70 x 200 ซม.", "3.5 x 80 x 200 ซม.", "3.5 x 90 x 200 ซม."],
               en: ["3.5 x 70 x 200 cm", "3.5 x 80 x 200 cm", "3.5 x 90 x 200 cm"],
             },
           },
           {
-            title: { th: "สเปก (Specification)", en: "Specification" },
+            title: { th: "สเปก", en: "Specification" },
             items: {
               th: [
-                "ปรับขนาดได้ (Customizable Dimensions)",
-                "ผิวสำเร็จ: ทาสี, PVC DecorFilm (Surface Finishes: Paint, PVC DecorFilm)",
-                "แนะนำสำหรับงานภายใน (Recommended for Indoor Use)",
+                "ปรับขนาดได้",
+                "ผิวสำเร็จ: ทาสี, PVC DecorFilm",
+                "แนะนำสำหรับงานภายใน",
               ],
               en: [
                 "Customizable Dimensions",
@@ -117,13 +141,13 @@ const WPC_DETAILS: DoorDetail[] = [
       },
       {
         kind: "iconGrid",
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
+        title: { th: "คุณสมบัติเด่น", en: "Key Features" },
         icons: [
           { img: "/door/Eco-Friendly.jpg", label: { th: "เป็นมิตรต่อสิ่งแวดล้อม", en: "Eco Friendly" } },
           { img: "/door/Water-Proof.jpg", label: { th: "กันน้ำ", en: "Water Proof" } },
           { img: "/door/Flame-Retardant.jpg", label: { th: "ไม่ลามไฟ", en: "Flame Retardant" } },
           { img: "/door/Chamfer.jpg", label: { th: "ลบมุม", en: "Chamfer" } },
-          { img: "/door/Staining.jpg", label: { th: "รองรับการทำสี", en: "Staining" } },
+      
           { img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "Indoor Use" } },
           { img: "/door/Insect-Repellent.jpg", label: { th: "กันแมลง/ปลวก", en: "Insect Repellent" } },
         ],
@@ -132,13 +156,22 @@ const WPC_DETAILS: DoorDetail[] = [
   },
 ];
 
+const upvcPatterns: DoorPattern[] = [
+  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/dd5.png", doorImg: "/door/dd5.png" },
+  { name: { th: "ร่อง 1 เส้น", en: "1-Line Groove" }, img: "/door/dd3.png", doorImg: "/door/dd3.png" },
+  { name: { th: "ร่อง 2 เส้น", en: "2-Line Groove" }, img: "/door/dd4.png", doorImg: "/door/dd4.png" },
+  { name: { th: "ร่อง 3 เส้น", en: "3-Line Groove" }, img: "/door/dd6.png", doorImg: "/door/dd6.png" },
+  { name: { th: "ร่อง 4 เส้น", en: "4-Line Groove" }, img: "/door/dd1.png", doorImg: "/door/dd1.png" },
+  { name: { th: "ร่อง 5 เส้น", en: "5-Line Groove" }, img: "/door/dd2.png", doorImg: "/door/dd2.png" },
+];
+
 const upvcSwatches: Swatch[] = [
-  { code: "no groove", name: "", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
-  { code: "1-Line Groove", name: "", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
-  { code: "2-Line Groove", name: "", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
-  { code: "3-Line Groove", name: "", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
-  { code: "4-Line Groove", name: "", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
-  { code: "5-Line Groove", name: "", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
+  { code: "ไม่มีร่อง", name: "", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
+  { code: "ร่อง 1 เส้น", name: "", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
+  { code: "ร่อง 2 เส้น", name: "", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
+  { code: "ร่อง 3 เส้น", name: "", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
+  { code: "ร่อง 4 เส้น", name: "", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
+  { code: "ร่อง 5 เส้น", name: "", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
 ];
 
 const UPVC_DETAILS: DoorDetail[] = [
@@ -151,24 +184,24 @@ const UPVC_DETAILS: DoorDetail[] = [
     sections: [
       {
         kind: "subsections",
-        title: { th: "วัสดุ (Material)", en: "Material" },
+        title: { th: "วัสดุ", en: "Material" },
         subsections: [
           {
-            title: { th: "ขนาดมาตรฐาน (Standard Size)", en: "Standard Size" },
+            title: { th: "ขนาดมาตรฐาน", en: "Standard Size" },
             items: {
               th: ["3.5 x 70 x 200 ซม.", "3.5 x 80 x 200 ซม.", "3.5 x 90 x 200 ซม."],
               en: ["3.5 x 70 x 200 cm", "3.5 x 80 x 200 cm", "3.5 x 90 x 200 cm"],
             },
           },
           {
-            title: { th: "ผิวบาน (Surface Finish)", en: "Surface Finish" },
+            title: { th: "ผิวบาน", en: "Surface Finish" },
             items: {
-              th: ["Smooth (ผิวเรียบ)", "Modern (สไตล์ทันสมัย)", "Natural (ลายไม้ธรรมชาติ)"],
+              th: ["ผิวเรียบ", "สไตล์ทันสมัย", "ลายไม้ธรรมชาติ"],
               en: ["Smooth", "Modern", "Natural"],
             },
           },
           {
-            title: { th: "โครงสร้างบาน (Door Core)", en: "Door Core" },
+            title: { th: "โครงสร้างบาน", en: "Door Core" },
             items: {
               th: ["โครงสร้างแน่น แ็ข็งแรง", "ช่วยให้บานคงรูปได้ดี"],
               en: ["Dense structure, durable", "Helps maintain shape well"],
@@ -178,7 +211,7 @@ const UPVC_DETAILS: DoorDetail[] = [
       },
       {
         kind: "iconGrid",
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
+        title: { th: "คุณสมบัติเด่น", en: "Key Features" },
         icons: [
           { img: "/door/Chamfer.jpg", label: { th: "ลบมุม", en: "CHAMFER" } },
           { img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
@@ -197,28 +230,28 @@ const MELAMINE_DETAILS: DoorDetail[] = [
   {
     modalTitle: { th: "Melamine", en: "Melamine" },
     description: {
-      th: "Unlocking Imagination: The Hester Series Melamine Doors\nWhere Creativity Meets the Heart of Your Home\n\nCrafting emotions and defining spaces; our Hester Series Melamine Doors resonate with a touch of artistic elegance that goes beyond the ordinary. Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs. Customize sizes, groove lines, and bring your imagination to life.",
+      th: "ปลดปล่อยจินตนาการ: ประตูเมลามีน ซีรีส์ Hester\nเมื่อความคิดสร้างสรรค์มาบรรจบกับหัวใจของบ้านคุณ\n\nสร้างสรรค์อารมณ์และกำหนดพื้นที่ ประตูเมลามีนซีรีส์ Hester มาพร้อมความสง่างามเชิงศิลปะที่เหนือระดับ เปลี่ยนโฉมภายในบ้านด้วยประตูที่ไม่เพียงแต่ทนทาน แต่ยังมีสไตล์หลากหลาย ตั้งแต่ลายไม้ ผ้า ไปจนถึงลายหนัง ปรับแต่งขนาด เส้นร่อง และทำให้จินตนาการของคุณเป็นจริง",
       en: "Unlocking Imagination: The Hester Series Melamine Doors\nWhere Creativity Meets the Heart of Your Home\n\nCrafting emotions and defining spaces; our Hester Series Melamine Doors resonate with a touch of artistic elegance that goes beyond the ordinary. Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs. Customize sizes, groove lines, and bring your imagination to life.",
     },
     sections: [
       {
         kind: "subsections",
-        title: { th: "วัสดุ (Material)", en: "Material" },
+        title: { th: "วัสดุ", en: "Material" },
         subsections: [
           {
-            title: { th: "ขนาดมาตรฐาน (Standard Size)", en: "Standard Size" },
+            title: { th: "ขนาดมาตรฐาน", en: "Standard Size" },
             items: {
               th: ["3.5 x 80 x 200 ซม.", "3.5 x 90 x 200 ซม."],
               en: ["3.5 x 80 x 200 cm", "3.5 x 90 x 200 cm"],
             },
           },
           {
-            title: { th: "สเปก (Specification)", en: "Specification" },
+            title: { th: "สเปก", en: "Specification" },
             items: {
               th: [
-                "ปรับขนาดได้ (Customizable Dimensions)",
-                "ไสขอบได้สูงสุดข้างละ 5 มม. (Max 5 mm. Trimmable Each Side)",
-                "แนะนำสำหรับงานภายใน (Recommended for Indoor Use)",
+                "ปรับขนาดได้",
+                "ไสขอบได้สูงสุดข้างละ 5 มม.",
+                "แนะนำสำหรับงานภายใน",
               ],
               en: [
                 "Customizable Dimensions",
@@ -231,13 +264,13 @@ const MELAMINE_DETAILS: DoorDetail[] = [
       },
       {
         kind: "iconGrid",
-        title: { th: "คุณสมบัติเด่น (Key Features)", en: "Key Features" },
+        title: { th: "คุณสมบัติเด่น", en: "Key Features" },
         icons: [
           { img: "/door/Chamfer.jpg", label: { th: "ลบมุม", en: "CHAMFER" } },
           { img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
           { img: "/door/Water-Proof.jpg", label: { th: "ทำความสะอาดง่าย", en: "EASY CLEANING" } },
           { img: "/door/Eco-Friendly.jpg", label: { th: "ประหยัด", en: "ECONOMICAL" } },
-          { img: "/door/Flame-Retardant.jpg", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
+          { img: "public/door/Melamine/wear resistance.avif", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
         ],
       },
     ],
@@ -254,8 +287,10 @@ const ProductCollectionSection: React.FC<{
 
   const isMelamine = collection === "Melamine";
   const collectionSwatches = isMelamine ? melamineSwatches : (collection === "uPVC" ? upvcSwatches : swatches);
+  const collectionPatterns = collection === "WPC" ? wpcPatterns : collection === "uPVC" ? upvcPatterns : collection === "Melamine" ? melaminePatterns : null;
 
   const [selectedColor, setSelectedColor] = useState<Swatch | null>(collectionSwatches[0] || null);
+  const [selectedPattern, setSelectedPattern] = useState<DoorPattern | null>(collectionPatterns?.[0] || null);
 
   const currentNames =
     collection === "WPC" ? images.wpcNames :
@@ -290,9 +325,9 @@ const ProductCollectionSection: React.FC<{
       {/* Image */}
       <div className={`${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
         <div className="sticky top-24">
-          <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-b from-stone-100 to-stone-50 dark:from-stone-900 dark:to-stone-950">
+          <div className="relative aspect-[3/4] overflow-hidden">
             <img
-              src={selectedColor?.doorImg || selectedDoorImg}
+              src={selectedColor?.doorImg || selectedPattern?.doorImg || selectedDoorImg}
               alt={currentDoorName}
               className="w-full h-full object-contain transition-all duration-700"
             />
@@ -357,29 +392,58 @@ const ProductCollectionSection: React.FC<{
             return null;
           })}
 
-          {/* Surface Texture & Color - inside specs */}
-          <div className="mt-4">
-            <h3 className="text-xs font-bold tracking-[0.15em] text-stone-800 dark:text-stone-200 uppercase mb-3">
-              {langKey === "en" ? "Surface Texture & Color" : "พื้นผิวและสี"}
+          {/* Door Patterns */}
+          {collectionPatterns && collectionPatterns.length > 0 && (
+            <div className="mt-4">
+              <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
+                {langKey === "en" ? "Patterns" : "ลายประตู"}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {collectionPatterns.map((pattern, pIdx) => (
+                  <button
+                    key={pIdx}
+                    onClick={() => {
+                      setSelectedPattern(pattern);
+                      setSelectedColor(null);
+                    }}
+                    className={`group flex flex-col items-center gap-1 transition-all duration-200 ${
+                      selectedPattern?.name.en === pattern.name.en ? "opacity-100" : "opacity-60 hover:opacity-100"
+                    }`}
+                  >
+                    <div className={`w-14 h-20 rounded-md overflow-hidden transition-all duration-200 ${
+                      selectedPattern?.name.en === pattern.name.en ? "ring-2 ring-orange-500" : ""
+                    }`}>
+                      <img src={pattern.img} alt={langKey === "en" ? pattern.name.en : pattern.name.th} className="w-full h-full object-cover" />
+                    </div>
+                    <p className="text-[8px] text-stone-500 dark:text-stone-400 text-center leading-tight max-w-[56px] truncate">
+                      {langKey === "en" ? pattern.name.en : pattern.name.th}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Surface Texture & Color */}
+          <div className="mt-3">
+            <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
+              {langKey === "en" ? "Colors" : "สี"}
             </h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {collectionSwatches.map((swatch, sIdx) => (
                 <button
                   key={sIdx}
                   onClick={() => setSelectedColor(swatch)}
-                  className={`flex flex-col items-center gap-1 transition-all duration-300 ${
-                    selectedColor?.code === swatch.code ? "opacity-100" : "opacity-80 hover:opacity-100"
+                  className={`flex flex-col items-center gap-1 transition-all duration-200 ${
+                    selectedColor?.code === swatch.code ? "opacity-100" : "opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center overflow-hidden ${
-                    selectedColor?.code === swatch.code ? "ring-2 ring-orange-500 ring-offset-2" : ""
+                  <div className={`w-10 h-10 rounded-full overflow-hidden transition-all duration-200 ${
+                    selectedColor?.code === swatch.code ? "ring-2 ring-orange-500" : ""
                   }`}>
-                    <img src={swatch.img} alt={swatch.name} className="w-full h-full object-cover" />
+                    <img src={swatch.img} alt={swatch.code} className="w-full h-full object-cover" />
                   </div>
-                  <div className="text-center">
-                    <p className="text-[9px] font-bold text-stone-700 dark:text-stone-300">{swatch.code}</p>
-                    <p className="text-[8px] text-stone-400 uppercase tracking-wide">{swatch.name}</p>
-                  </div>
+                  <p className="text-[8px] text-stone-500 dark:text-stone-400 text-center max-w-[44px] truncate">{swatch.code}</p>
                 </button>
               ))}
             </div>
@@ -498,16 +562,16 @@ export const Door: React.FC = () => {
       };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950">
+    <div className="min-h-screen bg-white dark:bg-stone-950">
       {/* WPC Section */}
-      <section id="wpc" className="border-b border-stone-200 dark:border-stone-800">
+      <section id="wpc">
         <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
           <ProductCollectionSection collection="WPC" images={IMAGES} t={t} imagePosition="left" />
         </div>
       </section>
 
       {/* uPVC Section */}
-      <section id="upvc" className="border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/30">
+      <section id="upvc">
         <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
           <ProductCollectionSection collection="uPVC" images={IMAGES} t={t} imagePosition="right" />
         </div>

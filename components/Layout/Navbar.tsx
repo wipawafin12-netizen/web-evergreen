@@ -69,14 +69,14 @@ export const Navbar: React.FC = () => {
               <Link
                 key={item.label}
                 to={item.path}
-                className="text-xs uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
+                className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
               >
                 {language === 'EN' ? item.label : item.labelTH}
               </Link>
             ))}
 
             <div className="relative group">
-              <button className="flex items-center gap-1 text-xs uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
+              <button className="flex items-center gap-1 text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
                 {language === 'EN' ? "PRODUCTS" : "สินค้า"}
                 <ChevronDown className="w-3 h-3" />
               </button>
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             <div className="relative group">
-              <button className="flex items-center gap-1 text-xs uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
+              <button className="flex items-center gap-1 text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
                 {language === 'EN' ? "SERVICES" : "บริการ"}
                 <ChevronDown className="w-3 h-3" />
               </button>

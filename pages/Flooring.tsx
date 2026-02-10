@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export const Flooring: React.FC = () => {
     const { t } = useLanguage();
 
-    const heroImages = [
-        "/Flooring/fr04.png",
-        "/Flooring/fr01.jpg",
-        "/Flooring/fr02.png",
-        "/Flooring/fr03.png"
-    ];
-
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
+    const heroImage = "/Flooring/fr04.png";
 
     const productLayers = [
         {
@@ -64,7 +50,7 @@ export const Flooring: React.FC = () => {
         { label: { en: "Properties", th: "คุณสมบัติ" }, value: { en: "Stain-Resistant", th: "ทนต่อคราบสกปรก" } },
         { label: { en: "Standard", th: "มาตรฐาน" }, value: { en: "European Standard EN 13329:2016", th: "มาตรฐานยุโรป EN 13329:2016" } },
     ];
-
+ 
     const colorOptions = [
         { code: "SPC011", img: "/Flooring/SPC011.png" },
         { code: "SPC012", img: "/Flooring/SPC012.jpg" },
@@ -77,17 +63,17 @@ export const Flooring: React.FC = () => {
     ];
 
     const flooringPatterns = [
-        { en: "Brickwork", th: "แบบก่ออิฐ", pattern: "brickwork" },
-        { en: "Chevron", th: "แบบ Chevron", pattern: "chevron" },
-        { en: "Herringbone", th: "แบบก้างปลา", pattern: "herringbone" },
-        { en: "Random", th: "แบบสุ่ม", pattern: "random" },
-        { en: "Step", th: "แบบขั้นบันได", pattern: "step" },
+        { en: "Brick ", th: "แบบก่ออิฐ", img: "public/Flooring/Brick Pattern.png" },
+        { en: "Chevron", th: "แบบตะกร้าทแยง", img: "public/Flooring/Chevron.png" },
+        { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "public/Flooring/Herringbone.png" },
+        { en: "Single Herringbone", th: "แบบก้างปลาเดี่ยว", img: "public/Flooring/Random.png" },
+        { en: "Double Herringbone", th: "แบบก้างปลาคู่", img: "public/Flooring/Step.png" },
     ];
 
     return (
         <div className="min-h-screen bg-stone-50 dark:bg-stone-900 transition-colors duration-300">
             {/* Hero Section */}
-            <div className="flex flex-col md:flex-row min-h-[600px] h-auto max-h-[900px]">
+            <div className="flex flex-col md:flex-row min-h-[450px] h-auto max-h-[700px]">
                 <div className="w-full md:w-1/2 flex items-start justify-center px-8 md:px-16 pt-6 md:pt-10 bg-white dark:bg-stone-800 z-10 text-left">
                     <div className="max-w-md">
                         <span className="text-xs font-medium text-orange-500 tracking-[0.2em] uppercase block mb-3">
@@ -114,37 +100,24 @@ export const Flooring: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="w-full md:w-1/2 bg-white dark:bg-stone-800 relative flex items-start justify-center pt-8 md:pt-12">
-                    <div className="relative w-full h-full max-w-[500px] max-h-[650px] aspect-[4/5] overflow-hidden shadow-2xl rounded-3xl group">
-                        {heroImages.map((img, index) => (
-                            <img
-                                key={index}
-                                src={img}
-                                alt={`Flooring Hero ${index + 1}`}
-                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-                            />
-                        ))}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
-                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                            {heroImages.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentImageIndex(index)}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-white w-6' : 'bg-white/50'}`}
-                                />
-                            ))}
-                        </div>
+                <div className="w-full md:w-1/2 bg-white dark:bg-stone-800 relative flex items-start justify-center pt-6 md:pt-8">
+                    <div className="relative w-full h-full max-w-[300px] max-h-[380px] aspect-[4/5] overflow-hidden shadow-2xl rounded-3xl">
+                        <img
+                            src={heroImage}
+                            alt="Flooring Hero"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
                 </div>
             </div>
 
             {/* Product Details Section */}
-            <div id="product-details" className="bg-white dark:bg-stone-950 py-16 px-6">
+            <div id="product-details" className="bg-white dark:bg-stone-950 py-10 px-6">
                 <div className="container mx-auto max-w-6xl">
 
                     {/* Product Structure */}
-                    <div className="mb-20">
-                        <div className="text-center mb-12">
+                    <div className="mb-8">
+                        <div className="text-center mb-8">
                             <h2 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 font-semibold">
                                 SPC Structure
                             </h2>
@@ -153,8 +126,8 @@ export const Flooring: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div className="relative">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                            <div className="relative max-w-[400px] mx-auto lg:mx-0">
                                 <img
                                     src="/Flooring/fr03.png"
                                     alt="SPC Floor Structure"
@@ -184,7 +157,7 @@ export const Flooring: React.FC = () => {
                     </div>
 
                     {/* Features */}
-                    <div className="mb-20">
+                    <div className="mb-8">
                         <div className="grid grid-cols-3 md:grid-cols-6 gap-8 md:gap-4">
                             {features.map((feature, index) => (
                                 <div
@@ -232,8 +205,8 @@ export const Flooring: React.FC = () => {
                     </div>
 
                     {/* Standard Size & Specifications */}
-                    <div className="mb-20">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <div className="mb-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {/* Standard Size */}
                             <div className="bg-stone-50 dark:bg-stone-900 rounded-2xl p-8 border border-stone-100 dark:border-stone-800">
                                 <h3 className="text-xl font-medium text-brand-900 dark:text-stone-100 mb-6 flex items-center gap-3">
@@ -286,8 +259,8 @@ export const Flooring: React.FC = () => {
                     </div>
 
                     {/* Color Options */}
-                    <div className="mb-20">
-                        <div className="text-center mb-10">
+                    <div className="mb-8">
+                        <div className="text-center mb-6">
                             <div className="w-12 h-0.5 bg-orange-500 mx-auto mb-4 rounded-full" />
                             <h2 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 font-medium">
                                 {t("Color Options", "ตัวเลือกสี")}
@@ -297,10 +270,10 @@ export const Flooring: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 max-w-4xl mx-auto">
                             {colorOptions.map((color, index) => (
                                 <div key={index} className="group cursor-pointer">
-                                    <div className="aspect-[3/4] rounded-xl shadow-md group-hover:shadow-xl transition-all group-hover:scale-105 border-2 border-transparent group-hover:border-orange-400 overflow-hidden bg-stone-100 dark:bg-stone-800">
+                                    <div className="aspect-[5/1] rounded-lg overflow-hidden group-hover:scale-105 transition-all">
                                         <img
                                             src={color.img}
                                             alt={color.code}
@@ -317,7 +290,7 @@ export const Flooring: React.FC = () => {
 
                     {/* Flooring Patterns */}
                     <div>
-                        <div className="text-center mb-10">
+                        <div className="text-center mb-6">
                             <div className="w-12 h-0.5 bg-orange-500 mx-auto mb-4 rounded-full" />
                             <h2 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 font-medium">
                                 {t("Flooring Patterns", "รูปแบบการปูพื้น")}
@@ -327,91 +300,15 @@ export const Flooring: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6 max-w-4xl mx-auto">
+                        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
                             {flooringPatterns.map((pattern, index) => (
                                 <div key={index} className="group">
-                                    <div className="aspect-square bg-white dark:bg-stone-900 rounded-xl border-2 border-stone-200 dark:border-stone-700 p-4 group-hover:border-orange-400 transition-colors overflow-hidden">
-                                        {/* Pattern SVG illustrations */}
-                                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                                            {pattern.pattern === 'brickwork' && (
-                                                <g stroke="currentColor" strokeWidth="1" fill="none" className="text-stone-400 dark:text-stone-500">
-                                                    <rect x="5" y="5" width="40" height="15" />
-                                                    <rect x="50" y="5" width="45" height="15" />
-                                                    <rect x="5" y="25" width="25" height="15" />
-                                                    <rect x="35" y="25" width="40" height="15" />
-                                                    <rect x="80" y="25" width="15" height="15" />
-                                                    <rect x="5" y="45" width="40" height="15" />
-                                                    <rect x="50" y="45" width="45" height="15" />
-                                                    <rect x="5" y="65" width="25" height="15" />
-                                                    <rect x="35" y="65" width="40" height="15" />
-                                                    <rect x="80" y="65" width="15" height="15" />
-                                                    <rect x="5" y="85" width="40" height="10" />
-                                                    <rect x="50" y="85" width="45" height="10" />
-                                                </g>
-                                            )}
-                                            {pattern.pattern === 'chevron' && (
-                                                <g stroke="currentColor" strokeWidth="1" fill="none" className="text-stone-400 dark:text-stone-500">
-                                                    <path d="M50 5 L95 25 L50 45 L5 25 Z" />
-                                                    <path d="M50 25 L95 45 L50 65 L5 45 Z" />
-                                                    <path d="M50 45 L95 65 L50 85 L5 65 Z" />
-                                                    <path d="M50 65 L95 85 L50 100 L5 85 Z" />
-                                                </g>
-                                            )}
-                                            {pattern.pattern === 'herringbone' && (
-                                                <g stroke="currentColor" strokeWidth="1" fill="none" className="text-stone-400 dark:text-stone-500">
-                                                    <path d="M10 20 L30 10 L30 30 L10 40 Z" />
-                                                    <path d="M30 10 L50 20 L50 40 L30 30 Z" />
-                                                    <path d="M50 20 L70 10 L70 30 L50 40 Z" />
-                                                    <path d="M70 10 L90 20 L90 40 L70 30 Z" />
-                                                    <path d="M10 40 L30 30 L30 50 L10 60 Z" />
-                                                    <path d="M30 30 L50 40 L50 60 L30 50 Z" />
-                                                    <path d="M50 40 L70 30 L70 50 L50 60 Z" />
-                                                    <path d="M70 30 L90 40 L90 60 L70 50 Z" />
-                                                    <path d="M10 60 L30 50 L30 70 L10 80 Z" />
-                                                    <path d="M30 50 L50 60 L50 80 L30 70 Z" />
-                                                    <path d="M50 60 L70 50 L70 70 L50 80 Z" />
-                                                    <path d="M70 50 L90 60 L90 80 L70 70 Z" />
-                                                </g>
-                                            )}
-                                            {pattern.pattern === 'random' && (
-                                                <g stroke="currentColor" strokeWidth="1" fill="none" className="text-stone-400 dark:text-stone-500">
-                                                    <rect x="5" y="5" width="30" height="12" />
-                                                    <rect x="40" y="5" width="25" height="12" />
-                                                    <rect x="70" y="5" width="25" height="12" />
-                                                    <rect x="5" y="22" width="20" height="12" />
-                                                    <rect x="30" y="22" width="35" height="12" />
-                                                    <rect x="70" y="22" width="25" height="12" />
-                                                    <rect x="5" y="39" width="40" height="12" />
-                                                    <rect x="50" y="39" width="20" height="12" />
-                                                    <rect x="75" y="39" width="20" height="12" />
-                                                    <rect x="5" y="56" width="25" height="12" />
-                                                    <rect x="35" y="56" width="30" height="12" />
-                                                    <rect x="70" y="56" width="25" height="12" />
-                                                    <rect x="5" y="73" width="35" height="12" />
-                                                    <rect x="45" y="73" width="25" height="12" />
-                                                    <rect x="75" y="73" width="20" height="12" />
-                                                </g>
-                                            )}
-                                            {pattern.pattern === 'step' && (
-                                                <g stroke="currentColor" strokeWidth="1" fill="none" className="text-stone-400 dark:text-stone-500">
-                                                    <rect x="5" y="5" width="28" height="12" />
-                                                    <rect x="38" y="5" width="28" height="12" />
-                                                    <rect x="71" y="5" width="24" height="12" />
-                                                    <rect x="5" y="22" width="28" height="12" />
-                                                    <rect x="38" y="22" width="28" height="12" />
-                                                    <rect x="71" y="22" width="24" height="12" />
-                                                    <rect x="5" y="39" width="28" height="12" />
-                                                    <rect x="38" y="39" width="28" height="12" />
-                                                    <rect x="71" y="39" width="24" height="12" />
-                                                    <rect x="5" y="56" width="28" height="12" />
-                                                    <rect x="38" y="56" width="28" height="12" />
-                                                    <rect x="71" y="56" width="24" height="12" />
-                                                    <rect x="5" y="73" width="28" height="12" />
-                                                    <rect x="38" y="73" width="28" height="12" />
-                                                    <rect x="71" y="73" width="24" height="12" />
-                                                </g>
-                                            )}
-                                        </svg>
+                                    <div className="aspect-square bg-white dark:bg-stone-900 rounded-lg border-2 border-stone-200 dark:border-stone-700 p-2 group-hover:border-orange-400 transition-colors overflow-hidden">
+                                        <img
+                                            src={pattern.img}
+                                            alt={pattern.en}
+                                            className="w-full h-full object-contain"
+                                        />
                                     </div>
                                     <p className="text-center mt-3 text-sm font-medium text-stone-700 dark:text-stone-300 group-hover:text-orange-500 transition-colors">
                                         {t(pattern.en, pattern.th)}

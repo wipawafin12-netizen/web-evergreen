@@ -1,6 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PAGE_IMAGES } from '../data/images';
 import { useLanguage } from '../contexts/LanguageContext';
+
+const woodenImages = [
+    "/doorframe/doorframe1.png",
+    "/doorframe/Makha.png",
+    "/doorframe/RED.png",
+    "/doorframe/Whiteoak.png",
+    "/doorframe/Takien.png",
+];
+
+const wpcImages = [
+    "/doorframe/doorframe2.png",
+    "/doorframe/01.png",
+    "/doorframe/02.png",
+];
+
+const ImageGallery: React.FC<{ images: string[]; alt: string }> = ({ images, alt }) => {
+    const [selected, setSelected] = useState(0);
+    return (
+        <div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                <img
+                    src={images[selected]}
+                    alt={alt}
+                    className="w-full h-full object-cover transition-all duration-500"
+                />
+            </div>
+            {images.length > 1 && (
+                <div className="flex gap-2 mt-3">
+                    {images.map((img, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setSelected(i)}
+                            className={`w-16 h-12 rounded-lg overflow-hidden transition-all duration-200 ${
+                                selected === i ? "ring-2 ring-orange-500 opacity-100" : "opacity-50 hover:opacity-80"
+                            }`}
+                        >
+                            <img src={img} alt={`${alt} ${i + 1}`} className="w-full h-full object-cover" />
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
 
 export const Doorframe: React.FC = () => {
     const { t } = useLanguage();
@@ -51,11 +95,14 @@ export const Doorframe: React.FC = () => {
                                             <p className="text-xs text-stone-600 dark:text-stone-400">{t("Organic Insect Repellent", "สารสกัดธรรมชาติไล่แมลง")}</p>
                                         </div>
                                     </div>
+                                    <div className="mt-6">
+                                        <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                            {t("Order Now", "สั่งซื้อสินค้า")}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="/doorframe/doorframe1.png" alt="Wooden Doorframe" className="w-full h-full object-cover" />
-                            </div>
+                            <ImageGallery images={woodenImages} alt="Wooden Doorframe" />
                         </div>
                     </div>
 
@@ -63,9 +110,7 @@ export const Doorframe: React.FC = () => {
                     <div className="pb-12">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
                             {/* Left: Image */}
-                            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="/doorframe/doorframe2.png" alt="WPC Doorframe" className="w-full h-full object-cover" />
-                            </div>
+                            <ImageGallery images={wpcImages} alt="WPC Doorframe" />
 
                             {/* Right: Content */}
                             <div>
@@ -118,6 +163,11 @@ export const Doorframe: React.FC = () => {
                                                 <span className="text-xs text-stone-600 dark:text-stone-400">{t("Natural Brown", "สีน้ำตาลธรรมชาติ")}</span>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="mt-6">
+                                        <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                            {t("Order Now", "สั่งซื้อสินค้า")}
+                                        </button>
                                     </div>
                                 </div>
                             </div>

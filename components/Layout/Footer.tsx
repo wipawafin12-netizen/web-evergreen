@@ -48,8 +48,8 @@ export const Footer: React.FC = () => {
                 </>
               ) : (
                 <>
-                  9/1 Moo 1, Bang Len-Lad Lum Kaeo Road,<br />
-                  Khun Sri, Sai Noi District, Nonthaburi 11150<br />
+                  9/1 Moo 1, Bang Len – Lat Lum Kaew Road,<br />
+                 Khun Si Subdistrict, Sai Noi District, Nonthaburi 11150<br />
                   Tel: 02 921 9979<br />
                   Tel: 062-539-9980 (MKT)
                 </>
