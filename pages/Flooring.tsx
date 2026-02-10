@@ -63,11 +63,11 @@ export const Flooring: React.FC = () => {
     ];
 
     const flooringPatterns = [
-        { en: "Brick ", th: "แบบก่ออิฐ", img: "public/Flooring/Brick Pattern.png" },
-        { en: "Chevron", th: "แบบตะกร้าทแยง", img: "public/Flooring/Chevron.png" },
-        { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "public/Flooring/Herringbone.png" },
-        { en: "Single Herringbone", th: "แบบก้างปลาเดี่ยว", img: "public/Flooring/Random.png" },
-        { en: "Double Herringbone", th: "แบบก้างปลาคู่", img: "public/Flooring/Step.png" },
+        { en: "Brick ", th: "แบบก่ออิฐ", img: "/Flooring/Brick Pattern.png" },
+        { en: "Chevron", th: "แบบตะกร้าทแยง", img: "/Flooring/Chevron.png" },
+        { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "/Flooring/Herringbone.png" },
+        { en: "Single Herringbone", th: "แบบก้างปลาเดี่ยว", img: "/Flooring/Random.png" },
+        { en: "Double Herringbone", th: "แบบก้างปลาคู่", img: "/Flooring/Step.png" },
     ];
 
     return (

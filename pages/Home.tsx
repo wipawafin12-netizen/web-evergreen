@@ -22,7 +22,7 @@ const quickCards = [
     }
   },
   {
-    title: { en: "Wall Panel", th: "ผนังตกแต่ง" },
+    title: { en: "Doorframe", th: "วงกบ" },
     img: "/Home Collections/03.jpg",
     path: "/wall-panel",
     description: {

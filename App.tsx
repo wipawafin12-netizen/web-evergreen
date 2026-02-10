@@ -16,6 +16,7 @@ import { B2B } from './pages/B2B';
 import { Affiliate } from './pages/Affiliate';
 import { Login } from './pages/Login';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { ChatBot } from './components/UI/ChatBot';
 
 function App() {
   return (
@@ -57,6 +58,9 @@ function App() {
 
           {/* Footer */}
           <Footer />
+
+          {/* ChatBot Widget */}
+          <ChatBot />
         </div>
       </LanguageProvider>
     </Router>
