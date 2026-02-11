@@ -11,22 +11,22 @@ export const PAGE_IMAGES = {
         feature: "https://images.unsplash.com/photo-1506093481292-637951d953d6?q=80&w=800&auto=format&fit=crop"
     },
     doorframe: {
-        hero: "/d1.png",
+        hero: "/doorframe/doorframe1.png",
         collection: [
-            "/pp1.png",
-            "/df2.png",
-            "/pp3.png"
+            "/doorframe/Makha.png",
+            "/doorframe/RED.png",
+            "/doorframe/Whiteoak.png"
         ],
         feature: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
     },
     flooring: {
-        hero: "/fr.png",
+        hero: "/Flooring/fr01.jpg",
         collection: [
-            "dist/DOOR.png",
-            "dist/door-02.png",
-            "dist/image2.png"
+            "/Flooring/fr02.png",
+            "/Flooring/fr03.png",
+            "/Flooring/fr04.png"
         ],
-        feature: "/cs1.png"
+        feature: "/Flooring/SPC011.png"
     },
     serviceShaft: {
         hero: "/service-shaft/mini%20flat.png",
@@ -39,18 +39,18 @@ export const PAGE_IMAGES = {
     staircase: {
         hero: "https://images.unsplash.com/photo-1522771753062-811c759080b0?q=80&w=2000&auto=format&fit=crop",
         collection: [
-            "dist/Makha.png",
-            "https://images.unsplash.com/photo-1589345224344-93ec32798e9b?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?q=80&w=800&auto=format&fit=crop"
+            "/staircase/w1.jpg",
+            "/staircase/w2.jpg",
+            "/staircase/w3.jpg"
         ]
     },
     wallPanel: {
-        hero: "/fr.png",
+        hero: "/wall-panel/w01.png",
         collection: [
-            "/door-01.png",
-            "/Df4.jpg",
-            "/door02.png",
-            "/pp1.png"
+            "/wall-panel/w02.png",
+            "/wall-panel/w03.png",
+            "/wall-panel/w04.png",
+            "/wall-panel/w05.png"
         ],
         feature: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?q=80&w=800&auto=format&fit=crop"
     }

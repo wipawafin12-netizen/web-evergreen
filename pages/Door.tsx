@@ -65,30 +65,30 @@ interface Swatch {
 }
 
 const swatches: Swatch[] = [
-  { code: "Caramel Sand", name: "", img: "/door/Caramel-Sand.png", doorImg: "/door/Caramel-Sand.png" },
-  { code: "Dark Mocha", name: "", img: "/door/Dark-Mocha.png", doorImg: "/door/Dark-Mocha.png" },
-  { code: "Latte Beige", name: "", img: "/door/Latte-Beige.png", doorImg: "/door/Latte-Beige.png" },
-  { code: "Milk Coffee", name: "", img: "/door/Milk-Coffee.png", doorImg: "/door/Milk-Coffee.png" },
-  { code: "Mocha Brown", name: "", img: "/door/Mocha-Brown.png", doorImg: "/door/Mocha-Brown.png" },
-  { code: "Mocha Mist", name: "", img: "/door/Mocha-Mist.png", doorImg: "/door/Mocha-Mist.png" },
+  { code: "Caramel Sand", name: "", img: "public/door/WPC/1.png", doorImg: "public/door/WPC/ไม่มีร่อง.png" },
+  { code: "Dark Mocha", name: "", img: "public/door/WPC/2.png", doorImg: "public/door/WPC/22.png" },
+  { code: "Latte Beige", name: "", img: "public/door/WPC/3.png", doorImg: "public/door/WPC/33.png" },
+  { code: "Milk Coffee", name: "", img: "public/door/WPC/4.png", doorImg: "public/door/WPC/44.png" },
+  { code: "Mocha Brown", name: "", img: "public/door/WPC/5.png", doorImg: "public/door/WPC/55.png" },
+  { code: "Mocha Mist", name: "", img: "public/door/WPC/6.png", doorImg: "public/door/WPC/66.png" },
 ];
 
 const wpcPatterns: DoorPattern[] = [
-  { name: { th: "Caramel Sand", en: "Caramel Sand" }, img: "/door/WPC1.png", doorImg: "/door/WPC1.png" },
-  { name: { th: "Latte Beige", en: "Latte Beige" }, img: "/door/WPC2.jpg", doorImg: "/door/WPC2.jpg" },
-  { name: { th: "Mocha Mist", en: "Mocha Mist" }, img: "/door/WPC3.jpg", doorImg: "/door/WPC3.jpg" },
-  { name: { th: "Dark Mocha", en: "Dark Mocha" }, img: "/door/WPC4.jpg", doorImg: "/door/WPC4.jpg" },
-  { name: { th: "Milk Coffee", en: "Milk Coffee" }, img: "/door/WPC5.jpg", doorImg: "/door/WPC5.jpg" },
-  { name: { th: "Mocha Brown", en: "Mocha Brown" }, img: "/door/WPC6.jpg", doorImg: "/door/WPC6.jpg" },
+  { name: { th: "ไม่มีร่อง", en: "Caramel Sand" }, img: "public/door/WPC/ไม่มีร่อง.png", doorImg: "public/door/WPC/ไม่มีร่อง.png" },
+  { name: { th: "ร่อง1เส้น", en: "Latte Beige" }, img: "public/door/WPC/ร่อง1เส้น.png", doorImg: "public/door/WPC/ร่อง1เส้น.png" },
+  { name: { th: "ร่อง2เส้น", en: "Mocha Mist" }, img: "public/door/WPC/ร่อง2เส้น.png", doorImg: "public/door/WPC/ร่อง2เส้น.png" },
+  { name: { th: "ร่อง3เส้น", en: "Dark Mocha" }, img: "public/door/WPC/ร่อง3เส้น.png", doorImg: "public/door/WPC/ร่อง3เส้น.png" },
+  { name: { th: "ร่อง4เส้น", en: "Milk Coffee" }, img: "public/door/WPC/ร่อง4เส้น.png", doorImg: "public/door/WPC/ร่อง4เส้น.png" },
+  { name: { th: "ร่อง5เส้น", en: "Mocha Brown" }, img: "public/door/WPC/ร่อง5เส้น.png", doorImg: "public/door/WPC/ร่อง5เส้น.png" },
 ];
 
 const melaminePatterns: DoorPattern[] = [
-  { name: { th: "ลายไม้ Hickory", en: "Hickory Wood" }, img: "/door/Door-Hick.png", doorImg: "/door/Door-Hick.png" },
-  { name: { th: "ลายไม้ Oak", en: "Oak Wood" }, img: "/door/Door-Oak.png", doorImg: "/door/Door-Oak.png" },
-  { name: { th: "ลายหินอ่อน", en: "Marble" }, img: "/door/Door-Marble.png", doorImg: "/door/Door-Marble.png" },
-  { name: { th: "ลายหินอ่อนเทา", en: "Grey Marble" }, img: "/door/Door-M2.png", doorImg: "/door/Door-M2.png" },
-  { name: { th: "ลายหินเทาอ่อน", en: "Light Stone" }, img: "/door/Door-M3.png", doorImg: "/door/Door-M3.png" },
-  { name: { th: "ลายหินเทาเข้ม", en: "Dark Stone" }, img: "/door/Door-M4.png", doorImg: "/door/Door-M4.png" },
+  { name: { th: "ไม่มีร่อง", en: "Hickory Wood" }, img: "public/door/Melamine/ไม่มีร่อง.png", doorImg: "public/door/Melamine/ไม่มีร่อง.png" },
+  { name: { th: "ร่อง1เส้น", en: "Oak Wood" }, img: "public/door/Melamine/ร่อง1เส้น.png", doorImg: "public/door/Melamine/ร่อง1เส้น.png" },
+  { name: { th: "ร่อง2เส้น", en: "Marble" }, img: "public/door/Melamine/ร่อง2เส้น.png", doorImg: "public/door/Melamine/ร่อง2เส้น.png" },
+  { name: { th: "ร่อง3เส้น", en: "Grey Marble" }, img: "public/door/Melamine/ร่อง3เส้น.png", doorImg: "public/door/Melamine/ร่อง3เส้น.png" },
+  { name: { th: "ร่อง4เส้น", en: "Light Stone" }, img: "public/door/Melamine/ร่อง4เส้น.png", doorImg: "public/door/Melamine/ร่อง4เส้น.png" },
+  { name: { th: "ร่อง5เส้น", en: "Dark Stone" }, img: "public/door/Melamine/ร่อง5เส้น.png", doorImg: "public/door/Melamine/ร่อง5เส้น.png" },
 ];
 
 const melamineSwatches: Swatch[] = [

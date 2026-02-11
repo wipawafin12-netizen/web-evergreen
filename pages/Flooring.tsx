@@ -63,11 +63,11 @@ export const Flooring: React.FC = () => {
     ];
 
     const flooringPatterns = [
-        { en: "Brick ", th: "แบบก่ออิฐ", img: "/Flooring/Brick Pattern.png" },
+        { en: "Brick ", th: "แบบก่ออิฐ", img: "/Flooring/brick-pattern.png" },
         { en: "Chevron", th: "แบบตะกร้าทแยง", img: "/Flooring/Chevron.png" },
         { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "/Flooring/Herringbone.png" },
-        { en: "Single Herringbone", th: "แบบก้างปลาเดี่ยว", img: "/Flooring/Random.png" },
-        { en: "Double Herringbone", th: "แบบก้างปลาคู่", img: "/Flooring/Step.png" },
+        { en: "Random", th: "สุ่ม", img: "/Flooring/Random.png" },
+        { en: "Step", th: "ขั้นตอน", img: "/Flooring/Step.png" },
     ];
 
     return (
@@ -303,11 +303,11 @@ export const Flooring: React.FC = () => {
                         <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
                             {flooringPatterns.map((pattern, index) => (
                                 <div key={index} className="group">
-                                    <div className="aspect-square bg-white dark:bg-stone-900 rounded-lg border-2 border-stone-200 dark:border-stone-700 p-2 group-hover:border-orange-400 transition-colors overflow-hidden">
+                                    <div className="aspect-square bg-white dark:bg-stone-900 rounded-lg border-2 border-stone-200 dark:border-stone-700 p-3 group-hover:border-orange-400 transition-colors overflow-hidden flex items-center justify-center">
                                         <img
                                             src={pattern.img}
                                             alt={pattern.en}
-                                            className="w-full h-full object-contain"
+                                            className="max-w-full max-h-full object-contain"
                                         />
                                     </div>
                                     <p className="text-center mt-3 text-sm font-medium text-stone-700 dark:text-stone-300 group-hover:text-orange-500 transition-colors">

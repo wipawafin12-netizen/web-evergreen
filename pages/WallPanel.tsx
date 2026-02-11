@@ -12,7 +12,7 @@ export const WallPanel: React.FC = () => {
 
     const detailImages = [
         "/wall-panel/w02.png",
-        "/Home%20Collections/01.png",
+        "/home-collections/01.png",
         "/our-company/01.png"
     ];
 

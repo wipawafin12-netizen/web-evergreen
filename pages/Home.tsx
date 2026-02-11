@@ -5,7 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 const quickCards = [
   {
     title: { en: "Door", th: "ประตู" },
-    img: "/Home Collections/01.png",
+    img: "/home-collections/01.png",
     path: "/door",
     description: {
       en: "Where Wood Styles Define Your Journey,Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs.",
@@ -14,7 +14,7 @@ const quickCards = [
   },
   {
     title: { en: "Flooring", th: "พื้นไม้" },
-    img: "/Home Collections/fr01.jpg",
+    img: "/home-collections/fr01.jpg",
     path: "/flooring",
     description: {
       en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
@@ -23,7 +23,7 @@ const quickCards = [
   },
   {
     title: { en: "Doorframe", th: "วงกบ" },
-    img: "/Home Collections/03.jpg",
+    img: "/home-collections/03.jpg",
     path: "/wall-panel",
     description: {
       en: "Transform your walls with our decorative panels, adding texture and depth to your interior.",
@@ -32,7 +32,7 @@ const quickCards = [
   },
   {
     title: { en: "Service Shaft", th: "ช่องชาร์ป" },
-    img: "/Home Collections/04.png",
+    img: "/home-collections/04.png",
     path: "/service-shaft",
     description: {
       en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
@@ -44,21 +44,21 @@ const quickCards = [
 
 const heroSlides = [
   {
-    img: "/Home Collections/back.png",
+    img: "/home-collections/back.png",
     pretitle: { en: "Evergreen / Door Products", th: "เอเวอร์กรีน / ผลิตภัณฑ์ประตู" },
     title1: { en: "50 Years of", th: "50 ปีแห่ง" },
     title2: { en: "Architectural Products", th: "ผลิตภัณฑ์สถาปัตยกรรม" },
     desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "วิศวกรรมที่เงียบสงบ ดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและพื้นผิวที่สร้างสรรค์สำหรับพื้นที่สมัยใหม่" }
   },
   {
-    img: "/Home Collections/01.png",
+    img: "/home-collections/01.png",
     pretitle: { en: "Evergreen / Flooring", th: "เอเวอร์กรีน / พื้นไม้" },
     title1: { en: "Timeless", th: "อมตะ" },
     title2: { en: "Wood Flooring", th: "พื้นไม้ธรรมชาติ" },
     desc: { en: "Bring warmth and character to every room with our premium selection of engineered wood flooring.", th: "นำความอบอุ่นและเอกลักษณ์สู่ทุกห้องด้วยพื้นไม้เอ็นจิเนียร์คัดพิเศษของเรา" }
   },
   {
-    img: "/Home Collections/back.png",
+    img: "/home-collections/back.png",
     pretitle: { en: "Evergreen / Innovation", th: "เอเวอร์กรีน / นวัตกรรม" },
     title1: { en: "Modern", th: "ทันสมัย" },
     title2: { en: "Door Solutions", th: "โซลูชันประตู" },
