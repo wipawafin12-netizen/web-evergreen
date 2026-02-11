@@ -14,7 +14,7 @@ const quickCards = [
   },
   {
     title: { en: "Flooring", th: "พื้นไม้" },
-    img: "public/home-collections/พื้นไม้.png",
+    img: "/home-collections/flooring.png",
     path: "/flooring",
     description: {
       en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
@@ -23,7 +23,7 @@ const quickCards = [
   },
   {
     title: { en: "Doorframe", th: "วงกบ" },
-    img: "public/home-collections/วงกบ (1).png",
+    img: "/home-collections/doorframe.png",
     path: "/wall-panel",
     description: {
       en: "Transform your walls with our decorative panels, adding texture and depth to your interior.",
