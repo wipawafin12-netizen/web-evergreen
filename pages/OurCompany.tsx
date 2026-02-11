@@ -212,7 +212,7 @@ export const OurCompany: React.FC = () => {
     <div className="min-h-screen bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
 
 
-      <section className="px-6 md:px-12 pt-24 pb-10">
+      <section className="px-6 md:px-12 pt-10 pb-6">
         <div className="container mx-auto max-w-5xl text-center">
           <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 opacity-80">
             {t("Est. 1968", "ก่อตั้ง 1968")}
