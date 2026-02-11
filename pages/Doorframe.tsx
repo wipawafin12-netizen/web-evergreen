@@ -68,8 +68,8 @@ const wpcVariants: Variant[] = [
         colorNameTh: "สีขาว",
         images: [
             { src: "/doorframe/doorframe2.png", alt: "WPC สีขาว - ด้านหน้า" },
-            { src: "/doorframe/WPCมุม2.png", alt: "WPC สีขาว - มุม 2" },
-            { src: "/doorframe/WPCมุม3.png", alt: "WPC สีขาว - มุม 3" },
+            { src: "/doorframe/wpc-angle2.png", alt: "WPC สีขาว - มุม 2" },
+            { src: "/doorframe/wpc-angle3.png", alt: "WPC สีขาว - มุม 3" },
         ],
     },
     {
@@ -78,7 +78,7 @@ const wpcVariants: Variant[] = [
         colorNameTh: "สีน้ำตาลธรรมชาติ",
         images: [
             { src: "/doorframe/doorframe1.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
-            { src: "/doorframe/WPCมุม2.png", alt: "WPC สีน้ำตาล - มุม 2" },
+            { src: "/doorframe/wpc-angle2.png", alt: "WPC สีน้ำตาล - มุม 2" },
         ],
     },
 ];
