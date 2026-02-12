@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { PAGE_IMAGES } from "../data/images";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -62,6 +62,7 @@ interface Swatch {
   img: string;
   doorImg: string;
   hex?: string;
+  patterns?: { img: string; doorImg: string }[];
 }
 
 
@@ -171,22 +172,69 @@ const EditBtn: React.FC<{
 };
 
 const swatches: Swatch[] = [
-  { code: "Caramel Sand", name: "", img: "/door/WPC/1.png", doorImg: "/door/WPC/no-groove.png", hex: "#C8A96E" },
-  { code: "Dark Mocha", name: "", img: "/door/WPC/2.png", doorImg: "/door/WPC/22.png", hex: "#3C2415" },
-  { code: "Latte Beige", name: "", img: "/door/WPC/3.png", doorImg: "/door/WPC/33.png", hex: "#C9B99A" },
-  { code: "Milk Coffee", name: "", img: "/door/WPC/4.png", doorImg: "/door/WPC/44.png", hex: "#A89070" },
-  { code: "Mocha Brown", name: "", img: "/door/WPC/5.png", doorImg: "/door/WPC/55.png", hex: "#6B4C35" },
-  { code: "Mocha Mist", name: "", img: "/door/WPC/6.png", doorImg: "/door/WPC/66.png", hex: "#9B8E82" },
+  {
+    code: "Caramel Sand", name: "", img: "/door/WPC/1.png", doorImg: "/door/WPC/wpc1.png",
+    patterns: [
+      { img: "/door/WPC/wpc1.png", doorImg: "/door/WPC/wpc1.png" },
+      { img: "/door/WPC/wpc2.png", doorImg: "/door/WPC/wpc2.png" },
+      { img: "/door/WPC/wpc3.png", doorImg: "/door/WPC/wpc3.png" },
+      { img: "/door/WPC/wpc4.png", doorImg: "/door/WPC/wpc4.png" },
+      { img: "/door/WPC/wpc5.png", doorImg: "/door/WPC/wpc5.png" },
+      { img: "/door/WPC/wpc6.png", doorImg: "/door/WPC/wpc6.png" },
+    ],
+  },
+  {
+    code: "Dark Mocha", name: "", img: "/door/WPC/2.png", doorImg: "/door/WPC/2.png",
+    patterns: [
+      { img: "/door/WPC/wpc11.png", doorImg: "/door/WPC/wpc11.png" },
+      { img: "/door/WPC/wpc22.png", doorImg: "/door/WPC/wpc22.png" },
+      { img: "/door/WPC/wpc33.png", doorImg: "/door/WPC/wpc33.png" },
+      { img: "/door/WPC/wpc44.png", doorImg: "/door/WPC/wpc44.png" },
+      { img: "/door/WPC/wpc55.png", doorImg: "/door/WPC/wpc55.png" },
+      { img: "/door/WPC/wpc66.png", doorImg: "/door/WPC/wpc66.png" },
+    ],
+  },
+  {
+    code: "Latte Beige", name: "", img: "/door/WPC/3.png", doorImg: "/door/WPC/3.png",
+    patterns: [
+      { img: "/door/WPC/wpc111.png", doorImg: "/door/WPC/wpc111.png" },
+      { img: "/door/WPC/wpc222.png", doorImg: "/door/WPC/wpc222.png" },
+      { img: "/door/WPC/wpc333.png", doorImg: "/door/WPC/wpc333.png" },
+      { img: "/door/WPC/wpc444.png", doorImg: "/door/WPC/wpc444.png" },
+      { img: "/door/WPC/wpc555.png", doorImg: "/door/WPC/wpc555.png" },
+      { img: "/door/WPC/wpc666.png", doorImg: "/door/WPC/wpc666.png" },
+    ],
+  },
+  {
+    code: "Milk Coffee", name: "", img: "/door/WPC/4.png", doorImg: "/door/WPC/4.png",
+    patterns: [
+      { img: "/door/WPC/wpc1111.png", doorImg: "/door/WPC/wpc1111.png" },
+      { img: "/door/WPC/wpc2222.png", doorImg: "/door/WPC/wpc2222.png" },
+      { img: "/door/WPC/wpc3333.png", doorImg: "/door/WPC/wpc3333.png" },
+      { img: "/door/WPC/wpc4444.png", doorImg: "/door/WPC/wpc4444.png" },
+      { img: "/door/WPC/wpc5555.png", doorImg: "/door/WPC/wpc5555.png" },
+      { img: "/door/WPC/wpc6666.png", doorImg: "/door/WPC/wpc6666.png" },
+    ],
+  },
+  // สีอื่นๆ: เพิ่ม patterns: [...] เหมือนด้านบน เมื่อมีรูปแล้ว
+ 
+  
+{ code: "Mocha Brown", name: "", img: "/door/WPC/5.png", doorImg: "/door/WPC/55.png" },
+  { code: "Mocha Mist", name: "", img: "/door/WPC/6.png", doorImg: "/door/WPC/66.png" },
 ];
 
 const wpcPatterns: DoorPattern[] = [
-  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/WPC/no-groove.png", doorImg: "/door/WPC/no-groove.png" },
-  { name: { th: "ร่อง1เส้น", en: "1-Line Groove" }, img: "/door/WPC/groove-1.png", doorImg: "/door/WPC/groove-1.png" },
-  { name: { th: "ร่อง2เส้น", en: "2-Line Groove" }, img: "/door/WPC/groove-2.png", doorImg: "/door/WPC/groove-2.png" },
-  { name: { th: "ร่อง3เส้น", en: "3-Line Groove" }, img: "/door/WPC/groove-3.png", doorImg: "/door/WPC/groove-3.png" },
-  { name: { th: "ร่อง4เส้น", en: "4-Line Groove" }, img: "/door/WPC/groove-4.png", doorImg: "/door/WPC/groove-4.png" },
-  { name: { th: "ร่อง5เส้น", en: "5-Line Groove" }, img: "/door/WPC/groove-5.png", doorImg: "/door/WPC/groove-5.png" },
+  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/WPC/wpc1.png", doorImg: "/door/WPC/wpc1.png" },
+  { name: { th: "ร่อง1เส้น", en: "1-Line Groove" }, img: "/door/WPC/wpc2.png", doorImg: "/door/WPC/wpc2.png" },
+  { name: { th: "ร่อง2เส้น", en: "2-Line Groove" }, img: "/door/WPC/wpc3.png", doorImg: "/door/WPC/wpc3.png" },
+  { name: { th: "ร่อง3เส้น", en: "3-Line Groove" }, img: "/door/WPC/wpc4.png", doorImg: "/door/WPC/wpc4.png" },
+  { name: { th: "ร่อง4เส้น", en: "4-Line Groove" }, img: "/door/WPC/wpc5.png", doorImg: "/door/WPC/wpc5.png" },
+  { name: { th: "ร่อง5เส้น", en: "5-Line Groove" }, img: "/door/WPC/wpc6.png", doorImg: "/door/WPC/wpc6.png" },
+  
+
+  
 ];
+
 
 const melaminePatterns: DoorPattern[] = [
   { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/Melamine/no-groove.png", doorImg: "/door/Melamine/no-groove.png" },
@@ -263,12 +311,8 @@ const upvcPatterns: DoorPattern[] = [
 ];
 
 const upvcSwatches: Swatch[] = [
-  { code: "ไม่มีร่อง", name: "", img: "/door/dd5.png", doorImg: "/door/dd5.png" },
-  { code: "ร่อง 1 เส้น", name: "", img: "/door/dd3.png", doorImg: "/door/dd3.png" },
-  { code: "ร่อง 2 เส้น", name: "", img: "/door/dd4.png", doorImg: "/door/dd4.png" },
-  { code: "ร่อง 3 เส้น", name: "", img: "/door/dd6.png", doorImg: "/door/dd6.png" },
-  { code: "ร่อง 4 เส้น", name: "", img: "/door/dd1.png", doorImg: "/door/dd1.png" },
-  { code: "ร่อง 5 เส้น", name: "", img: "/door/dd2.png", doorImg: "/door/dd2.png" },
+  { code: "ขาว", name: "", img: "/door/uPVC/upvc.png", doorImg: "/door/uPVC/upvc.png" },
+ 
 ];
 
 const UPVC_DETAILS: DoorDetail[] = [
@@ -404,7 +448,20 @@ const ProductCollectionSection: React.FC<{
             : null;
 
     const [selectedColor, setSelectedColor] = useState<Swatch | null>(collectionSwatches[0] || null);
-    const [selectedPattern, setSelectedPattern] = useState<DoorPattern | null>(collectionPatterns?.[0] || null);
+    const [selectedPatternIndex, setSelectedPatternIndex] = useState<number>(0);
+
+    // เมื่อเปลี่ยนสี → รูปลายประตูเปลี่ยนตามสีที่เลือก
+    const effectivePatterns = useMemo(() => {
+      if (!collectionPatterns) return null;
+      if (!selectedColor?.patterns) return collectionPatterns;
+      return collectionPatterns.map((pattern, idx) => ({
+        ...pattern,
+        img: selectedColor.patterns![idx]?.img || pattern.img,
+        doorImg: selectedColor.patterns![idx]?.doorImg || pattern.doorImg,
+      }));
+    }, [collectionPatterns, selectedColor]);
+
+    const selectedPattern = effectivePatterns?.[selectedPatternIndex] || null;
 
     const currentNames =
       collection === "WPC"
@@ -540,26 +597,26 @@ const ProductCollectionSection: React.FC<{
             })}
 
             {/* Door Patterns */}
-            {collectionPatterns && collectionPatterns.length > 0 && (
+            {effectivePatterns && effectivePatterns.length > 0 && (
               <div className="mt-4">
                 <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
                   {langKey === "en" ? "Patterns" : "ลายประตู"}
                 </h3>
 
                 <div className="flex flex-wrap gap-2">
-                  {collectionPatterns.map((pattern, pIdx) => {
+                  {effectivePatterns.map((pattern, pIdx) => {
                     const patternKey = `pattern:${collection}:${pattern.name.en}`;
                     const pSrc = getImg(patternKey, pattern.img);
 
                     return (
                       <button
                         key={pIdx}
-                        onClick={() => setSelectedPattern(pattern)}
-                        className={`group flex flex-col items-center gap-1 transition-all duration-200 ${selectedPattern?.name.en === pattern.name.en ? "opacity-100" : "opacity-60 hover:opacity-100"
+                        onClick={() => setSelectedPatternIndex(pIdx)}
+                        className={`group flex flex-col items-center gap-1 transition-all duration-200 ${selectedPatternIndex === pIdx ? "opacity-100" : "opacity-60 hover:opacity-100"
                           }`}
                       >
                         <div
-                          className={`relative w-14 h-20 rounded-md overflow-hidden transition-all duration-200 ${selectedPattern?.name.en === pattern.name.en ? "ring-2 ring-orange-500" : ""
+                          className={`relative w-14 h-20 rounded-md overflow-hidden transition-all duration-200 ${selectedPatternIndex === pIdx ? "ring-2 ring-orange-500" : ""
                             }`}
                         >
                           <img
@@ -720,12 +777,12 @@ export const Door: React.FC = () => {
     hero: "/door/Df4.jpg",
     feature: "/door/door1.png",
     wpcCollection: [
-      "/door/WPC/no-groove.png",
-      "/door/WPC/no-groove.png",
-      "/door/WPC/no-groove.png",
-      "/door/WPC/no-groove.png",
-      "/door/WPC/no-groove.png",
-      "/door/WPC/no-groove.png",
+      "/door/WPC/wpc1.png",
+      "/door/WPC/wpc2.png",
+      "/door/WPC/wpc3.png",
+      "/door/WPC/wpc4.png",
+      "/door/WPC/wpc5.png",
+      "/door/WPC/wpc6.png",
     ],
     wpcNames: [
       { th: "WPC-Door", en: "WPC-Door" },
@@ -757,25 +814,7 @@ export const Door: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-stone-950">
-      {/* Edit Mode Toggle */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2">
-        {editMode && hasOverrides && (
-          <button
-            onClick={clearAll}
-            className="px-4 py-2.5 rounded-full text-xs font-medium shadow-lg bg-red-500 hover:bg-red-600 text-white transition-colors"
-          >
-            รีเซ็ตรูปทั้งหมด
-          </button>
-        )}
 
-        <button
-          onClick={() => setEditMode(!editMode)}
-          className={`px-5 py-2.5 rounded-full text-xs font-medium shadow-lg transition-all ${editMode ? "bg-orange-500 hover:bg-orange-600 text-white" : "bg-white hover:bg-stone-50 text-stone-700 border border-stone-200"
-            }`}
-        >
-          {editMode ? "ปิดโหมดแก้ไขรูป" : "แก้ไขรูปภาพ"}
-        </button>
-      </div>
 
       {/* WPC Section */}
       <section id="wpc">
