@@ -545,6 +545,7 @@ const ProductCollectionSection: React.FC<{
                 />
               )}
 
+
               {editMode && (
                 <EditBtn
                   imageKey={mainDoorKey}
@@ -553,19 +554,6 @@ const ProductCollectionSection: React.FC<{
                 />
               )}
             </div>
-
-            {/* CTA Button - Under Image */}
-            <a
-              href={`https://evergreen-online.vercel.app/configure/door/customize?material=${collection.toLowerCase()}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 w-full inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 rounded-full"
-            >
-              {t("Order Now", "สั่งซื้อ")}
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
           </div>
         </div>
 
@@ -585,38 +573,11 @@ const ProductCollectionSection: React.FC<{
           </p>
 
           {/* Specs - 2 Column Layout */}
-          <div className="mb-6 order-1 md:order-3">
-            {data.sections.map((section, idx) => {
-              if (section.kind === "subsections") {
-                return (
-                  <div key={idx} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {section.subsections.slice(0, 2).map((sub, sIdx) => (
-                      <div
-                        key={sIdx}
-                        className="p-5 border border-stone-200 dark:border-stone-700 rounded-xl bg-white/50 dark:bg-stone-800/20"
-                      >
-                        <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-3">
-                          {langKey === "en" ? sub.title.en : sub.title.th}
-                        </h3>
-                        <div className="space-y-2">
-                          {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
-                            <div key={ii} className="flex items-start gap-2">
-                              <span className="w-2 h-2 rounded-full bg-orange-500 mt-1.5 flex-shrink-0"></span>
-                              <p className="text-sm text-stone-600 dark:text-stone-300">{item}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                );
-              }
-              return null;
-            })}
-
+          {/* Specs - 2 Column Layout */}
+          <div className="mb-2 order-1 md:order-3">
             {/* Door Patterns */}
             {effectivePatterns && effectivePatterns.length > 0 && (
-              <div className="mt-4">
+              <div className="mb-2">
                 <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
                   {langKey === "en" ? "Patterns" : "ลายประตู"}
                 </h3>
@@ -683,7 +644,7 @@ const ProductCollectionSection: React.FC<{
             )}
 
             {/* Surface Texture & Color */}
-            <div className="mt-3">
+            <div className="mb-4">
               <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
                 {langKey === "en" ? "Colors" : "สี"}
               </h3>
@@ -721,10 +682,53 @@ const ProductCollectionSection: React.FC<{
                 })}
               </div>
             </div>
+
+            {data.sections.map((section, idx) => {
+              if (section.kind === "subsections") {
+                return (
+                  <div key={idx} className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    {section.subsections.slice(0, 2).map((sub, sIdx) => (
+                      <div
+                        key={sIdx}
+                        className="p-3 border border-stone-200 dark:border-stone-700 rounded-xl bg-white/50 dark:bg-stone-800/20"
+                      >
+                        <h3 className="text-[10px] font-semibold tracking-[0.2em] text-stone-400 uppercase mb-2">
+                          {langKey === "en" ? sub.title.en : sub.title.th}
+                        </h3>
+                        <div className="space-y-1">
+                          {(langKey === "en" ? sub.items.en : sub.items.th).map((item, ii) => (
+                            <div key={ii} className="flex items-start gap-2">
+                              <span className="w-2 h-2 rounded-full bg-orange-500 mt-1.5 flex-shrink-0"></span>
+                              <p className="text-xs text-stone-600 dark:text-stone-300">{item}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              }
+              return null;
+            })}
+
+            {/* CTA Button in Content Column */}
+            <div className="mt-1">
+              <a
+                href={`https://evergreen-online.vercel.app/configure/door/customize?material=${collection.toLowerCase()}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 rounded-lg shadow-md hover:shadow-lg"
+              >
+                {t("Order Now", "สั่งซื้อ")}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           {/* Key Features */}
-          <div className="mb-6 order-4">
+          <div className="mb-0 order-4">
             <div className="mb-4">
               <h3 className="text-xs font-bold tracking-[0.15em] text-stone-800 dark:text-stone-200 uppercase mb-2">
                 {langKey === "en" ? "Key Features" : "คุณสมบัติเด่น"}
@@ -769,7 +773,7 @@ const ProductCollectionSection: React.FC<{
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
   };
 
@@ -836,7 +840,7 @@ export const Door: React.FC = () => {
 
       {/* WPC Section */}
       <section id="wpc">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-16">
           <ProductCollectionSection
             collection="WPC"
             images={IMAGES}
@@ -852,7 +856,7 @@ export const Door: React.FC = () => {
 
       {/* uPVC Section */}
       <section id="upvc">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-16">
           <ProductCollectionSection
             collection="uPVC"
             images={IMAGES}
@@ -868,7 +872,7 @@ export const Door: React.FC = () => {
 
       {/* Melamine Section */}
       <section id="melamine">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-16">
           <ProductCollectionSection
             collection="Melamine"
             images={IMAGES}
