@@ -216,11 +216,29 @@ const swatches: Swatch[] = [
       { img: "/door/WPC/wpc6666.png", doorImg: "/door/WPC/wpc6666.png" },
     ],
   },
-  // สีอื่นๆ: เพิ่ม patterns: [...] เหมือนด้านบน เมื่อมีรูปแล้ว
- 
+   {
+    code: "Mocha Brown", name: "", img: "/door/WPC/4.png", doorImg: "/door/WPC/4.png",
+    patterns: [
+      { img: "/door/WPC/wpc11111.png", doorImg: "/door/WPC/wpc11111.png" },
+      { img: "/door/WPC/wpc22222.png", doorImg: "/door/WPC/wpc22222.png" },
+      { img: "/door/WPC/wpc33333.png", doorImg: "/door/WPC/wpc33333.png" },
+      { img: "/door/WPC/wpc44444.png", doorImg: "/door/WPC/wpc44444.png" },
+      { img: "/door/WPC/wpc55555.png", doorImg: "/door/WPC/wpc55555.png" },
+      { img: "/door/WPC/wpc66666.png", doorImg: "/door/WPC/wpc66666.png" },
+    ],
+  },
+   {
+    code: "Mocha Mist", name: "", img: "/door/WPC/4.png", doorImg: "/door/WPC/4.png",
+    patterns: [
+      { img: "/door/WPC/wpc111111.png", doorImg: "/door/WPC/wpc111111.png" },
+      { img: "/door/WPC/wpc222222.png", doorImg: "/door/WPC/wpc222222.png" },
+      { img: "/door/WPC/wpc333333.png", doorImg: "/door/WPC/wpc333333.png" },
+      { img: "/door/WPC/wpc444444.png", doorImg: "/door/WPC/wpc444444.png" },
+      { img: "/door/WPC/wpc555555.png", doorImg: "/door/WPC/wpc555555.png" },
+      { img: "/door/WPC/wpc666666.png", doorImg: "/door/WPC/wpc666666.png" },
+    ],
+  },
   
-{ code: "Mocha Brown", name: "", img: "/door/WPC/5.png", doorImg: "/door/WPC/55.png" },
-  { code: "Mocha Mist", name: "", img: "/door/WPC/6.png", doorImg: "/door/WPC/66.png" },
 ];
 
 const wpcPatterns: DoorPattern[] = [
