@@ -514,7 +514,7 @@ const ProductCollectionSection: React.FC<{
     const isImageRight = imagePosition === "right";
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 lg:gap-16 items-start">
         {/* Image */}
         <div className={`${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
           <div className="sticky top-24">
@@ -840,7 +840,7 @@ export const Door: React.FC = () => {
 
       {/* WPC Section */}
       <section id="wpc">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 md:px-12 py-4 md:py-16">
           <ProductCollectionSection
             collection="WPC"
             images={IMAGES}
@@ -856,7 +856,7 @@ export const Door: React.FC = () => {
 
       {/* uPVC Section */}
       <section id="upvc">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 md:px-12 py-4 md:py-16">
           <ProductCollectionSection
             collection="uPVC"
             images={IMAGES}
@@ -872,7 +872,7 @@ export const Door: React.FC = () => {
 
       {/* Melamine Section */}
       <section id="melamine">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 md:px-12 py-4 md:py-16">
           <ProductCollectionSection
             collection="Melamine"
             images={IMAGES}

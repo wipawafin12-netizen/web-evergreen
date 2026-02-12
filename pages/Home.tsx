@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
 
 
         <div className="relative min-h-[600px] flex items-center justify-center pt-20">
-        
+
           <div className="absolute inset-0 z-0 overflow-hidden">
 
             <div className="relative w-full h-full">
@@ -102,17 +102,17 @@ export const Home: React.FC = () => {
                     alt="Brand Showcase"
                     className="w-full h-full object-cover"
                   />
-            
+
                   <div className="absolute inset-0 bg-black/40" />
                 </div>
               ))}
             </div>
           </div>
 
-      
+
           <div className="relative z-10 container mx-auto px-6 md:px-12 py-20 text-center">
             <div className="max-w-5xl mx-auto animate-fade-in-up">
-         
+
               <div key={currentHeroSlide} className="animate-fade-in-up">
                 <p className="text-[10px] uppercase tracking-[0.45em] text-white/90 mb-6 font-bold drop-shadow-md">
                   {language === 'EN' ? heroSlides[currentHeroSlide].pretitle.en : heroSlides[currentHeroSlide].pretitle.th}
