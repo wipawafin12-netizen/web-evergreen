@@ -216,7 +216,7 @@ const swatches: Swatch[] = [
       { img: "/door/WPC/wpc6666.png", doorImg: "/door/WPC/wpc6666.png" },
     ],
   },
-   {
+  {
     code: "Mocha Brown", name: "", img: "/door/WPC/4.png", doorImg: "/door/WPC/4.png",
     patterns: [
       { img: "/door/WPC/wpc11111.png", doorImg: "/door/WPC/wpc11111.png" },
@@ -227,7 +227,7 @@ const swatches: Swatch[] = [
       { img: "/door/WPC/wpc66666.png", doorImg: "/door/WPC/wpc66666.png" },
     ],
   },
-   {
+  {
     code: "Mocha Mist", name: "", img: "/door/WPC/4.png", doorImg: "/door/WPC/4.png",
     patterns: [
       { img: "/door/WPC/wpc111111.png", doorImg: "/door/WPC/wpc111111.png" },
@@ -238,7 +238,7 @@ const swatches: Swatch[] = [
       { img: "/door/WPC/wpc666666.png", doorImg: "/door/WPC/wpc666666.png" },
     ],
   },
-  
+
 ];
 
 const wpcPatterns: DoorPattern[] = [
@@ -248,9 +248,9 @@ const wpcPatterns: DoorPattern[] = [
   { name: { th: "ร่อง3เส้น", en: "3-Line Groove" }, img: "/door/WPC/wpc4.png", doorImg: "/door/WPC/wpc4.png" },
   { name: { th: "ร่อง4เส้น", en: "4-Line Groove" }, img: "/door/WPC/wpc5.png", doorImg: "/door/WPC/wpc5.png" },
   { name: { th: "ร่อง5เส้น", en: "5-Line Groove" }, img: "/door/WPC/wpc6.png", doorImg: "/door/WPC/wpc6.png" },
-  
 
-  
+
+
 ];
 
 
@@ -330,7 +330,7 @@ const upvcPatterns: DoorPattern[] = [
 
 const upvcSwatches: Swatch[] = [
   { code: "ขาว", name: "", img: "/door/uPVC/upvc.png", doorImg: "/door/uPVC/upvc.png" },
- 
+
 ];
 
 const UPVC_DETAILS: DoorDetail[] = [
@@ -572,7 +572,7 @@ const ProductCollectionSection: React.FC<{
         {/* Content */}
         <div className={`flex flex-col ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
           {/* Header */}
-          <div className="mb-4">
+          <div className="mb-4 order-2 md:order-1">
             <p className="text-[11px] font-medium tracking-[0.3em] text-orange-500 uppercase mb-2">{collection}</p>
             <h1 className="text-3xl md:text-4xl font-light text-stone-900 dark:text-stone-100 tracking-tight">
               {currentDoorName}
@@ -580,12 +580,12 @@ const ProductCollectionSection: React.FC<{
           </div>
 
           {/* Description */}
-          <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-6 max-w-md whitespace-pre-line">
+          <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-6 max-w-md whitespace-pre-line order-3 md:order-2">
             {langKey === "en" ? data.description.en : data.description.th}
           </p>
 
           {/* Specs - 2 Column Layout */}
-          <div className="mb-6">
+          <div className="mb-6 order-1 md:order-3">
             {data.sections.map((section, idx) => {
               if (section.kind === "subsections") {
                 return (
@@ -724,7 +724,7 @@ const ProductCollectionSection: React.FC<{
           </div>
 
           {/* Key Features */}
-          <div className="mb-6">
+          <div className="mb-6 order-4">
             <div className="mb-4">
               <h3 className="text-xs font-bold tracking-[0.15em] text-stone-800 dark:text-stone-200 uppercase mb-2">
                 {langKey === "en" ? "Key Features" : "คุณสมบัติเด่น"}

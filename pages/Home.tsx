@@ -33,7 +33,7 @@ const quickCards = [
   },
   {
     title: { en: "Service Shaft", th: "ช่องชาร์ป" },
-    img: "public/home-collections/service-shaft.png",
+    img: "/home-collections/service-shaft.png",
     path: "/service-shaft",
     description: {
       en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
