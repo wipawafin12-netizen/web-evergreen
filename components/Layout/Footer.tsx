@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
             <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-xs">
               {language === 'TH' ? (
                 <>
-                  9/1 หมู่ 1 ถนนบางเลน-ลาดหลุมแก้ว<br />
+                  9/1 หมู่ 2 ถนนบางเลน-ลาดหลุมแก้ว<br />
                   ต.ขุนศรี อ.ไทรน้อย จ.นนทบุรี 11150<br />
                   โทร: 02 921 9979<br />
                   โทร: 062-539-9980 (การตลาดออนไลน์)

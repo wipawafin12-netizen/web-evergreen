@@ -112,8 +112,8 @@ const SingleColorGallery: React.FC<{ variant: Variant }> = ({ variant }) => {
                         key={img.src}
                         onClick={() => setActiveImageIdx(i)}
                         className={`w-16 h-12 rounded-lg overflow-hidden transition-all duration-200 ${activeImageIdx === i
-                                ? "ring-2 ring-orange-500 opacity-100"
-                                : "opacity-60 hover:opacity-90"
+                            ? "ring-2 ring-orange-500 opacity-100"
+                            : "opacity-60 hover:opacity-90"
                             }`}
                     >
                         <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
@@ -146,16 +146,16 @@ export const Doorframe: React.FC = () => {
                         <div className="mb-10">
                             <div className="w-12 h-0.5 bg-orange-500 mb-4 rounded-full" />
                             <h2 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 font-medium mb-4 tracking-tight">
-                                {t("Evergreen Wooden Doorframe", "วงกบไม้จริง เอเวอร์กรีน")}
+                                {t(" Wooden Doorframe", "วงกบไม้จริง ")}
                             </h2>
                             <div className="space-y-3 text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
                                 <p className="text-stone-800 dark:text-stone-200 font-medium">
                                     {t("Crafted to Stand the Test of Time", "สร้างสรรค์ขึ้นเพื่อยืนหยัดผ่านการทดสอบของกาลเวลา")}
                                 </p>
-                                <p>
+                                <p className="whitespace-pre-line">
                                     {t(
-                                        "Step into elegance with our Wooden Doorframe, a celebration of nature's charm and lasting strength. Echoing classic designs, these frames create spaces that stand as a testament to your refined taste, combining durability with timeless luxury.",
-                                        "ก้าวเข้าสู่ความสง่างามด้วยวงกบไม้ของเรา การเฉลิมฉลองเสน่ห์ของธรรมชาติและความแข็งแกร่งที่ยาวนาน สะท้อนถึงการออกแบบที่คลาสสิกและสร้างพื้นที่ที่แสดงถึงรสนิยมอันประณีตของคุณ"
+                                        "A permanent structure attached to the wall, framing the door or window panel. A quality frame must be exceptionally strong to support the weight and withstand daily usage.\n\nIt should resist warping, shrinking, or expanding to ensure a perfect seal. Materials include hardwood, steel, aluminum, PVC, and vinyl, selected based on the door type, architectural style, and specific needs like fire, water, or sound resistance.",
+                                        "คือ โครงสร้างของประตู-หน้าต่างที่ยึดติดถาวรอยู่กับผนัง มีลักษณะเป็นกรอบขนาดเท่ากับขนาดของบาน\n\nวงกบที่ดีต้องมีความแข็งแรงมากเนื่องจากต้องเป็นตัวรับน้ำหนักของประตูหรือหน้าต่างทั้งบานและต้องรับแรงกระแทกจากการเปิด-ปิดเป็นประจำ\nอีกทั้งต้องไม่บิดโก่ง ไม่หดหรือขยายตัว เพื่อให้เปิดใช้งานได้สะดวกและตัวบานสามารถปิดได้แนบสนิทกับวงกบ วัสดุที่ใช้ทำวงกบ\nได้แก่ ไม้เนื้อแข็ง เหล็ก อะลูมิเนียม PVC  ไวนิล  การเลือกใช้งานขึ้นอยู่กับประเภทวัสดุของบานประตูหรือหน้าต่าง\nรูปร่างหน้าตาของอาคารตามที่ต้องการ รวมถึงความต้องการพิเศษอื่นๆ เช่น กันไฟ  กันน้ำ  กันเสียง เป็นต้น"
                                     )}
                                 </p>
                             </div>
@@ -208,10 +208,10 @@ export const Doorframe: React.FC = () => {
                                 <p className="text-stone-800 dark:text-stone-200 font-medium">
                                     {t("Innovation Meets Sustainability", "นวัตกรรมที่มาพร้อมกับความยั่งยืน")}
                                 </p>
-                                <p>
+                                <p className="whitespace-pre-line">
                                     {t(
-                                        "Our WPC Doorframes aren't just durable and waterproof; they are termite-proof, flame retardant, and paintable. Perfect for both indoor and outdoor applications.",
-                                        "วงกบประตู WPC ของเราไม่เพียงแต่ทนทานและกันน้ำ แต่ยังป้องกันปลวก ทนไฟ และสามารถทาสีทับได้ เหมาะสำหรับใช้งานทั้งภายในและภายนอก"
+                                        "An alternative designed to solve traditional wooden frame issues like moisture sensitivity and termite risks.\n\nWPC synthetic wood doorframes are suitable for both interior and exterior use, supporting wet and dry installation systems for maximum flexibility.\n\nThe material can be cut, drilled, planed, or sawed with standard woodworking tools, ensuring easy and uncomplicated installation.\n\nMoisture-resistant, rot-proof, and low maintenance—WPC frames are the ideal choice for modern doors, delivering durability and long-term value.",
+                                        "อีกหนึ่งทางเลือกที่ออกแบบมาเพื่อแก้ปัญหาวงกบไม้แบบเดิม ๆ ที่ไม่ทนความชื้น และเสี่ยงต่อปลวกหรือมอดกัดกินเนื้อไม้\n\nวงกบประตูไม้สังเคราะห์ WPC สามารถใช้งานได้ทั้งภายในและภายนอกอาคาร รองรับการติดตั้งได้ทั้งระบบเปียกและระบบแห้ง ให้ความยืดหยุ่นในการทำงานของช่าง\n\nตัววัสดุสามารถตัด เจาะ ไส หรือเลื่อยได้ด้วยเครื่องมือช่างไม้ทั่วไป ทำให้ติดตั้งสะดวก ไม่ซับซ้อน\n\nด้วยคุณสมบัติที่ทนชื้น ไม่ผุกร่อน และดูแลรักษาง่าย วงกบ WPC จึงเป็นอีกหนึ่งทางเลือกที่เหมาะกับงานประตูยุคใหม่ ทั้งในแง่ความทนทานและความคุ้มค่าในระยะยาว"
                                     )}
                                 </p>
                             </div>
