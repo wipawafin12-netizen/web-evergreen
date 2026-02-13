@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-full bg-white dark:bg-stone-950 py-4 px-4 md:px-8 sticky top-0 z-50 shadow-sm transition-colors duration-300 relative">
+    <nav className="w-full bg-white dark:bg-stone-950 py-4 px-2 sm:px-4 md:px-8 sticky top-0 z-50 shadow-sm transition-colors duration-300 relative">
 
       <div className="flex items-center gap-3">
 
@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
           <img
             src="/logo/logo-03.png"
             alt="Evergreen Logo"
-            className="w-32 h-16 md:w-52 md:h-20 object-contain transition-all duration-300 -mt-1 md:-mt-2 ml-4 md:ml-8"
+            className="w-24 h-12 sm:w-32 sm:h-16 md:w-52 md:h-20 object-contain transition-all duration-300 -mt-1 md:-mt-2 ml-1 sm:ml-4 md:ml-8"
           />
 
 
@@ -145,24 +145,24 @@ export const Navbar: React.FC = () => {
         </div>
 
 
-        <div className="ml-auto flex items-center gap-2 md:gap-4 flex-shrink-0 mr-2 lg:mr-6">
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2 md:gap-4 flex-shrink-0 mr-1 sm:mr-2 lg:mr-6">
           <Link
             to="/affiliate"
-            className="flex items-center gap-2 bg-[#FFAB40] text-white px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#FF9100] transition-all shadow-md hover:shadow-lg"
+            className="flex items-center bg-[#FFAB40] text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-5 md:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide hover:bg-[#FF9100] transition-all shadow-md hover:shadow-lg whitespace-nowrap"
           >
             <span>AFFILIATE</span>
           </Link>
           <Link
             to="/quote"
-            className="flex items-center gap-2 bg-[#f37021] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
+            className="flex items-center gap-1 sm:gap-2 bg-[#f37021] text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm whitespace-nowrap"
           >
-            <FileText className="w-3 h-3 md:w-3.5 md:h-3.5" />
+            <FileText className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0" />
             <span className="hidden md:inline">{language === 'EN' ? 'Get Quote' : 'ขอใบเสนอราคา'}</span>
-            <span className="md:hidden text-[10px]">{language === 'EN' ? 'Quote' : 'ขอราคา'}</span>
+            <span className="md:hidden">{language === 'EN' ? 'Quote' : 'ขอราคา'}</span>
           </Link>
           <Link
             to="/b2b"
-            className="flex items-center gap-2 bg-[#78B833] text-white px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#659e2b] transition-all shadow-md hover:shadow-lg"
+            className="flex items-center bg-[#78B833] text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-5 md:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide hover:bg-[#659e2b] transition-all shadow-md hover:shadow-lg whitespace-nowrap"
           >
             <span>B2B</span>
           </Link>
@@ -195,7 +195,7 @@ export const Navbar: React.FC = () => {
 
 
       <div
-        className={`xl:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-96 opacity-100 pb-8' : 'max-h-0 opacity-0'
+        className={`xl:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[50vh] opacity-100 pb-8 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'
           }`}
       >
         <div className="flex flex-col items-center gap-4 pt-4 border-t border-stone-100 dark:border-stone-800">

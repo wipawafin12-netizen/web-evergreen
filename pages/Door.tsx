@@ -514,7 +514,7 @@ const ProductCollectionSection: React.FC<{
     const isImageRight = imagePosition === "right";
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-1 gap-x-4 md:gap-12 lg:gap-16 items-start">
         {/* Image */}
         <div className={`${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
           <div className="sticky top-24">

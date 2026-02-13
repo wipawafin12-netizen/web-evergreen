@@ -78,7 +78,7 @@ const wpcVariants: Variant[] = [
         colorNameTh: "สีน้ำตาลธรรมชาติ",
         images: [
             { src: "/doorframe/doorframe1.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
-            { src: "/doorframe/wpc-angle2.png", alt: "WPC สีน้ำตาล - มุม 2" },
+            
         ],
     },
 ];
