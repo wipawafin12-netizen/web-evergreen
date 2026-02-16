@@ -320,12 +320,12 @@ const WPC_DETAILS: DoorDetail[] = [
 ];
 
 const upvcPatterns: DoorPattern[] = [
-  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/dd5.png", doorImg: "/door/dd5.png" },
-  { name: { th: "ร่อง 1 เส้น", en: "1-Line Groove" }, img: "/door/dd3.png", doorImg: "/door/dd3.png" },
-  { name: { th: "ร่อง 2 เส้น", en: "2-Line Groove" }, img: "/door/dd4.png", doorImg: "/door/dd4.png" },
-  { name: { th: "ร่อง 3 เส้น", en: "3-Line Groove" }, img: "/door/dd6.png", doorImg: "/door/dd6.png" },
-  { name: { th: "ร่อง 4 เส้น", en: "4-Line Groove" }, img: "/door/dd1.png", doorImg: "/door/dd1.png" },
-  { name: { th: "ร่อง 5 เส้น", en: "5-Line Groove" }, img: "/door/dd2.png", doorImg: "/door/dd2.png" },
+  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/uPVC/upvc1.png", doorImg: "/door/uPVC/upvc1.png" },
+  { name: { th: "ร่อง 1 เส้น", en: "1-Line Groove" }, img: "/door/uPVC/upvc2.png", doorImg: "/door/uPVC/upvc2.png" },
+  { name: { th: "ร่อง 2 เส้น", en: "2-Line Groove" }, img: "/door/uPVC/upvc3.png", doorImg: "/door/uPVC/upvc3.png" },
+  { name: { th: "ร่อง 3 เส้น", en: "3-Line Groove" }, img: "/door/uPVC/upvc4.png", doorImg: "/door/uPVC/upvc4.png" },
+  { name: { th: "ร่อง 4 เส้น", en: "4-Line Groove" }, img: "/door/uPVC/upvc5.png", doorImg: "/door/uPVC/upvc5.png" },
+  { name: { th: "ร่อง 5 เส้น", en: "5-Line Groove" }, img: "/door/uPVC/upvc6.png", doorImg: "/door/uPVC/upvc6.png" },
 ];
 
 const upvcSwatches: Swatch[] = [
@@ -504,7 +504,7 @@ const ProductCollectionSection: React.FC<{
     const DETAILS = collection === "WPC" ? WPC_DETAILS : collection === "uPVC" ? UPVC_DETAILS : MELAMINE_DETAILS;
     const data = DETAILS[selectedDoorIndex] || DETAILS[0];
 
-    // ✅ Unique key per "main door slot"
+
     const mainDoorKey = `door:${collection}:${selectedDoorIndex}`;
 
     // main door fallback: use pattern doorImg if exists; otherwise use collection door
@@ -814,9 +814,9 @@ export const Door: React.FC = () => {
       { th: "นมกาแฟ", en: "WPC-Milk Coffee" },
       { th: "น้ำตาลดำ", en: "WPC-Dark Mocha" },
     ],
-    upvcCollection: ["/door/dd1.png", "/door/dd2.png", "/door/dd3.png", "/door/dd4.png", "/door/dd5.png", "/door/dd6.png"],
+    upvcCollection: ["/door/uPVC/upvc1.png", "/door/uPVC/upvc2.png", "/door/uPVC/upvc3.png", "/door/uPVC/upvc4.png", "/door/uPVC/upvc5.png", "/door/uPVC/upvc6.png"],
     upvcNames: Array(6).fill({ th: "uPVC-Door", en: "uPVC-Door" }),
-    melamineCollection: ["/door/dd1.png", "/door/dd2.png", "/door/dd3.png", "/door/dd4.png", "/door/dd5.png", "/door/dd6.png"],
+    melamineCollection: ["/door/Melamine/no-groove.png", "/door/Melamine/groove-1.png", "/door/Melamine/groove-2.png", "/door/Melamine/groove-3.png", "/door/Melamine/groove-4.png", "/door/Melamine/groove-5.png"],
     melamineNames: Array(6).fill({ th: "Melamine-Door", en: "Melamine-Door" }),
   };
 

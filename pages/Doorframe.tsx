@@ -130,7 +130,6 @@ const SingleColorGallery: React.FC<{ variant: Variant }> = ({ variant }) => {
     );
 };
 
-/* ─── Page ────────────────────────────────────────────────── */
 export const Doorframe: React.FC = () => {
     const { t } = useLanguage();
     return (
