@@ -78,12 +78,13 @@ const wpcVariants: Variant[] = [
         colorNameTh: "สีน้ำตาลธรรมชาติ",
         images: [
             { src: "/doorframe/doorframe1.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
-            
+            { src: "/doorframe/wpc2.3.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
+            { src: "/doorframe/wpc2.2.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
         ],
     },
 ];
 
-/* ─── SingleColorGallery (one color with multiple angles) ── */
+
 const SingleColorGallery: React.FC<{ variant: Variant }> = ({ variant }) => {
     const { t } = useLanguage();
     const [activeImageIdx, setActiveImageIdx] = useState(0);
@@ -257,7 +258,6 @@ export const Doorframe: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Each color on its own row */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {wpcVariants.map((variant) => (
                                 <SingleColorGallery key={variant.colorId} variant={variant} />
