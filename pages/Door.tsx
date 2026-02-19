@@ -75,7 +75,7 @@ function useImageOverrides() {
     }
   });
 
-  // get image by key + fallback src
+
   const getImg = useCallback(
     (imageKey: string, fallbackSrc: string) => overrides[imageKey] || fallbackSrc,
     [overrides]
@@ -117,9 +117,7 @@ function useImageOverrides() {
   };
 }
 
-/* ──────────────────────────────────────────────────────────────
-   Edit overlay button
-────────────────────────────────────────────────────────────── */
+
 const EditBtn: React.FC<{
   imageKey: string;
   onFileSelect: (key: string, file: File) => void;
@@ -255,24 +253,114 @@ const wpcPatterns: DoorPattern[] = [
 
 
 const melaminePatterns: DoorPattern[] = [
-  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/Melamine/no-groove.png", doorImg: "/door/Melamine/no-groove.png" },
-  { name: { th: "ร่อง1เส้น", en: "1-Line Groove" }, img: "/door/Melamine/groove-1.png", doorImg: "/door/Melamine/groove-1.png" },
-  { name: { th: "ร่อง2เส้น", en: "2-Line Groove" }, img: "/door/Melamine/groove-2.png", doorImg: "/door/Melamine/groove-2.png" },
-  { name: { th: "ร่อง3เส้น", en: "3-Line Groove" }, img: "/door/Melamine/groove-3.png", doorImg: "/door/Melamine/groove-3.png" },
-  { name: { th: "ร่อง4เส้น", en: "4-Line Groove" }, img: "/door/Melamine/groove-4.png", doorImg: "/door/Melamine/groove-4.png" },
-  { name: { th: "ร่อง5เส้น", en: "5-Line Groove" }, img: "/door/Melamine/groove-5.png", doorImg: "/door/Melamine/groove-5.png" },
+  { name: { th: "ไม่มีร่อง", en: "No Groove" }, img: "/door/Melamine/Earl Grey-1.png", doorImg: "/door/Melamine/Earl Grey-1.png" },
+  { name: { th: "ร่อง1เส้น", en: "1-Line Groove" }, img: "/door/Melamine/Earl Grey-2.png", doorImg: "/door/Melamine/Earl Grey-2.png" },
+  { name: { th: "ร่อง2เส้น", en: "2-Line Groove" }, img: "/door/Melamine/Earl Grey-3.png", doorImg: "/door/Melamine/Earl Grey-3.png" },
+  { name: { th: "ร่อง3เส้น", en: "3-Line Groove" }, img: "/door/Melamine/Earl Grey-4.png", doorImg: "/door/Melamine/Earl Grey-4.png" },
+  { name: { th: "ร่อง4เส้น", en: "4-Line Groove" }, img: "/door/Melamine/Earl Grey-5.png", doorImg: "/door/Melamine/Earl Grey-5.png" },
+  { name: { th: "ร่อง5เส้น", en: "5-Line Groove" }, img: "/door/Melamine/Earl Grey-6.png", doorImg: "/door/Melamine/Earl Grey-6.png" },
 ];
 
 const melamineSwatches: Swatch[] = [
-  { code: "Earl Grey", name: "", img: "/door/Melamine/Earl-Grey.png", doorImg: "/door/Melamine/Earl-Grey.png", hex: "#928B84" },
-  { code: "Sand", name: "", img: "/door/Melamine/Sand.png", doorImg: "/door/Melamine/Sand.png", hex: "#C2B49E" },
-  { code: "Smoke Grey", name: "", img: "/door/Melamine/Smoke-Grey.png", doorImg: "/door/Melamine/Smoke-Grey.png", hex: "#6E6862" },
-  { code: "Tobac Brown", name: "", img: "/door/Melamine/Tobac-Brown.png", doorImg: "/door/Melamine/Tobac-Brown.png", hex: "#5E4839" },
-  { code: "Alpine White", name: "", img: "/door/Melamine/Alpine-White.png", doorImg: "/door/Melamine/Alpine-White.png", hex: "#E8E3DD" },
-  { code: "Bronze Brown", name: "", img: "/door/Melamine/Bronze-Brown.png", doorImg: "/door/Melamine/Bronze-Brown.png", hex: "#55423A" },
-  { code: "Ivory Brown", name: "", img: "/door/Melamine/Ivory-Brown.png", doorImg: "/door/Melamine/Ivory-Brown.png", hex: "#B5A08A" },
-  { code: "Platinum Grey", name: "", img: "/door/Melamine/Platinum-Grey.png", doorImg: "/door/Melamine/Platinum-Grey.png", hex: "#A19A93" },
-  { code: "Cocoa Oak", name: "", img: "/door/Melamine/Cocoa-Oak.png", doorImg: "/door/Melamine/Cocoa-Oak.png", hex: "#705644" },
+  {
+    code: "Earl Grey", name: "", img: "/door/Melamine/Earl Grey.jpg", doorImg: "/door/Melamine/Earl Grey.jpg", hex: "#928B84",
+    patterns: [
+      { img: "/door/Melamine/Earl Grey-1.png", doorImg: "/door/Melamine/Earl Grey-1.png" },
+      { img: "/door/Melamine/Earl Grey-2.png", doorImg: "/door/Melamine/Earl Grey-2.png" },
+      { img: "/door/Melamine/Earl Grey-3.png", doorImg: "/door/Melamine/Earl Grey-3.png" },
+      { img: "/door/Melamine/Earl Grey-4.png", doorImg: "/door/Melamine/Earl Grey-4.png" },
+      { img: "/door/Melamine/Earl Grey-5.png", doorImg: "/door/Melamine/Earl Grey-5.png" },
+      { img: "/door/Melamine/Earl Grey-6.png", doorImg: "/door/Melamine/Earl Grey-6.png" },
+    ],
+  },
+  {
+    code: "Sand", name: "", img: "/door/Melamine/Sand Oak.jpg", doorImg: "/door/Melamine/Sand Oak.jpg", hex: "#C2B49E",
+    patterns: [
+      { img: "/door/Melamine/Sand Oak-1.png", doorImg: "/door/Melamine/Sand Oak-1.png" },
+      { img: "/door/Melamine/Sand Oak-2.png", doorImg: "/door/Melamine/Sand Oak-2.png" },
+      { img: "/door/Melamine/Sand Oak-3.png", doorImg: "/door/Melamine/Sand Oak-3.png" },
+      { img: "/door/Melamine/Sand Oak-4.png", doorImg: "/door/Melamine/Sand Oak-4.png" },
+      { img: "/door/Melamine/Sand Oak-5.png", doorImg: "/door/Melamine/Sand Oak-5.png" },
+      { img: "/door/Melamine/Sand Oak-6.png", doorImg: "/door/Melamine/Sand Oak-6.png" },
+    ],
+  },
+  {
+    code: "Smoke Grey", name: "", img: "/door/Melamine/Smoke Grey.jpg", doorImg: "/door/Melamine/Smoke Grey.jpg", hex: "#6E6862",
+    patterns: [
+      { img: "/door/Melamine/Smoke Grey-1.png", doorImg: "/door/Melamine/Smoke Grey-1.png" },
+      { img: "/door/Melamine/Smoke Grey-2.png", doorImg: "/door/Melamine/Smoke Grey-2.png" },
+      { img: "/door/Melamine/Smoke Grey-3.png", doorImg: "/door/Melamine/Smoke Grey-3.png" },
+      { img: "/door/Melamine/Smoke Grey-4.png", doorImg: "/door/Melamine/Smoke Grey-4.png" },
+      { img: "/door/Melamine/Smoke Grey-5.png", doorImg: "/door/Melamine/Smoke Grey-5.png" },
+      { img: "/door/Melamine/Smoke Grey-6.png", doorImg: "/door/Melamine/Smoke Grey-6.png" },
+    ],
+  },
+  {
+    code: "Tobac Brown", name: "", img: "/door/Melamine/Tobac Brown.jpg", doorImg: "/door/Melamine/Tobac Brown.jpg", hex: "#5E4839",
+    patterns: [
+      { img: "/door/Melamine/Tobac Brown-1.png", doorImg: "/door/Melamine/Tobac Brown-1.png" },
+      { img: "/door/Melamine/Tobac Brown-2.png", doorImg: "/door/Melamine/Tobac Brown-2.png" },
+      { img: "/door/Melamine/Tobac Brown-3.png", doorImg: "/door/Melamine/Tobac Brown-3.png" },
+      { img: "/door/Melamine/Tobac Brown-4.png", doorImg: "/door/Melamine/Tobac Brown-4.png" },
+      { img: "/door/Melamine/Tobac Brown-5.png", doorImg: "/door/Melamine/Tobac Brown-5.png" },
+      { img: "/door/Melamine/Tobac Brown-6.png", doorImg: "/door/Melamine/Tobac Brown-6.png" },
+    ],
+  },
+  {
+    code: "Alpine White", name: "", img: "/door/Melamine/Alpine White.jpg", doorImg: "/door/Melamine/Alpine White.jpg", hex: "#E8E3DD",
+    patterns: [
+      { img: "/door/Melamine/Alpine White-1.png", doorImg: "/door/Melamine/Alpine White-1.png" },
+      { img: "/door/Melamine/Alpine White-2.png", doorImg: "/door/Melamine/Alpine White-2.png" },
+      { img: "/door/Melamine/Alpine White-3.png", doorImg: "/door/Melamine/Alpine White-3.png" },
+      { img: "/door/Melamine/Alpine White-4.png", doorImg: "/door/Melamine/Alpine White-4.png" },
+      { img: "/door/Melamine/Alpine White-5.png", doorImg: "/door/Melamine/Alpine White-5.png" },
+      { img: "/door/Melamine/Alpine White-6.png", doorImg: "/door/Melamine/Alpine White-6.png" },
+    ],
+  },
+  {
+    code: "Bronze Brown", name: "", img: "/door/Melamine/Bronze Brown.jpg", doorImg: "/door/Melamine/Bronze Brown.jpg", hex: "#55423A",
+    patterns: [
+      { img: "/door/Melamine/Bronze Brown-1.png", doorImg: "/door/Melamine/Bronze Brown-1.png" },
+      { img: "/door/Melamine/Bronze Brown-2.png", doorImg: "/door/Melamine/Bronze Brown-2.png" },
+      { img: "/door/Melamine/Bronze Brown-3.png", doorImg: "/door/Melamine/Bronze Brown-3.png" },
+      { img: "/door/Melamine/Bronze Brown-4.png", doorImg: "/door/Melamine/Bronze Brown-4.png" },
+      { img: "/door/Melamine/Bronze Brown-5.png", doorImg: "/door/Melamine/Bronze Brown-5.png" },
+      { img: "/door/Melamine/Bronze Brown-6.png", doorImg: "/door/Melamine/Bronze Brown-6.png" },
+    ],
+  },
+  {
+    code: "Ivory Brown", name: "", img: "/door/Melamine/Ivory Brown.jpg", doorImg: "/door/Melamine/Ivory Brown.jpg", hex: "#B5A08A",
+    patterns: [
+      { img: "/door/Melamine/Ivory Brown-1.png", doorImg: "/door/Melamine/Ivory Brown-1.png" },
+      { img: "/door/Melamine/Ivory Brown-2.png", doorImg: "/door/Melamine/Ivory Brown-2.png" },
+      { img: "/door/Melamine/Ivory Brown-3.png", doorImg: "/door/Melamine/Ivory Brown-3.png" },
+      { img: "/door/Melamine/Ivory Brown-4.png", doorImg: "/door/Melamine/Ivory Brown-4.png" },
+      { img: "/door/Melamine/Ivory Brown-5.png", doorImg: "/door/Melamine/Ivory Brown-5.png" },
+      { img: "/door/Melamine/Ivory Brown-6.png", doorImg: "/door/Melamine/Ivory Brown-6.png" },
+    ],
+  },
+  {
+    code: "Platinum Grey", name: "", img: "/door/Melamine/Platinum Grey.jpg", doorImg: "/door/Melamine/Platinum Grey.jpg", hex: "#A19A93",
+    patterns: [
+      { img: "/door/Melamine/Platinum Grey-1.png", doorImg: "/door/Melamine/Platinum Grey-1.png" },
+      { img: "/door/Melamine/Platinum Grey-2.png", doorImg: "/door/Melamine/Platinum Grey-2.png" },
+      { img: "/door/Melamine/Platinum Grey-3.png", doorImg: "/door/Melamine/Platinum Grey-3.png" },
+      { img: "/door/Melamine/Platinum Grey-4.png", doorImg: "/door/Melamine/Platinum Grey-4.png" },
+      { img: "/door/Melamine/Platinum Grey-5.png", doorImg: "/door/Melamine/Platinum Grey-5.png" },
+      { img: "/door/Melamine/Platinum Grey-6.png", doorImg: "/door/Melamine/Platinum Grey-6.png" },
+    ],
+  },
+  {
+    code: "Cocoa Oak", name: "", img: "/door/Melamine/Cocoa Oak.jpg", doorImg: "/door/Melamine/Cocoa Oak.jpg", hex: "#705644",
+    patterns: [
+      { img: "/door/Melamine/Cocoa Oak-1.png", doorImg: "/door/Melamine/Cocoa Oak-1.png" },
+      { img: "/door/Melamine/Cocoa Oak-2.png", doorImg: "/door/Melamine/Cocoa Oak-2.png" },
+      { img: "/door/Melamine/Cocoa Oak-3.png", doorImg: "/door/Melamine/Cocoa Oak-3.png" },
+      { img: "/door/Melamine/Cocoa Oak-4.png", doorImg: "/door/Melamine/Cocoa Oak-4.png" },
+      { img: "/door/Melamine/Cocoa Oak-5.png", doorImg: "/door/Melamine/Cocoa Oak-5.png" },
+      { img: "/door/Melamine/Cocoa Oak-6.png", doorImg: "/door/Melamine/Cocoa Oak-6.png" },
+    ],
+  },
 ];
 
 const WPC_DETAILS: DoorDetail[] = [
@@ -421,7 +509,7 @@ const MELAMINE_DETAILS: DoorDetail[] = [
           { key: "INDOOR_USE", img: "/door/Indoor-Use.png", label: { th: "ใช้งานภายใน", en: "INDOOR USE" } },
           { img: "/door/Water-Proof.jpg", label: { th: "ทำความสะอาดง่าย", en: "EASY CLEANING" } },
           { img: "/door/Eco-Friendly.jpg", label: { th: "ประหยัด", en: "ECONOMICAL" } },
-          { img: "/door/Melamine/wear-resistance.avif", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
+          { img: "/door/Melamine/water-resistant.png", label: { th: "ทนทาน", en: "WEAR RESISTANT" } },
         ],
       },
     ],
@@ -468,7 +556,7 @@ const ProductCollectionSection: React.FC<{
     const [selectedColor, setSelectedColor] = useState<Swatch | null>(collectionSwatches[0] || null);
     const [selectedPatternIndex, setSelectedPatternIndex] = useState<number>(0);
 
-    // เมื่อเปลี่ยนสี → รูปลายประตูเปลี่ยนตามสีที่เลือก
+
     const effectivePatterns = useMemo(() => {
       if (!collectionPatterns) return null;
       if (!selectedColor?.patterns) return collectionPatterns;
@@ -507,7 +595,7 @@ const ProductCollectionSection: React.FC<{
 
     const mainDoorKey = `door:${collection}:${selectedDoorIndex}`;
 
-    // main door fallback: use pattern doorImg if exists; otherwise use collection door
+
     const mainDoorFallbackSrc = selectedPattern?.doorImg || selectedDoorImg;
     const mainDoorSrc = getImg(mainDoorKey, mainDoorFallbackSrc);
 
@@ -518,32 +606,13 @@ const ProductCollectionSection: React.FC<{
         {/* Image */}
         <div className={`${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
           <div className="sticky top-24">
-            <div className="relative aspect-[3/4] overflow-hidden">
+            <div className="relative">
               <img
                 src={mainDoorSrc}
                 alt={currentDoorName}
-                className="w-full h-full object-contain transition-all duration-700"
+                className="w-full transition-all duration-700"
               />
 
-              {selectedColor?.hex && (
-                <div
-                  className="absolute inset-0 pointer-events-none transition-colors duration-300"
-                  style={
-                    {
-                      backgroundColor: selectedColor.hex,
-                      mixBlendMode: "multiply",
-                      WebkitMaskImage: `url(${mainDoorSrc})`,
-                      WebkitMaskSize: "contain",
-                      WebkitMaskRepeat: "no-repeat",
-                      WebkitMaskPosition: "center",
-                      maskImage: `url(${mainDoorSrc})`,
-                      maskSize: "contain",
-                      maskRepeat: "no-repeat",
-                      maskPosition: "center",
-                    } as React.CSSProperties
-                  }
-                />
-              )}
 
 
               {editMode && (
@@ -604,25 +673,6 @@ const ProductCollectionSection: React.FC<{
                             className="w-full h-full object-contain"
                           />
 
-                          {selectedColor?.hex && (
-                            <div
-                              className="absolute inset-0 pointer-events-none transition-colors duration-300"
-                              style={
-                                {
-                                  backgroundColor: selectedColor.hex,
-                                  mixBlendMode: "multiply",
-                                  WebkitMaskImage: `url(${pSrc})`,
-                                  WebkitMaskSize: "contain",
-                                  WebkitMaskRepeat: "no-repeat",
-                                  WebkitMaskPosition: "center",
-                                  maskImage: `url(${pSrc})`,
-                                  maskSize: "contain",
-                                  maskRepeat: "no-repeat",
-                                  maskPosition: "center",
-                                } as React.CSSProperties
-                              }
-                            />
-                          )}
 
                           {editMode && (
                             <EditBtn
@@ -816,7 +866,7 @@ export const Door: React.FC = () => {
     ],
     upvcCollection: ["/door/uPVC/upvc1.png", "/door/uPVC/upvc2.png", "/door/uPVC/upvc3.png", "/door/uPVC/upvc4.png", "/door/uPVC/upvc5.png", "/door/uPVC/upvc6.png"],
     upvcNames: Array(6).fill({ th: "uPVC-Door", en: "uPVC-Door" }),
-    melamineCollection: ["/door/Melamine/no-groove.png", "/door/Melamine/groove-1.png", "/door/Melamine/groove-2.png", "/door/Melamine/groove-3.png", "/door/Melamine/groove-4.png", "/door/Melamine/groove-5.png"],
+    melamineCollection: ["/door/Melamine/Earl Grey-1.png", "/door/Melamine/Earl Grey-2.png", "/door/Melamine/Earl Grey-3.png", "/door/Melamine/Earl Grey-4.png", "/door/Melamine/Earl Grey-5.png", "/door/Melamine/Earl Grey-6.png"],
     melamineNames: Array(6).fill({ th: "Melamine-Door", en: "Melamine-Door" }),
   };
 
