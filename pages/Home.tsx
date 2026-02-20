@@ -47,9 +47,9 @@ const heroSlides = [
   {
     img: "/home-collections/back.png",
     pretitle: { en: "Evergreen / Door Products", th: "เอเวอร์กรีน / ผลิตภัณฑ์ประตู" },
-    title1: { en: "50 Years of", th: "50 ปีแห่ง" },
-    title2: { en: "Architectural Products", th: "ผลิตภัณฑ์สถาปัตยกรรม" },
-    desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "วิศวกรรมที่เงียบสงบ ดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและพื้นผิวที่สร้างสรรค์สำหรับพื้นที่สมัยใหม่" }
+    title1: { en: "", th: "" },
+    title2: { en: "Not Just Doors, But Architecture", th: "ไม่ใช่แค่ประตู แต่คือสถาปัตยกรรม" },
+    desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "ความงดงามและดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและวงกบ สวย ทน ทันสมัย" }
   },
   {
     img: "/home-collections/01.png",
@@ -60,10 +60,10 @@ const heroSlides = [
   },
   {
     img: "/home-collections/back.png",
-    pretitle: { en: "Evergreen / Innovation", th: "เอเวอร์กรีน / นวัตกรรม" },
-    title1: { en: "Modern", th: "ทันสมัย" },
-    title2: { en: "Door Solutions", th: "โซลูชันประตู" },
-    desc: { en: "Designed for durability and style, perfect for contemporary living spaces and architectural demands.", th: "ออกแบบมาเพื่อความทนทานและสไตล์ เหมาะสำหรับพื้นที่อยู่อาศัยร่วมสมัยและความต้องการทางสถาปัตยกรรม" }
+    pretitle: { en: "", th: "" },
+    title1: { en: "Monthly", th: "Promotion" },
+    title2: { en: "Promotion", th: "ประจำเดือน" },
+    desc: { en: "", th: "" }
   }
 ];
 
