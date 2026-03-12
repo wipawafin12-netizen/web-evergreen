@@ -17,7 +17,7 @@ import { Affiliate } from './pages/Affiliate';
 import { Login } from './pages/Login';
 import { Contact } from './pages/Contact';
 import { LanguageProvider } from './contexts/LanguageContext';
-import { ChatBot } from './components/UI/ChatBot';
+// import { ChatBot } from './components/UI/ChatBot';
 
 function App() {
   return (
@@ -63,8 +63,8 @@ function App() {
           {/* Footer */}
           <Footer />
 
-          {/* ChatBot Widget */}
-          <ChatBot />
+          {/* ChatBot Widget - disabled for now */}
+          {/* <ChatBot /> */}
         </div>
       </LanguageProvider>
     </Router>

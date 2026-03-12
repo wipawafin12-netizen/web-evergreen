@@ -266,7 +266,7 @@ export const OurCompany: React.FC = () => {
 
 
 
-      <section className="px-6 md:px-12 pb-16">
+      <section className="px-6 md:px-12 pt-16 md:pt-24 pb-16">
         <div className="container mx-auto max-w-7xl">
           <div className="mb-10 md:mb-14 text-center">
             <h2 className="text-3xl md:text-4xl text-stone-900 dark:text-stone-100 mb-4">

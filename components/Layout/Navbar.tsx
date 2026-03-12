@@ -96,12 +96,25 @@ export const Navbar: React.FC = () => {
               {language === 'EN' ? "DOORFRAME" : "วงกบ"}
             </Link>
 
-            <Link
-              to="/products"
-              className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
-            >
-              {language === 'EN' ? "PRODUCTS" : "สินค้า"}
-            </Link>
+            <div className="relative group">
+              <button className="flex items-center gap-1 text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
+                {language === 'EN' ? "PRODUCTS" : "สินค้า"}
+                <ChevronDown className="w-3 h-3" />
+              </button>
+              <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                <div className="bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-100 dark:border-stone-800 p-2 min-w-[160px] flex flex-col gap-1">
+                  {productItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.path}
+                      className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left whitespace-nowrap"
+                    >
+                      {language === 'EN' ? item.label : item.labelTH}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <Link
               to="/contact"

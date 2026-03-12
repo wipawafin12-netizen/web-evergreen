@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Send, CheckCircle2, Phone, Mail, MapPin, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Send, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Contact: React.FC = () => {
     const { language, t } = useLanguage();
@@ -98,16 +97,6 @@ export const Contact: React.FC = () => {
                         </a>
                     </div>
 
-                    {/* Join Us Button */}
-                    <div className="pt-4">
-                        <Link
-                            to="/jobs"
-                            className="inline-flex items-center gap-2 bg-[#f37021] text-white px-6 py-3 rounded-full font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-md hover:shadow-lg"
-                        >
-                            <Users className="w-5 h-5" />
-                            {t("Join Our Team", "ร่วมงานกับเรา")}
-                        </Link>
-                    </div>
                 </div>
 
                 {/* Right Col: Form */}
