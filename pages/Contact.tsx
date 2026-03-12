@@ -1,68 +1,39 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Send, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
+import { Send, CheckCircle2, Phone, Mail, MapPin, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-export const Quote: React.FC = () => {
+export const Contact: React.FC = () => {
     const { language, t } = useLanguage();
     const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         const form = e.currentTarget;
-        const formData = new FormData(form);
-
-        const values = {
-            fullName: formData.get('fullName') as string,
-            phoneNumber: formData.get('phoneNumber') as string,
-            emailAddress: formData.get('emailAddress') as string,
-            product: formData.get('product') as string,
-            message: formData.get('message') as string,
-        };
-
-        // Database logic removed
-        console.log("Quote Request submitted (Mock):", values);
-
+        console.log("Contact form submitted (Mock)");
         setSubmitted(true);
         form.reset();
         setTimeout(() => setSubmitted(false), 5000);
-    };
-
-    const labels = {
-        title: language === 'EN' ? "Request a Quotation" : "ขอใบเสนอราคา",
-        subtitle: language === 'EN' ? "Tell us about your project and we'll get back to you with a personalized quote." : "บอกรายละเอียดโครงการของคุณให้เราทราบ ทางเราจะติดต่อกลับพร้อมใบเสนอราคาโดยเร็วที่สุด",
-        name: language === 'EN' ? "Full Name" : "ชื่อ-นามสกุล",
-        phone: language === 'EN' ? "Phone Number" : "เบอร์โทรศัพท์",
-        email: language === 'EN' ? "Email Address" : "อีเมล",
-        product: language === 'EN' ? "Interested Product" : "สินค้าที่สนใจ",
-        message: language === 'EN' ? "Additional Details" : "รายละเอียดเพิ่มเติม",
-        send: language === 'EN' ? "Send Request" : "ส่งคำขอใบเสนอราคา",
-        success: language === 'EN' ? "Thank you! We have received your request." : "ขอบคุณครับ เราได้รับข้อมูลของท่านแล้ว",
-        products: [
-            { en: "Door", th: "ประตู" },
-            { en: "Doorframe", th: "วงกบ" },
-            { en: "Flooring", th: "พื้นไม้" },
-            { en: "Staircase", th: "บันได" },
-            { en: "Wall Panel", th: "ผนังตกแต่ง" },
-            { en: "Service Shaft", th: "ช่องชาร์ป" }
-        ]
     };
 
     return (
         <div className="min-h-screen bg-stone-50 dark:bg-stone-900 pt-24 pb-20 px-4 transition-colors duration-300">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
-                {/* Left Col: Info */}
+                {/* Left Col: Contact Info */}
                 <div className="space-y-8 animate-fade-in-up">
                     <div>
                         <span className="text-brand-500 font-bold tracking-[0.2em] text-[10px] uppercase mb-4 block">
-                            {language === 'EN' ? "Contact Us" : "ติดต่อเรา"}
+                            {t("Contact", "ติดต่อเรา")}
                         </span>
                         <h1 className="text-3xl md:text-4xl font-bold text-brand-900 dark:text-stone-100 leading-tight">
-                            {labels.title}
+                            {t("Get in Touch", "ติดต่อ Evergreen")}
                         </h1>
                         <p className="mt-6 text-stone-600 dark:text-stone-400 leading-relaxed text-sm max-w-lg">
-                            {labels.subtitle}
+                            {t(
+                                "Whether you have questions about our products, need a quotation, or want to discuss a project — our team is ready to help.",
+                                "ไม่ว่าจะสอบถามเกี่ยวกับสินค้า ขอใบเสนอราคา หรือปรึกษาโครงการ — ทีมงานของเราพร้อมให้บริการ"
+                            )}
                         </p>
                     </div>
 
@@ -72,10 +43,25 @@ export const Quote: React.FC = () => {
                                 <Phone className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="font-bold text-brand-900 dark:text-stone-100">Phone</h3>
-                                <p className="text-stone-600 dark:text-stone-400">02-921-9979 ({language === 'EN' ? 'Office' : 'ออฟฟิศ'})</p>
-                                <p className="text-stone-600 dark:text-stone-400">062-539-9980 ({language === 'EN' ? 'Sales' : 'ฝ่ายขาย'})</p>
-                                <p className="text-stone-500 text-sm">{language === 'EN' ? 'Mon-Fri 8:30am - 4:30pm' : 'จันทร์-ศุกร์ 8:30 - 16:30 น.'}</p>
+                                <h3 className="font-bold text-brand-900 dark:text-stone-100">
+                                    {t("Office", "ออฟฟิศ")}
+                                </h3>
+                                <p className="text-stone-600 dark:text-stone-400">02-921-9979</p>
+                                <p className="text-stone-500 text-sm">
+                                    {t("Mon-Fri 8:30am - 4:30pm", "จันทร์-ศุกร์ 8:30 - 16:30 น.")}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                            <div className="p-3 bg-white dark:bg-stone-800 rounded-full shadow-sm text-brand-500">
+                                <Phone className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold text-brand-900 dark:text-stone-100">
+                                    {t("Sales", "ฝ่ายขาย")}
+                                </h3>
+                                <p className="text-stone-600 dark:text-stone-400">062-539-9980</p>
                             </div>
                         </div>
 
@@ -90,7 +76,7 @@ export const Quote: React.FC = () => {
                         </div>
 
                         <a
-                            href="https://share.google/TcBJWGfU9wbJZYkHW"
+                            href="https://maps.google.com/?q=9/1+หมู่+2+ถนนบางเลน-ลาดหลุมแก้ว+ต.ขุนศรี+อ.ไทรน้อย+จ.นนทบุรี+11150"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-start gap-4 hover:opacity-80 transition-opacity"
@@ -99,13 +85,28 @@ export const Quote: React.FC = () => {
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="font-bold text-brand-900 dark:text-stone-100">Office</h3>
+                                <h3 className="font-bold text-brand-900 dark:text-stone-100">
+                                    {t("Address", "ที่อยู่")}
+                                </h3>
                                 <p className="text-stone-600 dark:text-stone-400 max-w-xs">
-                                    Bang Len-Lad Lum Kaeo Road,
-                                    Khun Sri, Sai Noi District, Nonthaburi 11150
+                                    {language === 'TH'
+                                        ? "9/1 หมู่ 2 ถนนบางเลน-ลาดหลุมแก้ว ต.ขุนศรี อ.ไทรน้อย จ.นนทบุรี 11150"
+                                        : "9/1 Moo 2, Bang Len – Lat Lum Kaew Road, Khun Si, Sai Noi District, Nonthaburi 11150"
+                                    }
                                 </p>
                             </div>
                         </a>
+                    </div>
+
+                    {/* Join Us Button */}
+                    <div className="pt-4">
+                        <Link
+                            to="/jobs"
+                            className="inline-flex items-center gap-2 bg-[#f37021] text-white px-6 py-3 rounded-full font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-md hover:shadow-lg"
+                        >
+                            <Users className="w-5 h-5" />
+                            {t("Join Our Team", "ร่วมงานกับเรา")}
+                        </Link>
                     </div>
                 </div>
 
@@ -116,36 +117,38 @@ export const Quote: React.FC = () => {
                             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                                 <CheckCircle2 className="w-8 h-8" />
                             </div>
-                            <h3 className="text-2xl font-bold text-brand-900 dark:text-stone-100">Success!</h3>
+                            <h3 className="text-2xl font-bold text-brand-900 dark:text-stone-100">
+                                {t("Message Sent!", "ส่งข้อความแล้ว!")}
+                            </h3>
                             <p className="text-stone-600 dark:text-stone-400 max-w-sm mx-auto">
-                                {labels.success}
+                                {t("Thank you! We'll get back to you shortly.", "ขอบคุณครับ เราจะติดต่อกลับโดยเร็วที่สุด")}
                             </p>
                             <button
                                 onClick={() => setSubmitted(false)}
                                 className="mt-8 text-sm text-brand-500 font-bold hover:underline"
                             >
-                                Send another request
+                                {t("Send another message", "ส่งข้อความอีกครั้ง")}
                             </button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                    {labels.name}
+                                    {t("Full Name", "ชื่อ-นามสกุล")}
                                 </label>
                                 <input
                                     type="text"
                                     required
-                                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                     name="fullName"
-                                    placeholder={language === 'EN' ? "MILKY POP" : "ชื่อผู้ติดต่อ"}
+                                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
+                                    placeholder={t("Your name", "ชื่อผู้ติดต่อ")}
                                 />
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                        {labels.phone}
+                                        {t("Phone Number", "เบอร์โทรศัพท์")}
                                     </label>
                                     <input
                                         type="tel"
@@ -157,11 +160,10 @@ export const Quote: React.FC = () => {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                        {labels.email}
+                                        {t("Email", "อีเมล")}
                                     </label>
                                     <input
                                         type="email"
-                                        required
                                         name="emailAddress"
                                         className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                         placeholder="name@company.com"
@@ -171,68 +173,31 @@ export const Quote: React.FC = () => {
 
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                    {labels.product}
+                                    {t("Subject", "เรื่องที่ต้องการติดต่อ")}
                                 </label>
                                 <select
-                                    name="product"
+                                    name="subject"
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white appearance-none"
                                     required
                                 >
-                                    <option value="" disabled selected>{language === 'EN' ? "Select a product..." : "เลือกสินค้า..."}</option>
-                                    {labels.products.map(p => (
-                                        <option key={p.en} value={p.en}>
-                                            {language === 'EN' ? p.en : p.th}
-                                        </option>
-                                    ))}
-                                    <option value="Other">{language === 'EN' ? "Other / Multiple" : "อื่นๆ / หลายรายการ"}</option>
+                                    <option value="" disabled selected>{t("Select a topic...", "เลือกหัวข้อ...")}</option>
+                                    <option value="product">{t("Product Inquiry", "สอบถามสินค้า")}</option>
+                                    <option value="quote">{t("Request Quotation", "ขอใบเสนอราคา")}</option>
+                                    <option value="project">{t("Project Consultation", "ปรึกษาโครงการ")}</option>
+                                    <option value="aftersales">{t("After-Sales Service", "บริการหลังการขาย")}</option>
+                                    <option value="other">{t("Other", "อื่นๆ")}</option>
                                 </select>
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                    {language === 'EN' ? "Required Documents" : "เอกสารที่ต้องการ"}
-                                </label>
-                                <div className="flex flex-wrap gap-6 pt-1">
-                                    {[
-                                        { en: "Catalog", th: "แคตตาล็อก" },
-                                        { en: "Quotation", th: "ใบเสนอราคา" },
-                                        { en: "Spec Sheet", th: "สเปคสินค้า" }
-                                    ].map((item) => (
-                                        <label key={item.en} className="flex items-center gap-2.5 cursor-pointer group select-none">
-                                            <div className="relative flex items-center">
-                                                <input
-                                                    type="checkbox"
-                                                    className="peer w-5 h-5 appearance-none border-2 border-stone-300 dark:border-stone-600 rounded checked:bg-brand-500 checked:border-brand-500 transition-all cursor-pointer"
-                                                />
-                                                <CheckCircle2 className="w-3.5 h-3.5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
-                                            </div>
-                                            <span className="text-stone-600 dark:text-stone-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                                                {language === 'EN' ? item.en : item.th}
-                                            </span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                    {language === 'EN' ? "Attach File" : "แนบไฟล์"}
-                                </label>
-                                <input
-                                    type="file"
-                                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 dark:file:bg-stone-800 dark:file:text-stone-200"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
-                                    {labels.message}
+                                    {t("Message", "ข้อความ")}
                                 </label>
                                 <textarea
-                                    rows={4}
+                                    rows={5}
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
                                     name="message"
-                                    placeholder={language === 'EN' ? "Please describe your requirements..." : "ระบุรายละเอียด ขนาด หรือจำนวนที่ต้องการ..."}
+                                    placeholder={t("How can we help you?", "ต้องการสอบถามเรื่องอะไร...")}
                                 ></textarea>
                             </div>
 
@@ -240,7 +205,7 @@ export const Quote: React.FC = () => {
                                 type="submit"
                                 className="w-full bg-brand-900 dark:bg-stone-100 text-white dark:text-brand-900 font-bold py-4 rounded-lg hover:bg-brand-800 dark:hover:bg-white/90 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-900/20 flex items-center justify-center gap-2 group"
                             >
-                                <span>{labels.send}</span>
+                                <span>{t("Send Message", "ส่งข้อความ")}</span>
                                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </button>
                         </form>

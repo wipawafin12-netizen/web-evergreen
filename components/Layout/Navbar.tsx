@@ -14,18 +14,12 @@ const doorSubItems = [
 ];
 
 const productItems = [
-  { label: "DOOR", labelTH: "ประตู", path: "/door", hasSubmenu: true },
-  { label: "DOORFRAME", labelTH: "วงกบ", path: "/doorframe" },
   { label: "FLOORING", labelTH: "พื้นไม้", path: "/flooring" },
   { label: "STAIRCASE", labelTH: "บันได", path: "/staircase" },
   { label: "WALL PANEL", labelTH: "ผนังตกแต่ง", path: "/wall-panel" },
   { label: "SERVICE SHAFT", labelTH: "ช่องชาร์ป", path: "/service-shaft" },
 ];
 
-const serviceItems = [
-  { label: "OEM", labelTH: "OEM", path: "/service-shaft" },
-  { label: "ODM", labelTH: "ODM", path: "/service-shaft" },
-];
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -77,70 +71,45 @@ export const Navbar: React.FC = () => {
 
             <div className="relative group">
               <button className="flex items-center gap-1 text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
-                {language === 'EN' ? "PRODUCTS" : "สินค้า"}
+                {language === 'EN' ? "DOOR" : "ประตู"}
                 <ChevronDown className="w-3 h-3" />
               </button>
-
               <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                 <div className="bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-100 dark:border-stone-800 p-2 min-w-[160px] flex flex-col gap-1">
-                  {productItems.map((item) => (
-                    item.hasSubmenu ? (
-                      <div key={item.label} className="relative group/door">
-                        <Link
-                          to={item.path}
-                          className="flex items-center justify-between text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left"
-                        >
-                          {language === 'EN' ? item.label : item.labelTH}
-                          <ChevronDown className="w-3 h-3 -rotate-90" />
-                        </Link>
-                        <div className="absolute left-full top-0 ml-1 opacity-0 invisible group-hover/door:opacity-100 group-hover/door:visible transition-all duration-200 z-50">
-                          <div className="bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-100 dark:border-stone-800 p-2 min-w-[140px] flex flex-col gap-1">
-                            {doorSubItems.map((subItem) => (
-                              <Link
-                                key={subItem.label}
-                                to={`${subItem.path}${subItem.hash}`}
-                                className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left whitespace-nowrap"
-                              >
-                                {language === 'EN' ? subItem.label : subItem.labelTH}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <Link
-                        key={item.label}
-                        to={item.path}
-                        className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left"
-                      >
-                        {language === 'EN' ? item.label : item.labelTH}
-                      </Link>
-                    )
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button className="flex items-center gap-1 text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap">
-                {language === 'EN' ? "SERVICES" : "บริการ"}
-                <ChevronDown className="w-3 h-3" />
-              </button>
-
-              <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                <div className="bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-100 dark:border-stone-800 p-2 min-w-[160px] flex flex-col gap-1">
-                  {serviceItems.map((item) => (
+                  {doorSubItems.map((subItem) => (
                     <Link
-                      key={item.label}
-                      to={item.path}
-                      className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left"
+                      key={subItem.label}
+                      to={`${subItem.path}${subItem.hash}`}
+                      className="text-xs uppercase tracking-wide px-4 py-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400 hover:text-brand-500 transition-colors text-left whitespace-nowrap"
                     >
-                      {language === 'EN' ? item.label : item.labelTH}
+                      {language === 'EN' ? subItem.label : subItem.labelTH}
                     </Link>
                   ))}
                 </div>
               </div>
             </div>
+
+            <Link
+              to="/doorframe"
+              className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
+            >
+              {language === 'EN' ? "DOORFRAME" : "วงกบ"}
+            </Link>
+
+            <Link
+              to="/products"
+              className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
+            >
+              {language === 'EN' ? "PRODUCTS" : "สินค้า"}
+            </Link>
+
+            <Link
+              to="/contact"
+              className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
+            >
+              {language === 'EN' ? "CONTACT" : "ติดต่อ"}
+            </Link>
+
           </div>
         </div>
 
@@ -221,46 +190,32 @@ export const Navbar: React.FC = () => {
           ))}
 
           <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
-          <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-2">{language === 'EN' ? "Products" : "สินค้า"}</p>
-
-          {productItems.map((item) => (
-            item.hasSubmenu ? (
-              <div key={item.label} className="flex flex-col items-center">
-                <Link
-                  to={item.path}
-                  className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {language === 'EN' ? item.label : item.labelTH}
-                </Link>
-                <div className="flex flex-col items-center gap-1 pl-4 border-l-2 border-brand-500/30 ml-2">
-                  {doorSubItems.map((subItem) => (
-                    <Link
-                      key={subItem.label}
-                      to={`${subItem.path}${subItem.hash}`}
-                      className="text-xs uppercase tracking-widest hover:text-brand-500 text-stone-500 dark:text-stone-500 dark:hover:text-brand-500 transition-colors py-1"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {language === 'EN' ? subItem.label : subItem.labelTH}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ) : (
+          <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-2">{language === 'EN' ? "Door" : "ประตู"}</p>
+          <div className="flex flex-col items-center gap-1 pl-4 border-l-2 border-brand-500/30 ml-2">
+            {doorSubItems.map((subItem) => (
               <Link
-                key={item.label}
-                to={item.path}
-                className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+                key={subItem.label}
+                to={`${subItem.path}${subItem.hash}`}
+                className="text-xs uppercase tracking-widest hover:text-brand-500 text-stone-500 dark:text-stone-500 dark:hover:text-brand-500 transition-colors py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {language === 'EN' ? item.label : item.labelTH}
+                {language === 'EN' ? subItem.label : subItem.labelTH}
               </Link>
-            )
-          ))}
-          <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
-          <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-2">{language === 'EN' ? "Services" : "บริการ"}</p>
+            ))}
+          </div>
 
-          {serviceItems.map((item) => (
+          <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
+          <Link
+            to="/doorframe"
+            className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {language === 'EN' ? "DOORFRAME" : "วงกบ"}
+          </Link>
+
+          <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
+          <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-2">{language === 'EN' ? "Products" : "สินค้า"}</p>
+          {productItems.map((item) => (
             <Link
               key={item.label}
               to={item.path}
@@ -270,6 +225,15 @@ export const Navbar: React.FC = () => {
               {language === 'EN' ? item.label : item.labelTH}
             </Link>
           ))}
+
+          <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
+          <Link
+            to="/contact"
+            className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {language === 'EN' ? "CONTACT" : "ติดต่อ"}
+          </Link>
         </div>
       </div>
     </nav>

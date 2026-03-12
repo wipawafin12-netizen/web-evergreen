@@ -14,12 +14,6 @@ export const Footer: React.FC = () => {
     { label: "Wall Panel", labelTH: "ผนังตกแต่ง", path: "/wall-panel" },
   ];
 
-  const companyLinks = [
-    { label: "About Us", labelTH: "เกี่ยวกับเรา", path: "/about-us" },
-    { label: "Jobs", labelTH: "ร่วมงานกับเรา", path: "/jobs" },
-    { label: "Contact Us", labelTH: "ติดต่อเรา", path: "/contact-us" },
-    { label: "Our Certificate", labelTH: "ใบรับรองของเรา", path: "/certificates" },
-  ];
 
   return (
     <footer className="bg-white dark:bg-stone-950  pb-12 px-6 md:px-12 mt-4 transition-colors duration-300">
@@ -43,15 +37,15 @@ export const Footer: React.FC = () => {
                 <>
                   9/1 หมู่ 2 ถนนบางเลน-ลาดหลุมแก้ว<br />
                   ต.ขุนศรี อ.ไทรน้อย จ.นนทบุรี 11150<br />
-                  โทร: 02 921 9979<br />
-                  โทร: 062-539-9980 (การตลาดออนไลน์)
+                  โทร : 02-921-9979 (ออฟฟิศ)<br />
+                  โทร : 062-539-9980 (ฝ่ายขาย)
                 </>
               ) : (
                 <>
                   9/1 Moo 1, Bang Len – Lat Lum Kaew Road,<br />
                  Khun Si Subdistrict, Sai Noi District, Nonthaburi 11150<br />
-                  Tel: 02 921 9979<br />
-                  Tel: 062-539-9980 (MKT)
+                  Tel: 02-921-9979 (Office)<br />
+                  Tel: 062-539-9980 (Sales)
                 </>
               )}
             </p>
@@ -133,23 +127,6 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Column 3: Our Company */}
-        <div className="space-y-6">
-          <h4 className="font-bold text-lg text-brand-900 dark:text-stone-100">
-            {language === 'TH' ? "บริษัทของเรา" : "Our Company"}
-          </h4>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-            {companyLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.path}
-                className="text-stone-600 dark:text-stone-400 text-sm hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
-              >
-                {language === 'TH' ? link.labelTH : link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
 
       </div>
     </footer>

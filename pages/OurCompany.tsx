@@ -220,67 +220,50 @@ export const OurCompany: React.FC = () => {
           <h1 className="mt-4 text-1xl md:text-3xl lg:text-4xl leading-[1.1] text-[#E64A19]">
             {t("50 Years of Architectural Products", "50 ปีแห่งผลิตภัณฑ์ทางสถาปัตยกรรม")}
           </h1>
-        </div>
-      </section >
 
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16 items-start">
-
-            <div className="md:col-span-6 lg:col-span-6 flex flex-col gap-4">
-              <div className="relative overflow-hidden group rounded-3xl">
-                <div className="aspect-[3/4] overflow-hidden bg-stone-100 dark:bg-stone-900">
-                  <img
-                    src="/our-company/01.png"
-                    alt="Craftsmanship"
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 animate-image-reveal"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </div>
-              <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 pl-1">
-                {t("Craftsmanship", "งานฝีมือ")}
-              </p>
-            </div>
-
-            <div className="md:col-span-6 lg:col-span-6 flex flex-col justify-between h-full pt-8 md:pt-12 gap-12">
-              {/* ... Right Column Content ... */}
-              <div className="max-w-md">
-                <p className="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-6">
-                  {t("Our Story", "เรื่องราวของเรา")}
-                </p>
-                <h2 className="text-2xl md:text-3xl leading-snug text-stone-800 dark:text-stone-200">
-                  {t("Evergreen By CHH", "สร้างอย่างเงียบเชียบ ออกแบบให้คงทน")}
-                </h2>
-                <p className="mt-6 text-sm md:text-base text-stone-500 dark:text-stone-400 leading-loose">
-                  {t("We proudly trace our origins from a humble sawmill to a preeminent producer of construction materials.", "เราภาคภูมิใจที่ได้สืบย้อนต้นกำเนิดจากโรงเลื่อยไม้เล็กๆ สู่ผู้ผลิตวัสดุก่อสร้างชั้นนำ")}
-                </p>
-                <div className="mt-8">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-orange-500">
-                    — Evergreen
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative pl-0 md:pl-12">
-                <div className="aspect-video overflow-hidden bg-stone-100 dark:bg-stone-900 group rounded-3xl">
-                  <img
-                    src="/our-company/02.png"
-                    alt="Sustainability"
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 animate-image-reveal"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="mt-4 text-[10px] uppercase tracking-[0.4em] text-stone-400 pl-1">
-                  {t("Sustainability", "ความยั่งยืน")}
-                </p>
-              </div>
-            </div>
+          <div className="mt-10 max-w-3xl mx-auto">
+            <h2 className="text-xl md:text-2xl lg:text-3xl text-stone-800 dark:text-stone-200 mb-6">
+              {t("Some things only grow more valuable with time", "บางสิ่งยิ่งเวลาผ่านไป ยิ่งทรงคุณค่า")}
+            </h2>
+            <p className="text-sm md:text-base text-stone-500 dark:text-stone-400 leading-loose mb-4">
+              {t(
+                "For over five decades, Evergreen by CHH has refined its expertise in wood and construction materials into products that stand firm in every detail — from textures you can feel to structures that endure across generations.",
+                "ตลอดกว่าห้าทศวรรษ Evergreen by CHH หล่อหลอมความเชี่ยวชาญด้านงานไม้และวัสดุก่อสร้างสู่ผลิตภัณฑ์ที่ยืนหยัดในทุกรายละเอียด — ตั้งแต่ลายผิวที่สัมผัสได้ ไปจนถึงโครงสร้างที่ทนทานข้ามรุ่น"
+              )}
+            </p>
+            <p className="text-sm md:text-base text-stone-500 dark:text-stone-400 leading-loose mb-4">
+              {t(
+                "We don't just manufacture doors — we design the first experience of every space.",
+                "เราไม่ได้แค่ผลิตประตู เราออกแบบประสบการณ์แรกของทุกพื้นที่"
+              )}
+            </p>
+            <p className="text-sm md:text-base text-stone-500 dark:text-stone-400 leading-loose mb-8">
+              {t(
+                "With a heritage rooted in true craftsmanship, combined with world-class manufacturing innovation under ISO 9001:2015 standards, Evergreen by CHH is the name trusted by project developers, architects, and quality space creators across Thailand, generation after generation.",
+                "ด้วยมรดกที่สืบทอดจากรากฐานงานช่างแท้ ผสานกับนวัตกรรมการผลิตระดับสากล ภายใต้มาตรฐาน ISO 9001:2015 Evergreen by CHH จึงเป็นชื่อที่นักพัฒนาโครงการ สถาปนิก และผู้สร้างพื้นที่คุณภาพทั่วไทยเลือกไว้วางใจมาทุกยุค"
+              )}
+            </p>
+            <p className="text-base md:text-lg italic text-stone-600 dark:text-stone-300">
+              {t(
+                "\"Value that never goes out of style — because what's truly good doesn't need to change.\"",
+                "\"คุณค่าที่ไม่เคยล้าสมัย เพราะของดีไม่จำเป็นต้องเปลี่ยน\""
+              )}
+            </p>
           </div>
         </div>
       </section>
+
+      <section className="w-full">
+        <div className="w-full h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden">
+          <img
+            src="/our-company/01.png"
+            alt="Evergreen Products"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+      </section>
+
+
 
 
       <section className="px-6 md:px-12 pb-16">
@@ -362,57 +345,6 @@ export const OurCompany: React.FC = () => {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-16">
-        <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-12">
-          <h2 className="text-3xl md:text-5xl text-stone-900 dark:text-stone-100 mb-8 text-left">
-            {t("B2B Services", "บริการ B2B")}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, idx) => (
-              <div
-                key={idx}
-                className="group relative bg-white dark:bg-stone-900/50 p-8 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 hover:shadow-lg transition-all duration-500 ease-out flex flex-col gap-6 items-start"
-              >
-                <div className="w-16 h-16 rounded-full bg-stone-50 dark:bg-stone-800 flex items-center justify-center text-stone-600 dark:text-stone-300 group-hover:text-white group-hover:bg-[#E64A19] transition-colors duration-500">
-                  {service.icon}
-                </div>
-                <div>
-                  <h3 className="text-stone-900 dark:text-stone-100 text-xl font-bold mb-3 tracking-wide group-hover:text-[#E64A19] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
-                    {t(service.description, service.descriptionTH)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="container mx-auto max-w-6xl border-t border-stone-200 dark:border-stone-800 pt-12">
-          <h2 className="text-3xl md:text-5xl text-stone-900 dark:text-stone-100 mb-10 text-center">
-            {t("Facility", "โรงงานของเรา")}
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-stone-200 dark:divide-stone-800">
-            {facilities.map((item, idx) => (
-              <div key={idx} className="p-8 flex flex-col items-center justify-center gap-2 text-center group hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors duration-500 rounded-2xl">
-                <h3 className="text-4xl md:text-5xl text-[#E64A19] font-bold mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
-                  {idx === 0 ? "1" : idx === 1 ? "60+" : "9K"}
-                </h3>
-                <h3 className="text-lg md:text-xl font-bold text-stone-800 dark:text-stone-200">
-                  {t(item.title, item.titleTH)}
-                </h3>
-                <p className="text-stone-500 dark:text-stone-400 font-light text-sm md:text-base max-w-xs">
-                  {t(item.subtitle, item.subtitleTH)}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="px-6 md:px-12 pb-16">
         <div className="container mx-auto max-w-7xl border-t border-stone-200 dark:border-stone-800 pt-12">

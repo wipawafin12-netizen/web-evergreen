@@ -15,6 +15,7 @@ import { Quote } from './pages/Quote';
 import { B2B } from './pages/B2B';
 import { Affiliate } from './pages/Affiliate';
 import { Login } from './pages/Login';
+import { Contact } from './pages/Contact';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ChatBot } from './components/UI/ChatBot';
 
@@ -50,6 +51,9 @@ function App() {
               <Route path="/quote" element={<Quote />} />
               <Route path="/b2b" element={<B2B />} />
               <Route path="/affiliate" element={<Affiliate />} />
+
+              {/* Contact */}
+              <Route path="/contact" element={<Contact />} />
 
               {/* Account */}
               <Route path="/login" element={<Login />} />

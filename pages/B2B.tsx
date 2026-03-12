@@ -29,25 +29,44 @@ export const B2B: React.FC = () => {
 
     const testimonials = [
         {
-            text: t("Lyght Living provided modern, ergonomic solutions that perfectly matched our office needs.", "Lyght Living นำเสนอโซลูชันที่ทันสมัยและถูกหลักสรีรศาสตร์ซึ่งตอบโจทย์สำนักงานของเราได้อย่างลงตัว"),
-            name: t("Michael Thompson", "ไมเคิล ทอมป์สัน"),
-            location: t("London, UK", "ลอนดอน, สหราชอาณาจักร"),
-            initials: "MT",
+            quote: "ซื้อบ้านมาหลายหลัง แต่นี่คือครั้งแรกที่รู้สึกว่าประตูมัน 'ใช่' จริงๆ",
+            text: "เลือก Evergreen เพราะเพื่อนแนะนำ แต่ตัดสินใจซื้อเพราะลองจับแล้วรู้เลยว่าต่างกัน ประตูหนัก เงียบ เปิดปิดลื่น ไม่มีเสียงดังก๊อกแก๊กให้รำคาญ วงกบตรง ไม่บวมตามอากาศ ผ่านหน้าฝนมาสองปีแล้ว ยังสวยเหมือนเดิม บอกตรงๆ ว่าคุ้มกว่าที่คิดไว้มากค่ะ",
+            name: "คุณพิมพ์ชนก",
+            role: "เจ้าของบ้านสร้างใหม่ย่านพระราม 2",
+            initials: "พช",
+            color: "bg-rose-100 text-rose-800"
+        },
+        {
+            quote: "ในธุรกิจนี้ ของที่ดีคือของที่ไม่ทำให้เราต้องโทรหาซัพพลายเออร์ซ้ำ",
+            text: "ทำโครงการมากว่า 15 ปี เปลี่ยนซัพพลายเออร์มาหลายเจ้า มาลงเอยที่ Evergreen ตั้งแต่โปรเจกต์ที่ 3 แล้วไม่เคยเปลี่ยนอีกเลย ของส่งตรงเวลา spec ไม่คลาดเคลื่อน ทีมดูแลหลังการขายยังโทรตามงานเองด้วย สิ่งที่ Developer ต้องการคือความมั่นใจ — Evergreen ให้ตรงนั้นได้ครับ",
+            name: "คุณธนกร",
+            role: "เจ้าของโครงการคอนโดมิเนียม จ.เชียงใหม่",
+            initials: "ธก",
             color: "bg-blue-100 text-blue-800"
         },
         {
-            text: t("Renting allowed us to furnish beautifully without long-term commitments.", "การเช่าช่วยให้เราตกแต่งได้อย่างสวยงามโดยไม่ต้องมีภาระผูกพันระยะยาว"),
-            name: t("Elena Rossi", "เอเลน่า รอสซี่"),
-            location: t("Milan, Italy", "มิลาน, อิตาลี"),
-            initials: "ER",
-            color: "bg-orange-100 text-orange-800"
+            quote: "ของดีมันช่วยให้งานเราดูดีขึ้นด้วย",
+            text: "รับงานมาเยอะ เจอประตูไม่ดี มาก็เยอะ รู้เลยว่าของที่ไหนดีไม่ดี พอแกะกล่องมาแล้วจะปวดหัว แต่ของ Evergreen มาตรงขนาด วงกบได้ฉากจริง ติดตั้งง่าย ไม่ต้องมาแก้งานตามหลัง ลูกค้าก็พอใจ งานจบสวย เราก็ได้หน้า ใครถามก็แนะนำเจ้านี้ครับ",
+            name: "คุณสมศักดิ์",
+            role: "ผู้รับเหมาก่อสร้าง ประสบการณ์ 20 ปี",
+            initials: "สศ",
+            color: "bg-amber-100 text-amber-800"
         },
         {
-            text: t("The entire process from selection to delivery was smooth. I recommend Lyght Living to anyone", "กระบวนการทั้งหมดตั้งแต่การเลือกจนถึงการจัดส่งราบรื่นมาก ฉันขอแนะนำ Lyght Living ให้กับทุกคน"),
-            name: t("Sofia Martinez", "โซเฟีย มาร์ติเนซ"),
-            location: t("Madrid, Spain", "มาดริด, สเปน"),
-            initials: "SM",
+            quote: "ช่างมันรู้ครับ ของดีหรือไม่ดี แค่ยกขึ้นมาก็รู้แล้ว",
+            text: "ผมติดประตูมาหลายยี่ห้อ บางทีแผ่นบิด บางทีรูบานพับไม่ตรง ต้องมานั่งแก้เสียเวลา ของ Evergreen ผิวเรียบสม่ำเสมอ ขนาดได้มาตรฐาน วงกบ WPC ก็ตัดง่าย ไม่บิด ติดได้เลยไม่ต้องปรับมาก งานเสร็จเร็ว ลูกค้าไม่บ่น ผมก็ไม่ต้องมาแก้ฟรี ดีทุกฝ่ายครับ",
+            name: "พี่ต้อย",
+            role: "ช่างไม้อิสระ ประสบการณ์ติดตั้งประตูกว่า 300 บาน",
+            initials: "ตย",
             color: "bg-green-100 text-green-800"
+        },
+        {
+            quote: "ประตูคือ statement piece ชิ้นแรกที่แขกทุกคนสังเกตเห็น",
+            text: "ในฐานะ Designer รายละเอียดคือทุกอย่าง เลือกใช้ประตูไม้วีเนียร์ของ Evergreen ให้โฮมออฟฟิศตัวเองค่ะ ลายไม้สวย ธรรมชาติ ไม่ดูพลาสติก เข้ากับงาน material อื่นได้ง่าย ที่ชอบที่สุดคือ finish มันนิ่งมาก ไม่ต้องมาลุ้นว่าของจะออกมาต่างจาก catalog ไหน — ได้ตรงที่เลือก ตรงที่คาดหวัง",
+            name: "คุณวรินทร์",
+            role: "Interior Designer & เจ้าของโฮมออฟฟิศสไตล์มินิมอล",
+            initials: "วร",
+            color: "bg-purple-100 text-purple-800"
         }
     ];
 
@@ -195,26 +214,38 @@ export const B2B: React.FC = () => {
             <div className="container mx-auto px-6 max-w-7xl">
 
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-                    {testimonials.map((item, idx) => (
-                        <div key={idx} className="bg-white dark:bg-stone-900 p-8 md:p-10 rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                            <div className="flex items-start justify-between mb-8">
-                                <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${item.color}`}>
-                                    {item.initials}
+                {/* Reviews Section */}
+                <div className="mb-24">
+                    <div className="text-center mb-12">
+                        <span className="text-sm font-medium text-stone-400 uppercase tracking-widest block mb-3">{t("Testimonials", "รีวิวจากลูกค้า")}</span>
+                        <h2 className="text-2xl md:text-4xl font-medium tracking-widest text-stone-900 dark:text-stone-50">{t("Voices of Trust", "เสียงจากผู้ไว้วางใจ")}</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {testimonials.map((item, idx) => (
+                            <div key={idx} className={`bg-white dark:bg-stone-900 p-8 md:p-10 rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group ${idx >= 3 ? 'lg:col-span-1' : ''}`}>
+                                <div className="flex items-start justify-between mb-6">
+                                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm ${item.color}`}>
+                                        {item.initials}
+                                    </div>
+                                    <Quote className="w-8 h-8 text-[#E64A19] opacity-20 group-hover:opacity-100 transition-opacity" />
                                 </div>
-                                <Quote className="w-8 h-8 text-[#E64A19] opacity-20 group-hover:opacity-100 transition-opacity" />
-                            </div>
 
-                            <p className="text-stone-600 dark:text-stone-300 text-lg leading-relaxed mb-8 min-h-[100px]">
-                                "{item.text}"
-                            </p>
+                                <p className="text-stone-900 dark:text-stone-100 font-bold text-lg leading-relaxed mb-4">
+                                    "{item.quote}"
+                                </p>
 
-                            <div className="border-t border-stone-100 dark:border-stone-800 pt-6">
-                                <h4 className="font-bold text-stone-900 dark:text-stone-100">{item.name}</h4>
-                                <p className="text-sm text-stone-400">{item.location}</p>
+                                <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-8">
+                                    {item.text}
+                                </p>
+
+                                <div className="border-t border-stone-100 dark:border-stone-800 pt-6">
+                                    <h4 className="font-bold text-stone-900 dark:text-stone-100">{item.name}</h4>
+                                    <p className="text-sm text-stone-400">{item.role}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">

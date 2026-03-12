@@ -13,15 +13,6 @@ const quickCards = [
     }
   },
   {
-    title: { en: "Flooring", th: "พื้นไม้" },
-    img: "/home-collections/flooring.png",
-    path: "/flooring",
-    description: {
-      en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
-      th: "พื้น SPC มีความทนทาน หรูหรา และได้รับการออกแบบอย่างประณีต ช่วยเปลี่ยนโฉมพื้นที่ของคุณด้วยความงามที่ยั่งยืน ขอแนะนำพื้น SPC นวัตกรรมสมัยใหม่ที่ผสานความทนทาน ความหรูหรา และการออกแบบเหนือกาลเวลา"
-    }
-  },
-  {
     title: { en: "Doorframe", th: "วงกบ" },
     img: "/home-collections/doorframe.png",
     path: "/wall-panel",
@@ -29,7 +20,6 @@ const quickCards = [
       en: "Transform your walls with our decorative panels, adding texture and depth to your interior.",
       th: "เปลี่ยนผนังของคุณด้วยแผ่นตกแต่งผนัง เพิ่มพื้นผิวและมิติให้กับการตกแต่งภายใน"
     }
-
   },
   {
     title: { en: "Service Shaft", th: "ช่องชาร์ป" },
@@ -40,8 +30,99 @@ const quickCards = [
       th: "สัมผัสโลกแห่งฟังก์ชันการใช้งานที่เหนือระดับด้วยแผงปิดช่องเข้าถึงผนังช่องลิฟต์ของเรา ซึ่งได้รับการออกแบบมาเพื่อมอบการเข้าถึงช่องเก็บของที่จำเป็นได้อย่างง่ายดาย"
     }
   },
+  {
+    title: { en: "Flooring", th: "พื้นไม้" },
+    img: "/home-collections/flooring.png",
+    path: "/flooring",
+    description: {
+      en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
+      th: "พื้น SPC มีความทนทาน หรูหรา และได้รับการออกแบบอย่างประณีต ช่วยเปลี่ยนโฉมพื้นที่ของคุณด้วยความงามที่ยั่งยืน ขอแนะนำพื้น SPC นวัตกรรมสมัยใหม่ที่ผสานความทนทาน ความหรูหรา และการออกแบบเหนือกาลเวลา"
+    }
+  },
 ];
 
+
+const row1Brands = [
+  { id: 1, name: "Client 1", src: "/brand-customer/b1.png" },
+  { id: 2, name: "Client 2", src: "/brand-customer/b2.png" },
+  { id: 3, name: "Client 3", src: "/brand-customer/b3.png" },
+  { id: 4, name: "Client 4", src: "/brand-customer/b4.png" },
+  { id: 5, name: "Client 5", src: "/brand-customer/b5.png" },
+  { id: 6, name: "Client 6", src: "/brand-customer/b6.png" },
+  { id: 7, name: "Client 7", src: "/brand-customer/b7.png" },
+  { id: 8, name: "Client 8", src: "/brand-customer/b8.png" },
+  { id: 9, name: "Client 9", src: "/brand-customer/b9.png" },
+  { id: 10, name: "Client 10", src: "/brand-customer/b10.png" },
+  { id: 11, name: "Client 11", src: "/brand-customer/b11.png" },
+  { id: 12, name: "Client 12", src: "/brand-customer/b12.png" },
+  { id: 13, name: "Client 13", src: "/brand-customer/b13.png" },
+  { id: 14, name: "Client 14", src: "/brand-customer/b14.png" },
+  { id: 15, name: "Client 15", src: "/brand-customer/b15.png" },
+  { id: 16, name: "Client 16", src: "/brand-customer/b16.png" },
+  { id: 17, name: "Client 17", src: "/brand-customer/b17.png" },
+  { id: 18, name: "Client 18", src: "/brand-customer/b18.png" },
+  { id: 19, name: "Client 19", src: "/brand-customer/b19.png" },
+  { id: 20, name: "Client 20", src: "/brand-customer/b20.png" },
+  { id: 21, name: "Client 21", src: "/brand-customer/b21.png" },
+  { id: 22, name: "Client 22", src: "/brand-customer/b22.png" },
+  { id: 23, name: "Client 23", src: "/brand-customer/b23.png" },
+  { id: 24, name: "Client 24", src: "/brand-customer/b24.png" },
+  { id: 25, name: "Client 25", src: "/brand-customer/b25.png" },
+  { id: 26, name: "Client 26", src: "/brand-customer/b26.png" },
+  { id: 27, name: "Client 27", src: "/brand-customer/b27.png" },
+];
+
+const row2Brands = [
+  { id: 1, name: "Client 1", src: "/brand-customer2/b1.png" },
+  { id: 2, name: "Client 2", src: "/brand-customer2/b2.png" },
+  { id: 3, name: "Client 3", src: "/brand-customer2/b3.png" },
+  { id: 4, name: "Client 4", src: "/brand-customer2/b4.png" },
+  { id: 5, name: "Client 5", src: "/brand-customer2/b5.png" },
+  { id: 6, name: "Client 6", src: "/brand-customer2/b6.png" },
+  { id: 7, name: "Client 7", src: "/brand-customer2/b7.png" },
+  { id: 8, name: "Client 8", src: "/brand-customer2/b8.png" },
+  { id: 9, name: "Client 9", src: "/brand-customer2/b9.png" },
+  { id: 10, name: "Client 10", src: "/brand-customer2/b10.png" },
+  { id: 11, name: "Client 11", src: "/brand-customer2/b11.png" },
+  { id: 12, name: "Client 12", src: "/brand-customer2/b12.png" },
+  { id: 13, name: "Client 13", src: "/brand-customer2/b13.png" },
+  { id: 14, name: "Client 14", src: "/brand-customer2/b14.png" },
+  { id: 15, name: "Client 15", src: "/brand-customer2/b15.png" },
+  { id: 16, name: "Client 16", src: "/brand-customer2/b16.png" },
+  { id: 17, name: "Client 17", src: "/brand-customer2/b17.png" },
+  { id: 18, name: "Client 18", src: "/brand-customer2/b18.png" },
+  { id: 19, name: "Client 19", src: "/brand-customer2/b19.png" },
+  { id: 20, name: "Client 20", src: "/brand-customer2/b20.png" },
+  { id: 21, name: "Client 21", src: "/brand-customer2/b21.png" },
+  { id: 22, name: "Client 22", src: "/brand-customer2/b22.png" },
+  { id: 23, name: "Client 23", src: "/brand-customer2/b23.png" },
+  { id: 24, name: "Client 24", src: "/brand-customer2/b24.png" },
+  { id: 25, name: "Client 25", src: "/brand-customer2/b25.png" },
+  { id: 26, name: "Client 26", src: "/brand-customer2/b26.png" },
+  { id: 27, name: "Client 27", src: "/brand-customer2/b27.png" },
+  { id: 28, name: "Client 28", src: "/brand-customer2/b28.png" },
+  { id: 29, name: "Client 29", src: "/brand-customer2/b29.png" },
+];
+
+const row3Brands = [
+  { id: 1, name: "Client 1", src: "/brand-customer3/b1.png" },
+  { id: 2, name: "Client 2", src: "/brand-customer3/b2.png" },
+  { id: 3, name: "Client 3", src: "/brand-customer3/b3.png" },
+  { id: 4, name: "Client 4", src: "/brand-customer3/b4.png" },
+  { id: 5, name: "Client 5", src: "/brand-customer3/b5.png" },
+  { id: 6, name: "Client 6", src: "/brand-customer3/b6.png" },
+  { id: 7, name: "Client 7", src: "/brand-customer3/b7.png" },
+  { id: 8, name: "Client 8", src: "/brand-customer3/b8.png" },
+  { id: 9, name: "Client 9", src: "/brand-customer3/b9.png" },
+  { id: 10, name: "Client 10", src: "/brand-customer3/b10.png" },
+  { id: 11, name: "Client 11", src: "/brand-customer3/b11.png" },
+  { id: 12, name: "Client 12", src: "/brand-customer3/b12.png" },
+  { id: 13, name: "Client 13", src: "/brand-customer3/b13.png" },
+  { id: 14, name: "Client 14", src: "/brand-customer3/b14.png" },
+  { id: 15, name: "Client 15", src: "/brand-customer3/b15.png" },
+  { id: 16, name: "Client 16", src: "/brand-customer3/b16.png" },
+  { id: 17, name: "Client 17", src: "/brand-customer3/b17.png" },
+];
 
 const heroSlides = [
   {
@@ -149,11 +230,11 @@ export const Home: React.FC = () => {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-6 text-stone-900 dark:text-stone-100 font-light">
-              {t("Where Craftsmanship Meets Better Quality of Life", "งานฝีมือผสานกับคุณภาพชีวิตที่ดีกว่า")}
+              {t("Craftsmanship × Global Standards for a Better Quality of Life", "งานฝีมือ × มาตรฐานสากล เพื่อคุณภาพชีวิตที่ดีกว่า")}
             </h2>
             <div className="w-20 h-1 bg-brand-500 mx-auto mb-8"></div>
             <p className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed">
-              {t("With a legacy spanning over 50 years in manufacturing excellence, images, we proudly trace  our origins from a humble sawmill to  a preeminent producer of construction materials.", "ด้วยมรดกอันยาวนานกว่า 50 ปีในด้านความเป็นเลิศทางการผลิต เราภาคภูมิใจที่ได้สืบย้อนต้นกำเนิดจากโรงเลื่อยไม้เล็กๆ สู่ผู้ผลิตวัสดุก่อสร้างชั้นนำ")}
+              {t("From a humble sawmill to a leading construction materials manufacturer — over 50 years of relentless innovation, blending traditional craftsmanship with modern production technology, for every space you call home.", "จากโรงเลื่อยไม้เล็กๆ สู่ผู้ผลิตวัสดุก่อสร้างชั้นนำ — กว่า 50 ปีที่เราไม่หยุดพัฒนา ผสานภูมิปัญญางานช่างกับนวัตกรรมการผลิต เพื่อทุกพื้นที่ที่คุณอาศัยอยู่")}
             </p>
           </div>
         </div>
@@ -240,6 +321,82 @@ export const Home: React.FC = () => {
 
 
 
+
+      <section className="px-6 md:px-12 pb-16">
+        <div className="container mx-auto max-w-7xl border-t border-stone-200 dark:border-stone-800 pt-12">
+          <div className="text-center mb-10">
+            <span className="text-sm font-medium text-stone-400 uppercase tracking-widest block mb-3">{t("trusted by", "ได้รับความไว้วางใจจาก")}</span>
+            <h2 className="text-2xl md:text-4xl font-medium tracking-widest text-stone-900 dark:text-stone-50">{t("Leading Companies", "บริษัทชั้นนำ")}</h2>
+          </div>
+
+          <style>{`
+            @keyframes scroll {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes scroll-reverse {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            .animate-scroll {
+              animation: scroll 120s linear infinite;
+            }
+            .animate-scroll-reverse {
+              animation: scroll-reverse 120s linear infinite;
+            }
+          `}</style>
+
+          <div className="flex flex-col gap-8">
+            {/* Row 1 - Our Clients Developer */}
+            <div>
+              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Our Clients Developer", "ลูกค้ากลุ่มผู้พัฒนาโครงการ")}</h3>
+              <div className="relative overflow-hidden w-full">
+                <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
+                <div className="flex gap-4 items-center animate-scroll w-max">
+                  {[...row1Brands, ...row1Brands].map((brand, i) => (
+                    <div key={i} className="flex-shrink-0 w-48 h-32 md:w-64 md:h-40 flex items-center justify-center p-6 border border-stone-100 dark:border-stone-800 rounded-2xl bg-white dark:bg-stone-900 mx-1">
+                      <img src={brand.src} alt={brand.name} className="w-full h-full object-contain transition-all duration-500 hover:scale-105" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Row 2 - Main Contractor */}
+            <div>
+              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Main Contractor", "ผู้รับเหมาหลัก")}</h3>
+              <div className="relative overflow-hidden w-full">
+                <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
+                <div className="flex gap-4 items-center animate-scroll-reverse w-max">
+                  {[...row2Brands, ...row2Brands].map((brand, i) => (
+                    <div key={i} className="flex-shrink-0 w-48 h-32 md:w-64 md:h-40 flex items-center justify-center p-6 border border-stone-100 dark:border-stone-800 rounded-2xl bg-white dark:bg-stone-900 mx-1">
+                      <img src={brand.src} alt={brand.name} className="w-full h-full object-contain transition-all duration-500 hover:scale-105" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Row 3 - Hotel & Service Apartment */}
+            <div>
+              <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Hotel & Service Apartment", "โรงแรมและเซอร์วิสอพาร์ตเมนต์")}</h3>
+              <div className="relative overflow-hidden w-full">
+                <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
+                <div className="flex gap-4 items-center animate-scroll w-max">
+                  {[...row3Brands, ...row3Brands].map((brand, i) => (
+                    <div key={i} className="flex-shrink-0 w-48 h-32 md:w-64 md:h-40 flex items-center justify-center p-6 border border-stone-100 dark:border-stone-800 rounded-2xl bg-white dark:bg-stone-900 mx-1">
+                      <img src={brand.src} alt={brand.name} className="w-full h-full object-contain transition-all duration-500 hover:scale-105" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="py-16" />
     </div>
