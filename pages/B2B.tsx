@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Quote, ArrowUpRight, Plus, Facebook, Instagram, Phone, Leaf, Users, ShieldCheck } from 'lucide-react';
+import { Quote, ArrowUpRight, Plus, Facebook, Instagram, Phone, Leaf, Users, ShieldCheck, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 export const B2B: React.FC = () => {
     const { t } = useLanguage();
     const [activeSpot, setActiveSpot] = useState<number | null>(null);
+    const [activeTestimonial, setActiveTestimonial] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        if (isPaused) return;
+        const timer = setInterval(() => {
+            setActiveTestimonial(prev => (prev + 1) % 5);
+        }, 6000);
+        return () => clearInterval(timer);
+    }, [isPaused]);
 
     const companyValues = [
         {
@@ -216,35 +226,107 @@ export const B2B: React.FC = () => {
 
                 {/* Reviews Section */}
                 <div className="mb-24">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-16">
                         <span className="text-sm font-medium text-stone-400 uppercase tracking-widest block mb-3">{t("Testimonials", "รีวิวจากลูกค้า")}</span>
                         <h2 className="text-2xl md:text-4xl font-medium tracking-widest text-stone-900 dark:text-stone-50">{t("Voices of Trust", "เสียงจากผู้ไว้วางใจ")}</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {testimonials.map((item, idx) => (
-                            <div key={idx} className={`bg-white dark:bg-stone-900 p-8 md:p-10 rounded-[2rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group ${idx >= 3 ? 'lg:col-span-1' : ''}`}>
-                                <div className="flex items-start justify-between mb-6">
-                                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm ${item.color}`}>
-                                        {item.initials}
+                    <style>{`
+                        @keyframes testimonialFadeIn {
+                            from { opacity: 0; transform: translateY(12px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                        .testimonial-enter { animation: testimonialFadeIn 0.5s ease-out; }
+                    `}</style>
+
+                    <div className="relative max-w-4xl mx-auto">
+                        {/* Main Featured Card */}
+                        <div
+                            className="relative bg-white dark:bg-stone-900 rounded-[2.5rem] overflow-hidden shadow-[0_8px_60px_-12px_rgba(0,0,0,0.08)] border border-stone-100/80 dark:border-stone-800"
+                            onMouseEnter={() => setIsPaused(true)}
+                            onMouseLeave={() => setIsPaused(false)}
+                        >
+                            {/* Top gradient accent */}
+                            <div className="h-1.5 bg-gradient-to-r from-[#E64A19] via-orange-400 to-amber-400"></div>
+
+                            <div className="p-8 md:p-12 lg:p-14">
+                                <div key={activeTestimonial} className="testimonial-enter">
+                                    {/* Header: Quote icon + Stars */}
+                                    <div className="flex items-start justify-between mb-8">
+                                        <Quote className="w-10 h-10 md:w-14 md:h-14 text-[#E64A19]/10" strokeWidth={1.5} />
+                                        <div className="flex gap-1">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-amber-400 fill-amber-400" />
+                                            ))}
+                                        </div>
                                     </div>
-                                    <Quote className="w-8 h-8 text-[#E64A19] opacity-20 group-hover:opacity-100 transition-opacity" />
-                                </div>
 
-                                <p className="text-stone-900 dark:text-stone-100 font-bold text-lg leading-relaxed mb-4">
-                                    "{item.quote}"
-                                </p>
+                                    {/* Quote text */}
+                                    <p className="text-xl md:text-2xl lg:text-3xl font-bold text-stone-900 dark:text-stone-50 leading-snug mb-6">
+                                        "{testimonials[activeTestimonial].quote}"
+                                    </p>
 
-                                <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-8">
-                                    {item.text}
-                                </p>
+                                    {/* Full review */}
+                                    <p className="text-stone-500 dark:text-stone-400 text-sm md:text-base leading-relaxed mb-10">
+                                        {testimonials[activeTestimonial].text}
+                                    </p>
 
-                                <div className="border-t border-stone-100 dark:border-stone-800 pt-6">
-                                    <h4 className="font-bold text-stone-900 dark:text-stone-100">{item.name}</h4>
-                                    <p className="text-sm text-stone-400">{item.role}</p>
+                                    {/* Author + Navigation */}
+                                    <div className="flex items-center justify-between pt-8 border-t border-stone-100 dark:border-stone-800">
+                                        <div className="flex items-center gap-4">
+                                            <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center font-bold text-sm ${testimonials[activeTestimonial].color}`}>
+                                                {testimonials[activeTestimonial].initials}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-base md:text-lg text-stone-900 dark:text-stone-100">{testimonials[activeTestimonial].name}</h4>
+                                                <p className="text-xs md:text-sm text-stone-400">{testimonials[activeTestimonial].role}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={() => setActiveTestimonial(prev => prev === 0 ? testimonials.length - 1 : prev - 1)}
+                                                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center text-stone-400 hover:text-[#E64A19] hover:border-[#E64A19] transition-all duration-200 cursor-pointer"
+                                            >
+                                                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
+                                            </button>
+                                            <button
+                                                onClick={() => setActiveTestimonial(prev => (prev + 1) % testimonials.length)}
+                                                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-stone-200 dark:border-stone-700 flex items-center justify-center text-stone-400 hover:text-[#E64A19] hover:border-[#E64A19] transition-all duration-200 cursor-pointer"
+                                            >
+                                                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        ))}
+
+                            {/* Bottom progress bar */}
+                            <div className="h-1 bg-stone-100 dark:bg-stone-800">
+                                <div
+                                    className="h-full bg-gradient-to-r from-[#E64A19] to-orange-400 rounded-full"
+                                    style={{
+                                        width: `${((activeTestimonial + 1) / testimonials.length) * 100}%`,
+                                        transition: 'width 0.5s ease-out'
+                                    }}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Dot Selector */}
+                        <div className="flex justify-center items-center gap-2.5 mt-8">
+                            {testimonials.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setActiveTestimonial(idx)}
+                                    className={`rounded-full transition-all duration-300 cursor-pointer ${
+                                        idx === activeTestimonial
+                                            ? 'w-8 h-3 bg-[#E64A19] shadow-md'
+                                            : 'w-3 h-3 bg-stone-300 dark:bg-stone-600 hover:bg-stone-400 dark:hover:bg-stone-500'
+                                    }`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
 
