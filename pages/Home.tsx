@@ -127,38 +127,17 @@ const row3Brands = [
 const heroSlides = [
   {
     img: "/home-collections/back.png",
-    pretitle: { en: "Evergreen / Door Products", th: "เอเวอร์กรีน / ผลิตภัณฑ์ประตู" },
+    pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "Not Just Doors, But Architecture", th: "ไม่ใช่แค่ประตู แต่คือสถาปัตยกรรม" },
     desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "ความงดงามและดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและวงกบ สวย ทน ทันสมัย" }
   },
-  {
-    img: "/home-collections/01.png",
-    pretitle: { en: "Evergreen / Flooring", th: "เอเวอร์กรีน / พื้นไม้" },
-    title1: { en: "Timeless", th: "อมตะ" },
-    title2: { en: "Wood Flooring", th: "พื้นไม้ธรรมชาติ" },
-    desc: { en: "Bring warmth and character to every room with our premium selection of engineered wood flooring.", th: "นำความอบอุ่นและเอกลักษณ์สู่ทุกห้องด้วยพื้นไม้เอ็นจิเนียร์คัดพิเศษของเรา" }
-  },
-  {
-    img: "/home-collections/back.png",
-    pretitle: { en: "", th: "" },
-    title1: { en: "Monthly", th: "Promotion" },
-    title2: { en: "Promotion", th: "ประจำเดือน" },
-    desc: { en: "", th: "" }
-  }
 ];
 
 export const Home: React.FC = () => {
   const { t, language } = useLanguage();
   const [selectedCardIndex, setSelectedCardIndex] = React.useState<number | null>(null);
-  const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+  const currentHeroSlide = 0;
 
   return (
     <div className="bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
