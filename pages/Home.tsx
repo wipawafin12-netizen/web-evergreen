@@ -155,7 +155,7 @@ export const Home: React.FC = () => {
   // Auto-play
   useEffect(() => {
     if (isHeroPaused || heroSlides.length <= 1) return;
-    heroTimerRef.current = setInterval(nextSlide, 6000);
+    heroTimerRef.current = setInterval(nextSlide, 5000);
     return () => {
       if (heroTimerRef.current) clearInterval(heroTimerRef.current);
     };
@@ -172,26 +172,29 @@ export const Home: React.FC = () => {
       >
 
 
-        <div className="relative min-h-[600px] flex items-center justify-center pt-20">
+        <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] flex items-center justify-center">
 
           <div className="absolute inset-0 z-0 overflow-hidden">
 
             <div className="relative w-full h-full">
-              {heroSlides.map((slide, idx) => (
-                <div
-                  key={idx}
-                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
-                    }`}
-                >
-                  <img
-                    src={slide.img}
-                    alt="Brand Showcase"
-                    className="w-full h-full object-cover"
-                  />
+              {heroSlides.map((slide, idx) => {
+                const hasText = slide.title2.en || slide.title2.th;
+                return (
+                  <div
+                    key={idx}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                      }`}
+                  >
+                    <img
+                      src={slide.img}
+                      alt="Brand Showcase"
+                      className={`w-full h-full ${hasText ? "object-cover" : "object-contain sm:object-cover"}`}
+                    />
 
-                  <div className="absolute inset-0 bg-black/40" />
-                </div>
-              ))}
+                    {hasText && <div className="absolute inset-0 bg-black/40" />}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
