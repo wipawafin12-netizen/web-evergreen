@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -132,18 +132,44 @@ const heroSlides = [
     title2: { en: "Not Just Doors, But Architecture", th: "ไม่ใช่แค่ประตู แต่คือสถาปัตยกรรม" },
     desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "ความงดงามและดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและวงกบ สวย ทน ทันสมัย" }
   },
+  {
+    img: "/home-collections/Brandner.png",
+    pretitle: { en: "", th: "" },
+    title1: { en: "", th: "" },
+    title2: { en: "", th: "" },
+    desc: { en: "", th: "" }
+  },
 ];
 
 export const Home: React.FC = () => {
   const { t, language } = useLanguage();
-  const [selectedCardIndex, setSelectedCardIndex] = React.useState<number | null>(null);
-  const currentHeroSlide = 0;
+  const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+  const [isHeroPaused, setIsHeroPaused] = useState(false);
+  const heroTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const nextSlide = useCallback(() => {
+    setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  // Auto-play
+  useEffect(() => {
+    if (isHeroPaused || heroSlides.length <= 1) return;
+    heroTimerRef.current = setInterval(nextSlide, 6000);
+    return () => {
+      if (heroTimerRef.current) clearInterval(heroTimerRef.current);
+    };
+  }, [isHeroPaused, nextSlide]);
 
   return (
     <div className="bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
 
 
-      <section className="relative">
+      <section
+        className="relative"
+        onMouseEnter={() => setIsHeroPaused(true)}
+        onMouseLeave={() => setIsHeroPaused(false)}
+      >
 
 
         <div className="relative min-h-[600px] flex items-center justify-center pt-20">
@@ -154,7 +180,7 @@ export const Home: React.FC = () => {
               {heroSlides.map((slide, idx) => (
                 <div
                   key={idx}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
                     }`}
                 >
                   <img
@@ -171,7 +197,7 @@ export const Home: React.FC = () => {
 
 
           <div className="relative z-10 container mx-auto px-6 md:px-12 py-20 text-center">
-            <div className="max-w-5xl mx-auto animate-fade-in-up">
+            <div className="max-w-5xl mx-auto">
 
               <div key={currentHeroSlide} className="animate-fade-in-up">
                 <p className="text-[10px] uppercase tracking-[0.45em] text-white/90 mb-6 font-bold drop-shadow-md">
@@ -199,6 +225,21 @@ export const Home: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {/* Slide Indicator Dots */}
+          {heroSlides.length > 1 && (
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+              {heroSlides.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1.5 rounded-full transition-all duration-700 ${idx === currentHeroSlide
+                    ? "w-8 bg-brand-500"
+                    : "w-1.5 bg-white/40"
+                    }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="h-px bg-stone-200/70 dark:bg-stone-800/70" />

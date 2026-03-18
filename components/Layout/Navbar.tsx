@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
 
       <div className="flex items-center gap-3">
 
-        <div
+        <div 
           className="flex items-center gap-0 cursor-pointer flex-shrink-0"
           onClick={() => navigate('/')}
         >
