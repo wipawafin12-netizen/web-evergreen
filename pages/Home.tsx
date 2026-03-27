@@ -232,7 +232,7 @@ export const Home: React.FC = () => {
       >
 
 
-        <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] flex items-center justify-center">
+        <div className="relative aspect-video sm:aspect-auto sm:h-[50vh] md:h-[70vh] lg:h-[85vh] flex items-center justify-center bg-[#FDFBF7] dark:bg-stone-950">
 
           <div className="absolute inset-0 z-0 overflow-hidden">
 
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
                       src={slide.img}
                       alt="Brand Showcase"
                       draggable={false}
-                      className={`w-full h-full pointer-events-none ${hasText ? "object-cover" : "object-contain sm:object-cover"}`}
+                      className="w-full h-full pointer-events-none object-contain sm:object-cover"
                     />
 
                     {hasText && <div className="absolute inset-0 bg-black/40" />}
@@ -260,24 +260,24 @@ export const Home: React.FC = () => {
           </div>
 
 
-          <div className="relative z-10 container mx-auto px-6 md:px-12 py-20 text-center">
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center">
             <div className="max-w-5xl mx-auto">
 
               <div key={currentHeroSlide} className="animate-fade-in-up">
-                <p className="text-[10px] uppercase tracking-[0.45em] text-white/90 mb-6 font-bold drop-shadow-md">
+                <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.45em] text-white/90 mb-3 sm:mb-6 font-bold drop-shadow-md">
                   {language === 'EN' ? heroSlides[currentHeroSlide].pretitle.en : heroSlides[currentHeroSlide].pretitle.th}
                 </p>
 
-                <h1 className="font-sans font-bold uppercase tracking-wide leading-none text-white mb-8 drop-shadow-lg">
-                  <span className="block text-4xl md:text-6xl lg:text-7xl mb-4">
+                <h1 className="font-sans font-bold uppercase tracking-wide leading-tight text-white mb-4 sm:mb-8 drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}>
+                  <span className="block mb-2 sm:mb-4">
                     {language === 'EN' ? heroSlides[currentHeroSlide].title1.en : heroSlides[currentHeroSlide].title1.th}
                   </span>
-                  <span className="block text-4xl md:text-6xl lg:text-7xl text-brand-500">
+                  <span className="block text-brand-500">
                     {language === 'EN' ? heroSlides[currentHeroSlide].title2.en : heroSlides[currentHeroSlide].title2.th}
                   </span>
                 </h1>
 
-                <p className="max-w-xl text-sm md:text-base font-medium text-stone-100 leading-relaxed mx-auto mb-10 drop-shadow-md">
+                <p className="max-w-xl font-medium text-stone-100 leading-relaxed mx-auto mb-6 sm:mb-10 drop-shadow-md" style={{ fontSize: 'clamp(0.75rem, 1.5vw, 1rem)' }}>
                   {language === 'EN' ? heroSlides[currentHeroSlide].desc.en : heroSlides[currentHeroSlide].desc.th}
                 </p>
               </div>
