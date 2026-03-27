@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
                       src={slide.img}
                       alt="Brand Showcase"
                       draggable={false}
-                      className="w-full h-full pointer-events-none object-contain sm:object-cover"
+                      className={`w-full h-full pointer-events-none ${hasText ? "object-cover" : "object-contain"}`}
                     />
 
                     {hasText && <div className="absolute inset-0 bg-black/40" />}
@@ -310,7 +310,7 @@ export const Home: React.FC = () => {
       </section>
 
 
-      <section className="py-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
+      <section className="pt-8 pb-16 sm:pt-12 sm:pb-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-6 text-stone-900 dark:text-stone-100 font-light">
@@ -326,7 +326,7 @@ export const Home: React.FC = () => {
 
 
       </section>
-      <section className="py-16 px-6 md:px-12">
+      <section className="pt-6 pb-12 sm:pt-10 sm:pb-16 px-6 md:px-12">
         <div className="container mx-auto">
           <div className="flex items-end justify-between mb-10">
 
