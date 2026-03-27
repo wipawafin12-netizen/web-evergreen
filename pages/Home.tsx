@@ -147,10 +147,61 @@ export const Home: React.FC = () => {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const [isHeroPaused, setIsHeroPaused] = useState(false);
   const heroTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+  const isDragging = useRef(false);
+  const dragStartX = useRef<number>(0);
 
   const nextSlide = useCallback(() => {
     setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
   }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  const handleSwipe = useCallback(() => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+  }, [nextSlide, prevSlide]);
+
+  // Touch events (mobile)
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = () => {
+    handleSwipe();
+  };
+
+  // Mouse drag events (desktop)
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDragging.current = true;
+    dragStartX.current = e.clientX;
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current) return;
+    touchStartX.current = dragStartX.current;
+    touchEndX.current = e.clientX;
+  };
+  const onMouseUp = () => {
+    if (isDragging.current) {
+      handleSwipe();
+      isDragging.current = false;
+    }
+  };
+  const onMouseLeaveSlider = () => {
+    if (isDragging.current) {
+      handleSwipe();
+      isDragging.current = false;
+    }
+    setIsHeroPaused(false);
+  };
 
   // Auto-play
   useEffect(() => {
@@ -166,9 +217,15 @@ export const Home: React.FC = () => {
 
 
       <section
-        className="relative"
+        className="relative select-none cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsHeroPaused(true)}
-        onMouseLeave={() => setIsHeroPaused(false)}
+        onMouseLeave={onMouseLeaveSlider}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
       >
 
 
@@ -337,7 +394,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-            )}
+            )}      
           </div>
         </div>
       </section>
@@ -402,7 +459,6 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Row 3 - Hotel & Service Apartment */}
             <div>
               <h3 className="text-center text-sm font-medium uppercase tracking-widest text-stone-400 mb-4">{t("Hotel & Service Apartment", "โรงแรมและเซอร์วิสอพาร์ตเมนต์")}</h3>
               <div className="relative overflow-hidden w-full">
