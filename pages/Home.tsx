@@ -181,15 +181,18 @@ export const Home: React.FC = () => {
 
   // Mouse drag events (desktop)
   const onMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
     isDragging.current = true;
     dragStartX.current = e.clientX;
   };
   const onMouseMove = (e: React.MouseEvent) => {
     if (!isDragging.current) return;
+    e.preventDefault();
     touchStartX.current = dragStartX.current;
     touchEndX.current = e.clientX;
   };
-  const onMouseUp = () => {
+  const onMouseUp = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (isDragging.current) {
       handleSwipe();
       isDragging.current = false;
@@ -245,7 +248,8 @@ export const Home: React.FC = () => {
                     <img
                       src={slide.img}
                       alt="Brand Showcase"
-                      className={`w-full h-full ${hasText ? "object-cover" : "object-contain sm:object-cover"}`}
+                      draggable={false}
+                      className={`w-full h-full pointer-events-none ${hasText ? "object-cover" : "object-contain sm:object-cover"}`}
                     />
 
                     {hasText && <div className="absolute inset-0 bg-black/40" />}
