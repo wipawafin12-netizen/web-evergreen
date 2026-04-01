@@ -129,6 +129,13 @@ export const Footer: React.FC = () => {
 
 
       </div>
+
+      <div className="container mx-auto mt-10 pt-6 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between text-xs text-stone-400 dark:text-stone-500">
+        <p>&copy; {new Date().getFullYear()} Evergreen. All rights reserved.</p>
+        <Link to="/sitemap" className="hover:text-brand-500 transition-colors">
+          Sitemap
+        </Link>
+      </div>
     </footer>
   );
 };
