@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
     { label: "Service Shaft", labelTH: "ช่องชาร์ป", path: "/service-shaft" },
     { label: "Flooring", labelTH: "พื้นไม้", path: "/flooring" },
     { label: "Staircase", labelTH: "บันได", path: "/staircase" },
-    { label: "Wall Panel", labelTH: "ผนังตกแต่ง", path: "/wall-panel" },
+    { label: "Wall Panel", labelTH: "ผนังตกแต่", path: "/wall-panel" },
   ];
 
 
