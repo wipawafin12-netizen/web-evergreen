@@ -1,0 +1,17 @@
+services:
+  chhindustry-web:
+    build: .
+    container_name: chhindustry-web
+    restart: unless-stopped
+    networks:
+      - traefik_default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.chhindustry-web.rule=Host(`chhindustry.com`) || Host(`www.chhindustry.com`)"
+      - "traefik.http.routers.chhindustry-web.entrypoints=websecure"
+      - "traefik.http.routers.chhindustry-web.tls.certresolver=myresolver"
+      - "traefik.http.services.chhindustry-web.loadbalancer.server.port=80"
+
+networks:
+  traefik_default:
+    external: true
