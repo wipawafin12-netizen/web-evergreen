@@ -7,9 +7,9 @@ export const ServiceShaft: React.FC = () => {
     const { t } = useLanguage();
 
     const shaftPngs = [
-        "/service-shaft/mini%20flat.png",
-        "/service-shaft/mo%20panel.png",
-        "/service-shaft/Ins1.png"
+        "/service-shaft/mini%20flat.webp",
+        "/service-shaft/mo%20panel.webp",
+        "/service-shaft/Ins1.webp"
     ];
 
     const [selectedHeroImage, setSelectedHeroImage] = useState(shaftPngs[0]);

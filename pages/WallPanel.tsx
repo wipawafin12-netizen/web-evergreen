@@ -11,9 +11,9 @@ export const WallPanel: React.FC = () => {
     const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
     const detailImages = [
-        "/wall-panel/w02.png",
-        "/home-collections/01.png",
-        "/our-company/01.png"
+        "/wall-panel/w02.webp",
+        "/home-collections/01.webp",
+        "/our-company/01.webp"
     ];
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -28,10 +28,10 @@ export const WallPanel: React.FC = () => {
 
     const prices = [3200, 2800, 3500, 2900, 3100];
     const wallPanelData = [
-        { id: 'WP01', price: 3200, images: ["/wall-panel/w01.png", "/wall-panel/w02.png", "/wall-panel/w03.png"], categories: ['All', 'New'] },
-        { id: 'WP02', price: 2800, images: ["/wall-panel/w04.png", "/wall-panel/w05.png", "/wall-panel/w01.png"], categories: ['All', 'Best Sellers'] },
-        { id: 'WP03', price: 3500, images: ["/wall-panel/w02.png", "/wall-panel/w03.png", "/wall-panel/w04.png"], categories: ['All', 'New'] },
-        { id: 'WP04', price: 2900, images: ["/wall-panel/w05.png", "/wall-panel/w01.png", "/wall-panel/w02.png"], categories: ['All', 'Best Sellers'] },
+        { id: 'WP01', price: 3200, images: ["/wall-panel/w01.webp", "/wall-panel/w02.webp", "/wall-panel/w03.webp"], categories: ['All', 'New'] },
+        { id: 'WP02', price: 2800, images: ["/wall-panel/w04.webp", "/wall-panel/w05.webp", "/wall-panel/w01.webp"], categories: ['All', 'Best Sellers'] },
+        { id: 'WP03', price: 3500, images: ["/wall-panel/w02.webp", "/wall-panel/w03.webp", "/wall-panel/w04.webp"], categories: ['All', 'New'] },
+        { id: 'WP04', price: 2900, images: ["/wall-panel/w05.webp", "/wall-panel/w01.webp", "/wall-panel/w02.webp"], categories: ['All', 'Best Sellers'] },
     ];
 
     const [selectedImages, setSelectedImages] = useState<{ [key: string]: string }>(

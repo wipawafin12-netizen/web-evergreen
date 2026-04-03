@@ -20,10 +20,10 @@ const woodenVariants: Variant[] = [
         colorName: "Makawood",
         colorNameTh: "ไม้มะค่า",
         images: [
-            { src: "/doorframe/Makha.png", alt: "ไม้มะค่า - ด้านหน้า" },
-            // { src: "/doorframe/Makha-side.png", alt: "ไม้มะค่า - ด้านข้าง" },
-            // { src: "/doorframe/Makha-detail.png", alt: "ไม้มะค่า - รายละเอียด" },
-            // { src: "/doorframe/Makha-corner.png", alt: "ไม้มะค่า - มุม" },
+            { src: "/doorframe/Makha.webp", alt: "ไม้มะค่า - ด้านหน้า" },
+            // { src: "/doorframe/Makha-side.webp", alt: "ไม้มะค่า - ด้านข้าง" },
+            // { src: "/doorframe/Makha-detail.webp", alt: "ไม้มะค่า - รายละเอียด" },
+            // { src: "/doorframe/Makha-corner.webp", alt: "ไม้มะค่า - มุม" },
         ],
     },
     {
@@ -31,10 +31,10 @@ const woodenVariants: Variant[] = [
         colorName: "Redwood",
         colorNameTh: "ไม้แดง",
         images: [
-            { src: "/doorframe/RED.png", alt: "ไม้แดง - ด้านหน้า" },
-            // { src: "/doorframe/RED-side.png", alt: "ไม้แดง - ด้านข้าง" },
-            // { src: "/doorframe/RED-detail.png", alt: "ไม้แดง - รายละเอียด" },
-            // { src: "/doorframe/RED-corner.png", alt: "ไม้แดง - มุม" },
+            { src: "/doorframe/RED.webp", alt: "ไม้แดง - ด้านหน้า" },
+            // { src: "/doorframe/RED-side.webp", alt: "ไม้แดง - ด้านข้าง" },
+            // { src: "/doorframe/RED-detail.webp", alt: "ไม้แดง - รายละเอียด" },
+            // { src: "/doorframe/RED-corner.webp", alt: "ไม้แดง - มุม" },
         ],
     },
     {
@@ -42,10 +42,10 @@ const woodenVariants: Variant[] = [
         colorName: "White Oak",
         colorNameTh: "ไม้โอ๊ค",
         images: [
-            { src: "/doorframe/Whiteoak.png", alt: "ไม้โอ๊ค - ด้านหน้า" },
-            // { src: "/doorframe/Whiteoak-side.png", alt: "ไม้โอ๊ค - ด้านข้าง" },
-            // { src: "/doorframe/Whiteoak-detail.png", alt: "ไม้โอ๊ค - รายละเอียด" },
-            // { src: "/doorframe/Whiteoak-corner.png", alt: "ไม้โอ๊ค - มุม" },
+            { src: "/doorframe/Whiteoak.webp", alt: "ไม้โอ๊ค - ด้านหน้า" },
+            // { src: "/doorframe/Whiteoak-side.webp", alt: "ไม้โอ๊ค - ด้านข้าง" },
+            // { src: "/doorframe/Whiteoak-detail.webp", alt: "ไม้โอ๊ค - รายละเอียด" },
+            // { src: "/doorframe/Whiteoak-corner.webp", alt: "ไม้โอ๊ค - มุม" },
         ],
     },
     {
@@ -53,10 +53,10 @@ const woodenVariants: Variant[] = [
         colorName: "Takien",
         colorNameTh: "ไม้ตะเคียน",
         images: [
-            { src: "/doorframe/Takien.png", alt: "ไม้ตะเคียน - ด้านหน้า" },
-            // { src: "/doorframe/Takien-side.png", alt: "ไม้ตะเคียน - ด้านข้าง" },
-            // { src: "/doorframe/Takien-detail.png", alt: "ไม้ตะเคียน - รายละเอียด" },
-            // { src: "/doorframe/Takien-corner.png", alt: "ไม้ตะเคียน - มุม" },
+            { src: "/doorframe/Takien.webp", alt: "ไม้ตะเคียน - ด้านหน้า" },
+            // { src: "/doorframe/Takien-side.webp", alt: "ไม้ตะเคียน - ด้านข้าง" },
+            // { src: "/doorframe/Takien-detail.webp", alt: "ไม้ตะเคียน - รายละเอียด" },
+            // { src: "/doorframe/Takien-corner.webp", alt: "ไม้ตะเคียน - มุม" },
         ],
     },
 ];
@@ -67,9 +67,9 @@ const wpcVariants: Variant[] = [
         colorName: "White",
         colorNameTh: "สีขาว",
         images: [
-            { src: "/doorframe/doorframe2.png", alt: "WPC สีขาว - ด้านหน้า" },
-            { src: "/doorframe/wpc-angle2.png", alt: "WPC สีขาว - มุม 2" },
-            { src: "/doorframe/wpc-angle3.png", alt: "WPC สีขาว - มุม 3" },
+            { src: "/doorframe/doorframe2.webp", alt: "WPC สีขาว - ด้านหน้า" },
+            { src: "/doorframe/wpc-angle2.webp", alt: "WPC สีขาว - มุม 2" },
+            { src: "/doorframe/wpc-angle3.webp", alt: "WPC สีขาว - มุม 3" },
         ],
     },
     {
@@ -77,9 +77,9 @@ const wpcVariants: Variant[] = [
         colorName: "Natural Brown",
         colorNameTh: "สีน้ำตาลธรรมชาติ",
         images: [
-            { src: "/doorframe/doorframe1.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
-            { src: "/doorframe/wpc2.3.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
-            { src: "/doorframe/wpc2.2.png", alt: "WPC สีน้ำตาล - ด้านหน้า" },
+            { src: "/doorframe/doorframe1.webp", alt: "WPC สีน้ำตาล - ด้านหน้า" },
+            { src: "/doorframe/wpc2.3.webp", alt: "WPC สีน้ำตาล - ด้านหน้า" },
+            { src: "/doorframe/wpc2.2.webp", alt: "WPC สีน้ำตาล - ด้านหน้า" },
         ],
     },
 ];

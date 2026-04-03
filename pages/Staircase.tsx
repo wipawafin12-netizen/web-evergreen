@@ -55,7 +55,7 @@ export const Staircase: React.FC = () => {
                         {/* Section 1 Image */}
                         <div className="w-full md:w-1/2 flex items-start justify-center pt-6 md:pt-10">
                             <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="/staircase/w1.jpg" alt="Solid Staircase" className="w-full h-full object-cover" />
+                                <img src="/staircase/w1.webp" alt="Solid Staircase" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ export const Staircase: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mt-12">
                         <div className="order-2 lg:order-1 flex items-start justify-center">
                             <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="/staircase/w3.jpg" alt="Engineered Staircase" className="w-full h-full object-cover" />
+                                <img src="/staircase/w3.webp" alt="Engineered Staircase" className="w-full h-full object-cover" />
                             </div>
                         </div>
                         <div className="order-1 lg:order-2">
@@ -137,7 +137,7 @@ export const Staircase: React.FC = () => {
                         </div>
                         <div className="flex items-start justify-center">
                             <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
-                                <img src="/staircase/w2.jpg" alt="WPC Staircase" className="w-full h-full object-cover" />
+                                <img src="/staircase/w2.webp" alt="WPC Staircase" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>

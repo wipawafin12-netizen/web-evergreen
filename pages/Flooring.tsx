@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export const Flooring: React.FC = () => {
     const { t } = useLanguage();
 
-    const heroImage = "/Flooring/fr04.png";
+    const heroImage = "/Flooring/fr04.webp";
 
     const productLayers = [
         {
@@ -52,22 +52,22 @@ export const Flooring: React.FC = () => {
     ];
  
     const colorOptions = [
-        { code: "SPC011", img: "/Flooring/SPC011.png" },
-        { code: "SPC012", img: "/Flooring/SPC012.jpg" },
-        { code: "SPC013", img: "/Flooring/SPC013.jpg" },
-        { code: "SPC014", img: "/Flooring/SPC014.jpg" },
-        { code: "SPC015", img: "/Flooring/SPC015.png" },
-        { code: "SPC016", img: "/Flooring/SPC016.png" },
-        { code: "SPC018", img: "/Flooring/SPC018.png" },
-        { code: "SPC019", img: "/Flooring/SPC019.png" },
+        { code: "SPC011", img: "/Flooring/SPC011.webp" },
+        { code: "SPC012", img: "/Flooring/SPC012.webp" },
+        { code: "SPC013", img: "/Flooring/SPC013.webp" },
+        { code: "SPC014", img: "/Flooring/SPC014.webp" },
+        { code: "SPC015", img: "/Flooring/SPC015.webp" },
+        { code: "SPC016", img: "/Flooring/SPC016.webp" },
+        { code: "SPC018", img: "/Flooring/SPC018.webp" },
+        { code: "SPC019", img: "/Flooring/SPC019.webp" },
     ];
 
     const flooringPatterns = [
-        { en: "Brick ", th: "แบบก่ออิฐ", img: "/Flooring/brick-pattern.png" },
-        { en: "Chevron", th: "แบบตะกร้าทแยง", img: "/Flooring/Chevron.png" },
-        { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "/Flooring/Herringbone.png" },
-        { en: "Random", th: "สุ่ม", img: "/Flooring/Random.png" },
-        { en: "Step", th: "ขั้นตอน", img: "/Flooring/Step.png" },
+        { en: "Brick ", th: "แบบก่ออิฐ", img: "/Flooring/brick-pattern.webp" },
+        { en: "Chevron", th: "แบบตะกร้าทแยง", img: "/Flooring/Chevron.webp" },
+        { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "/Flooring/Herringbone.webp" },
+        { en: "Random", th: "สุ่ม", img: "/Flooring/Random.webp" },
+        { en: "Step", th: "ขั้นตอน", img: "/Flooring/Step.webp" },
     ];
 
     return (
@@ -129,7 +129,7 @@ export const Flooring: React.FC = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                             <div className="relative max-w-[400px] mx-auto lg:mx-0">
                                 <img
-                                    src="/Flooring/fr03.png"
+                                    src="/Flooring/fr03.webp"
                                     alt="SPC Floor Structure"
                                     className="w-full rounded-2xl shadow-lg"
                                 />

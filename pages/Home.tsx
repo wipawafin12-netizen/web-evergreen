@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "../contexts/LanguageContext";
-
+import { useLanguage } from "../contexts/LanguageContext"; 
 const quickCards = [
   {
     title: { en: "Door", th: "ประตู" },
-    img: "/home-collections/01.png",
+    img: "/home-collections/01.webp",
     path: "/door",
     description: {
       en: "Where Wood Styles Define Your Journey,Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs.",
@@ -14,7 +13,7 @@ const quickCards = [
   },
   {
     title: { en: "Doorframe", th: "วงกบ" },
-    img: "/home-collections/doorframe.png",
+    img: "/home-collections/doorframe.webp",
     path: "/wall-panel",
     description: {
       en: "Transform your walls with our decorative panels, adding texture and depth to your interior.",
@@ -23,7 +22,7 @@ const quickCards = [
   },
   {
     title: { en: "Service Shaft", th: "ช่องชาร์ป" },
-    img: "/home-collections/service-shaft.png",
+    img: "/home-collections/service-shaft.webp",
     path: "/service-shaft",
     description: {
       en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
@@ -32,7 +31,7 @@ const quickCards = [
   },
   {
     title: { en: "Flooring", th: "พื้นไม้" },
-    img: "/home-collections/flooring.png",
+    img: "/home-collections/flooring.webp",
     path: "/flooring",
     description: {
       en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
@@ -43,97 +42,97 @@ const quickCards = [
 
 
 const row1Brands = [
-  { id: 1, name: "Client 1", src: "/brand-customer/b1.png" },
-  { id: 2, name: "Client 2", src: "/brand-customer/b2.png" },
-  { id: 3, name: "Client 3", src: "/brand-customer/b3.png" },
-  { id: 4, name: "Client 4", src: "/brand-customer/b4.png" },
-  { id: 5, name: "Client 5", src: "/brand-customer/b5.png" },
-  { id: 6, name: "Client 6", src: "/brand-customer/b6.png" },
-  { id: 7, name: "Client 7", src: "/brand-customer/b7.png" },
-  { id: 8, name: "Client 8", src: "/brand-customer/b8.png" },
-  { id: 9, name: "Client 9", src: "/brand-customer/b9.png" },
-  { id: 10, name: "Client 10", src: "/brand-customer/b10.png" },
-  { id: 11, name: "Client 11", src: "/brand-customer/b11.png" },
-  { id: 12, name: "Client 12", src: "/brand-customer/b12.png" },
-  { id: 13, name: "Client 13", src: "/brand-customer/b13.png" },
-  { id: 14, name: "Client 14", src: "/brand-customer/b14.png" },
-  { id: 15, name: "Client 15", src: "/brand-customer/b15.png" },
-  { id: 16, name: "Client 16", src: "/brand-customer/b16.png" },
-  { id: 17, name: "Client 17", src: "/brand-customer/b17.png" },
-  { id: 18, name: "Client 18", src: "/brand-customer/b18.png" },
-  { id: 19, name: "Client 19", src: "/brand-customer/b19.png" },
-  { id: 20, name: "Client 20", src: "/brand-customer/b20.png" },
-  { id: 21, name: "Client 21", src: "/brand-customer/b21.png" },
-  { id: 22, name: "Client 22", src: "/brand-customer/b22.png" },
-  { id: 23, name: "Client 23", src: "/brand-customer/b23.png" },
-  { id: 24, name: "Client 24", src: "/brand-customer/b24.png" },
-  { id: 25, name: "Client 25", src: "/brand-customer/b25.png" },
-  { id: 26, name: "Client 26", src: "/brand-customer/b26.png" },
-  { id: 27, name: "Client 27", src: "/brand-customer/b27.png" },
+  { id: 1, name: "Client 1", src: "/brand-customer/b1.webp" },
+  { id: 2, name: "Client 2", src: "/brand-customer/b2.webp" },
+  { id: 3, name: "Client 3", src: "/brand-customer/b3.webp" },
+  { id: 4, name: "Client 4", src: "/brand-customer/b4.webp" },
+  { id: 5, name: "Client 5", src: "/brand-customer/b5.webp" },
+  { id: 6, name: "Client 6", src: "/brand-customer/b6.webp" },
+  { id: 7, name: "Client 7", src: "/brand-customer/b7.webp" },
+  { id: 8, name: "Client 8", src: "/brand-customer/b8.webp" },
+  { id: 9, name: "Client 9", src: "/brand-customer/b9.webp" },
+  { id: 10, name: "Client 10", src: "/brand-customer/b10.webp" },
+  { id: 11, name: "Client 11", src: "/brand-customer/b11.webp" },
+  { id: 12, name: "Client 12", src: "/brand-customer/b12.webp" },
+  { id: 13, name: "Client 13", src: "/brand-customer/b13.webp" },
+  { id: 14, name: "Client 14", src: "/brand-customer/b14.webp" },
+  { id: 15, name: "Client 15", src: "/brand-customer/b15.webp" },
+  { id: 16, name: "Client 16", src: "/brand-customer/b16.webp" },
+  { id: 17, name: "Client 17", src: "/brand-customer/b17.webp" },
+  { id: 18, name: "Client 18", src: "/brand-customer/b18.webp" },
+  { id: 19, name: "Client 19", src: "/brand-customer/b19.webp" },
+  { id: 20, name: "Client 20", src: "/brand-customer/b20.webp" },
+  { id: 21, name: "Client 21", src: "/brand-customer/b21.webp" },
+  { id: 22, name: "Client 22", src: "/brand-customer/b22.webp" },
+  { id: 23, name: "Client 23", src: "/brand-customer/b23.webp" },
+  { id: 24, name: "Client 24", src: "/brand-customer/b24.webp" },
+  { id: 25, name: "Client 25", src: "/brand-customer/b25.webp" },
+  { id: 26, name: "Client 26", src: "/brand-customer/b26.webp" },
+  { id: 27, name: "Client 27", src: "/brand-customer/b27.webp" },
 ];
 
 const row2Brands = [
-  { id: 1, name: "Client 1", src: "/brand-customer2/b1.png" },
-  { id: 2, name: "Client 2", src: "/brand-customer2/b2.png" },
-  { id: 3, name: "Client 3", src: "/brand-customer2/b3.png" },
-  { id: 4, name: "Client 4", src: "/brand-customer2/b4.png" },
-  { id: 5, name: "Client 5", src: "/brand-customer2/b5.png" },
-  { id: 6, name: "Client 6", src: "/brand-customer2/b6.png" },
-  { id: 7, name: "Client 7", src: "/brand-customer2/b7.png" },
-  { id: 8, name: "Client 8", src: "/brand-customer2/b8.png" },
-  { id: 9, name: "Client 9", src: "/brand-customer2/b9.png" },
-  { id: 10, name: "Client 10", src: "/brand-customer2/b10.png" },
-  { id: 11, name: "Client 11", src: "/brand-customer2/b11.png" },
-  { id: 12, name: "Client 12", src: "/brand-customer2/b12.png" },
-  { id: 13, name: "Client 13", src: "/brand-customer2/b13.png" },
-  { id: 14, name: "Client 14", src: "/brand-customer2/b14.png" },
-  { id: 15, name: "Client 15", src: "/brand-customer2/b15.png" },
-  { id: 16, name: "Client 16", src: "/brand-customer2/b16.png" },
-  { id: 17, name: "Client 17", src: "/brand-customer2/b17.png" },
-  { id: 18, name: "Client 18", src: "/brand-customer2/b18.png" },
-  { id: 19, name: "Client 19", src: "/brand-customer2/b19.png" },
-  { id: 20, name: "Client 20", src: "/brand-customer2/b20.png" },
-  { id: 21, name: "Client 21", src: "/brand-customer2/b21.png" },
-  { id: 22, name: "Client 22", src: "/brand-customer2/b22.png" },
-  { id: 23, name: "Client 23", src: "/brand-customer2/b23.png" },
-  { id: 24, name: "Client 24", src: "/brand-customer2/b24.png" },
-  { id: 25, name: "Client 25", src: "/brand-customer2/b25.png" },
-  { id: 26, name: "Client 26", src: "/brand-customer2/b26.png" },
-  { id: 27, name: "Client 27", src: "/brand-customer2/b27.png" },
-  { id: 28, name: "Client 28", src: "/brand-customer2/b28.png" },
-  { id: 29, name: "Client 29", src: "/brand-customer2/b29.png" },
+  { id: 1, name: "Client 1", src: "/brand-customer2/b1.webp" },
+  { id: 2, name: "Client 2", src: "/brand-customer2/b2.webp" },
+  { id: 3, name: "Client 3", src: "/brand-customer2/b3.webp" },
+  { id: 4, name: "Client 4", src: "/brand-customer2/b4.webp" },
+  { id: 5, name: "Client 5", src: "/brand-customer2/b5.webp" },
+  { id: 6, name: "Client 6", src: "/brand-customer2/b6.webp" },
+  { id: 7, name: "Client 7", src: "/brand-customer2/b7.webp" },
+  { id: 8, name: "Client 8", src: "/brand-customer2/b8.webp" },
+  { id: 9, name: "Client 9", src: "/brand-customer2/b9.webp" },
+  { id: 10, name: "Client 10", src: "/brand-customer2/b10.webp" },
+  { id: 11, name: "Client 11", src: "/brand-customer2/b11.webp" },
+  { id: 12, name: "Client 12", src: "/brand-customer2/b12.webp" },
+  { id: 13, name: "Client 13", src: "/brand-customer2/b13.webp" },
+  { id: 14, name: "Client 14", src: "/brand-customer2/b14.webp" },
+  { id: 15, name: "Client 15", src: "/brand-customer2/b15.webp" },
+  { id: 16, name: "Client 16", src: "/brand-customer2/b16.webp" },
+  { id: 17, name: "Client 17", src: "/brand-customer2/b17.webp" },
+  { id: 18, name: "Client 18", src: "/brand-customer2/b18.webp" },
+  { id: 19, name: "Client 19", src: "/brand-customer2/b19.webp" },
+  { id: 20, name: "Client 20", src: "/brand-customer2/b20.webp" },
+  { id: 21, name: "Client 21", src: "/brand-customer2/b21.webp" },
+  { id: 22, name: "Client 22", src: "/brand-customer2/b22.webp" },
+  { id: 23, name: "Client 23", src: "/brand-customer2/b23.webp" },
+  { id: 24, name: "Client 24", src: "/brand-customer2/b24.webp" },
+  { id: 25, name: "Client 25", src: "/brand-customer2/b25.webp" },
+  { id: 26, name: "Client 26", src: "/brand-customer2/b26.webp" },
+  { id: 27, name: "Client 27", src: "/brand-customer2/b27.webp" },
+  { id: 28, name: "Client 28", src: "/brand-customer2/b28.webp" },
+  { id: 29, name: "Client 29", src: "/brand-customer2/b29.webp" },
 ];
 
 const row3Brands = [
-  { id: 1, name: "Client 1", src: "/brand-customer3/b1.png" },
-  { id: 2, name: "Client 2", src: "/brand-customer3/b2.png" },
-  { id: 3, name: "Client 3", src: "/brand-customer3/b3.png" },
-  { id: 4, name: "Client 4", src: "/brand-customer3/b4.png" },
-  { id: 5, name: "Client 5", src: "/brand-customer3/b5.png" },
-  { id: 6, name: "Client 6", src: "/brand-customer3/b6.png" },
-  { id: 7, name: "Client 7", src: "/brand-customer3/b7.png" },
-  { id: 8, name: "Client 8", src: "/brand-customer3/b8.png" },
-  { id: 9, name: "Client 9", src: "/brand-customer3/b9.png" },
-  { id: 10, name: "Client 10", src: "/brand-customer3/b10.png" },
-  { id: 11, name: "Client 11", src: "/brand-customer3/b11.png" },
-  { id: 12, name: "Client 12", src: "/brand-customer3/b12.png" },
-  { id: 13, name: "Client 13", src: "/brand-customer3/b13.png" },
-  { id: 14, name: "Client 14", src: "/brand-customer3/b14.png" },
-  { id: 15, name: "Client 15", src: "/brand-customer3/b15.png" },
-  { id: 16, name: "Client 16", src: "/brand-customer3/b16.png" },
-  { id: 17, name: "Client 17", src: "/brand-customer3/b17.png" },
+  { id: 1, name: "Client 1", src: "/brand-customer3/b1.webp" },
+  { id: 2, name: "Client 2", src: "/brand-customer3/b2.webp" },
+  { id: 3, name: "Client 3", src: "/brand-customer3/b3.webp" },
+  { id: 4, name: "Client 4", src: "/brand-customer3/b4.webp" },
+  { id: 5, name: "Client 5", src: "/brand-customer3/b5.webp" },
+  { id: 6, name: "Client 6", src: "/brand-customer3/b6.webp" },
+  { id: 7, name: "Client 7", src: "/brand-customer3/b7.webp" },
+  { id: 8, name: "Client 8", src: "/brand-customer3/b8.webp" },
+  { id: 9, name: "Client 9", src: "/brand-customer3/b9.webp" },
+  { id: 10, name: "Client 10", src: "/brand-customer3/b10.webp" },
+  { id: 11, name: "Client 11", src: "/brand-customer3/b11.webp" },
+  { id: 12, name: "Client 12", src: "/brand-customer3/b12.webp" },
+  { id: 13, name: "Client 13", src: "/brand-customer3/b13.webp" },
+  { id: 14, name: "Client 14", src: "/brand-customer3/b14.webp" },
+  { id: 15, name: "Client 15", src: "/brand-customer3/b15.webp" },
+  { id: 16, name: "Client 16", src: "/brand-customer3/b16.webp" },
+  { id: 17, name: "Client 17", src: "/brand-customer3/b17.webp" },
 ];
 
 const heroSlides = [
   {
-    img: "/home-collections/back.png",
+    img: "/home-collections/back.webp",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "Not Just Doors, But Architecture", th: "ไม่ใช่แค่ประตู แต่คือสถาปัตยกรรม" },
     desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "ความงดงามและดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและวงกบ สวย ทน ทันสมัย" }
   },
   {
-    img: "/home-collections/Brandner.png",
+    img: "/home-collections/Brandner.webp",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "", th: "" },
@@ -151,7 +150,7 @@ export const Home: React.FC = () => {
   const touchEndX = useRef<number>(0);
   const isDragging = useRef(false);
   const dragStartX = useRef<number>(0);
-
+  
   const nextSlide = useCallback(() => {
     setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
   }, []);
@@ -271,7 +270,7 @@ export const Home: React.FC = () => {
                 <h1 className="font-sans font-bold uppercase tracking-wide leading-tight text-white mb-4 sm:mb-8 drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}>
                   <span className="block mb-2 sm:mb-4">
                     {language === 'EN' ? heroSlides[currentHeroSlide].title1.en : heroSlides[currentHeroSlide].title1.th}
-                  </span>
+                  </span>      
                   <span className="block text-brand-500">
                     {language === 'EN' ? heroSlides[currentHeroSlide].title2.en : heroSlides[currentHeroSlide].title2.th}
                   </span>
