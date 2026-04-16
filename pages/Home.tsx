@@ -282,22 +282,24 @@ export const Home: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap gap-4 justify-center">
-                <a
-                  href="https://door.chhindustry.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 hover:border-white/50 px-8 py-3.5 text-xs font-medium tracking-[0.2em] uppercase transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
-                >
-                  {t("Find Your Perfect Door", "ค้นหาประตูที่เหมาะกับคุณ")}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </a>
               </div>
             </div>
           </div>
+
+          {/* Door Finder CTA - bottom right */}
+          <a
+            href="https://door.chhindustry.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-6 right-4 sm:bottom-8 sm:right-8 z-20 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 hover:border-white/50 px-5 py-2.5 sm:px-6 sm:py-3 text-[10px] sm:text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
+          >
+            {language === 'EN' ? 'Find Your Perfect Door' : 'ค้นหาประตูที่เหมาะกับคุณ'}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
 
           {/* Slide Indicator Dots */}
           {heroSlides.length > 1 && (
