@@ -70,7 +70,7 @@ export const Contact: React.FC = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Email</h3>
-                                <p className="text-stone-600 dark:text-stone-400">sales@evergreen-doors.com</p>
+                                <p className="text-stone-600 dark:text-stone-400">mkt.evergreenchh@gmail.com</p>
                             </div>
                         </div>
 
