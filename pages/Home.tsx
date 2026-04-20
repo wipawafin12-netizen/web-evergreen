@@ -323,12 +323,14 @@ export const Home: React.FC = () => {
       <section className="pt-8 pb-16 sm:pt-12 sm:pb-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl mb-6 text-stone-900 dark:text-stone-100 font-light">
+            <h2 className="text-3xl md:text-4xl mb-8 text-stone-900 dark:text-stone-100 font-light">
               {t("Craftsmanship × Global Standards for a Better Quality of Life", "งานฝีมือ × มาตรฐานสากล เพื่อคุณภาพชีวิตที่ดีกว่า")}
             </h2>
-            <div className="w-20 h-1 bg-brand-500 mx-auto mb-8"></div>
             <p className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed">
-              {t("From a humble sawmill to a leading construction materials manufacturer — over 50 years of relentless innovation, blending traditional craftsmanship with modern production technology, for every space you call home.", "จากโรงเลื่อยไม้เล็กๆ สู่ผู้ผลิตวัสดุก่อสร้างชั้นนำ — กว่า 50 ปีที่เราไม่หยุดพัฒนา ผสานภูมิปัญญางานช่างกับนวัตกรรมการผลิต เพื่อทุกพื้นที่ที่คุณอาศัยอยู่")}
+              {t("From a humble sawmill to a leading construction materials manufacturer", "จากโรงเลื่อยไม้เล็กๆ สู่ผู้ผลิตวัสดุก่อสร้างชั้นนำ")}
+            </p>
+            <p className="text-lg text-stone-600 dark:text-stone-400 leading-relaxed mt-3">
+              {t("Over 50 years of relentless innovation, blending traditional craftsmanship with modern production technology, for every space you call home.", "กว่า 50 ปีที่เราไม่หยุดพัฒนา ผสานภูมิปัญญางานช่างกับนวัตกรรมการผลิต เพื่อทุกพื้นที่ที่คุณอาศัยอยู่")}
             </p>
           </div>
         </div>
