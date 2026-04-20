@@ -222,7 +222,7 @@ export const Home: React.FC = () => {
         href="https://door.chhindustry.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 sm:px-6 sm:py-3.5 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-all duration-300 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 border-2 border-white/20"
+        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md hover:bg-white/20 text-orange-500 hover:text-orange-600 border border-white/30 hover:border-white/50 px-5 py-2.5 sm:px-6 sm:py-3 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
       >
         {language === 'EN' ? 'Find Your Perfect Door' : 'ค้นหาประตูที่เหมาะกับคุณ'}
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -265,7 +265,7 @@ export const Home: React.FC = () => {
                       className={`w-full h-full pointer-events-none ${hasText ? "object-cover" : "object-contain"}`}
                     />
 
-                    {hasText && <div className="absolute inset-0 bg-black/40" />}
+                    {hasText && <div className="absolute inset-0 bg-black/15" />}
                   </div>
                 );
               })}
