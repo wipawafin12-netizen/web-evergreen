@@ -217,21 +217,6 @@ export const Home: React.FC = () => {
   return (
     <div className="bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
 
-      {/* Floating Door Finder CTA - always visible */}
-      <a
-        href="https://door.chhindustry.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md hover:bg-white/20 text-orange-500 hover:text-orange-600 border border-white/30 hover:border-white/50 px-5 py-2.5 sm:px-6 sm:py-3 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
-      >
-        {language === 'EN' ? 'Find Your Perfect Door' : 'ค้นหาประตูที่เหมาะกับคุณ'}
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-          <polyline points="15 3 21 3 21 9" />
-          <line x1="10" y1="14" x2="21" y2="3" />
-        </svg>
-      </a>
-
       <section
         className="relative select-none cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsHeroPaused(true)}
@@ -319,6 +304,28 @@ export const Home: React.FC = () => {
         <div className="h-px bg-stone-200/70 dark:bg-stone-800/70" />
       </section>
 
+      {/* Door Finder CTA Banner */}
+      <section className="bg-gradient-to-r from-orange-500 to-orange-600">
+        <div className="max-w-6xl mx-auto px-4 md:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-white text-center sm:text-left">
+            <p className="text-sm font-medium">{t("Not sure which door is right for you?", "ยังไม่แน่ใจว่าประตูแบบไหนเหมาะกับคุณ?")}</p>
+            <p className="text-xs text-white/80">{t("Try our interactive door finder tool", "ลองใช้เครื่องมือค้นหาประตูแบบอินเทอร์แอคทีฟ")}</p>
+          </div>
+          <a
+            href="https://door.chhindustry.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white text-orange-600 hover:bg-orange-50 px-6 py-2.5 text-xs font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-lg shadow-md hover:shadow-lg whitespace-nowrap"
+          >
+            {t("Find Your Perfect Door", "ค้นหาประตูที่เหมาะกับคุณ")}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+      </section>
 
       <section className="pt-8 pb-16 sm:pt-12 sm:pb-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
         <div className="container mx-auto">
