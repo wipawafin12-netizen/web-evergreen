@@ -61,9 +61,6 @@ export const Quote: React.FC = () => {
                         <h1 className="text-3xl md:text-4xl font-bold text-brand-900 dark:text-stone-100 leading-tight">
                             {labels.title}
                         </h1>
-                        <p className="mt-6 text-stone-600 dark:text-stone-400 leading-relaxed text-sm max-w-lg">
-                            {labels.subtitle}
-                        </p>
                     </div>
 
                     <div className="space-y-6 pt-8 border-t border-stone-200 dark:border-stone-800">

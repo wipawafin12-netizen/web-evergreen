@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { PAGE_IMAGES } from '../data/images';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ArrowUpRight, ChevronDown, ArrowRight } from 'lucide-react';
@@ -10,28 +10,11 @@ export const WallPanel: React.FC = () => {
     const [openSpec, setOpenSpec] = useState(0);
     const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
-    const detailImages = [
-        "/wall-panel/w02.webp",
-        "/home-collections/01.webp",
-        "/our-company/01.webp"
-    ];
-
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % detailImages.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
-
-
-    const prices = [3200, 2800, 3500, 2900, 3100];
     const wallPanelData = [
-        { id: 'WP01', price: 3200, images: ["/wall-panel/w01.webp", "/wall-panel/w02.webp", "/wall-panel/w03.webp"], categories: ['All', 'New'] },
-        { id: 'WP02', price: 2800, images: ["/wall-panel/w04.webp", "/wall-panel/w05.webp", "/wall-panel/w01.webp"], categories: ['All', 'Best Sellers'] },
-        { id: 'WP03', price: 3500, images: ["/wall-panel/w02.webp", "/wall-panel/w03.webp", "/wall-panel/w04.webp"], categories: ['All', 'New'] },
-        { id: 'WP04', price: 2900, images: ["/wall-panel/w05.webp", "/wall-panel/w01.webp", "/wall-panel/w02.webp"], categories: ['All', 'Best Sellers'] },
+        { id: 'WP01', images: ["/wall-panel/w01.webp", "/wall-panel/w02.webp", "/wall-panel/w03.webp"], categories: ['All', 'New'] },
+        { id: 'WP02', images: ["/wall-panel/w04.webp", "/wall-panel/w05.webp", "/wall-panel/w01.webp"], categories: ['All', 'Best Sellers'] },
+        { id: 'WP03', images: ["/wall-panel/w02.webp", "/wall-panel/w03.webp", "/wall-panel/w04.webp"], categories: ['All', 'New'] },
+        { id: 'WP04', images: ["/wall-panel/w05.webp", "/wall-panel/w01.webp", "/wall-panel/w02.webp"], categories: ['All', 'Best Sellers'] },
     ];
 
     const [selectedImages, setSelectedImages] = useState<{ [key: string]: string }>(
@@ -125,7 +108,6 @@ export const WallPanel: React.FC = () => {
                             <div className="flex justify-between items-center border-b border-stone-300 dark:border-stone-800 pb-3">
                                 <div className="flex flex-col">
                                     <span className="font-medium text-sm tracking-wide uppercase">#{item.id}</span>
-                                    <span className="text-sm text-stone-600 dark:text-stone-400 mt-1">฿{item.price.toLocaleString()}</span>
                                 </div>
                                 <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-black dark:text-stone-500 dark:group-hover:text-white transition-colors" />
                             </div>
@@ -143,7 +125,7 @@ export const WallPanel: React.FC = () => {
                                     {t("Evergreen WPC Wall Panels", "ผนังตกแต่ง WPC เอเวอร์กรีน")}
                                 </span>
                                 <h3 className="text-3xl md:text-5xl text-brand-900 dark:text-stone-100 font-medium tracking-tight">
-                                    {t("Elevate Spaces with WPC Interior Wall Panels", "ยกระดับพื้นที่ด้วยผนังตกแต่งภายใน WPC")}
+                                    {t("Elevate Spaces with WPC Interior Wall Panels", "เพิ่มความหรูหราให้พื้นที่ด้วยผนังตกแต่งภายใน WPC")}
                                 </h3>
                                 <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-lg pb-8 border-b border-stone-200 dark:border-stone-800">
                                     {t(
@@ -168,27 +150,12 @@ export const WallPanel: React.FC = () => {
                                 </div>
                             </div>
                             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
-                                {detailImages.map((img, index) => (
-                                    <img
-                                        key={index}
-                                        src={img}
-                                        alt={`Wall Panel Detail ${index + 1}`}
-                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                                            }`}
-                                    />
-                                ))}
+                                <img
+                                    src="/wall-panel/w02.webp"
+                                    alt="Wall Panel Detail"
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
-
-                                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                                    {detailImages.map((_, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setCurrentImageIndex(index)}
-                                            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-orange-500 w-6' : 'bg-white/50'
-                                                }`}
-                                        />
-                                    ))}
-                                </div>
                             </div>
                         </div>
                     </div>

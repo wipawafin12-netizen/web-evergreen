@@ -29,7 +29,7 @@ export const Flooring: React.FC = () => {
             en: "SPC Stone Core",
             th: "SPC Stone Core",
             descEn: "100% waterproof, non-absorbent, plasticizer-free, adds stability and heat resistance",
-            descTh: "กันน้ำ 100% ไม่ดูดซึม ไม่มีสารทำให้นิ่ม ช่วยเพิ่มความเสถียรและทนความร้อน"
+            descTh: "กันน้ำ 100% เพื่มความแข็งแรง และทนความร้อน"
         },
     ];
 
@@ -82,21 +82,12 @@ export const Flooring: React.FC = () => {
                         <h1 className="text-2xl md:text-3xl lg:text-4xl text-brand-900 dark:text-stone-100 mb-2 leading-tight font-semibold">
                             Evergreen SPC Floor
                         </h1>
-                        <h2 className="text-lg md:text-xl text-stone-600 dark:text-stone-300 mb-4 font-light">
-                            {t("Elevate Spaces with Enduring Elegance", "ยกระดับพื้นที่ด้วยความสง่างามที่ยั่งยืน")}
-                        </h2>
                         <p className="text-stone-500 dark:text-stone-400 mb-6 text-sm leading-relaxed">
                             {t(
                                 "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Experience a wide range of styles, from real wood-like patterns to captivating designs. With advantages like being budget-friendly, soundproof, and resistant to stains and water, SPC Flooring is more than just flooring; it's a canvas for your unique vision.",
-                                "พื้น SPC มีความทนทาน หรูหรา และได้รับการออกแบบอย่างประณีต ช่วยเปลี่ยนโฉมพื้นที่ของคุณด้วยความงามที่ยั่งยืน สัมผัสสไตล์ที่หลากหลาย ตั้งแต่ลายไม้ธรรมชาติไปจนถึงดีไซน์ที่น่าหลงใหล ด้วยข้อดีมากมาย ทั้งราคาประหยัด เก็บเสียง และทนต่อคราบและน้ำ พื้น SPC จึงไม่ใช่แค่พื้น แต่เป็นผืนผ้าใบสำหรับวิสัยทัศน์ของคุณ"
+                                "พื้น SPC มีความทนทาน หรูหรา ด้วยการออกแบบอย่างประณีต ช่วยเปลี่ยนโฉมพื้นของคุณด้วยความงามที่ยั่งยืน สัมผัสสไตล์ที่หลากหลาย ตั้งแต่ลายไม้ธรรมชาติไปจนถึงดีไซน์ที่น่าหลงใหล ด้วยข้อดีมากมาย ทั้งราคาประหยัด และมีความแข็งแรง พร้อมทั้งทำความสะอาดได้อย่างง่ายดาย"
                             )}
                         </p>
-                        <a href="#product-details" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest border-b border-black dark:border-white pb-1 hover:text-brand-500 hover:border-brand-500 transition-colors dark:text-stone-100">
-                            {t("View Details", "ดูรายละเอียด")}
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </a>
                     </div>
                 </div>
 
@@ -117,15 +108,6 @@ export const Flooring: React.FC = () => {
 
                     {/* Product Structure */}
                     <div className="mb-8">
-                        <div className="text-center mb-8">
-                            <h2 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 font-semibold">
-                                SPC Structure
-                            </h2>
-                            <p className="text-stone-500 dark:text-stone-400 mt-2 text-sm">
-                                {t("Beautiful, durable and easy to clean", "พื้นสวย ทนและทำความสะอาดง่าย")}
-                            </p>
-                        </div>
-
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                             <div className="relative max-w-[400px] mx-auto lg:mx-0">
                                 <img
@@ -134,7 +116,16 @@ export const Flooring: React.FC = () => {
                                     className="w-full rounded-2xl shadow-lg"
                                 />
                             </div>
-                            <div className="space-y-4">
+                            <div>
+                                <div className="mb-8">
+                                    <h2 className="text-2xl md:text-3xl text-brand-900 dark:text-stone-100 font-semibold">
+                                        SPC Structure
+                                    </h2>
+                                    <p className="text-stone-500 dark:text-stone-400 mt-2 text-sm">
+                                        {t("Beautiful, durable and easy to clean", "พื้นสวย ทนและทำความสะอาดง่าย")}
+                                    </p>
+                                </div>
+                                <div className="space-y-4">
                                 {productLayers.map((layer, index) => (
                                     <div
                                         key={index}
@@ -151,6 +142,7 @@ export const Flooring: React.FC = () => {
                                         </div>
                                     </div>
                                 ))}
+                                </div>
                             </div>
                         </div>
 

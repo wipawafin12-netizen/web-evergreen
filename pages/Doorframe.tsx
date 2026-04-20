@@ -82,6 +82,16 @@ const wpcVariants: Variant[] = [
             { src: "/doorframe/wpc2.2.webp", alt: "WPC สีน้ำตาล - ด้านหน้า" },
         ],
     },
+    {
+        colorId: "wpc-with-liner",
+        colorName: "Doorframe with Liner",
+        colorNameTh: "วงกบแบบมีซับ",
+        images: [
+            { src: "/doorframe/doorframe2.webp", alt: "วงกบแบบมีซับ - ด้านหน้า" },
+            { src: "/doorframe/wpc-angle2.webp", alt: "วงกบแบบมีซับ - มุม 2" },
+            { src: "/doorframe/wpc-angle3.webp", alt: "วงกบแบบมีซับ - มุม 3" },
+        ],
+    },
 ];
 
 
@@ -155,7 +165,7 @@ export const Doorframe: React.FC = () => {
                                 <p className="whitespace-pre-line">
                                     {t(
                                         "An alternative designed to solve traditional wooden frame issues like moisture sensitivity and termite risks.\n\nWPC synthetic wood doorframes are suitable for both interior and exterior use, supporting wet and dry installation systems for maximum flexibility.\n\nThe material can be cut, drilled, planed, or sawed with standard woodworking tools, ensuring easy and uncomplicated installation.\n\nMoisture-resistant, rot-proof, and low maintenance—WPC frames are the ideal choice for modern doors, delivering durability and long-term value.",
-                                        "อีกหนึ่งทางเลือกที่ออกแบบมาเพื่อแก้ปัญหาวงกบไม้แบบเดิม ๆ ที่ไม่ทนความชื้น และเสี่ยงต่อปลวกหรือมอดกัดกินเนื้อไม้\n\nวงกบประตูไม้สังเคราะห์ WPC สามารถใช้งานได้ทั้งภายในและภายนอกอาคาร รองรับการติดตั้งได้ทั้งระบบเปียกและระบบแห้ง ให้ความยืดหยุ่นในการทำงานของช่าง\n\nตัววัสดุสามารถตัด เจาะ ไส หรือเลื่อยได้ด้วยเครื่องมือช่างไม้ทั่วไป ทำให้ติดตั้งสะดวก ไม่ซับซ้อน\n\nด้วยคุณสมบัติที่ทนชื้น ไม่ผุกร่อน และดูแลรักษาง่าย วงกบ WPC จึงเป็นอีกหนึ่งทางเลือกที่เหมาะกับงานประตูยุคใหม่ ทั้งในแง่ความทนทานและความคุ้มค่าในระยะยาว"
+                                        "อีกหนึ่งทางเลือกที่ออกแบบมาเพื่อแก้ปัญหาวงกบไม้แบบเดิม ๆ ที่ไม่ทนความชื้น และเสี่ยงต่อปลวกหรือมอดกัดกินเนื้อไม้\n\nวงกบประตูไม้สังเคราะห์ WPC สามารถใช้งานได้ทั้งภายในและภายนอกอาคาร รองรับการติดตั้งได้ทั้งระบบเปียกและระบบแห้ง ให้ความยืดหยุ่นในการทำงานของช่าง\n\nตัววัสดุสามารถตัด เจาะ ไส หรือเลื่อยได้ด้วยเครื่องมือช่างไม้ทั่วไป ทำให้ติดตั้งสะดวก ไม่ซับซ้อน\n\nด้วยคุณสมบัติที่ทนชื้น ไม่ผุกร่อน และดูแลรักษาง่าย วงกบ WPC จึงเป็นอีกหนึ่งทางเลือกที่เหมาะกับงานประตูยุคใหม่ ทั้งในด้านความทนทานและความคุ้มค่าในระยะยาว"
                                     )}
                                 </p>
                             </div>

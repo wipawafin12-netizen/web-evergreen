@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "../contexts/LanguageContext"; 
+import { FileText } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 const quickCards = [
   {
     title: { en: "Door", th: "ประตู" },
@@ -8,16 +9,16 @@ const quickCards = [
     path: "/door",
     description: {
       en: "Where Wood Styles Define Your Journey,Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs.",
-      th: "สไตล์ไม้ที่บ่งบอกถึงการเดินทางของคุณเปลี่ยนโฉมภายในบ้านของคุณด้วยประตูที่ไม่เพียงแต่ทนทาน แต่ยังมีสไตล์ให้เลือกมากมาย ตั้งแต่ลายไม้ ผ้า ไปจนถึงดีไซน์ที่ได้แรงบันดาลใจจากหนัง"
+      th: "บานประตูที่สะท้อนตัวตนและเรื่องราวของคุณ ด้วยประตูที่ไม่เพียงแข็งแรงทนทาน แต่ยังโดดเด่นด้วยดีไซน์หลากหลาย ทั้งลายไม้ ลายผ้า ไปจนถึงผิวสัมผัสที่เสมือนไม้จริง"
     }
   },
   {
     title: { en: "Doorframe", th: "วงกบ" },
     img: "/home-collections/doorframe.webp",
-    path: "/wall-panel",
+    path: "/doorframe",
     description: {
-      en: "Transform your walls with our decorative panels, adding texture and depth to your interior.",
-      th: "เปลี่ยนผนังของคุณด้วยแผ่นตกแต่งผนัง เพิ่มพื้นผิวและมิติให้กับการตกแต่งภายใน"
+      en: "Durable WPC doorframes designed to complement your doors, combining strength with a natural wood finish.",
+      th: "วงกบ WPC ที่แข็งแรงทนทาน ออกแบบมาให้เข้ากับประตูของคุณ ผสานความแข็งแรงกับสัมผัสของไม้ธรรมชาติ"
     }
   },
   {
@@ -26,16 +27,16 @@ const quickCards = [
     path: "/service-shaft",
     description: {
       en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
-      th: "สัมผัสโลกแห่งฟังก์ชันการใช้งานที่เหนือระดับด้วยแผงปิดช่องเข้าถึงผนังช่องลิฟต์ของเรา ซึ่งได้รับการออกแบบมาเพื่อมอบการเข้าถึงช่องเก็บของที่จำเป็นได้อย่างง่ายดาย"
+      th: "ยืดหยุ่นทุกการใช้งาน สามารถปรับเปลี่ยนขนาดรูปแบบและความต้องการได้อย่างหลากหลาย"
     }
   },
   {
-    title: { en: "Flooring", th: "พื้นไม้" },
+    title: { en: "Flooring", th: "พื้น" },
     img: "/home-collections/flooring.webp",
     path: "/flooring",
     description: {
       en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
-      th: "พื้น SPC มีความทนทาน หรูหรา และได้รับการออกแบบอย่างประณีต ช่วยเปลี่ยนโฉมพื้นที่ของคุณด้วยความงามที่ยั่งยืน ขอแนะนำพื้น SPC นวัตกรรมสมัยใหม่ที่ผสานความทนทาน ความหรูหรา และการออกแบบเหนือกาลเวลา"
+      th: "ขอแนะนำพื้น SPC นวัตกรรมสมัยใหม่ที่ผสานความทนทาน ความหรูหรา และการออกแบบเหนือกาลเวลา"
     }
   },
 ];
@@ -217,6 +218,29 @@ export const Home: React.FC = () => {
   return (
     <div className="bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
 
+      {/* Door Finder CTA Banner */}
+      <section className="bg-gradient-to-r from-orange-500 to-orange-600">
+        <div className="max-w-6xl mx-auto px-4 md:px-12 py-5 md:py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-white text-center sm:text-left">
+            <p className="text-base md:text-lg font-semibold leading-snug">{t("Not sure which door is right for you?", "ยังไม่แน่ใจว่าประตูแบบไหนเหมาะกับคุณ?")}</p>
+            <p className="text-sm md:text-base text-white/90 mt-1">{t("Try our interactive door finder tool", "ลองใช้เครื่องมือค้นหาประตูแบบอินเทอร์แอคทีฟ")}</p>
+          </div>
+          <a
+            href="https://door.chhindustry.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white text-orange-600 hover:bg-orange-50 px-7 py-3 text-sm md:text-base font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-lg shadow-md hover:shadow-lg whitespace-nowrap"
+          >
+            {t("Find Your Perfect Door", "ค้นหาประตูที่เหมาะกับคุณ")}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
       <section
         className="relative select-none cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsHeroPaused(true)}
@@ -304,29 +328,6 @@ export const Home: React.FC = () => {
         <div className="h-px bg-stone-200/70 dark:bg-stone-800/70" />
       </section>
 
-      {/* Door Finder CTA Banner */}
-      <section className="bg-gradient-to-r from-orange-500 to-orange-600">
-        <div className="max-w-6xl mx-auto px-4 md:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-white text-center sm:text-left">
-            <p className="text-sm font-medium">{t("Not sure which door is right for you?", "ยังไม่แน่ใจว่าประตูแบบไหนเหมาะกับคุณ?")}</p>
-            <p className="text-xs text-white/80">{t("Try our interactive door finder tool", "ลองใช้เครื่องมือค้นหาประตูแบบอินเทอร์แอคทีฟ")}</p>
-          </div>
-          <a
-            href="https://door.chhindustry.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-orange-600 hover:bg-orange-50 px-6 py-2.5 text-xs font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-lg shadow-md hover:shadow-lg whitespace-nowrap"
-          >
-            {t("Find Your Perfect Door", "ค้นหาประตูที่เหมาะกับคุณ")}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
       <section className="pt-8 pb-16 sm:pt-12 sm:pb-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
@@ -398,14 +399,11 @@ export const Home: React.FC = () => {
                       {language === 'EN' ? quickCards[selectedCardIndex].description.en : quickCards[selectedCardIndex].description.th}
                     </p>
                     <Link
-                      to={quickCards[selectedCardIndex].path}
-                      className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#E64A19] hover:text-[#D84315] transition-colors"
+                      to="/quote"
+                      className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
                     >
-                      {t("View Collection", "ดูคอลเลกชัน")}
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform transition-transform group-hover:translate-x-1">
-                        <path d="M5 12H19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                      {t("Get Quote", "ขอใบเสนอราคา")}
                     </Link>
                   </div>
                   <div className="w-full md:w-1/3 aspect-video md:aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 hidden md:block">

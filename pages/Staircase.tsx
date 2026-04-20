@@ -25,7 +25,7 @@ export const Staircase: React.FC = () => {
                                     {t("Solid Rubberwood", "บันไดไม้จริง (ไม้ยางพารา)")}
                                 </span>
                                 <h3 className="text-xl md:text-2xl text-brand-900 dark:text-stone-100 font-medium">
-                                    {t("Elegance & Cost-Effectiveness", "ความง่างามที่คุ้มค่า")}
+                                    {t("Elegance & Cost-Effectiveness", "ความสง่างามที่คุ้มค่า")}
                                 </h3>
                                 <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-sm mb-4">
                                     {t(
@@ -109,13 +109,13 @@ export const Staircase: React.FC = () => {
                                     {t("WPC Staircase", "บันได WPC")}
                                 </span>
                                 <h3 className="text-xl md:text-2xl text-brand-900 dark:text-stone-100 font-medium">
-                                    {t("Seamless Integration", "การเชื่อมต่อที่ไร้รอยต่อ")}
+                                    {t("Seamless Integration", "นวัตกรรมที่มาพร้อมความสวยงาม")}
                                 </h3>
                             </div>
                             <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-sm mb-4">
                                 {t(
                                     "Innovation meets elegance, perfectly integrating with SPC floors for a unified interior design.",
-                                    "นวัตกรรมที่มาพร้อมความสวยงาม ออกแบบมาให้กลมกลืนกับพื้น SPC ได้อย่างสมบูรณ์แบบ"
+                                    "ออกแบบมาให้กลมกลืนกับพื้น SPC ได้อย่างสมบูรณ์แบบไร้รอยต่อ"
                                 )}
                             </p>
                             <div className="grid grid-cols-2 gap-3">

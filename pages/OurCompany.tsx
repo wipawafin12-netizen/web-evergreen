@@ -228,7 +228,7 @@ export const OurCompany: React.FC = () => {
             <p className="text-sm md:text-base text-stone-500 dark:text-stone-400 leading-loose mb-4">
               {t(
                 "For over five decades, Evergreen by CHH has refined its expertise in wood and construction materials into products that stand firm in every detail — from textures you can feel to structures that endure across generations.",
-                "ตลอดกว่าห้าทศวรรษ Evergreen by CHH หล่อหลอมความเชี่ยวชาญด้านงานไม้และวัสดุก่อสร้างสู่ผลิตภัณฑ์ที่ยืนหยัดในทุกรายละเอียด — ตั้งแต่ลายผิวที่สัมผัสได้ ไปจนถึงโครงสร้างที่ทนทานข้ามรุ่น"
+                "ตลอดกว่าห้าทศวรรษ Evergreen by CHH หล่อหลอมความเชี่ยวชาญด้านงานไม้และวัสดุก่อสร้างสู่ผลิตภัณฑ์ที่ยืนหยัดในทุกรายละเอียด ตั้งแต่ลายผิวที่สัมผัสได้ ไปจนถึงโครงสร้างที่ทนทานข้ามรุ่น"
               )}
             </p>
             <p className="text-sm md:text-base text-stone-500 dark:text-stone-400 leading-loose mb-4">

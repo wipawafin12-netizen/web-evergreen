@@ -31,7 +31,7 @@ export const Contact: React.FC = () => {
                         <p className="mt-6 text-stone-600 dark:text-stone-400 leading-relaxed text-sm max-w-lg">
                             {t(
                                 "Whether you have questions about our products, need a quotation, or want to discuss a project — our team is ready to help.",
-                                "ไม่ว่าจะสอบถามเกี่ยวกับสินค้า ขอใบเสนอราคา หรือปรึกษาโครงการ — ทีมงานของเราพร้อมให้บริการ"
+                                "ไม่ว่าจะสอบถามเกี่ยวกับสินค้า ขอใบเสนอราคา หรือปรึกษาโครงการ ทีมงานของเราพร้อมให้บริการ"
                             )}
                         </p>
                     </div>
@@ -43,24 +43,13 @@ export const Contact: React.FC = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">
-                                    {t("Office", "ออฟฟิศ")}
+                                    {t("Phone", "Phone")}
                                 </h3>
-                                <p className="text-stone-600 dark:text-stone-400">02-921-9979</p>
+                                <p className="text-stone-600 dark:text-stone-400">02-921-9979 ({t("Office", "ออฟฟิศ")})</p>
+                                <p className="text-stone-600 dark:text-stone-400">062-539-9980 ({t("Sales", "ฝ่ายขาย")})</p>
                                 <p className="text-stone-500 text-sm">
                                     {t("Mon-Fri 8:30am - 4:30pm", "จันทร์-ศุกร์ 8:30 - 16:30 น.")}
                                 </p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 bg-white dark:bg-stone-800 rounded-full shadow-sm text-brand-500">
-                                <Phone className="w-6 h-6" />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-brand-900 dark:text-stone-100">
-                                    {t("Sales", "ฝ่ายขาย")}
-                                </h3>
-                                <p className="text-stone-600 dark:text-stone-400">062-539-9980</p>
                             </div>
                         </div>
 

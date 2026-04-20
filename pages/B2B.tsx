@@ -198,9 +198,6 @@ export const B2B: React.FC = () => {
                         <span className="text-5xl md:text-7xl lg:text-8xl text-orange-500"></span>
                     </h1>
 
-                    <p className="max-w-2xl text-lg md:text-xl text-white/90 font-light">
-                        {t("Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", "ออกแบบอย่างประณีต ดีไซน์ไร้กาลเวลา คอลเลกชันประตูและพื้นผิวที่สร้างสรรค์เพื่อพื้นที่สมัยใหม่")}
-                    </p>
                 </div>
             </div>
 

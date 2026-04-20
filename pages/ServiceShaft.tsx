@@ -84,16 +84,16 @@ export const ServiceShaft: React.FC = () => {
 
                             <h1 className="text-2xl md:text-4xl text-stone-900 dark:text-stone-50 leading-[1.1] mb-8">
                                 {t("The invisible", "ความงาม")} <br />
-                                <span className="block mt-2">{t("precision", "ที่ซ่อนเร้น")}</span>
+                                <span className="block mt-2">{t("precision", "ที่สัมผัสได้")}</span>
                             </h1>
 
                             <p className="text-stone-600 dark:text-stone-300 text-base md:text-lg leading-relaxed mb-12 max-w-lg">
-                                {t("We believe that utility should not compromise aesthetics. Our service shaft solutions are engineered to disappear, providing necessary access while maintaining the integrity of your interior design.", "เราเชื่อว่าประโยชน์ใช้สอยไม่ควรลดทอนความสวยงาม โซลูชันช่องชาร์ปของเราได้รับการออกแบบให้กลมกลืน ให้การเข้าถึงที่จำเป็นในขณะที่ยังรักษาความสมบูรณ์ของการออกแบบภายในของคุณ")}
+                                {t("We believe that utility should not compromise aesthetics. Our service shaft solutions are engineered to disappear, providing necessary access while maintaining the integrity of your interior design.", "เพราะเราเชื่อว่าประโยชน์ใช้สอย ไม่ควรลดทอนความสวยงาม โซลูชั่นช่องชาร์ปของเรา ได้รับการออกแบบให้กลมกลืนกับทุกพื้นที่อย่างลงตัว")}
                             </p>
 
                             <div className="flex flex-wrap gap-6">
                                 <Link
-                                    to="/contact"
+                                    to="/quote"
                                     className="group inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full hover:bg-stone-700 dark:hover:bg-stone-200 transition-all duration-300"
                                 >
                                     {t("Request Catalog", "ขอแคตตาล็อก")}
