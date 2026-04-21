@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 
 export const OurCompany: React.FC = () => {
@@ -115,14 +114,6 @@ export const OurCompany: React.FC = () => {
       titleTH: "กำลังผลิตประตู 9,000 บาน / เดือน",
       subtitleTH: "วงกบ WPC : 7,000 ชุด / เดือน"
     }
-  ];
-
-  const collection = [
-    { title: "Modern Panel", subtitle: "Oak tone", img: "/our-company/11.webp", price: "2,490", path: "/door" },
-    { title: "Minimal Flat", subtitle: "Warm sand", img: "/our-company/33.webp", price: "3,590", path: "/door" },
-
-    { title: "Studio Edition", subtitle: "Natural wood", img: "/our-company/22.webp", price: "3,190", path: "/door" },
-    { title: "Urban Loft", subtitle: "Grey matte", img: "/our-company/44.webp", price: "3,890", path: "/door" },
   ];
 
   const row1Brands = [
@@ -312,39 +303,6 @@ export const OurCompany: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-between mb-8">
-            <h4 className="text-xl text-stone-900 dark:text-stone-100">{t("Essentials", "สินค้าแนะนำ")}</h4>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {collection.map((item, idx) => (
-              <Link key={idx} to={item.path} className="group cursor-pointer block">
-                <div className="aspect-[4/3] overflow-hidden bg-stone-100 dark:bg-stone-900 mb-4 rounded-2xl relative">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 animate-image-reveal"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-                </div>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-stone-900 dark:text-stone-100 group-hover:text-brand-500 transition-colors">
-                  {item.title}
-                </p>
-                <div className="flex justify-between items-center mt-1">
-                  <p className="text-[11px] text-stone-500 dark:text-stone-400">{item.subtitle}</p>
-                  <p className="text-[11px] text-stone-900 dark:text-stone-200">฿{item.price}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
 
       <section className="px-6 md:px-12 pb-16">
         <div className="container mx-auto max-w-7xl border-t border-stone-200 dark:border-stone-800 pt-12">

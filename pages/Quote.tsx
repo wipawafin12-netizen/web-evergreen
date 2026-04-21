@@ -12,16 +12,27 @@ export const Quote: React.FC = () => {
         const form = e.currentTarget;
         const formData = new FormData(form);
 
-        const values = {
-            fullName: formData.get('fullName') as string,
-            phoneNumber: formData.get('phoneNumber') as string,
-            emailAddress: formData.get('emailAddress') as string,
-            product: formData.get('product') as string,
-            message: formData.get('message') as string,
-        };
+        const fullName = (formData.get('fullName') as string) || '';
+        const phoneNumber = (formData.get('phoneNumber') as string) || '';
+        const emailAddress = (formData.get('emailAddress') as string) || '';
+        const product = (formData.get('product') as string) || '';
+        const documents = formData.getAll('documents').join(', ');
+        const message = (formData.get('message') as string) || '';
 
-        // Database logic removed
-        console.log("Quote Request submitted (Mock):", values);
+        const subject = `ขอใบเสนอราคา - ${fullName || 'ลูกค้าใหม่'}`;
+        const body = [
+            `ชื่อ-นามสกุล: ${fullName}`,
+            `เบอร์โทรศัพท์: ${phoneNumber}`,
+            `อีเมล: ${emailAddress}`,
+            `สินค้าที่สนใจ: ${product}`,
+            `เอกสารที่ต้องการ: ${documents || '-'}`,
+            '',
+            'รายละเอียดเพิ่มเติม:',
+            message || '-',
+        ].join('\n');
+
+        const mailtoUrl = `mailto:mkt.evergreenchh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
 
         setSubmitted(true);
         form.reset();
@@ -66,7 +77,7 @@ export const Quote: React.FC = () => {
                     <div className="space-y-6 pt-8 border-t border-stone-200 dark:border-stone-800">
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-white dark:bg-stone-800 rounded-full shadow-sm text-brand-500">
-                                <Phone className="w-6 h-6" />
+                                <Phone aria-hidden="true" className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Phone</h3>
@@ -78,7 +89,7 @@ export const Quote: React.FC = () => {
 
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-white dark:bg-stone-800 rounded-full shadow-sm text-brand-500">
-                                <Mail className="w-6 h-6" />
+                                <Mail aria-hidden="true" className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Email</h3>
@@ -90,10 +101,11 @@ export const Quote: React.FC = () => {
                             href="https://share.google/TcBJWGfU9wbJZYkHW"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={language === 'EN' ? 'View office location on map' : 'ดูที่อยู่สำนักงานบนแผนที่'}
                             className="flex items-start gap-4 hover:opacity-80 transition-opacity"
                         >
                             <div className="p-3 bg-white dark:bg-stone-800 rounded-full shadow-sm text-brand-500">
-                                <MapPin className="w-6 h-6" />
+                                <MapPin aria-hidden="true" className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Office</h3>
@@ -111,7 +123,7 @@ export const Quote: React.FC = () => {
                     {submitted ? (
                         <div className="h-full flex flex-col items-center justify-center text-center py-20 space-y-4">
                             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
-                                <CheckCircle2 className="w-8 h-8" />
+                                <CheckCircle2 aria-hidden="true" className="w-8 h-8" />
                             </div>
                             <h3 className="text-2xl font-bold text-brand-900 dark:text-stone-100">Success!</h3>
                             <p className="text-stone-600 dark:text-stone-400 max-w-sm mx-auto">
@@ -125,14 +137,16 @@ export const Quote: React.FC = () => {
                             </button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6" aria-label={labels.title}>
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                <label htmlFor="quote-fullName" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                     {labels.name}
                                 </label>
                                 <input
+                                    id="quote-fullName"
                                     type="text"
                                     required
+                                    autoComplete="name"
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                     name="fullName"
                                     placeholder={language === 'EN' ? "MILKY POP" : "ชื่อผู้ติดต่อ"}
@@ -141,24 +155,28 @@ export const Quote: React.FC = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                    <label htmlFor="quote-phone" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                         {labels.phone}
                                     </label>
                                     <input
+                                        id="quote-phone"
                                         type="tel"
                                         required
+                                        autoComplete="tel"
                                         name="phoneNumber"
                                         className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                         placeholder="08X-XXX-XXXX"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                    <label htmlFor="quote-email" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                         {labels.email}
                                     </label>
                                     <input
+                                        id="quote-email"
                                         type="email"
                                         required
+                                        autoComplete="email"
                                         name="emailAddress"
                                         className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                         placeholder="name@company.com"
@@ -167,15 +185,17 @@ export const Quote: React.FC = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                <label htmlFor="quote-product" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                     {labels.product}
                                 </label>
                                 <select
+                                    id="quote-product"
                                     name="product"
+                                    defaultValue=""
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white appearance-none"
                                     required
                                 >
-                                    <option value="" disabled selected>{language === 'EN' ? "Select a product..." : "เลือกสินค้า..."}</option>
+                                    <option value="" disabled>{language === 'EN' ? "Select a product..." : "เลือกสินค้า..."}</option>
                                     {labels.products.map(p => (
                                         <option key={p.en} value={p.en}>
                                             {language === 'EN' ? p.en : p.th}
@@ -185,10 +205,10 @@ export const Quote: React.FC = () => {
                                 </select>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                            <fieldset className="space-y-2">
+                                <legend className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
                                     {language === 'EN' ? "Required Documents" : "เอกสารที่ต้องการ"}
-                                </label>
+                                </legend>
                                 <div className="flex flex-wrap gap-6 pt-1">
                                     {[
                                         { en: "Catalog", th: "แคตตาล็อก" },
@@ -199,9 +219,11 @@ export const Quote: React.FC = () => {
                                             <div className="relative flex items-center">
                                                 <input
                                                     type="checkbox"
+                                                    name="documents"
+                                                    value={item.en}
                                                     className="peer w-5 h-5 appearance-none border-2 border-stone-300 dark:border-stone-600 rounded checked:bg-brand-500 checked:border-brand-500 transition-all cursor-pointer"
                                                 />
-                                                <CheckCircle2 className="w-3.5 h-3.5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
+                                                <CheckCircle2 aria-hidden="true" className="w-3.5 h-3.5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" />
                                             </div>
                                             <span className="text-stone-600 dark:text-stone-400 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                                                 {language === 'EN' ? item.en : item.th}
@@ -209,23 +231,26 @@ export const Quote: React.FC = () => {
                                         </label>
                                     ))}
                                 </div>
-                            </div>
+                            </fieldset>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                <label htmlFor="quote-file" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                     {language === 'EN' ? "Attach File" : "แนบไฟล์"}
                                 </label>
                                 <input
+                                    id="quote-file"
+                                    name="attachment"
                                     type="file"
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 dark:file:bg-stone-800 dark:file:text-stone-200"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
+                                <label htmlFor="quote-message" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                     {labels.message}
                                 </label>
                                 <textarea
+                                    id="quote-message"
                                     rows={4}
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
                                     name="message"
@@ -238,7 +263,7 @@ export const Quote: React.FC = () => {
                                 className="w-full bg-brand-900 dark:bg-stone-100 text-white dark:text-brand-900 font-bold py-4 rounded-lg hover:bg-brand-800 dark:hover:bg-white/90 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-900/20 flex items-center justify-center gap-2 group"
                             >
                                 <span>{labels.send}</span>
-                                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <Send aria-hidden="true" className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </button>
                         </form>
                     )}

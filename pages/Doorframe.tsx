@@ -87,9 +87,8 @@ const wpcVariants: Variant[] = [
         colorName: "Doorframe with Liner",
         colorNameTh: "วงกบแบบมีซับ",
         images: [
-            { src: "/doorframe/doorframe2.webp", alt: "วงกบแบบมีซับ - ด้านหน้า" },
-            { src: "/doorframe/wpc-angle2.webp", alt: "วงกบแบบมีซับ - มุม 2" },
-            { src: "/doorframe/wpc-angle3.webp", alt: "วงกบแบบมีซับ - มุม 3" },
+            { src: "public/doorframe/วงกบแบบมีซับ.png", alt: "วงกบแบบมีซับ - ด้านหน้า" },
+           
         ],
     },
 ];
@@ -130,12 +129,6 @@ const SingleColorGallery: React.FC<{ variant: Variant }> = ({ variant }) => {
                         <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
                     </button>
                 ))}
-                {/* Placeholder slot for adding more images */}
-                {variant.images.length < 4 && (
-                    <div className="w-16 h-12 rounded-lg border-2 border-dashed border-stone-200 dark:border-stone-700 flex items-center justify-center text-stone-300 dark:text-stone-600 text-lg">
-                        +
-                    </div>
-                )}
             </div>
         </div>
     );
@@ -216,6 +209,55 @@ export const Doorframe: React.FC = () => {
                             {wpcVariants.map((variant) => (
                                 <SingleColorGallery key={variant.colorId} variant={variant} />
                             ))}
+                        </div>
+
+                        <div className="mt-10 space-y-4">
+                            <h3 className="text-lg md:text-xl text-brand-900 dark:text-stone-100 font-medium">
+                                {t("Doorframe with Liner", "วงกบแบบมีซับ")}
+                            </h3>
+                            <div>
+                                <h4 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">{t("Technical Specification", "ข้อมูลทางเทคนิค")}</h4>
+                                <ul className="space-y-2 text-sm text-stone-600 dark:text-stone-400">
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        {t("Model MK1 Size 2\"x5\"", "รุ่น MK1 Size 2\"x5\"")}
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        {t("Sizes: 70x200, 80x200, 90x200 cm.", "ขนาด: 70x200, 80x200, 90x200 ซม.")}
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        {t("Termite Resistant", "กันปลวก")}
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        {t("UV Resistant", "ทนแดด")}
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        {t("Water Resistant", "กันน้ำ")}
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        {t("Paintable", "ทำสีได้")}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">{t("Available Colors", "สีที่มีจำหน่าย")}</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 rounded-full">
+                                        <div className="w-4 h-4 rounded-full bg-white border border-stone-200 shadow-sm"></div>
+                                        <span className="text-xs text-stone-600 dark:text-stone-400">{t("White (Paintable)", "ขาว (ทาสีเพิ่มได้)")}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                    {t("Order Now", "สั่งซื้อสินค้า")}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

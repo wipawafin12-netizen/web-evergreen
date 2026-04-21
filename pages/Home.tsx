@@ -23,7 +23,7 @@ const quickCards = [
   },
   {
     title: { en: "Service Shaft", th: "ช่องชาร์ป" },
-    img: "/home-collections/service-shaft.webp",
+    img: "public/home-collections/service-shaft (1).png",
     path: "/service-shaft",
     description: {
       en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
@@ -271,10 +271,8 @@ export const Home: React.FC = () => {
                       src={slide.img}
                       alt="Brand Showcase"
                       draggable={false}
-                      className={`w-full h-full pointer-events-none ${hasText ? "object-cover" : "object-contain"}`}
+                      className={`w-full h-full pointer-events-none brightness-110 ${hasText ? "object-cover" : "object-contain"}`}
                     />
-
-                    {hasText && <div className="absolute inset-0 bg-black/15" />}
                   </div>
                 );
               })}

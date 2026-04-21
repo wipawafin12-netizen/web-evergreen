@@ -9,7 +9,6 @@ export const Contact: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
-        console.log("Contact form submitted (Mock)");
         setSubmitted(true);
         form.reset();
         setTimeout(() => setSubmitted(false), 5000);
