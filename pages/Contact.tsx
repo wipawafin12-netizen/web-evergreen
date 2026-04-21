@@ -9,6 +9,37 @@ export const Contact: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        const fullName = (formData.get('fullName') as string) || '';
+        const phoneNumber = (formData.get('phoneNumber') as string) || '';
+        const emailAddress = (formData.get('emailAddress') as string) || '';
+        const subject = (formData.get('subject') as string) || '';
+        const message = (formData.get('message') as string) || '';
+
+        const subjectLabels: Record<string, string> = {
+            product: 'สอบถามสินค้า',
+            quote: 'ขอใบเสนอราคา',
+            project: 'ปรึกษาโครงการ',
+            aftersales: 'บริการหลังการขาย',
+            other: 'อื่นๆ',
+        };
+        const subjectText = subjectLabels[subject] || subject;
+
+        const mailSubject = `ติดต่อจากเว็บไซต์ - ${subjectText}${fullName ? ` (${fullName})` : ''}`;
+        const body = [
+            `ชื่อ-นามสกุล: ${fullName}`,
+            `เบอร์โทรศัพท์: ${phoneNumber}`,
+            `อีเมล: ${emailAddress}`,
+            `เรื่อง: ${subjectText}`,
+            '',
+            'ข้อความ:',
+            message || '-',
+        ].join('\n');
+
+        const mailtoUrl = `mailto:mkt.evergreenchh@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
+
         setSubmitted(true);
         form.reset();
         setTimeout(() => setSubmitted(false), 5000);

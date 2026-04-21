@@ -98,7 +98,7 @@ export const Quote: React.FC = () => {
                         </div>
 
                         <a
-                            href="https://share.google/TcBJWGfU9wbJZYkHW"
+                            href="https://www.google.com/maps/dir//C.H.H.+Industry+Co.,Ltd.,+%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%A5%E0%B8%99-%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%AB%E0%B8%A5%E0%B8%B8%E0%B8%A1%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%A7+Khun+Sri,+Sai+Noi+District,+Nonthaburi+11150/@14.0319444,100.2712406,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x30e28adec3a30e19:0x6326176a208413a1!2m2!1d100.2711857!2d14.0235876?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={language === 'EN' ? 'View office location on map' : 'ดูที่อยู่สำนักงานบนแผนที่'}
