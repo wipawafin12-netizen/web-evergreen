@@ -220,19 +220,19 @@ export const Home: React.FC = () => {
 
       {/* Door Finder CTA Banner */}
       <section className="bg-gradient-to-r from-orange-500 to-orange-600">
-        <div className="max-w-6xl mx-auto px-4 md:px-12 py-2.5 md:py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-6xl mx-auto px-4 md:px-12 py-1.5 md:py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="text-white text-center sm:text-left">
-            <p className="text-sm md:text-base font-semibold leading-snug">{t("Not sure which door is right for you?", "ยังไม่แน่ใจว่าประตูแบบไหนเหมาะกับคุณ?")}</p>
-            <p className="text-xs md:text-sm text-white/90 mt-0.5">{t("Try our interactive door finder tool", "ลองใช้เครื่องมือค้นหาประตูแบบอินเทอร์แอคทีฟ")}</p>
+            <p className="text-xs md:text-sm font-semibold leading-snug">{t("Not sure which door is right for you?", "ยังไม่แน่ใจว่าประตูแบบไหนเหมาะกับคุณ?")}</p>
+            <p className="text-[11px] md:text-xs text-white/90 mt-0.5">{t("Try our interactive door finder tool", "ลองใช้เครื่องมือค้นหาประตูแบบอินเทอร์แอคทีฟ")}</p>
           </div>
           <a
             href="https://door.chhindustry.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-orange-600 hover:bg-orange-50 px-5 py-2 text-xs md:text-sm font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-lg shadow-md hover:shadow-lg whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 bg-white text-orange-600 hover:bg-orange-50 px-4 py-1.5 text-[11px] md:text-xs font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-md shadow-md hover:shadow-lg whitespace-nowrap"
           >
             {t("Find Your Perfect Door", "ค้นหาประตูที่เหมาะกับคุณ")}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
               <polyline points="15 3 21 3 21 9" />
               <line x1="10" y1="14" x2="21" y2="3" />
