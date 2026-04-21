@@ -87,7 +87,7 @@ const wpcVariants: Variant[] = [
         colorName: "Doorframe with Liner",
         colorNameTh: "วงกบแบบมีซับ",
         images: [
-            { src: "public/doorframe/วงกบแบบมีซับ.png", alt: "วงกบแบบมีซับ - ด้านหน้า" },
+            { src: "/doorframe/วงกบแบบมีซับ.png", alt: "วงกบแบบมีซับ - ด้านหน้า" },
            
         ],
     },
