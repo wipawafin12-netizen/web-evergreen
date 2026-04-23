@@ -1,43 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSearchParams } from 'react-router-dom';
 import { Send, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Quote: React.FC = () => {
-    const { language, t } = useLanguage();
-    const [submitted, setSubmitted] = useState(false);
+    const { language } = useLanguage();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [submitted, setSubmitted] = useState(searchParams.get('sent') === '1');
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-
-        const fullName = (formData.get('fullName') as string) || '';
-        const phoneNumber = (formData.get('phoneNumber') as string) || '';
-        const emailAddress = (formData.get('emailAddress') as string) || '';
-        const product = (formData.get('product') as string) || '';
-        const documents = formData.getAll('documents').join(', ');
-        const message = (formData.get('message') as string) || '';
-
-        const subject = `ขอใบเสนอราคา - ${fullName || 'ลูกค้าใหม่'}`;
-        const body = [
-            `ชื่อ-นามสกุล: ${fullName}`,
-            `เบอร์โทรศัพท์: ${phoneNumber}`,
-            `อีเมล: ${emailAddress}`,
-            `สินค้าที่สนใจ: ${product}`,
-            `เอกสารที่ต้องการ: ${documents || '-'}`,
-            '',
-            'รายละเอียดเพิ่มเติม:',
-            message || '-',
-        ].join('\n');
-
-        const mailtoUrl = `mailto:mkt.evergreenchh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoUrl;
-
-        setSubmitted(true);
-        form.reset();
-        setTimeout(() => setSubmitted(false), 5000);
-    };
+    useEffect(() => {
+        if (searchParams.get('sent') === '1') {
+            const next = new URLSearchParams(searchParams);
+            next.delete('sent');
+            setSearchParams(next, { replace: true });
+        }
+    }, [searchParams, setSearchParams]);
 
     const labels = {
         title: language === 'EN' ? "Request a Quotation" : "ขอใบเสนอราคา",
@@ -140,7 +117,18 @@ export const Quote: React.FC = () => {
                             </button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} className="space-y-6" aria-label={labels.title}>
+                        <form
+                            action="https://formsubmit.co/mkt.evergreenchh@gmail.com"
+                            method="POST"
+                            encType="multipart/form-data"
+                            className="space-y-6"
+                            aria-label={labels.title}
+                        >
+                            <input type="hidden" name="_subject" value="ขอใบเสนอราคาใหม่ - Evergreen Door Solutions" />
+                            <input type="hidden" name="_template" value="table" />
+                            <input type="hidden" name="_captcha" value="false" />
+                            <input type="hidden" name="_next" value={`${window.location.origin}/quote?sent=1`} />
+                            <input type="text" name="_honey" tabIndex={-1} autoComplete="off" style={{ position: 'absolute', left: '-9999px', width: 0, height: 0 }} aria-hidden="true" />
                             <div className="space-y-2">
                                 <label htmlFor="quote-fullName" className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 block">
                                     {labels.name}
@@ -180,7 +168,7 @@ export const Quote: React.FC = () => {
                                         type="email"
                                         required
                                         autoComplete="email"
-                                        name="emailAddress"
+                                        name="email"
                                         className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
                                         placeholder="name@company.com"
                                     />
