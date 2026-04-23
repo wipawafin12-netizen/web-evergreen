@@ -13,8 +13,6 @@ export const ServiceShaft: React.FC = () => {
     ];
 
     const [selectedHeroImage, setSelectedHeroImage] = useState(shaftPngs[0]);
-    const [detailImage1, setDetailImage1] = useState(shaftPngs[1]);
-    const [detailImage2, setDetailImage2] = useState(shaftPngs[2]);
 
     const services = [
         {
@@ -101,84 +99,6 @@ export const ServiceShaft: React.FC = () => {
                                 </Link>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-24 px-6 md:px-12 border-t border-stone-100 dark:border-stone-800">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
-
-
-                        <div className="md:col-span-4">
-                            <p className="text-[10px] uppercase tracking-[0.3em] text-stone-400 dark:text-stone-500 mb-4">
-                                {t("The Concept", "แนวคิด")}
-                            </p>
-                            <h2 className="text-4xl text-stone-900 dark:text-stone-100 mb-6">
-                                {t("Unseen Precision", "ความแม่นยำที่มองไม่เห็น")}
-                            </h2>
-                            <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-8">
-                                {t("Every building requires complex systems to function—plumbing, electrical, ventilation. The challenge is to house them efficiently without disrupting the visual flow. Our aesthetic panels offer the perfect camouflage.", "อาคารทุกแห่งต้องการระบบที่ซับซ้อนในการทำงาน ไม่ว่าจะเป็นระบบประปา ไฟฟ้า หรือระบายอากาศ ความท้าทายคือการจัดเก็บอย่างมีประสิทธิภาพโดยไม่รบกวนสายตา แผ่นผนังที่สวยงามของเราคือการพรางตัวที่สมบูรณ์แบบ")}
-                            </p>
-
-                            <ul className="space-y-4 text-xs tracking-wide text-stone-600 dark:text-stone-400">
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1 h-1 bg-brand-500 rounded-full"></span>
-                                    {t("Seamless Integration", "การผสานรวมที่ไร้รอยต่อ")}
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1 h-1 bg-brand-500 rounded-full"></span>
-                                    {t("Easy Maintenance Access", "เข้าถึงเพื่อบำรุงรักษาง่าย")}
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span className="w-1 h-1 bg-brand-500 rounded-full"></span>
-                                    {t("Sound Insulation", "ฉนวนกันเสียง")}
-                                </li>
-                            </ul>
-                        </div>
-
-
-                        <div className="md:col-span-8 grid grid-cols-2 gap-4 md:gap-8">
-                            <div className="group relative aspect-[3/4] bg-stone-100 dark:bg-stone-800 overflow-hidden rounded-2xl">
-                                <img
-                                    src={detailImage1}
-                                    alt="Detail 1"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute bottom-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    {shaftPngs.map((img, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => setDetailImage1(img)}
-                                            className={`w-8 h-8 rounded-lg overflow-hidden border-2 shadow-lg transition-all ${detailImage1 === img ? 'border-brand-500 scale-110' : 'border-white/50'
-                                                }`}
-                                        >
-                                            <img src={img} className="w-full h-full object-cover" alt="thumb" />
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="group relative aspect-[3/4] bg-stone-100 dark:bg-stone-800 overflow-hidden rounded-2xl">
-                                <img
-                                    src={detailImage2}
-                                    alt="Detail 2"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute bottom-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    {shaftPngs.map((img, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => setDetailImage2(img)}
-                                            className={`w-8 h-8 rounded-lg overflow-hidden border-2 shadow-lg transition-all ${detailImage2 === img ? 'border-brand-500 scale-110' : 'border-white/50'
-                                                }`}
-                                        >
-                                            <img src={img} className="w-full h-full object-cover" alt="thumb" />
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </section>

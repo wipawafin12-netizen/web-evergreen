@@ -63,11 +63,11 @@ export const Flooring: React.FC = () => {
     ];
 
     const flooringPatterns = [
-        { en: "Brick ", th: "แบบก่ออิฐ", img: "/Flooring/brick-pattern.webp" },
-        { en: "Chevron", th: "แบบตะกร้าทแยง", img: "/Flooring/Chevron.webp" },
-        { en: "Herringbone", th: "แบบตะกร้าสี่เหลี่ยม", img: "/Flooring/Herringbone.webp" },
-        { en: "Random", th: "สุ่ม", img: "/Flooring/Random.webp" },
-        { en: "Step", th: "ขั้นตอน", img: "/Flooring/Step.webp" },
+        { en: "Brick", img: "/Flooring/brick-pattern.webp" },
+        { en: "Chevron", img: "/Flooring/Chevron.webp" },
+        { en: "Herringbone", img: "/Flooring/Herringbone.webp" },
+        { en: "Random", img: "/Flooring/Random.webp" },
+        { en: "Step", img: "/Flooring/Step.webp" },
     ];
 
     return (
@@ -159,7 +159,7 @@ export const Flooring: React.FC = () => {
                                     <div className="w-12 h-12 rounded-full border border-stone-300 dark:border-stone-600 flex items-center justify-center mb-2 group-hover:border-orange-400 transition-colors">
                                         {index === 0 && (
                                             <svg className="w-5 h-5 text-stone-500 dark:text-stone-400 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2.25c-1.5 3-6 7.5-6 11.25a6 6 0 0012 0c0-3.75-4.5-8.25-6-11.25z" />
                                             </svg>
                                         )}
                                         {index === 1 && (
@@ -179,12 +179,17 @@ export const Flooring: React.FC = () => {
                                         )}
                                         {index === 4 && (
                                             <svg className="w-5 h-5 text-stone-500 dark:text-stone-400 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
+                                                <circle cx="5" cy="11" r="1.75" strokeWidth={1.5} />
+                                                <circle cx="19" cy="11" r="1.75" strokeWidth={1.5} />
+                                                <circle cx="9" cy="6" r="1.75" strokeWidth={1.5} />
+                                                <circle cx="15" cy="6" r="1.75" strokeWidth={1.5} />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 13c-2.5 0-4.75 2.5-4.75 5 0 1.5 1.2 2.5 2.5 2.5.9 0 1.5-.4 2.25-.4s1.35.4 2.25.4c1.3 0 2.5-1 2.5-2.5 0-2.5-2.25-5-4.75-5z" />
                                             </svg>
                                         )}
                                         {index === 5 && (
                                             <svg className="w-5 h-5 text-stone-500 dark:text-stone-400 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                                                <circle cx="12" cy="6" r="2.5" strokeWidth={1.5} />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.5 13.5a3.5 3.5 0 017 0v3h-1.5v4.5h-4v-4.5H8.5v-3z" />
                                             </svg>
                                         )}
                                     </div>
@@ -303,7 +308,7 @@ export const Flooring: React.FC = () => {
                                         />
                                     </div>
                                     <p className="text-center mt-3 text-sm font-medium text-stone-700 dark:text-stone-300 group-hover:text-orange-500 transition-colors">
-                                        {t(pattern.en, pattern.th)}
+                                        {pattern.en}
                                     </p>
                                 </div>
                             ))}

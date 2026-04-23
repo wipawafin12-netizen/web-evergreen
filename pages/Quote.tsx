@@ -108,10 +108,13 @@ export const Quote: React.FC = () => {
                                 <MapPin aria-hidden="true" className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="font-bold text-brand-900 dark:text-stone-100">Office</h3>
+                                <h3 className="font-bold text-brand-900 dark:text-stone-100">
+                                    {language === 'EN' ? 'Address' : 'ที่อยู่'}
+                                </h3>
                                 <p className="text-stone-600 dark:text-stone-400 max-w-xs">
-                                    Bang Len-Lad Lum Kaeo Road,
-                                    Khun Sri, Sai Noi District, Nonthaburi 11150
+                                    {language === 'EN'
+                                        ? '9/1 Moo 2, Bang Len-Lad Lum Kaeo Road, Khun Sri, Sai Noi District, Nonthaburi 11150'
+                                        : '9/1 หมู่ 2 ถนนบางเลน-ลาดหลุมแก้ว ต.ขุนศรี อ.ไทรน้อย จ.นนทบุรี 11150'}
                                 </p>
                             </div>
                         </a>
