@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PAGE_IMAGES } from '../data/images';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -6,13 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export const ServiceShaft: React.FC = () => {
     const { t } = useLanguage();
 
-    const shaftPngs = [
-        "/service-shaft/mini%20flat.webp",
-        "/service-shaft/mo%20panel.webp",
-        "/service-shaft/Ins1.webp"
-    ];
-
-    const [selectedHeroImage, setSelectedHeroImage] = useState(shaftPngs[0]);
+    const heroImage = "/service-shaft/s.webp";
 
     const services = [
         {
@@ -62,7 +56,7 @@ export const ServiceShaft: React.FC = () => {
                     {/* Left Image - Framed & Floating */}
                     <div className="relative h-[60vh] lg:h-[88vh] bg-stone-200 dark:bg-stone-800 rounded-[2.5rem] overflow-hidden order-1 shadow-sm group">
                         <img
-                            src={selectedHeroImage}
+                            src={heroImage}
                             alt="Service Shaft Hero"
                             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
                         />
