@@ -220,7 +220,7 @@ export const Doorframe: React.FC = () => {
                                 <ul className="space-y-2 text-sm text-stone-600 dark:text-stone-400">
                                     <li className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                                        {t("Model MK1 Size 2\"x4\"", "รุ่น MK1 Size 2\"x4\"")}
+                                        {t("Model MK5 Size 2\"x4\"", "รุ่น MK5 Size 2\"x4\"")}
                                     </li>
                                     <li className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
