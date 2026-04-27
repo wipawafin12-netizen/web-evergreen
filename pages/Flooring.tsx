@@ -43,7 +43,7 @@ export const Flooring: React.FC = () => {
     ];
 
     const specifications = [
-        { label: { en: "Material", th: "วัสดุ" }, value: { en: "100% Virgin Material", th: "วัสดุบริสุทธิ์ 100%" } },
+        { label: { en: "Material", th: "วัสดุ" }, value: { en: "Premium-Grade High-Quality Material", th: "วัสดุเกรดพรีเมี่ยม คุณภาพสูง" } },
         { label: { en: "Wear Layer", th: "ชั้นป้องกัน" }, value: { en: "0.3 mm / 0.5 mm", th: "0.3 มม. / 0.5 มม." } },
         { label: { en: "Backing Pad", th: "แผ่นรอง" }, value: { en: "1 mm IXPE / 2 mm EVA (Optional)", th: "1 มม. IXPE / 2 มม. EVA (เลือกได้)" } },
         { label: { en: "Installation", th: "การติดตั้ง" }, value: { en: "Fast & Easy with Click Lock", th: "ง่ายและรวดเร็วด้วยระบบคลิกล็อก" } },
