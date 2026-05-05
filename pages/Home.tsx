@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Link } from "react-router-dom";
 import { FileText } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 const quickCards = [
@@ -126,18 +125,20 @@ const row3Brands = [
 
 const heroSlides = [
   {
-    img: "/home-collections/back.webp",
-    pretitle: { en: "", th: "" },
-    title1: { en: "", th: "" },
-    title2: { en: "Not Just Doors, But Architecture", th: "ไม่ใช่แค่ประตู แต่คือสถาปัตยกรรม" },
-    desc: { en: "Quietly engineered. Timelessly designed. A collection of doors and surfaces crafted for modern spaces.", th: "ความงดงามและดีไซน์ที่ไร้กาลเวลา คอลเลกชันประตูและวงกบ สวย ทน ทันสมัย" }
-  },
-  {
-    img: "/home-collections/Brandner.webp",
+    img: "public/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.jpg",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "", th: "" },
-    desc: { en: "", th: "" }
+    desc: { en: "", th: "" },
+    link: "https://shop.chhindustry.com/"
+  },
+  {
+    img: "public/home-collections/pro 4950.jpg",
+    pretitle: { en: "", th: "" },
+    title1: { en: "", th: "" },
+    title2: { en: "", th: "" },
+    desc: { en: "", th: "" },
+    link: "https://www.facebook.com/Evergreenchh?locale=th_TH"
   },
 ];
 
@@ -147,6 +148,7 @@ export const Home: React.FC = () => {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const [isHeroPaused, setIsHeroPaused] = useState(false);
   const heroTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const expandedSectionRef = useRef<HTMLDivElement | null>(null);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
   const isDragging = useRef(false);
@@ -254,25 +256,42 @@ export const Home: React.FC = () => {
       >
 
 
-        <div className="relative aspect-video sm:aspect-auto sm:h-[50vh] md:h-[70vh] lg:h-[85vh] flex items-center justify-center bg-[#FDFBF7] dark:bg-stone-950">
+        <div className="relative w-full aspect-video flex items-center justify-center bg-[#FDFBF7] dark:bg-stone-950">
 
           <div className="absolute inset-0 z-0 overflow-hidden">
 
             <div className="relative w-full h-full">
               {heroSlides.map((slide, idx) => {
-                const hasText = slide.title2.en || slide.title2.th;
+                const imgEl = (
+                  <img
+                    src={slide.img}
+                    alt="Brand Showcase"
+                    draggable={false}
+                    className="w-full h-full pointer-events-none brightness-110 object-cover"
+                  />
+                );
                 return (
                   <div
                     key={idx}
-                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105 pointer-events-none"
                       }`}
                   >
-                    <img
-                      src={slide.img}
-                      alt="Brand Showcase"
-                      draggable={false}
-                      className={`w-full h-full pointer-events-none brightness-110 ${hasText ? "object-cover" : "object-contain"}`}
-                    />
+                    {slide.link ? (
+                      <a
+                        href={slide.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full h-full"
+                        onClick={(e: React.MouseEvent) => {
+                          const dx = Math.abs(touchEndX.current - touchStartX.current);
+                          if (dx > 5) e.preventDefault();
+                        }}
+                      >
+                        {imgEl}
+                      </a>
+                    ) : (
+                      imgEl
+                    )}
                   </div>
                 );
               })}
@@ -280,7 +299,7 @@ export const Home: React.FC = () => {
           </div>
 
 
-          <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center">
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center pointer-events-none">
             <div className="max-w-5xl mx-auto">
 
               <div key={currentHeroSlide} className="animate-fade-in-up">
@@ -360,7 +379,15 @@ export const Home: React.FC = () => {
             {quickCards.map((item, i) => (
               <div
                 key={i}
-                onClick={() => setSelectedCardIndex(selectedCardIndex === i ? null : i)}
+                onClick={() => {
+                  const next = selectedCardIndex === i ? null : i;
+                  setSelectedCardIndex(next);
+                  if (next !== null) {
+                    setTimeout(() => {
+                      expandedSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 150);
+                  }
+                }}
                 className={`group block cursor-pointer transition-opacity duration-300 ${selectedCardIndex !== null && selectedCardIndex !== i ? 'opacity-50' : 'opacity-100'}`}
               >
                 <div className={`relative overflow-hidden rounded-2xl bg-stone-100 dark:bg-stone-800 transition-all duration-300 ${selectedCardIndex === i ? 'ring-2 ring-brand-500 shadow-xl scale-[1.02]' : ''}`}>
@@ -385,7 +412,7 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Expanded Content Section */}
-          <div className={`overflow-hidden transition-all duration-500 ease-in-out ${selectedCardIndex !== null ? 'max-h-[500px] opacity-100 mt-12' : 'max-h-0 opacity-0 mt-0'}`}>
+          <div ref={expandedSectionRef} className={`overflow-hidden transition-all duration-500 ease-in-out scroll-mt-24 ${selectedCardIndex !== null ? 'max-h-[500px] opacity-100 mt-12' : 'max-h-0 opacity-0 mt-0'}`}>
             {selectedCardIndex !== null && (
               <div className="bg-white dark:bg-stone-900 rounded-2xl p-8 md:p-12 border border-stone-100 dark:border-stone-800 shadow-sm animate-fade-in-up">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -396,13 +423,15 @@ export const Home: React.FC = () => {
                     <p className="text-stone-600 dark:text-stone-400 leading-relaxed mb-8">
                       {language === 'EN' ? quickCards[selectedCardIndex].description.en : quickCards[selectedCardIndex].description.th}
                     </p>
-                    <Link
-                      to="/quote"
+                    <a
+                      href="https://shop.chhindustry.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
                     >
                       <FileText className="w-3.5 h-3.5 flex-shrink-0" />
-                      {t("Get Quote", "ขอใบเสนอราคา")}
-                    </Link>
+                      {t("Order Product", "สั่งซื้อสินค้า")}
+                    </a>
                   </div>
                   <div className="w-full md:w-1/3 aspect-video md:aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 hidden md:block">
                     <img

@@ -123,6 +123,15 @@ export const Navbar: React.FC = () => {
               {language === 'EN' ? "CONTACT" : "ติดต่อ"}
             </Link>
 
+            <a
+              href="https://shop.chhindustry.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
+            >
+              {language === 'EN' ? "ORDER" : "สั่งซื้อสินค้า"}
+            </a>
+
           </div>
         </div>
 
@@ -247,6 +256,16 @@ export const Navbar: React.FC = () => {
           >
             {language === 'EN' ? "CONTACT" : "ติดต่อ"}
           </Link>
+
+          <a
+            href="https://shop.chhindustry.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {language === 'EN' ? "ORDER" : "สั่งซื้อสินค้า"}
+          </a>
         </div>
       </div>
     </nav>
