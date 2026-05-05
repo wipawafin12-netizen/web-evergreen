@@ -125,7 +125,7 @@ const row3Brands = [
 
 const heroSlides = [
   {
-    img: "public/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.jpg",
+    img: "/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.jpg",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "", th: "" },
@@ -133,7 +133,7 @@ const heroSlides = [
     link: "https://shop.chhindustry.com/"
   },
   {
-    img: "public/home-collections/pro 4950.jpg",
+    img: "/home-collections/pro 4950.jpg",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "", th: "" },
