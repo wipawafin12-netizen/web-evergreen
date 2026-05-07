@@ -137,12 +137,14 @@ export const Navbar: React.FC = () => {
 
 
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2 md:gap-4 flex-shrink-0 mr-1 sm:mr-2 lg:mr-6">
-          <Link
-            to="/affiliate"
+          <a
+            href="https://shop.chhindustry.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center bg-[#FFAB40] text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-5 md:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide hover:bg-[#FF9100] transition-all shadow-md hover:shadow-lg whitespace-nowrap"
           >
-            <span>AFFILIATE</span>
-          </Link>
+            <span>{language === 'EN' ? 'ORDER' : 'สั่งซื้อสินค้า'}</span>
+          </a>
           <Link
             to="/quote"
             className="flex items-center gap-1 sm:gap-2 bg-[#f37021] text-white px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm whitespace-nowrap"

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Link } from "react-router-dom";
 import { FileText } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 const quickCards = [
@@ -423,15 +424,24 @@ export const Home: React.FC = () => {
                     <p className="text-stone-600 dark:text-stone-400 leading-relaxed mb-8">
                       {language === 'EN' ? quickCards[selectedCardIndex].description.en : quickCards[selectedCardIndex].description.th}
                     </p>
-                    <a
-                      href="https://shop.chhindustry.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
-                    >
-                      <FileText className="w-3.5 h-3.5 flex-shrink-0" />
-                      {t("Order Product", "สั่งซื้อสินค้า")}
-                    </a>
+                    <div className="flex flex-wrap gap-3">
+                      <a
+                        href="https://shop.chhindustry.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
+                      >
+                        <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                        {t("Order Product", "สั่งซื้อสินค้า")}
+                      </a>
+                      <Link
+                        to="/quote"
+                        className="inline-flex items-center gap-2 border border-[#f37021] text-[#f37021] px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#f37021] hover:text-white transition-all duration-300"
+                      >
+                        <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                        {t("Get Quote", "ขอใบเสนอราคา")}
+                      </Link>
+                    </div>
                   </div>
                   <div className="w-full md:w-1/3 aspect-video md:aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 hidden md:block">
                     <img
