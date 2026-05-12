@@ -126,7 +126,7 @@ const row3Brands = [
 
 const heroSlides = [
   {
-    img: "/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.jpg",
+    img: "/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.png",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "", th: "" },
@@ -134,7 +134,7 @@ const heroSlides = [
     link: "https://shop.chhindustry.com/"
   },
   {
-    img: "/home-collections/pro 4950.jpg",
+    img: "/home-collections/ปรับไซส์โปรขึ้นเว็บ-4590 (1).jpg",
     pretitle: { en: "", th: "" },
     title1: { en: "", th: "" },
     title2: { en: "", th: "" },
@@ -258,79 +258,74 @@ export const Home: React.FC = () => {
       >
 
 
-        <div className="relative w-full aspect-video flex items-center justify-center bg-[#FDFBF7] dark:bg-stone-950">
+        <div className="hero-banner relative w-full aspect-[33/14] overflow-hidden bg-[#FDFBF7] dark:bg-stone-950">
 
-          <div className="absolute inset-0 z-0 overflow-hidden">
-
-            <div className="relative w-full h-full">
-              {heroSlides.map((slide, idx) => {
-                const imgEl = (
-                  <img
-                    src={slide.img}
-                    alt="Brand Showcase"
-                    draggable={false}
-                    className="w-full h-full pointer-events-none brightness-110 object-cover"
-                  />
-                );
-                return (
-                  <div
-                    key={idx}
-                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100 scale-100" : "opacity-0 scale-105 pointer-events-none"
-                      }`}
+          {/* Slides — frame matches image 16:9 so all text is fully visible, no crop, no side gaps */}
+          {heroSlides.map((slide, idx) => {
+            const imgEl = (
+              <img
+                src={slide.img}
+                alt="Evergreen Promotion Banner"
+                draggable={false}
+                className="absolute inset-0 w-full h-full object-cover brightness-110 pointer-events-none"
+              />
+            );
+            return (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentHeroSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
+              >
+                {slide.link ? (
+                  <a
+                    href={slide.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 block"
+                    aria-label="Promo banner"
+                    onClick={(e: React.MouseEvent) => {
+                      const dx = Math.abs(touchEndX.current - touchStartX.current);
+                      if (dx > 10) e.preventDefault();
+                    }}
                   >
-                    {slide.link ? (
-                      <a
-                        href={slide.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full h-full"
-                        onClick={(e: React.MouseEvent) => {
-                          const dx = Math.abs(touchEndX.current - touchStartX.current);
-                          if (dx > 10) e.preventDefault();
-                        }}
-                      >
-                        {imgEl}
-                      </a>
-                    ) : (
-                      imgEl
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-
-          <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center pointer-events-none">
-            <div className="max-w-5xl mx-auto">
-
-              <div key={currentHeroSlide} className="animate-fade-in-up">
-                <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.45em] text-white/90 mb-3 sm:mb-6 font-bold drop-shadow-md">
-                  {language === 'EN' ? heroSlides[currentHeroSlide].pretitle.en : heroSlides[currentHeroSlide].pretitle.th}
-                </p>
-
-                <h1 className="font-sans font-bold uppercase tracking-wide leading-tight text-white mb-4 sm:mb-8 drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}>
-                  <span className="block mb-2 sm:mb-4">
-                    {language === 'EN' ? heroSlides[currentHeroSlide].title1.en : heroSlides[currentHeroSlide].title1.th}
-                  </span>      
-                  <span className="block text-brand-500">
-                    {language === 'EN' ? heroSlides[currentHeroSlide].title2.en : heroSlides[currentHeroSlide].title2.th}
-                  </span>
-                </h1>
-
-                <p className="max-w-xl font-medium text-stone-100 leading-relaxed mx-auto mb-6 sm:mb-10 drop-shadow-md" style={{ fontSize: 'clamp(0.75rem, 1.5vw, 1rem)' }}>
-                  {language === 'EN' ? heroSlides[currentHeroSlide].desc.en : heroSlides[currentHeroSlide].desc.th}
-                </p>
+                    {imgEl}
+                  </a>
+                ) : (
+                  imgEl
+                )}
               </div>
+            );
+          })}
 
-              <div className="flex flex-wrap gap-4 justify-center">
+          {/* Text Overlay — absolute so it does not affect container height */}
+          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+            <div className="container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center">
+              <div className="max-w-5xl mx-auto">
+                <div key={currentHeroSlide} className="animate-fade-in-up">
+                  <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.45em] text-white/90 mb-3 sm:mb-6 font-bold drop-shadow-md">
+                    {language === 'EN' ? heroSlides[currentHeroSlide].pretitle.en : heroSlides[currentHeroSlide].pretitle.th}
+                  </p>
+
+                  <h1 className="font-sans font-bold uppercase tracking-wide leading-tight text-white mb-4 sm:mb-8 drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}>
+                    <span className="block mb-2 sm:mb-4">
+                      {language === 'EN' ? heroSlides[currentHeroSlide].title1.en : heroSlides[currentHeroSlide].title1.th}
+                    </span>
+                    <span className="block text-brand-500">
+                      {language === 'EN' ? heroSlides[currentHeroSlide].title2.en : heroSlides[currentHeroSlide].title2.th}
+                    </span>
+                  </h1>
+
+                  <p className="max-w-xl font-medium text-stone-100 leading-relaxed mx-auto mb-6 sm:mb-10 drop-shadow-md" style={{ fontSize: 'clamp(0.75rem, 1.5vw, 1rem)' }}>
+                    {language === 'EN' ? heroSlides[currentHeroSlide].desc.en : heroSlides[currentHeroSlide].desc.th}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Slide Indicator Dots */}
           {heroSlides.length > 1 && (
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+            <div className="absolute bottom-3 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
               {heroSlides.map((_, idx) => (
                 <div
                   key={idx}
@@ -344,7 +339,6 @@ export const Home: React.FC = () => {
           )}
         </div>
 
-        <div className="h-px bg-stone-200/70 dark:bg-stone-800/70" />
       </section>
 
       <section className="pt-8 pb-16 sm:pt-12 sm:pb-20 px-6 md:px-12 bg-white dark:bg-stone-900 border-b border-stone-100 dark:border-stone-800">
@@ -365,6 +359,7 @@ export const Home: React.FC = () => {
 
 
       </section>
+
       <section className="pt-6 pb-12 sm:pt-10 sm:pb-16 px-6 md:px-12">
         <div className="container mx-auto">
           <div className="flex items-end justify-between mb-10">
