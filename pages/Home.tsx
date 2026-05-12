@@ -11,7 +11,7 @@ const quickCards = [
       en: "Where Wood Styles Define Your Journey,Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs.",
       th: "บานประตูที่สะท้อนตัวตนและเรื่องราวของคุณ ด้วยประตูที่ไม่เพียงแข็งแรงทนทาน แต่ยังโดดเด่นด้วยดีไซน์หลากหลาย ทั้งลายไม้ ลายผ้า ไปจนถึงผิวสัมผัสที่เสมือนไม้จริง"
     }
-  },
+  },   
   {
     title: { en: "Doorframe", th: "วงกบ" },
     img: "/home-collections/doorframe.webp",
@@ -174,6 +174,7 @@ export const Home: React.FC = () => {
   // Touch events (mobile)
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
   };
   const onTouchMove = (e: React.TouchEvent) => {
     touchEndX.current = e.touches[0].clientX;
@@ -285,7 +286,7 @@ export const Home: React.FC = () => {
                         className="block w-full h-full"
                         onClick={(e: React.MouseEvent) => {
                           const dx = Math.abs(touchEndX.current - touchStartX.current);
-                          if (dx > 5) e.preventDefault();
+                          if (dx > 10) e.preventDefault();
                         }}
                       >
                         {imgEl}
@@ -424,24 +425,15 @@ export const Home: React.FC = () => {
                     <p className="text-stone-600 dark:text-stone-400 leading-relaxed mb-8">
                       {language === 'EN' ? quickCards[selectedCardIndex].description.en : quickCards[selectedCardIndex].description.th}
                     </p>
-                    <div className="flex flex-wrap gap-3">
-                      <a
-                        href="https://shop.chhindustry.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
-                      >
-                        <FileText className="w-3.5 h-3.5 flex-shrink-0" />
-                        {t("Order Product", "สั่งซื้อสินค้า")}
-                      </a>
-                      <Link
-                        to="/quote"
-                        className="inline-flex items-center gap-2 border border-[#f37021] text-[#f37021] px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#f37021] hover:text-white transition-all duration-300"
-                      >
-                        <FileText className="w-3.5 h-3.5 flex-shrink-0" />
-                        {t("Get Quote", "ขอใบเสนอราคา")}
-                      </Link>
-                    </div>
+                    <a
+                      href="https://shop.chhindustry.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
+                    >
+                      <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                      {t("Order Product", "สั่งซื้อสินค้า")}
+                    </a>
                   </div>
                   <div className="w-full md:w-1/3 aspect-video md:aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 hidden md:block">
                     <img
