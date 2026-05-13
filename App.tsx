@@ -18,7 +18,6 @@ const B2B = lazy(() => import('./pages/B2B').then(m => ({ default: m.B2B })));
 const Affiliate = lazy(() => import('./pages/Affiliate').then(m => ({ default: m.Affiliate })));
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })));
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
-const Sitemap = lazy(() => import('./pages/Sitemap').then(m => ({ default: m.Sitemap })));
 
 const PageFallback = () => (
   <div className="min-h-[60vh] flex items-center justify-center">
@@ -50,7 +49,6 @@ function App() {
                 <Route path="/b2b" element={<B2B />} />
                 <Route path="/affiliate" element={<Affiliate />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/login" element={<Login />} />
               </Routes>
             </Suspense>
