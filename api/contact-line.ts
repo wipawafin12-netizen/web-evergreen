@@ -12,8 +12,8 @@ type Body = {
     } | null;
 };
 
-const BRAND_COLOR = '#E87722';
-const VISIT_COLOR = '#0F766E';
+const LINE_GREEN = '#06C755';
+const LINE_GREEN_DARK = '#04A648';
 const TEXT_DARK = '#1F2937';
 const TEXT_MUTED = '#6B7280';
 const DIVIDER = '#E5E7EB';
@@ -72,7 +72,7 @@ export default async function handler(req: any, res: any) {
         return;
     }
 
-    const headerColor = isVisit ? VISIT_COLOR : BRAND_COLOR;
+    const headerColor = LINE_GREEN;
     const headerTitle = isVisit ? 'นัดเข้าชมโรงงาน' : 'ติดต่อใหม่จากเว็บไซต์';
 
     const bodyContents: any[] = [
@@ -128,7 +128,7 @@ export default async function handler(req: any, res: any) {
                         text: 'รายละเอียดนัดหมาย',
                         weight: 'bold',
                         size: 'sm',
-                        color: VISIT_COLOR,
+                        color: LINE_GREEN_DARK,
                     },
                     infoRow('วันที่', dateText),
                     infoRow('เวลา', `${visit!.time} น.`),
