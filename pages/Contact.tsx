@@ -1,17 +1,78 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Send, CheckCircle2, Phone, Mail, MapPin } from 'lucide-react';
+import { Send, CheckCircle2, Phone, Mail, MapPin, Calendar, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const VISIT_TIME_SLOTS = ['09:00', '10:30', '13:30', '15:00'];
+
+const formatISODate = (d: Date) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+};
+
+const isSelectableVisitDate = (d: Date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (d < today) return false;
+    const dow = d.getDay();
+    return dow !== 0 && dow !== 6;
+};
 
 export const Contact: React.FC = () => {
     const { language, t } = useLanguage();
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [sendError, setSendError] = useState('');
+    const [selectedSubject, setSelectedSubject] = useState('');
+    const [visitDate, setVisitDate] = useState('');
+    const [visitTime, setVisitTime] = useState('');
+    const [visitors, setVisitors] = useState('');
+    const [calendarMonth, setCalendarMonth] = useState(() => {
+        const d = new Date();
+        d.setDate(1);
+        d.setHours(0, 0, 0, 0);
+        return d;
+    });
+
+    const isVisit = selectedSubject === 'visit';
+
+    const calendarDays = useMemo(() => {
+        const first = new Date(calendarMonth);
+        const startOffset = first.getDay();
+        const daysInMonth = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
+        const cells: (Date | null)[] = [];
+        for (let i = 0; i < startOffset; i++) cells.push(null);
+        for (let day = 1; day <= daysInMonth; day++) {
+            cells.push(new Date(first.getFullYear(), first.getMonth(), day));
+        }
+        return cells;
+    }, [calendarMonth]);
+
+    const monthLabel = useMemo(() => {
+        return calendarMonth.toLocaleDateString(language === 'TH' ? 'th-TH' : 'en-US', {
+            month: 'long',
+            year: 'numeric',
+        });
+    }, [calendarMonth, language]);
+
+    const weekdayLabels = language === 'TH'
+        ? ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส']
+        : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (isVisit && (!visitDate || !visitTime)) {
+            alert(t('Please select a date and time for your factory visit.', 'กรุณาเลือกวันและเวลาที่ต้องการเข้าชมโรงงาน'));
+            return;
+        }
+
         const form = e.currentTarget;
         const formData = new FormData(form);
 
         const fullName = (formData.get('fullName') as string) || '';
+        const companyName = ((formData.get('companyName') as string) || '').trim();
         const phoneNumber = (formData.get('phoneNumber') as string) || '';
         const emailAddress = (formData.get('emailAddress') as string) || '';
         const subject = (formData.get('subject') as string) || '';
@@ -22,28 +83,72 @@ export const Contact: React.FC = () => {
             quote: 'ขอใบเสนอราคา',
             project: 'ปรึกษาโครงการ',
             aftersales: 'บริการหลังการขาย',
+            visit: 'นัดเข้าชมโรงงาน',
             other: 'อื่นๆ',
         };
         const subjectText = subjectLabels[subject] || subject;
 
-        const mailSubject = `ติดต่อจากเว็บไซต์ - ${subjectText}${fullName ? ` (${fullName})` : ''}`;
-        const body = [
-            `ชื่อ-นามสกุล: ${fullName}`,
-            `เบอร์โทรศัพท์: ${phoneNumber}`,
-            `อีเมล: ${emailAddress}`,
-            `เรื่อง: ${subjectText}`,
-            '',
-            'ข้อความ:',
-            message || '-',
-        ].join('\n');
+        setSending(true);
+        setSendError('');
 
-        const mailtoUrl = `mailto:mkt.evergreenchh@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoUrl;
+        try {
+            const res = await fetch('/api/contact-line', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fullName,
+                    companyName,
+                    phoneNumber,
+                    emailAddress,
+                    subjectText,
+                    message,
+                    visit: isVisit
+                        ? { date: visitDate, time: visitTime, visitors }
+                        : null,
+                }),
+            });
 
-        setSubmitted(true);
-        form.reset();
-        setTimeout(() => setSubmitted(false), 5000);
+            if (!res.ok) {
+                throw new Error(`Request failed (${res.status})`);
+            }
+
+            setSubmitted(true);
+            form.reset();
+            setSelectedSubject('');
+            setVisitDate('');
+            setVisitTime('');
+            setVisitors('');
+            setTimeout(() => setSubmitted(false), 5000);
+        } catch (err) {
+            console.error(err);
+            setSendError(t(
+                'Could not send your message. Please try again or call us directly.',
+                'ส่งข้อความไม่สำเร็จ กรุณาลองใหม่อีกครั้ง หรือโทรหาเราโดยตรง'
+            ));
+        } finally {
+            setSending(false);
+        }
     };
+
+    const goPrevMonth = () => {
+        setCalendarMonth((prev: Date) => {
+            const d = new Date(prev);
+            d.setMonth(d.getMonth() - 1);
+            return d;
+        });
+    };
+    const goNextMonth = () => {
+        setCalendarMonth((prev: Date) => {
+            const d = new Date(prev);
+            d.setMonth(d.getMonth() + 1);
+            return d;
+        });
+    };
+
+    const todayMonth = new Date();
+    todayMonth.setDate(1);
+    todayMonth.setHours(0, 0, 0, 0);
+    const isAtCurrentMonth = calendarMonth.getTime() <= todayMonth.getTime();
 
     return (
         <div className="min-h-screen bg-stone-50 dark:bg-stone-900 pt-24 pb-20 px-4 transition-colors duration-300">
@@ -153,6 +258,21 @@ export const Contact: React.FC = () => {
                                 />
                             </div>
 
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1 flex items-center gap-2">
+                                    <span>{t("Company", "บริษัท")}</span>
+                                    <span className="text-[10px] font-normal normal-case tracking-normal text-stone-400 dark:text-stone-500">
+                                        {t("(optional)", "(ถ้ามี)")}
+                                    </span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="companyName"
+                                    className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
+                                    placeholder={t("Your company name", "ชื่อบริษัท / หน่วยงาน")}
+                                />
+                            </div>
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
@@ -185,17 +305,156 @@ export const Contact: React.FC = () => {
                                 </label>
                                 <select
                                     name="subject"
+                                    value={selectedSubject}
+                                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedSubject(e.target.value)}
                                     className="w-full bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white appearance-none"
                                     required
                                 >
-                                    <option value="" disabled selected>{t("Select a topic...", "เลือกหัวข้อ...")}</option>
+                                    <option value="" disabled>{t("Select a topic...", "เลือกหัวข้อ...")}</option>
                                     <option value="product">{t("Product Inquiry", "สอบถามสินค้า")}</option>
                                     <option value="quote">{t("Request Quotation", "ขอใบเสนอราคา")}</option>
                                     <option value="project">{t("Project Consultation", "ปรึกษาโครงการ")}</option>
                                     <option value="aftersales">{t("After-Sales Service", "บริการหลังการขาย")}</option>
+                                    <option value="visit">{t("Schedule a Factory Visit", "นัดเข้าชมโรงงาน")}</option>
                                     <option value="other">{t("Other", "อื่นๆ")}</option>
                                 </select>
                             </div>
+
+                            {isVisit && (
+                                <div className="space-y-5 p-5 rounded-xl bg-brand-50/60 dark:bg-stone-900/60 border border-brand-100 dark:border-stone-800 animate-fade-in-up">
+                                    <div className="flex items-center gap-2 text-brand-900 dark:text-stone-100">
+                                        <Calendar className="w-5 h-5 text-brand-500" />
+                                        <h4 className="font-bold">
+                                            {t("Pick a visit date", "เลือกวันที่ต้องการเข้าชม")}
+                                        </h4>
+                                    </div>
+                                    <p className="text-xs text-stone-500 dark:text-stone-400 -mt-2">
+                                        {t(
+                                            "Visits available Mon–Fri only. Our team will confirm by email or phone.",
+                                            "เข้าชมได้เฉพาะวันจันทร์–ศุกร์ ทีมงานจะยืนยันนัดหมายอีกครั้งทางอีเมลหรือโทรศัพท์"
+                                        )}
+                                    </p>
+
+                                    <div className="bg-white dark:bg-stone-950 rounded-lg p-4 border border-stone-200 dark:border-stone-800">
+                                        <div className="flex items-center justify-between mb-3">
+                                            <button
+                                                type="button"
+                                                onClick={goPrevMonth}
+                                                disabled={isAtCurrentMonth}
+                                                className="p-1.5 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 disabled:opacity-30 disabled:cursor-not-allowed text-brand-900 dark:text-stone-200"
+                                                aria-label="Previous month"
+                                            >
+                                                <ChevronLeft className="w-4 h-4" />
+                                            </button>
+                                            <span className="text-sm font-bold text-brand-900 dark:text-stone-100 capitalize">
+                                                {monthLabel}
+                                            </span>
+                                            <button
+                                                type="button"
+                                                onClick={goNextMonth}
+                                                className="p-1.5 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800 text-brand-900 dark:text-stone-200"
+                                                aria-label="Next month"
+                                            >
+                                                <ChevronRight className="w-4 h-4" />
+                                            </button>
+                                        </div>
+
+                                        <div className="grid grid-cols-7 gap-1 mb-1">
+                                            {weekdayLabels.map((w) => (
+                                                <div key={w} className="text-center text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase py-1">
+                                                    {w}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="grid grid-cols-7 gap-1">
+                                            {calendarDays.map((d: Date | null, idx: number) => {
+                                                if (!d) return <div key={idx} />;
+                                                const iso = formatISODate(d);
+                                                const selectable = isSelectableVisitDate(d);
+                                                const isSelected = visitDate === iso;
+                                                const today = new Date();
+                                                const isToday = formatISODate(today) === iso;
+                                                return (
+                                                    <button
+                                                        key={iso}
+                                                        type="button"
+                                                        disabled={!selectable}
+                                                        onClick={() => setVisitDate(iso)}
+                                                        className={`aspect-square text-sm rounded-md transition-all flex items-center justify-center
+                                                            ${isSelected
+                                                                ? 'bg-brand-500 text-white font-bold shadow-md'
+                                                                : selectable
+                                                                    ? 'hover:bg-brand-100 dark:hover:bg-stone-800 text-brand-900 dark:text-stone-200'
+                                                                    : 'text-stone-300 dark:text-stone-700 cursor-not-allowed'
+                                                            }
+                                                            ${isToday && !isSelected ? 'ring-1 ring-brand-400' : ''}
+                                                        `}
+                                                    >
+                                                        {d.getDate()}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-2 text-brand-900 dark:text-stone-100">
+                                            <Clock className="w-4 h-4 text-brand-500" />
+                                            <span className="text-sm font-bold">
+                                                {t("Time slot", "ช่วงเวลา")}
+                                            </span>
+                                        </div>
+                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                            {VISIT_TIME_SLOTS.map((slot) => (
+                                                <button
+                                                    key={slot}
+                                                    type="button"
+                                                    onClick={() => setVisitTime(slot)}
+                                                    disabled={!visitDate}
+                                                    className={`py-2.5 rounded-lg text-sm font-bold border transition-all
+                                                        ${visitTime === slot
+                                                            ? 'bg-brand-500 text-white border-brand-500 shadow-md'
+                                                            : 'bg-white dark:bg-stone-950 text-brand-900 dark:text-stone-200 border-stone-200 dark:border-stone-800 hover:border-brand-400 disabled:opacity-40 disabled:cursor-not-allowed'
+                                                        }`}
+                                                >
+                                                    {slot}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-bold text-brand-900 dark:text-stone-200 flex items-center gap-2">
+                                            <Users className="w-4 h-4 text-brand-500" />
+                                            {t("Number of visitors", "จำนวนผู้เข้าชม")}
+                                        </label>
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            max={50}
+                                            value={visitors}
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVisitors(e.target.value)}
+                                            className="w-full bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all dark:text-white"
+                                            placeholder={t("e.g. 3", "เช่น 3")}
+                                        />
+                                    </div>
+
+                                    {visitDate && visitTime && (
+                                        <div className="text-xs text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-950 rounded-md p-3 border border-stone-200 dark:border-stone-800">
+                                            <span className="font-bold text-brand-900 dark:text-stone-100">
+                                                {t("Selected: ", "นัดหมาย: ")}
+                                            </span>
+                                            {new Date(visitDate).toLocaleDateString(language === 'TH' ? 'th-TH' : 'en-US', {
+                                                weekday: 'long',
+                                                day: 'numeric',
+                                                month: 'long',
+                                                year: 'numeric',
+                                            })} — {visitTime} {t("hrs", "น.")}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
 
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
@@ -209,12 +468,23 @@ export const Contact: React.FC = () => {
                                 ></textarea>
                             </div>
 
+                            {sendError && (
+                                <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-lg px-4 py-3">
+                                    {sendError}
+                                </div>
+                            )}
+
                             <button
                                 type="submit"
-                                className="w-full bg-brand-900 dark:bg-stone-100 text-white dark:text-brand-900 font-bold py-4 rounded-lg hover:bg-brand-800 dark:hover:bg-white/90 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-900/20 flex items-center justify-center gap-2 group"
+                                disabled={sending}
+                                className="w-full bg-brand-900 dark:bg-stone-100 text-white dark:text-brand-900 font-bold py-4 rounded-lg hover:bg-brand-800 dark:hover:bg-white/90 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-900/20 flex items-center justify-center gap-2 group disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                             >
-                                <span>{t("Send Message", "ส่งข้อความ")}</span>
-                                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <span>
+                                    {sending
+                                        ? t("Sending...", "กำลังส่ง...")
+                                        : t("Send Message", "ส่งข้อความ")}
+                                </span>
+                                {!sending && <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                             </button>
                         </form>
                     )}
