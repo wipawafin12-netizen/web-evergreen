@@ -2,7 +2,26 @@ import React, { useMemo, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Send, CheckCircle2, Phone, Mail, MapPin, Calendar, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const VISIT_TIME_SLOTS = ['09:00', '10:30', '13:30', '15:00'];
+const VISIT_TIME_SLOTS = [
+    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+    '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00',
+];
+
+const FACTORY_HOLIDAYS: Record<string, { th: string; en: string }> = {
+    '2026-01-01': { th: 'วันขึ้นปีใหม่', en: "New Year's Day" },
+    '2026-01-02': { th: 'ชดเชยวันขึ้นปีใหม่', en: "New Year's Day (substitute)" },
+    '2026-01-03': { th: 'ชดเชยวันขึ้นปีใหม่', en: "New Year's Day (substitute)" },
+    '2026-02-17': { th: 'วันตรุษจีน', en: 'Chinese New Year' },
+    '2026-04-13': { th: 'วันสงกรานต์', en: 'Songkran' },
+    '2026-04-14': { th: 'วันสงกรานต์', en: 'Songkran' },
+    '2026-04-15': { th: 'วันสงกรานต์', en: 'Songkran' },
+    '2026-05-01': { th: 'วันแรงงาน', en: 'Labour Day' },
+    '2026-07-28': { th: 'วันพ่อ (ร.10)', en: "King Rama X's Birthday" },
+    '2026-08-12': { th: 'วันแม่ (ร.9)', en: "Queen Sirikit's Birthday" },
+    '2026-10-13': { th: 'วันคล้ายวันสวรรคต (ร.9)', en: 'King Rama IX Memorial Day' },
+    '2026-12-05': { th: 'วันพ่อ (ร.9)', en: "King Rama IX's Birthday" },
+    '2026-12-31': { th: 'วันสิ้นปี', en: "New Year's Eve" },
+};
 
 const formatISODate = (d: Date) => {
     const y = d.getFullYear();
@@ -11,12 +30,16 @@ const formatISODate = (d: Date) => {
     return `${y}-${m}-${day}`;
 };
 
+const isFactoryHoliday = (d: Date) => Boolean(FACTORY_HOLIDAYS[formatISODate(d)]);
+
 const isSelectableVisitDate = (d: Date) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (d < today) return false;
     const dow = d.getDay();
-    return dow !== 0 && dow !== 6;
+    if (dow === 0 || dow === 6) return false;
+    if (isFactoryHoliday(d)) return false;
+    return true;
 };
 
 export const Contact: React.FC = () => {
@@ -371,6 +394,7 @@ export const Contact: React.FC = () => {
                                             {calendarDays.map((d: Date | null, idx: number) => {
                                                 if (!d) return <div key={idx} />;
                                                 const iso = formatISODate(d);
+                                                const holiday = FACTORY_HOLIDAYS[iso];
                                                 const selectable = isSelectableVisitDate(d);
                                                 const isSelected = visitDate === iso;
                                                 const today = new Date();
@@ -381,12 +405,15 @@ export const Contact: React.FC = () => {
                                                         type="button"
                                                         disabled={!selectable}
                                                         onClick={() => setVisitDate(iso)}
+                                                        title={holiday ? (language === 'TH' ? holiday.th : holiday.en) : undefined}
                                                         className={`aspect-square text-sm rounded-md transition-all flex items-center justify-center
                                                             ${isSelected
                                                                 ? 'bg-brand-500 text-white font-bold shadow-md'
-                                                                : selectable
-                                                                    ? 'hover:bg-brand-100 dark:hover:bg-stone-800 text-brand-900 dark:text-stone-200'
-                                                                    : 'text-stone-300 dark:text-stone-700 cursor-not-allowed'
+                                                                : holiday
+                                                                    ? 'bg-red-50 dark:bg-red-900/20 text-red-400 dark:text-red-500/70 line-through cursor-not-allowed'
+                                                                    : selectable
+                                                                        ? 'hover:bg-brand-100 dark:hover:bg-stone-800 text-brand-900 dark:text-stone-200'
+                                                                        : 'text-stone-300 dark:text-stone-700 cursor-not-allowed'
                                                             }
                                                             ${isToday && !isSelected ? 'ring-1 ring-brand-400' : ''}
                                                         `}
@@ -398,6 +425,11 @@ export const Contact: React.FC = () => {
                                         </div>
                                     </div>
 
+                                    <p className="text-[11px] text-stone-500 dark:text-stone-400 flex items-center gap-1.5">
+                                        <span className="inline-block w-3 h-3 rounded-sm bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-900/50" />
+                                        <span>{t('Red = factory holiday (not bookable)', 'สีแดง = วันหยุดโรงงาน (จองไม่ได้)')}</span>
+                                    </p>
+
                                     <div className="space-y-2">
                                         <div className="flex items-center gap-2 text-brand-900 dark:text-stone-100">
                                             <Clock className="w-4 h-4 text-brand-500" />
@@ -405,23 +437,24 @@ export const Contact: React.FC = () => {
                                                 {t("Time slot", "ช่วงเวลา")}
                                             </span>
                                         </div>
-                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <select
+                                            value={visitTime}
+                                            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setVisitTime(e.target.value)}
+                                            disabled={!visitDate}
+                                            className="w-full bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all text-brand-900 dark:text-stone-200 disabled:opacity-40 disabled:cursor-not-allowed appearance-none"
+                                        >
+                                            <option value="" disabled>
+                                                {t('Select a time...', 'เลือกเวลา...')}
+                                            </option>
                                             {VISIT_TIME_SLOTS.map((slot) => (
-                                                <button
-                                                    key={slot}
-                                                    type="button"
-                                                    onClick={() => setVisitTime(slot)}
-                                                    disabled={!visitDate}
-                                                    className={`py-2.5 rounded-lg text-sm font-bold border transition-all
-                                                        ${visitTime === slot
-                                                            ? 'bg-brand-500 text-white border-brand-500 shadow-md'
-                                                            : 'bg-white dark:bg-stone-950 text-brand-900 dark:text-stone-200 border-stone-200 dark:border-stone-800 hover:border-brand-400 disabled:opacity-40 disabled:cursor-not-allowed'
-                                                        }`}
-                                                >
-                                                    {slot}
-                                                </button>
+                                                <option key={slot} value={slot}>
+                                                    {slot} {t('hrs', 'น.')}
+                                                </option>
                                             ))}
-                                        </div>
+                                        </select>
+                                        <p className="text-[11px] text-stone-500 dark:text-stone-400">
+                                            {t('Available every 30 min, 09:00–16:00 (closed 12:00–13:00)', 'จองได้ทุก 30 นาที ตั้งแต่ 09:00–16:00 (พักเที่ยง 12:00–13:00)')}
+                                        </p>
                                     </div>
 
                                     <div className="space-y-2">
