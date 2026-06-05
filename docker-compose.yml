@@ -3,8 +3,12 @@ services:
     build: .
     container_name: chhindustry-web
     restart: unless-stopped
+    depends_on:
+      - chhindustry-api
+      - chhindustry-pb
     networks:
       - traefik_default
+      - appnet
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.chhindustry-web.rule=Host(`chhindustry.com`) || Host(`www.chhindustry.com`)"
@@ -12,6 +16,46 @@ services:
       - "traefik.http.routers.chhindustry-web.tls.certresolver=myresolver"
       - "traefik.http.services.chhindustry-web.loadbalancer.server.port=80"
 
+  # Internal contact API. Not exposed to Traefik — only reachable via the web
+  # container's nginx /api/ proxy on the private appnet network.
+  chhindustry-api:
+    build: ./server
+    container_name: chhindustry-api
+    restart: unless-stopped
+    expose:
+      - "8080"
+    environment:
+      - LINE_CHANNEL_ACCESS_TOKEN=${LINE_CHANNEL_ACCESS_TOKEN}
+      - LINE_GROUP_ID=${LINE_GROUP_ID}
+    networks:
+      - appnet
+    labels:
+      - "traefik.enable=false"
+
+  # PocketBase: content (products/news), admin auth, image uploads.
+  # Not exposed to Traefik — reachable via the web container's nginx /pb/ proxy.
+  chhindustry-pb:
+    build: ./pocketbase
+    container_name: chhindustry-pb
+    restart: unless-stopped
+    expose:
+      - "8090"
+    environment:
+      # Used ONLY by the first-run seed migration to create the first admin.
+      - INITIAL_ADMIN_EMAIL=${INITIAL_ADMIN_EMAIL}
+      - INITIAL_ADMIN_PASSWORD=${INITIAL_ADMIN_PASSWORD}
+    volumes:
+      - pb_data:/pb/pb_data
+    networks:
+      - appnet
+    labels:
+      - "traefik.enable=false"
+
 networks:
   traefik_default:
     external: true
+  appnet:
+    driver: bridge
+
+volumes:
+  pb_data:

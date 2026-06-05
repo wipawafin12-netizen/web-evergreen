@@ -1,0 +1,13 @@
+{
+  "name": "evergreen-contact-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zero-dependency backend that forwards website contact/visit submissions to LINE",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -14,6 +14,7 @@ const doorSubItems = [
 ];
 
 const productItems = [
+  { label: "CATALOG", labelTH: "แคตตาล็อก", path: "/catalog" },
   { label: "FLOORING", labelTH: "พื้นไม้", path: "/flooring" },
   { label: "STAIRCASE", labelTH: "บันได", path: "/staircase" },
   { label: "WALL PANEL", labelTH: "ผนังตกแต่ง", path: "/wall-panel" },
@@ -115,6 +116,13 @@ export const Navbar: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            <Link
+              to="/news"
+              className="text-sm uppercase tracking-wide hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2 whitespace-nowrap"
+            >
+              {language === 'EN' ? "NEWS" : "ข่าวสาร"}
+            </Link>
 
             <Link
               to="/contact"
@@ -242,6 +250,14 @@ export const Navbar: React.FC = () => {
           ))}
 
           <div className="w-full h-px bg-stone-100 dark:bg-stone-800 my-2" />
+          <Link
+            to="/news"
+            className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {language === 'EN' ? "NEWS" : "ข่าวสาร"}
+          </Link>
+
           <Link
             to="/contact"
             className="text-sm uppercase tracking-widest hover:text-brand-500 text-stone-600 dark:text-stone-400 dark:hover:text-brand-500 transition-colors py-2"

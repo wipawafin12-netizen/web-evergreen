@@ -30,6 +30,13 @@ const formatISODate = (d: Date) => {
     return `${y}-${m}-${day}`;
 };
 
+// Parse a YYYY-MM-DD string as a local date. `new Date('YYYY-MM-DD')` parses as
+// UTC midnight, which can shift the displayed day depending on timezone.
+const parseLocalDate = (iso: string) => {
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d);
+};
+
 const isFactoryHoliday = (d: Date) => Boolean(FACTORY_HOLIDAYS[formatISODate(d)]);
 
 const isSelectableVisitDate = (d: Date) => {
@@ -100,6 +107,7 @@ export const Contact: React.FC = () => {
         const emailAddress = (formData.get('emailAddress') as string) || '';
         const subject = (formData.get('subject') as string) || '';
         const message = (formData.get('message') as string) || '';
+        const honeypot = (formData.get('companyWebsite') as string) || '';
 
         const subjectLabels: Record<string, string> = {
             product: 'สอบถามสินค้า',
@@ -125,6 +133,7 @@ export const Contact: React.FC = () => {
                     emailAddress,
                     subjectText,
                     message,
+                    honeypot,
                     visit: isVisit
                         ? { date: visitDate, time: visitTime, visitors }
                         : null,
@@ -268,6 +277,15 @@ export const Contact: React.FC = () => {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
+                            {/* Honeypot: hidden from real users, bots tend to fill it. */}
+                            <input
+                                type="text"
+                                name="companyWebsite"
+                                tabIndex={-1}
+                                autoComplete="off"
+                                aria-hidden="true"
+                                className="hidden"
+                            />
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-brand-900 dark:text-stone-200 uppercase tracking-wider ml-1">
                                     {t("Full Name", "ชื่อ-นามสกุล")}
@@ -478,7 +496,7 @@ export const Contact: React.FC = () => {
                                             <span className="font-bold text-brand-900 dark:text-stone-100">
                                                 {t("Selected: ", "นัดหมาย: ")}
                                             </span>
-                                            {new Date(visitDate).toLocaleDateString(language === 'TH' ? 'th-TH' : 'en-US', {
+                                            {parseLocalDate(visitDate).toLocaleDateString(language === 'TH' ? 'th-TH' : 'en-US', {
                                                 weekday: 'long',
                                                 day: 'numeric',
                                                 month: 'long',

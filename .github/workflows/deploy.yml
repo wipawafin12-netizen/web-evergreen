@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Type check
+        run: npx tsc --noEmit
+
       - name: Build
         run: npm run build
 
@@ -29,7 +32,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          source: "dist/,Dockerfile,nginx.conf,docker-compose.yml"
+          source: "dist/,Dockerfile,nginx.conf,docker-compose.yml,server/,pocketbase/"
           target: /srv/chhindustry-web
           overwrite: true
           strip_components: 0

@@ -129,8 +129,19 @@ export const Footer: React.FC = () => {
 
       </div>
 
-      <div className="container mx-auto mt-10 pt-6 border-t border-stone-200 dark:border-stone-800 text-xs text-stone-400 dark:text-stone-500">
+      <div className="container mx-auto mt-10 pt-6 border-t border-stone-200 dark:border-stone-800 text-xs text-stone-400 dark:text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p>&copy; {new Date().getFullYear()} Evergreen. All rights reserved.</p>
+        <div className="flex items-center gap-4">
+          <Link to="/news" className="hover:text-brand-500 transition-colors">
+            {language === 'TH' ? "ข่าวสาร" : "News"}
+          </Link>
+          <Link to="/catalog" className="hover:text-brand-500 transition-colors">
+            {language === 'TH' ? "แคตตาล็อก" : "Catalog"}
+          </Link>
+          <Link to="/login" className="hover:text-brand-500 transition-colors">
+            {language === 'TH' ? "ผู้ดูแลระบบ" : "Admin"}
+          </Link>
+        </div>
       </div>
     </footer>
   );
