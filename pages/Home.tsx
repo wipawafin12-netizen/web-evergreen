@@ -146,7 +146,7 @@ type HeroSlide = {
 // Admins manage the live banners under /admin/banners.
 const defaultHeroSlides: HeroSlide[] = [
   {
-    img: "/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.png",
+    img: "",
     link: "https://shop.chhindustry.com/",
     title: { en: "", th: "" },
     subtitle: { en: "", th: "" },
