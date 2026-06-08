@@ -160,7 +160,7 @@ const LogoForm: React.FC<{ record: LogoRecord | null; onClose: () => void; onSav
             data.append('group', form.group);
             data.append('active', String(form.active));
             data.append('sort', String(form.sort || 0));
-            if (imageFile) data.append('image', await compressImage(imageFile, { maxDimension: 600 }));
+            if (imageFile) data.append('image', await compressImage(imageFile, { maxDimension: 600, format: 'image/png' }));
 
             if (record) {
                 await pb.collection(LOGOS).update(record.id, data);
