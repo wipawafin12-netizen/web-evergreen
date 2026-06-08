@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
           >
             <FileText className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0" />
             <span className="hidden md:inline">{language === 'EN' ? 'Get Quote' : 'ขอใบเสนอราคา'}</span>
-            <span className="md:hidden">{language === 'EN' ? 'Quote' : 'ขอราคา'}</span>
+            <span className="md:hidden">{language === 'EN' ? 'Quote' : 'ขอใบเสนอราคา'}</span>
           </Link>
           <Link
             to="/b2b"
