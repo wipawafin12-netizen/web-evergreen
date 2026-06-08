@@ -146,7 +146,7 @@ type HeroSlide = {
 // Admins manage the live banners under /admin/banners.
 const defaultHeroSlides: HeroSlide[] = [
   {
-    img: "",
+    img: "public/home-collections/Pro01.png",
     link: "https://shop.chhindustry.com/",
     title: { en: "", th: "" },
     subtitle: { en: "", th: "" },
