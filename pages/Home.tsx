@@ -146,13 +146,13 @@ type HeroSlide = {
 // Admins manage the live banners under /admin/banners.
 const defaultHeroSlides: HeroSlide[] = [
   {
-    img: "public/home-collections/Pro01.png",
+    img: "/home-collections/Pro01.webp",
     link: "https://shop.chhindustry.com/",
     title: { en: "", th: "" },
     subtitle: { en: "", th: "" },
   },
   {
-    img: "/home-collections/ปรับไซส์โปรขึ้นเว็บ-4590 (1).jpg",
+    img: "/home-collections/Pro02.webp",
     link: "https://www.facebook.com/Evergreenchh?locale=th_TH",
     title: { en: "", th: "" },
     subtitle: { en: "", th: "" },
