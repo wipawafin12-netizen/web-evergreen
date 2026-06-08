@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2, X, Loader2, ImageOff } from 'lucide-react';
 import { pb, HOME_CARDS, HomeCardRecord, fileUrl, pbErrorMessage } from '../../lib/pb';
+import { compressImage } from '../../lib/image';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PageHeader, Card, Field, TextInput, TextArea, Toggle, Spinner } from './ui';
 
@@ -157,7 +158,7 @@ const CardForm: React.FC<{ record: HomeCardRecord | null; nextSort: number; onCl
             data.append('link', form.link.trim());
             data.append('active', String(form.active));
             data.append('sort', String(form.sort || 0));
-            if (imageFile) data.append('image', imageFile);
+            if (imageFile) data.append('image', await compressImage(imageFile));
 
             if (record) {
                 await pb.collection(HOME_CARDS).update(record.id, data);

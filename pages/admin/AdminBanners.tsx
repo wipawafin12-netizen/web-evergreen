@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2, X, Loader2, ImageOff, Link2, ArrowUp, ArrowDown } from 'lucide-react';
 import { pb, BANNERS, BannerRecord, fileUrl, pbErrorMessage } from '../../lib/pb';
+import { compressImage } from '../../lib/image';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PageHeader, Card, Field, TextInput, Toggle, Spinner } from './ui';
 
@@ -218,7 +219,7 @@ const BannerForm: React.FC<{ record: BannerRecord | null; nextSort: number; onCl
             data.append('link', form.link.trim());
             data.append('active', String(form.active));
             data.append('sort', String(form.sort || 0));
-            if (imageFile) data.append('image', imageFile);
+            if (imageFile) data.append('image', await compressImage(imageFile));
 
             if (record) {
                 await pb.collection(BANNERS).update(record.id, data);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2, X, Loader2, ImageOff } from 'lucide-react';
 import { pb, LOGOS, LogoRecord, LogoGroup, LOGO_GROUPS, LOGO_GROUP_LABELS, fileUrl, pbErrorMessage } from '../../lib/pb';
+import { compressImage } from '../../lib/image';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PageHeader, Card, Field, TextInput, Toggle, Spinner, inputClass } from './ui';
 
@@ -159,7 +160,7 @@ const LogoForm: React.FC<{ record: LogoRecord | null; onClose: () => void; onSav
             data.append('group', form.group);
             data.append('active', String(form.active));
             data.append('sort', String(form.sort || 0));
-            if (imageFile) data.append('image', imageFile);
+            if (imageFile) data.append('image', await compressImage(imageFile, { maxDimension: 600 }));
 
             if (record) {
                 await pb.collection(LOGOS).update(record.id, data);

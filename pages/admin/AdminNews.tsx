@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2, X, Loader2, ImageOff } from 'lucide-react';
 import { pb, NEWS, NewsRecord, fileUrl, pbErrorMessage } from '../../lib/pb';
+import { compressImage } from '../../lib/image';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PageHeader, Card, Field, TextInput, TextArea, Toggle, Spinner } from './ui';
 
@@ -154,7 +155,7 @@ const NewsForm: React.FC<{ record: NewsRecord | null; onClose: () => void; onSav
             data.append('body_th', form.body_th);
             data.append('published', String(form.published));
             data.append('publish_date', form.publish_date ? `${form.publish_date} 00:00:00.000Z` : '');
-            if (coverFile) data.append('cover', coverFile);
+            if (coverFile) data.append('cover', await compressImage(coverFile));
             else if (removeCover && record?.cover) data.append('cover-', record.cover);
 
             if (record) {

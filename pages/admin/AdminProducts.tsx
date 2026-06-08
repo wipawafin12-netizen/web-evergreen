@@ -10,6 +10,7 @@ import {
     fileUrl,
     pbErrorMessage,
 } from '../../lib/pb';
+import { compressImage } from '../../lib/image';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PageHeader, Card, Field, TextInput, TextArea, Toggle, Spinner, inputClass } from './ui';
 
@@ -175,7 +176,7 @@ const ProductForm: React.FC<{ record: ProductRecord | null; onClose: () => void;
             data.append('featured', String(form.featured));
             data.append('published', String(form.published));
             data.append('sort', String(form.sort || 0));
-            newFiles.forEach((f) => data.append('images', f));
+            for (const f of newFiles) data.append('images', await compressImage(f));
             removed.forEach((filename) => data.append('images-', filename));
 
             if (record) {
