@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useSettings } from '../../contexts/SettingsContext';
 
 export const Footer: React.FC = () => {
   const { language } = useLanguage();
+  const settings = useSettings();
   const productLinks = [
     { label: "Door", labelTH: "ประตู", path: "/door" },
     { label: "Doorframe", labelTH: "วงกบ", path: "/doorframe" },
@@ -32,63 +34,59 @@ export const Footer: React.FC = () => {
 
           <div className="-mt-4 space-y-6">
             <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed max-w-xs">
-              {language === 'TH' ? (
-                <>
-                  9/1 หมู่ 2 ถนนบางเลน-ลาดหลุมแก้ว<br />
-                  ต.ขุนศรี อ.ไทรน้อย จ.นนทบุรี 11150<br />
-                  โทร : 02-921-9979 (ออฟฟิศ)<br />
-                  โทร : 062-539-9980 (ฝ่ายขาย)
-                </>
-              ) : (
-                <>
-                  9/1 Moo 1, Bang Len – Lat Lum Kaew Road,<br />
-                 Khun Si Subdistrict, Sai Noi District, Nonthaburi 11150<br />
-                  Tel: 02-921-9979 (Office)<br />
-                  Tel: 062-539-9980 (Sales)
-                </>
-              )}
+              {language === 'TH' ? settings.address_th : settings.address_en}<br />
+              {language === 'TH' ? 'โทร' : 'Tel'} : {settings.phone_office} ({language === 'TH' ? 'ออฟฟิศ' : 'Office'})<br />
+              {language === 'TH' ? 'โทร' : 'Tel'} : {settings.phone_sales} ({language === 'TH' ? 'ฝ่ายขาย' : 'Sales'})
             </p>
 
             <div className="flex items-center gap-3">
               {/* Facebook */}
-              <a
-                href="https://www.facebook.com/Evergreenchh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 hover:scale-110 transition-transform"
-              >
-                <img src="/Social-contact/facebook.webp" alt="Facebook" className="w-full h-full object-contain" />
-              </a>
+              {settings.facebook && (
+                <a
+                  href={settings.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 hover:scale-110 transition-transform"
+                >
+                  <img src="/Social-contact/facebook.webp" alt="Facebook" className="w-full h-full object-contain" />
+                </a>
+              )}
 
               {/* Instagram */}
-              <a
-                href="https://www.instagram.com/evergreenchh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 hover:scale-110 transition-transform"
-              >
-                <img src="/Social-contact/instagram.webp" alt="Instagram" className="w-full h-full object-contain" />
-              </a>
+              {settings.instagram && (
+                <a
+                  href={settings.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 hover:scale-110 transition-transform"
+                >
+                  <img src="/Social-contact/instagram.webp" alt="Instagram" className="w-full h-full object-contain" />
+                </a>
+              )}
 
               {/* LINE */}
-              <a
-                href="https://bit.ly/evergreenchh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 hover:scale-110 transition-transform"
-              >
-                <img src="/Social-contact/line.webp" alt="LINE" className="w-full h-full object-contain" />
-              </a>
+              {settings.line && (
+                <a
+                  href={settings.line}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 hover:scale-110 transition-transform"
+                >
+                  <img src="/Social-contact/line.webp" alt="LINE" className="w-full h-full object-contain" />
+                </a>
+              )}
 
               {/* TikTok */}
-              <a
-                href="https://www.tiktok.com/@evergreen_chh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 hover:scale-110 transition-transform"
-              >
-                <img src="/Social-contact/tiktok.webp" alt="TikTok" className="w-full h-full object-contain" />
-              </a>
+              {settings.tiktok && (
+                <a
+                  href={settings.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 hover:scale-110 transition-transform"
+                >
+                  <img src="/Social-contact/tiktok.webp" alt="TikTok" className="w-full h-full object-contain" />
+                </a>
+              )}
             </div>
           </div>
         </div>

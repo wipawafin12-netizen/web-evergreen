@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSettings } from '../contexts/SettingsContext';
+import { pb, LEADS } from '../lib/pb';
 import { Send, CheckCircle2, Phone, Mail, MapPin, Calendar, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const VISIT_TIME_SLOTS = [
@@ -51,6 +53,7 @@ const isSelectableVisitDate = (d: Date) => {
 
 export const Contact: React.FC = () => {
     const { language, t } = useLanguage();
+    const settings = useSettings();
     const [submitted, setSubmitted] = useState(false);
     const [sending, setSending] = useState(false);
     const [sendError, setSendError] = useState('');
@@ -121,6 +124,28 @@ export const Contact: React.FC = () => {
 
         setSending(true);
         setSendError('');
+
+        // Save a copy of the enquiry to the back-office inbox (best-effort — a DB
+        // failure must never block the LINE notification or the user's success).
+        // Skip obvious bots that tripped the honeypot.
+        if (!honeypot) {
+            try {
+                await pb.collection(LEADS).create({
+                    name: fullName,
+                    company: companyName,
+                    phone: phoneNumber,
+                    email: emailAddress,
+                    subject: subjectText,
+                    message,
+                    visit_date: isVisit ? visitDate : '',
+                    visit_time: isVisit ? visitTime : '',
+                    visitors: isVisit ? visitors : '',
+                    status: 'new',
+                });
+            } catch {
+                /* ignore — the LINE push below is the primary delivery path */
+            }
+        }
 
         try {
             const res = await fetch('/api/contact-line', {
@@ -212,10 +237,10 @@ export const Contact: React.FC = () => {
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">
                                     {t("Phone", "Phone")}
                                 </h3>
-                                <p className="text-stone-600 dark:text-stone-400">02-921-9979 ({t("Office", "ออฟฟิศ")})</p>
-                                <p className="text-stone-600 dark:text-stone-400">062-539-9980 ({t("Sales", "ฝ่ายขาย")})</p>
+                                <p className="text-stone-600 dark:text-stone-400">{settings.phone_office} ({t("Office", "ออฟฟิศ")})</p>
+                                <p className="text-stone-600 dark:text-stone-400">{settings.phone_sales} ({t("Sales", "ฝ่ายขาย")})</p>
                                 <p className="text-stone-500 text-sm">
-                                    {t("Mon-Fri 8:30am - 4:30pm", "จันทร์-ศุกร์ 8:30 - 16:30 น.")}
+                                    {language === 'TH' ? settings.hours_th : settings.hours_en}
                                 </p>
                             </div>
                         </div>
@@ -226,12 +251,12 @@ export const Contact: React.FC = () => {
                             </div>
                             <div>
                                 <h3 className="font-bold text-brand-900 dark:text-stone-100">Email</h3>
-                                <p className="text-stone-600 dark:text-stone-400">mkt.evergreenchh@gmail.com</p>
+                                <p className="text-stone-600 dark:text-stone-400">{settings.email}</p>
                             </div>
                         </div>
 
                         <a
-                            href="https://maps.google.com/?q=9/1+หมู่+2+ถนนบางเลน-ลาดหลุมแก้ว+ต.ขุนศรี+อ.ไทรน้อย+จ.นนทบุรี+11150"
+                            href={settings.map_link}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-start gap-4 hover:opacity-80 transition-opacity"
@@ -244,10 +269,7 @@ export const Contact: React.FC = () => {
                                     {t("Address", "ที่อยู่")}
                                 </h3>
                                 <p className="text-stone-600 dark:text-stone-400 max-w-xs">
-                                    {language === 'TH'
-                                        ? "9/1 หมู่ 2 ถนนบางเลน-ลาดหลุมแก้ว ต.ขุนศรี อ.ไทรน้อย จ.นนทบุรี 11150"
-                                        : "9/1 Moo 2, Bang Len – Lat Lum Kaew Road, Khun Si, Sai Noi District, Nonthaburi 11150"
-                                    }
+                                    {language === 'TH' ? settings.address_th : settings.address_en}
                                 </p>
                             </div>
                         </a>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Navigate, Outlet, Link, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Newspaper, Package, Users, LogOut, ExternalLink } from 'lucide-react';
+import { LayoutDashboard, Inbox, Images, LayoutGrid, Newspaper, Package, Building2, Settings, Users, LogOut, ExternalLink } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -41,6 +41,18 @@ export const AdminLayout: React.FC = () => {
                         <LayoutDashboard className="w-4 h-4" />
                         {t('Dashboard', 'แดชบอร์ด')}
                     </NavLink>
+                    <NavLink to="/admin/leads" className={navLinkClass}>
+                        <Inbox className="w-4 h-4" />
+                        {t('Inquiries', 'กล่องข้อความ')}
+                    </NavLink>
+                    <NavLink to="/admin/banners" className={navLinkClass}>
+                        <Images className="w-4 h-4" />
+                        {t('Banners', 'แบนเนอร์')}
+                    </NavLink>
+                    <NavLink to="/admin/cards" className={navLinkClass}>
+                        <LayoutGrid className="w-4 h-4" />
+                        {t('Collection Cards', 'การ์ดคอลเลกชัน')}
+                    </NavLink>
                     <NavLink to="/admin/news" className={navLinkClass}>
                         <Newspaper className="w-4 h-4" />
                         {t('News & Promotions', 'ข่าว/โปรโมชั่น')}
@@ -48,6 +60,14 @@ export const AdminLayout: React.FC = () => {
                     <NavLink to="/admin/products" className={navLinkClass}>
                         <Package className="w-4 h-4" />
                         {t('Products', 'สินค้า')}
+                    </NavLink>
+                    <NavLink to="/admin/logos" className={navLinkClass}>
+                        <Building2 className="w-4 h-4" />
+                        {t('Customer Logos', 'โลโก้ลูกค้า')}
+                    </NavLink>
+                    <NavLink to="/admin/settings" className={navLinkClass}>
+                        <Settings className="w-4 h-4" />
+                        {t('Site Settings', 'ตั้งค่าเว็บไซต์')}
                     </NavLink>
                     <NavLink to="/admin/accounts" className={navLinkClass}>
                         <Users className="w-4 h-4" />

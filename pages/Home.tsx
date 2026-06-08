@@ -2,20 +2,31 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FileText } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
-const quickCards = [
+import { useSettings } from "../contexts/SettingsContext";
+import { pb, BANNERS, BannerRecord, HOME_CARDS, HomeCardRecord, LOGOS, LogoRecord, fileUrl } from "../lib/pb";
+type QuickCard = {
+  title: { en: string; th: string };
+  img: string;
+  link: string;
+  description: { en: string; th: string };
+};
+
+// Fallback cards shown until the homepage cards load from PocketBase (managed in
+// /admin/cards). `link` powers the "Order Product" button (defaults to the shop).
+const defaultQuickCards: QuickCard[] = [
   {
     title: { en: "Door", th: "ประตู" },
     img: "/home-collections/01.webp",
-    path: "/door",
+    link: "",
     description: {
       en: "Where Wood Styles Define Your Journey,Transform your interiors with doors that boast not only durability but also a rich array of styles, from wood to fabric and leather-inspired designs.",
       th: "บานประตูที่สะท้อนตัวตนและเรื่องราวของคุณ ด้วยประตูที่ไม่เพียงแข็งแรงทนทาน แต่ยังโดดเด่นด้วยดีไซน์หลากหลาย ทั้งลายไม้ ลายผ้า ไปจนถึงผิวสัมผัสที่เสมือนไม้จริง"
     }
-  },   
+  },
   {
     title: { en: "Doorframe", th: "วงกบ" },
     img: "/home-collections/doorframe.webp",
-    path: "/doorframe",
+    link: "",
     description: {
       en: "Durable WPC doorframes designed to complement your doors, combining strength with a natural wood finish.",
       th: "วงกบ WPC ที่แข็งแรงทนทาน ออกแบบมาให้เข้ากับประตูของคุณ ผสานความแข็งแรงกับสัมผัสของไม้ธรรมชาติ"
@@ -24,7 +35,7 @@ const quickCards = [
   {
     title: { en: "Service Shaft", th: "ช่องชาร์ป" },
     img: "/home-collections/service-shaft (1).png",
-    path: "/service-shaft",
+    link: "",
     description: {
       en: "Step into a world of refined functionality with our Shaft Wall Access Panels, designed to offer effortless access to essential compartments.",
       th: "ยืดหยุ่นทุกการใช้งาน สามารถปรับเปลี่ยนขนาดรูปแบบและความต้องการได้อย่างหลากหลาย"
@@ -33,7 +44,7 @@ const quickCards = [
   {
     title: { en: "Flooring", th: "พื้น" },
     img: "/home-collections/flooring.webp",
-    path: "/flooring",
+    link: "",
     description: {
       en: "Durable, luxurious, and elegantly crafted, SPC Flooring redefines your spaces with lasting beauty. Introducing SPC Flooring, a modern marvel that combines durability, luxury, and timeless design.",
       th: "ขอแนะนำพื้น SPC นวัตกรรมสมัยใหม่ที่ผสานความทนทาน ความหรูหรา และการออกแบบเหนือกาลเวลา"
@@ -124,30 +135,125 @@ const row3Brands = [
   { id: 17, name: "Client 17", src: "/brand-customer3/b17.webp" },
 ];
 
-const heroSlides = [
+type HeroSlide = {
+  img: string;
+  link: string;
+  title: { en: string; th: string };
+  subtitle: { en: string; th: string };
+};
+
+// Shown only as a fallback when no active banners exist in PocketBase.
+// Admins manage the live banners under /admin/banners.
+const defaultHeroSlides: HeroSlide[] = [
   {
     img: "/home-collections/ปรับไซส์รับคูปอง-500-ซื้อผ่านเว็บ.png",
-    pretitle: { en: "", th: "" },
-    title1: { en: "", th: "" },
-    title2: { en: "", th: "" },
-    desc: { en: "", th: "" },
-    link: "https://shop.chhindustry.com/"
+    link: "https://shop.chhindustry.com/",
+    title: { en: "", th: "" },
+    subtitle: { en: "", th: "" },
   },
   {
     img: "/home-collections/ปรับไซส์โปรขึ้นเว็บ-4590 (1).jpg",
-    pretitle: { en: "", th: "" },
-    title1: { en: "", th: "" },
-    title2: { en: "", th: "" },
-    desc: { en: "", th: "" },
-    link: "https://www.facebook.com/Evergreenchh?locale=th_TH"
+    link: "https://www.facebook.com/Evergreenchh?locale=th_TH",
+    title: { en: "", th: "" },
+    subtitle: { en: "", th: "" },
   },
 ];
 
+type Brand = { id?: string | number; name: string; src: string };
+
 export const Home: React.FC = () => {
   const { t, language } = useLanguage();
+  const settings = useSettings();
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(defaultHeroSlides);
+  const [quickCards, setQuickCards] = useState<QuickCard[]>(defaultQuickCards);
+  const [logoRows, setLogoRows] = useState<{ developer: Brand[]; contractor: Brand[]; hotel: Brand[] }>({ developer: row1Brands, contractor: row2Brands, hotel: row3Brands });
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const [isHeroPaused, setIsHeroPaused] = useState(false);
+
+  // Pull live homepage cards from PocketBase (managed in /admin/cards). Keep the
+  // built-in defaults when there are none or the request fails.
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const list = await pb.collection(HOME_CARDS).getFullList<HomeCardRecord>({
+          filter: 'active = true',
+          sort: 'sort,created',
+        });
+        if (active && list.length) {
+          setQuickCards(
+            list.map((c) => ({
+              title: { en: c.title_en || c.title_th, th: c.title_th || c.title_en },
+              img: fileUrl(c, c.image),
+              link: c.link || '',
+              description: { en: c.description_en || '', th: c.description_th || '' },
+            }))
+          );
+        }
+      } catch {
+        /* keep defaults */
+      }
+    })();
+    return () => { active = false; };
+  }, []);
+
+  // Pull live customer logos from PocketBase (managed in /admin/logos). Replace a
+  // group's defaults only when that group has active logos.
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const list = await pb.collection(LOGOS).getFullList<LogoRecord>({
+          filter: 'active = true',
+          sort: 'sort,created',
+        });
+        if (!active || !list.length) return;
+        const toBrand = (l: LogoRecord) => ({ id: l.id, name: l.name || 'Logo', src: fileUrl(l, l.image) });
+        const dev = list.filter((l) => l.group === 'developer').map(toBrand);
+        const con = list.filter((l) => l.group === 'contractor').map(toBrand);
+        const hot = list.filter((l) => l.group === 'hotel').map(toBrand);
+        setLogoRows({
+          developer: dev.length ? dev : row1Brands,
+          contractor: con.length ? con : row2Brands,
+          hotel: hot.length ? hot : row3Brands,
+        });
+      } catch {
+        /* keep defaults */
+      }
+    })();
+    return () => { active = false; };
+  }, []);
+
+  // Pull live banners from PocketBase (managed in /admin/banners). Fall back to
+  // the built-in defaults if there are none or the request fails.
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const list = await pb.collection(BANNERS).getFullList<BannerRecord>({
+          filter: 'active = true',
+          sort: 'sort,created',
+        });
+        if (active && list.length) {
+          setHeroSlides(
+            list.map((b) => ({
+              img: fileUrl(b, b.image),
+              link: b.link || '',
+              title: { en: b.title_en || '', th: b.title_th || '' },
+              subtitle: { en: b.subtitle_en || '', th: b.subtitle_th || '' },
+            }))
+          );
+          setCurrentHeroSlide(0);
+        }
+      } catch {
+        /* keep defaults */
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, []);
   const heroTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const expandedSectionRef = useRef<HTMLDivElement | null>(null);
   const touchStartX = useRef<number>(0);
@@ -157,11 +263,11 @@ export const Home: React.FC = () => {
   
   const nextSlide = useCallback(() => {
     setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
-  }, []);
+  }, [heroSlides.length]);
 
   const prevSlide = useCallback(() => {
     setCurrentHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  }, []);
+  }, [heroSlides.length]);
 
   const handleSwipe = useCallback(() => {
     const diff = touchStartX.current - touchEndX.current;
@@ -223,27 +329,29 @@ export const Home: React.FC = () => {
     <div className="bg-[#FDFBF7] dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors duration-300">
 
       {/* Door Finder CTA Banner */}
-      <section className="bg-gradient-to-r from-orange-500 to-orange-600">
-        <div className="max-w-6xl mx-auto px-4 md:px-12 py-1.5 md:py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="text-white text-center sm:text-left">
-            <p className="text-xs md:text-sm font-semibold leading-snug">{t("Not sure which door is right for you?", "ยังไม่แน่ใจว่าประตูแบบไหนเหมาะกับคุณ?")}</p>
-            <p className="text-[11px] md:text-xs text-white/90 mt-0.5">{t("Try our interactive door finder tool", "ลองใช้เครื่องมือค้นหาประตูแบบอินเทอร์แอคทีฟ")}</p>
+      {settings.cta_enabled && (
+        <section className="bg-gradient-to-r from-orange-500 to-orange-600">
+          <div className="max-w-6xl mx-auto px-4 md:px-12 py-1.5 md:py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="text-white text-center sm:text-left">
+              <p className="text-xs md:text-sm font-semibold leading-snug">{language === 'EN' ? settings.cta_title_en : settings.cta_title_th}</p>
+              <p className="text-[11px] md:text-xs text-white/90 mt-0.5">{language === 'EN' ? settings.cta_subtitle_en : settings.cta_subtitle_th}</p>
+            </div>
+            <a
+              href={settings.cta_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 bg-white text-orange-600 hover:bg-orange-50 px-4 py-1.5 text-[11px] md:text-xs font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-md shadow-md hover:shadow-lg whitespace-nowrap"
+            >
+              {language === 'EN' ? settings.cta_button_en : settings.cta_button_th}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
           </div>
-          <a
-            href="https://door.chhindustry.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-white text-orange-600 hover:bg-orange-50 px-4 py-1.5 text-[11px] md:text-xs font-semibold tracking-[0.1em] uppercase transition-all duration-300 rounded-md shadow-md hover:shadow-lg whitespace-nowrap"
-          >
-            {t("Find Your Perfect Door", "ค้นหาประตูที่เหมาะกับคุณ")}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section
         className="relative select-none cursor-grab active:cursor-grabbing"
@@ -297,31 +405,34 @@ export const Home: React.FC = () => {
             );
           })}
 
-          {/* Text Overlay — absolute so it does not affect container height */}
-          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-            <div className="container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center">
-              <div className="max-w-5xl mx-auto">
-                <div key={currentHeroSlide} className="animate-fade-in-up">
-                  <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.45em] text-white/90 mb-3 sm:mb-6 font-bold drop-shadow-md">
-                    {language === 'EN' ? heroSlides[currentHeroSlide].pretitle.en : heroSlides[currentHeroSlide].pretitle.th}
-                  </p>
-
-                  <h1 className="font-sans font-bold uppercase tracking-wide leading-tight text-white mb-4 sm:mb-8 drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}>
-                    <span className="block mb-2 sm:mb-4">
-                      {language === 'EN' ? heroSlides[currentHeroSlide].title1.en : heroSlides[currentHeroSlide].title1.th}
-                    </span>
-                    <span className="block text-brand-500">
-                      {language === 'EN' ? heroSlides[currentHeroSlide].title2.en : heroSlides[currentHeroSlide].title2.th}
-                    </span>
-                  </h1>
-
-                  <p className="max-w-xl font-medium text-stone-100 leading-relaxed mx-auto mb-6 sm:mb-10 drop-shadow-md" style={{ fontSize: 'clamp(0.75rem, 1.5vw, 1rem)' }}>
-                    {language === 'EN' ? heroSlides[currentHeroSlide].desc.en : heroSlides[currentHeroSlide].desc.th}
-                  </p>
+          {/* Text Overlay — absolute so it does not affect container height.
+              Only rendered when the active banner actually has overlay text. */}
+          {(() => {
+            const slide = heroSlides[currentHeroSlide] || heroSlides[0];
+            const title = language === 'EN' ? slide?.title.en : slide?.title.th;
+            const subtitle = language === 'EN' ? slide?.subtitle.en : slide?.subtitle.th;
+            if (!title && !subtitle) return null;
+            return (
+              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                <div className="container mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-20 text-center">
+                  <div className="max-w-5xl mx-auto">
+                    <div key={currentHeroSlide} className="animate-fade-in-up">
+                      {title && (
+                        <h1 className="font-sans font-bold uppercase tracking-wide leading-tight text-white mb-4 sm:mb-8 drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}>
+                          {title}
+                        </h1>
+                      )}
+                      {subtitle && (
+                        <p className="max-w-xl font-medium text-stone-100 leading-relaxed mx-auto mb-6 sm:mb-10 drop-shadow-md" style={{ fontSize: 'clamp(0.75rem, 1.5vw, 1rem)' }}>
+                          {subtitle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            );
+          })()}
 
           {/* Slide Indicator Dots */}
           {heroSlides.length > 1 && (
@@ -421,7 +532,7 @@ export const Home: React.FC = () => {
                       {language === 'EN' ? quickCards[selectedCardIndex].description.en : quickCards[selectedCardIndex].description.th}
                     </p>
                     <a
-                      href="https://shop.chhindustry.com/"
+                      href={quickCards[selectedCardIndex].link || "https://shop.chhindustry.com/"}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-[#f37021] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-[#d65f17] transition-all duration-300 shadow-sm"
@@ -479,7 +590,7 @@ export const Home: React.FC = () => {
                 <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="flex gap-4 items-center animate-scroll w-max">
-                  {[...row1Brands, ...row1Brands].map((brand, i) => (
+                  {[...logoRows.developer, ...logoRows.developer].map((brand, i) => (
                     <div key={i} className="flex-shrink-0 w-48 h-32 md:w-64 md:h-40 flex items-center justify-center p-6 border border-stone-100 dark:border-stone-800 rounded-2xl bg-white dark:bg-stone-900 mx-1">
                       <img src={brand.src} alt={brand.name} className="w-full h-full object-contain transition-all duration-500 hover:scale-105" />
                     </div>
@@ -495,7 +606,7 @@ export const Home: React.FC = () => {
                 <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="flex gap-4 items-center animate-scroll-reverse w-max">
-                  {[...row2Brands, ...row2Brands].map((brand, i) => (
+                  {[...logoRows.contractor, ...logoRows.contractor].map((brand, i) => (
                     <div key={i} className="flex-shrink-0 w-48 h-32 md:w-64 md:h-40 flex items-center justify-center p-6 border border-stone-100 dark:border-stone-800 rounded-2xl bg-white dark:bg-stone-900 mx-1">
                       <img src={brand.src} alt={brand.name} className="w-full h-full object-contain transition-all duration-500 hover:scale-105" />
                     </div>
@@ -510,7 +621,7 @@ export const Home: React.FC = () => {
                 <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-[#FDFBF7] dark:from-stone-950 to-transparent z-10"></div>
                 <div className="flex gap-4 items-center animate-scroll w-max">
-                  {[...row3Brands, ...row3Brands].map((brand, i) => (
+                  {[...logoRows.hotel, ...logoRows.hotel].map((brand, i) => (
                     <div key={i} className="flex-shrink-0 w-48 h-32 md:w-64 md:h-40 flex items-center justify-center p-6 border border-stone-100 dark:border-stone-800 rounded-2xl bg-white dark:bg-stone-900 mx-1">
                       <img src={brand.src} alt={brand.name} className="w-full h-full object-contain transition-all duration-500 hover:scale-105" />
                     </div>

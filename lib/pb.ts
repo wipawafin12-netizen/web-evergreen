@@ -13,6 +13,11 @@ pb.autoCancellation(false);
 export const ADMINS = 'admins';
 export const NEWS = 'news';
 export const PRODUCTS = 'products';
+export const BANNERS = 'banners';
+export const LEADS = 'leads';
+export const SETTINGS = 'settings';
+export const LOGOS = 'logos';
+export const HOME_CARDS = 'home_cards';
 
 export type NewsRecord = RecordModel & {
     title_en: string;
@@ -65,6 +70,83 @@ export type ProductRecord = RecordModel & {
 export type AdminRecord = RecordModel & {
     email: string;
     name: string;
+};
+
+export type BannerRecord = RecordModel & {
+    title_en: string;
+    title_th: string;
+    subtitle_en: string;
+    subtitle_th: string;
+    image: string;
+    link: string;
+    active: boolean;
+    sort: number;
+};
+
+export type LeadStatus = 'new' | 'contacted' | 'done';
+
+export type LeadRecord = RecordModel & {
+    name: string;
+    company: string;
+    phone: string;
+    email: string;
+    subject: string;
+    message: string;
+    visit_date: string;
+    visit_time: string;
+    visitors: string;
+    status: LeadStatus;
+};
+
+export type SettingsRecord = RecordModel & {
+    cta_enabled: boolean;
+    cta_title_en: string;
+    cta_title_th: string;
+    cta_subtitle_en: string;
+    cta_subtitle_th: string;
+    cta_button_en: string;
+    cta_button_th: string;
+    cta_link: string;
+    phone_office: string;
+    phone_sales: string;
+    email: string;
+    hours_en: string;
+    hours_th: string;
+    address_en: string;
+    address_th: string;
+    map_link: string;
+    facebook: string;
+    instagram: string;
+    line: string;
+    tiktok: string;
+};
+
+export const LOGO_GROUPS = ['developer', 'contractor', 'hotel'] as const;
+export type LogoGroup = (typeof LOGO_GROUPS)[number];
+
+export const LOGO_GROUP_LABELS: Record<LogoGroup, { en: string; th: string }> = {
+    developer: { en: 'Developer', th: 'ผู้พัฒนาโครงการ' },
+    contractor: { en: 'Main Contractor', th: 'ผู้รับเหมาหลัก' },
+    hotel: { en: 'Hotel & Service Apartment', th: 'โรงแรม/เซอร์วิสอพาร์ตเมนต์' },
+};
+
+export type LogoRecord = RecordModel & {
+    name: string;
+    image: string;
+    group: LogoGroup;
+    sort: number;
+    active: boolean;
+};
+
+export type HomeCardRecord = RecordModel & {
+    title_en: string;
+    title_th: string;
+    description_en: string;
+    description_th: string;
+    image: string;
+    link: string;
+    sort: number;
+    active: boolean;
 };
 
 /** Build a URL for an uploaded file (optionally a resized thumbnail, e.g. "600x0"). */

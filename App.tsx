@@ -4,6 +4,7 @@ import { Navbar } from './components/Layout/Navbar';
 import { Footer } from './components/Layout/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { SettingsProvider } from './contexts/SettingsContext';
 
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
 const OurCompany = lazy(() => import('./pages/OurCompany').then(m => ({ default: m.OurCompany })));
@@ -26,6 +27,11 @@ const AdminLayout = lazy(() => import('./pages/admin/AdminLayout').then(m => ({ 
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const AdminNews = lazy(() => import('./pages/admin/AdminNews').then(m => ({ default: m.AdminNews })));
 const AdminProducts = lazy(() => import('./pages/admin/AdminProducts').then(m => ({ default: m.AdminProducts })));
+const AdminBanners = lazy(() => import('./pages/admin/AdminBanners').then(m => ({ default: m.AdminBanners })));
+const AdminCards = lazy(() => import('./pages/admin/AdminCards').then(m => ({ default: m.AdminCards })));
+const AdminLogos = lazy(() => import('./pages/admin/AdminLogos').then(m => ({ default: m.AdminLogos })));
+const AdminLeads = lazy(() => import('./pages/admin/AdminLeads').then(m => ({ default: m.AdminLeads })));
+const AdminSettings = lazy(() => import('./pages/admin/AdminSettings').then(m => ({ default: m.AdminSettings })));
 const AdminAccounts = lazy(() => import('./pages/admin/AdminAccounts').then(m => ({ default: m.AdminAccounts })));
 
 const PageFallback = () => (
@@ -67,8 +73,13 @@ function Shell() {
 
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
+              <Route path="leads" element={<AdminLeads />} />
+              <Route path="banners" element={<AdminBanners />} />
+              <Route path="cards" element={<AdminCards />} />
               <Route path="news" element={<AdminNews />} />
               <Route path="products" element={<AdminProducts />} />
+              <Route path="logos" element={<AdminLogos />} />
+              <Route path="settings" element={<AdminSettings />} />
               <Route path="accounts" element={<AdminAccounts />} />
             </Route>
           </Routes>
@@ -84,9 +95,11 @@ function App() {
   return (
     <Router>
       <LanguageProvider>
-        <AuthProvider>
-          <Shell />
-        </AuthProvider>
+        <SettingsProvider>
+          <AuthProvider>
+            <Shell />
+          </AuthProvider>
+        </SettingsProvider>
       </LanguageProvider>
     </Router>
   );

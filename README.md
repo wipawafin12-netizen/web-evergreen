@@ -10,7 +10,7 @@ staircases, wall panels and service shafts. Bilingual (TH/EN).
 ```
 .
 ├── pages/            # Route pages (Home, products, Contact, News, Catalog, Login)
-│   └── admin/        # Back-office (Dashboard, News, Products, Accounts)
+│   └── admin/        # Back-office (Dashboard, Inquiries, Banners, Cards, News, Products, Logos, Settings, Accounts)
 ├── components/       # Layout (Navbar/Footer), Sections, UI
 ├── contexts/         # LanguageContext (TH/EN) + AuthContext (PocketBase)
 ├── lib/              # pb.ts — PocketBase client + content types
@@ -82,10 +82,27 @@ volume. Collections are created automatically by the migrations in
   on the very first deploy (empty volume). After that, add/remove admins under
   **Admin → Accounts**. ⚠️ Change the initial password after first login.
 - **What admins manage:**
+  - **Inquiries** → contact-form and factory-visit submissions, captured to the
+    `leads` collection (in addition to the existing LINE notification). View,
+    mark new/contacted/done, and delete.
+  - **Homepage Banners** → the rotating hero images at the top of the homepage
+    (**/**). Upload/replace the image, set an optional click link and overlay
+    text (TH/EN), reorder, and show/hide each banner. When no banner is active
+    the homepage falls back to its built-in default images.
+  - **Collection Cards** → the "Collections" cards on the homepage (image,
+    title/description TH/EN, order link). Falls back to built-in cards when empty.
   - **News & Promotions** → public **/news** page.
   - **Products** → public **/catalog** page (filterable by category).
-- **Public reads** only show records with `published = true`; writes require an
-  authenticated admin (enforced by PocketBase API rules).
+  - **Customer Logos** → the "trusted by" marquees on the homepage, grouped into
+    developer / contractor / hotel. Adding logos to a group replaces the built-in
+    defaults for that group only.
+  - **Site Settings** → the top promo bar (text/link, on-off), contact details
+    (phone/email/hours/address/map) and social links, shown across the site.
+    A single seeded record; blank fields fall back to the original site values.
+- **Public reads** only show records with `published = true` / `active = true`
+  (and `settings` is world-readable); the `leads` collection is public-create but
+  admin-only read. All other writes require an authenticated admin (enforced by
+  PocketBase API rules).
 
 ### PocketBase super-admin (optional)
 
