@@ -38,8 +38,8 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ไว้อาลัย — ทำทั้งเว็บเป็นขาว-ดำ (mourning grayscale) */
+/* ไว้อาลัย — หรี่สีลงเล็กน้อย ไม่ถึงขาว-ดำเต็มที่ (partial mourning) */
 html {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
+  filter: grayscale(55%);
+  -webkit-filter: grayscale(55%);
 }
