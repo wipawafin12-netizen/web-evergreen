@@ -37,3 +37,9 @@ html, body {
   padding: 0;
   overflow-x: hidden;
 }
+
+/* ไว้อาลัย — ทำทั้งเว็บเป็นขาว-ดำ (mourning grayscale) */
+html {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
