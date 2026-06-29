@@ -38,8 +38,4 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ไว้อาลัย — หรี่สีลงเล็กน้อย ไม่ถึงขาว-ดำเต็มที่ (partial mourning) */
-html {
-  filter: grayscale(55%);
-  -webkit-filter: grayscale(55%);
-}
+/* สีสันปกติ (ปิดเอฟเฟกต์ไว้อาลัยแล้ว) */
